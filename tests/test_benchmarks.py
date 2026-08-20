@@ -18,6 +18,7 @@ from benchmarks.baselines import (
     make_baseline_model,
     windowed_aggregate_features,
 )
+from heartwood.features import interval_stat
 from benchmarks.run_benchmarks import (
     classification_metrics,
     regression_metrics,
@@ -179,3 +180,83 @@ def test_summarise_averages_over_seeds():
     stats = summarise(results, "accuracy")
     assert stats[("timing", "heartwood", 60)]["n"] == 2
     assert 0.0 <= stats[("timing", "agg", 60)]["mean"] <= 1.0
+
+
+# --------------------------------------------------------- missing data
+#
+# These pin the fix recorded in validation/CORRECTION.md.  The original
+# reductions turned a whole summary into NaN if one cell in the window was
+# missing, which on an 80%-missing dataset emptied 176 of 370 baseline columns
+# and cost `agg` about ten points of AUC -- read at the time as a win for the
+# representation under study.  The invariant that prevents a repeat is not
+# "handles NaN" but "handles NaN *the same way Heartwood does*", so that the
+# benchmark varies one thing.
+
+
+def test_aggregates_skip_missing_cells_instead_of_propagating_them(rng):
+    X = rng.normal(size=(6, 1, 20))
+    X[:, 0, 3] = np.nan  # one missing cell per row
+
+    got = aggregate_features(X)
+    assert np.isfinite(got).all(), "a single NaN must not destroy every summary"
+
+    observed = X[0, 0, np.isfinite(X[0, 0])]
+    assert np.isclose(got[0, 0], observed.mean())
+    assert np.isclose(got[0, 2], observed.min())
+    assert np.isclose(got[0, 3], observed.max())
+    assert np.isclose(got[0, 5], np.median(observed))
+
+
+def test_first_last_and_delta_use_observed_endpoints(rng):
+    X = rng.normal(size=(4, 1, 12))
+    X[:, 0, :2] = np.nan
+    X[:, 0, -1] = np.nan
+
+    got = aggregate_features(X)
+    assert np.allclose(got[:, 7], X[:, 0, 2])          # first observed
+    assert np.allclose(got[:, 8], X[:, 0, -2])         # last observed
+    assert np.allclose(got[:, 9], X[:, 0, -2] - X[:, 0, 2])
+
+
+def test_a_window_with_nothing_observed_is_missing_not_zero():
+    X = np.full((3, 1, 8), np.nan)
+    X[0, 0, 4] = 1.5
+    got = aggregate_features(X)
+    assert np.isnan(got[1]).all() and np.isnan(got[2]).all()
+    assert np.isclose(got[0, 0], 1.5)
+
+
+def test_baseline_and_heartwood_agree_on_what_a_summary_of_gaps_means(rng):
+    """The invariant that keeps the benchmark measuring one variable.
+
+    ``agg`` is meant to differ from Heartwood in *which* windows get searched,
+    never in what a statistic over a gappy window means.
+    """
+    X = rng.normal(size=(20, 1, 30))
+    X[rng.random(X.shape) < 0.7] = np.nan
+    got = aggregate_features(X)
+
+    block = X[:, 0, :]
+    for column, stat in ((0, "mean"), (1, "std"), (2, "min"), (3, "max"),
+                         (4, "slope"), (5, "median"), (6, "mean_abs_change"),
+                         (8, "last"), (9, "delta")):
+        assert np.allclose(got[:, column], interval_stat(block, stat),
+                           equal_nan=True), f"{stat} disagrees with interval_stat"
+
+
+def test_the_naive_reductions_are_still_available_and_still_broken(rng):
+    """Kept only so the pre-registered v0.3 numbers reproduce."""
+    X = rng.normal(size=(5, 1, 15))
+    X[:, 0, 7] = np.nan
+    naive = aggregate_features(X, naive=True)
+    assert np.isnan(naive[:, :7]).all(), "the old behaviour, pinned deliberately"
+    assert np.allclose(naive, build_design_matrix("agg_naive", np.empty((5, 0)), X),
+                       equal_nan=True)
+
+
+def test_dense_data_is_unaffected_by_the_fix(rng):
+    """Why benchmarks/results.md did not move: no scenario has a missing cell."""
+    X = rng.normal(size=(9, 2, 24))
+    assert np.allclose(aggregate_features(X), aggregate_features(X, naive=True))
+    assert np.allclose(windowed_aggregate_features(X, 4),
+                       windowed_aggregate_features(X, 4, naive=True))

@@ -6,6 +6,11 @@
 Size ``0`` means "the whole training split".  Heartwood runs on library defaults
 throughout; baselines get the same rounds/depth/learning rate.  Nothing here is
 tuned per dataset, by rule.
+
+Two corrections to the v0.3 run are folded in here and recorded in
+``validation/CORRECTION.md``: the aggregate baselines no longer propagate NaN
+(``benchmarks.baselines``), and an official train/test split no longer collapses
+the small-data curve to a single subsample.
 """
 
 from __future__ import annotations
@@ -27,7 +32,11 @@ from heartwood import HeartwoodClassifier, HeartwoodRegressor
 from validation.loaders import MIXED, load_uea
 
 HEARTWOOD = "heartwood"
-REPRESENTATIONS = ["static_only", "agg", "wagg4", "wagg8", "raw_flat"]
+#: ``agg_naive``/``wagg8_naive`` are the NaN-propagating reductions this harness
+#: originally used; they are carried alongside the fixed ones so every table
+#: shows what that choice was worth.  See ``validation/CORRECTION.md``.
+REPRESENTATIONS = ["static_only", "agg", "wagg4", "wagg8", "raw_flat",
+                   "agg_naive", "wagg8_naive"]
 
 
 # ------------------------------------------------------------------ metrics
@@ -185,16 +194,22 @@ def run_cell(dataset, train_idx, test_idx, size, seed, config) -> list[Row]:
             scores = proba[:, 1] if dataset.task == "binary" else proba
         record(name, predictions, scores, elapsed)
 
-    # --- a real time-series method
+    # --- a real time-series method, at both kernel budgets
+    #
+    # 10,000 is MiniROCKET's published default; 2,000 is what this harness first
+    # used.  Neither dominates -- on ICU the smaller bank is the stronger
+    # baseline -- so both are recorded and any claim about beating MiniROCKET is
+    # made against whichever won.
     if config["minirocket"] and dataset.task != "regression":
-        try:
-            started = time.perf_counter()
-            predictions, decision = fit_minirocket(Xt, y, Xt_te)
-            elapsed = time.perf_counter() - started
-            scores = decision if dataset.task == "binary" else None
-            record("minirocket", predictions, scores, elapsed)
-        except Exception as error:  # recorded, never silently skipped
-            print(f"    minirocket failed: {type(error).__name__}: {error}", flush=True)
+        for label, n_kernels in (("minirocket", 2000), ("minirocket10k", 10000)):
+            try:
+                started = time.perf_counter()
+                predictions, decision = fit_minirocket(Xt, y, Xt_te, n_kernels)
+                elapsed = time.perf_counter() - started
+                scores = decision if dataset.task == "binary" else None
+                record(label, predictions, scores, elapsed)
+            except Exception as error:  # recorded, never silently skipped
+                print(f"    {label} failed: {type(error).__name__}: {error}", flush=True)
 
     return rows
 
@@ -206,7 +221,11 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--datasets", nargs="+", default=["credit"])
     parser.add_argument("--sizes", nargs="+", type=int, default=[100, 250, 500, 1000, 0])
-    parser.add_argument("--seeds", type=int, default=3)
+    parser.add_argument("--seeds", type=int, default=5,
+                        help="repeats of the subsample (VALIDATION.md §5 fixes this at 5)")
+    parser.add_argument("--full-seeds", type=int, default=2,
+                        help="repeats for the whole-training-split cell of an "
+                             "official split, where only the model seed varies")
     parser.add_argument("--rounds", type=int, default=200)
     parser.add_argument("--depth", type=int, default=4)
     parser.add_argument("--learning-rate", type=float, default=0.1)
@@ -233,12 +252,21 @@ def main() -> int:
 
         print(f"\n{dataset.summary()}", flush=True)
         official = getattr(dataset, "n_official_train", None)
-        n_seeds = 1 if official is not None else args.seeds
 
-        for seed in range(n_seeds):
+        for seed in range(args.seeds):
             train_idx, test_idx = make_split(dataset, seed)
             for size in args.sizes:
                 if size and size > len(train_idx):
+                    continue
+                whole = not size or size >= len(train_idx)
+                # An official split fixes the *split*, not the *subsample*, so
+                # the small-data curve still gets its repeats (VALIDATION.md §5).
+                # An earlier version collapsed those to one seed, which is why
+                # the v0.3 tables carry a meaningless "+/-0.000".  The one case
+                # where extra seeds really are redundant is an official split
+                # with no subsampling: every seed then sees identical rows and
+                # only re-measures the learner's own randomness.
+                if official is not None and whole and seed >= args.full_seeds:
                     continue
                 started = time.perf_counter()
                 cells = run_cell(dataset, train_idx, test_idx, size, seed, config)
