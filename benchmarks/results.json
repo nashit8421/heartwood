@@ -1,0 +1,5284 @@
+{
+ "config": {
+  "scenarios": [
+   "bump_order",
+   "timing",
+   "slope_window",
+   "amp_regression",
+   "static_control"
+  ],
+  "sizes": [
+   100,
+   250,
+   500,
+   1000
+  ],
+  "seeds": 3,
+  "test_size": 2000,
+  "rounds": 200,
+  "depth": 4,
+  "learning_rate": 0.1,
+  "jobs": 0,
+  "quick": false
+ },
+ "platform": "macOS-26.5.2-arm64-arm-64bit / python 3.10.17",
+ "wall_clock_seconds": 154.71098183401045,
+ "results": [
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 100,
+   "seed": 0,
+   "fit_seconds": 5.063793583016377,
+   "metrics": {
+    "accuracy": 0.551,
+    "precision": 0.5576694411414982,
+    "recall": 0.471356783919598,
+    "f1": 0.5108932461873639,
+    "roc_auc": 0.5747323683092077
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 100,
+   "seed": 0,
+   "fit_seconds": 0.02107987500494346,
+   "metrics": {
+    "accuracy": 0.515,
+    "precision": 0.5146198830409356,
+    "recall": 0.44221105527638194,
+    "f1": 0.4756756756756757,
+    "roc_auc": 0.5061796544913623
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 100,
+   "seed": 0,
+   "fit_seconds": 0.03354058301192708,
+   "metrics": {
+    "accuracy": 0.557,
+    "precision": 0.5576719576719577,
+    "recall": 0.5296482412060302,
+    "f1": 0.5432989690721649,
+    "roc_auc": 0.5805745143628591
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 100,
+   "seed": 0,
+   "fit_seconds": 0.06344220900791697,
+   "metrics": {
+    "accuracy": 0.514,
+    "precision": 0.5130533484676504,
+    "recall": 0.4542713567839196,
+    "f1": 0.48187633262260127,
+    "roc_auc": 0.5324243106077652
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 100,
+   "seed": 0,
+   "fit_seconds": 0.11097716598305851,
+   "metrics": {
+    "accuracy": 0.5015,
+    "precision": 0.49881516587677727,
+    "recall": 0.42311557788944726,
+    "f1": 0.45785753126699297,
+    "roc_auc": 0.5104587614690367
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 100,
+   "seed": 0,
+   "fit_seconds": 0.06910308299120516,
+   "metrics": {
+    "accuracy": 0.499,
+    "precision": 0.49638802889576883,
+    "recall": 0.4834170854271357,
+    "f1": 0.48981670061099797,
+    "roc_auc": 0.49577939448486213
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 100,
+   "seed": 1,
+   "fit_seconds": 4.9634630829968955,
+   "metrics": {
+    "accuracy": 0.5,
+    "precision": 0.47875,
+    "recall": 0.39648033126293997,
+    "f1": 0.43374858437146097,
+    "roc_auc": 0.49984782408464185
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 100,
+   "seed": 1,
+   "fit_seconds": 0.02962733298772946,
+   "metrics": {
+    "accuracy": 0.498,
+    "precision": 0.47845804988662133,
+    "recall": 0.43685300207039335,
+    "f1": 0.4567099567099567,
+    "roc_auc": 0.4880101397215181
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 100,
+   "seed": 1,
+   "fit_seconds": 0.04011475000879727,
+   "metrics": {
+    "accuracy": 0.5085,
+    "precision": 0.4908503767491927,
+    "recall": 0.4720496894409938,
+    "f1": 0.4812664907651715,
+    "roc_auc": 0.5065735990805371
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 100,
+   "seed": 1,
+   "fit_seconds": 0.0642946669831872,
+   "metrics": {
+    "accuracy": 0.506,
+    "precision": 0.48655256723716384,
+    "recall": 0.41200828157349895,
+    "f1": 0.4461883408071749,
+    "roc_auc": 0.4916783802075199
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 100,
+   "seed": 1,
+   "fit_seconds": 0.10884016600903124,
+   "metrics": {
+    "accuracy": 0.5015,
+    "precision": 0.48370136698212407,
+    "recall": 0.47619047619047616,
+    "f1": 0.4799165362545644,
+    "roc_auc": 0.49708362867474803
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 100,
+   "seed": 1,
+   "fit_seconds": 0.0660994999925606,
+   "metrics": {
+    "accuracy": 0.515,
+    "precision": 0.4976851851851852,
+    "recall": 0.4451345755693582,
+    "f1": 0.4699453551912568,
+    "roc_auc": 0.5077459543231976
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 100,
+   "seed": 2,
+   "fit_seconds": 5.093335915997159,
+   "metrics": {
+    "accuracy": 0.5465,
+    "precision": 0.5326438267614738,
+    "recall": 0.8174603174603174,
+    "f1": 0.645009784735812,
+    "roc_auc": 0.5588777681771634
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 100,
+   "seed": 2,
+   "fit_seconds": 0.024743582995142788,
+   "metrics": {
+    "accuracy": 0.4925,
+    "precision": 0.49713349713349714,
+    "recall": 0.6021825396825397,
+    "f1": 0.544638851502916,
+    "roc_auc": 0.49853690636200715
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 100,
+   "seed": 2,
+   "fit_seconds": 0.037291457992978394,
+   "metrics": {
+    "accuracy": 0.5055,
+    "precision": 0.5067808708065668,
+    "recall": 0.7043650793650794,
+    "f1": 0.5894562058945622,
+    "roc_auc": 0.5164010496671787
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 100,
+   "seed": 2,
+   "fit_seconds": 0.059259707981254905,
+   "metrics": {
+    "accuracy": 0.5055,
+    "precision": 0.5086442220200182,
+    "recall": 0.5545634920634921,
+    "f1": 0.5306122448979592,
+    "roc_auc": 0.49291854678699437
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 100,
+   "seed": 2,
+   "fit_seconds": 0.10328291699988768,
+   "metrics": {
+    "accuracy": 0.5025,
+    "precision": 0.5047759000734754,
+    "recall": 0.6815476190476191,
+    "f1": 0.5799915576192487,
+    "roc_auc": 0.49569472446236557
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 100,
+   "seed": 2,
+   "fit_seconds": 0.07769525001640432,
+   "metrics": {
+    "accuracy": 0.5095,
+    "precision": 0.5102974828375286,
+    "recall": 0.6636904761904762,
+    "f1": 0.5769728331177232,
+    "roc_auc": 0.5130763368855606
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 250,
+   "seed": 0,
+   "fit_seconds": 9.159526041999925,
+   "metrics": {
+    "accuracy": 0.7,
+    "precision": 0.729918509895227,
+    "recall": 0.6301507537688442,
+    "f1": 0.6763754045307443,
+    "roc_auc": 0.7760844021100528
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 250,
+   "seed": 0,
+   "fit_seconds": 0.06234458301332779,
+   "metrics": {
+    "accuracy": 0.4995,
+    "precision": 0.49702380952380953,
+    "recall": 0.5035175879396985,
+    "f1": 0.5002496255616575,
+    "roc_auc": 0.5044886122153054
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 250,
+   "seed": 0,
+   "fit_seconds": 0.12271854098071344,
+   "metrics": {
+    "accuracy": 0.5685,
+    "precision": 0.5755148741418764,
+    "recall": 0.5055276381909548,
+    "f1": 0.5382557517388978,
+    "roc_auc": 0.5997899947498687
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 250,
+   "seed": 0,
+   "fit_seconds": 0.22092183300992474,
+   "metrics": {
+    "accuracy": 0.5395,
+    "precision": 0.5422374429223744,
+    "recall": 0.47738693467336685,
+    "f1": 0.5077498663816141,
+    "roc_auc": 0.5506357658941473
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 250,
+   "seed": 0,
+   "fit_seconds": 0.40220595797291026,
+   "metrics": {
+    "accuracy": 0.5385,
+    "precision": 0.5441176470588235,
+    "recall": 0.4462311557788945,
+    "f1": 0.49033683048039756,
+    "roc_auc": 0.5542423560589015
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 250,
+   "seed": 0,
+   "fit_seconds": 0.26892408399726264,
+   "metrics": {
+    "accuracy": 0.5255,
+    "precision": 0.527122641509434,
+    "recall": 0.4492462311557789,
+    "f1": 0.4850786760716224,
+    "roc_auc": 0.5387014675366885
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 250,
+   "seed": 1,
+   "fit_seconds": 9.12181483299355,
+   "metrics": {
+    "accuracy": 0.6425,
+    "precision": 0.6059071729957806,
+    "recall": 0.7432712215320911,
+    "f1": 0.6675964667596467,
+    "roc_auc": 0.7038796849157626
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 250,
+   "seed": 1,
+   "fit_seconds": 0.052778499986743554,
+   "metrics": {
+    "accuracy": 0.4925,
+    "precision": 0.4773776546629732,
+    "recall": 0.5351966873706004,
+    "f1": 0.5046364080039042,
+    "roc_auc": 0.4928056833699757
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 250,
+   "seed": 1,
+   "fit_seconds": 0.12322583398781717,
+   "metrics": {
+    "accuracy": 0.6575,
+    "precision": 0.6290174471992653,
+    "recall": 0.7091097308488613,
+    "f1": 0.6666666666666666,
+    "roc_auc": 0.7110299506229201
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 250,
+   "seed": 1,
+   "fit_seconds": 0.20374733401695266,
+   "metrics": {
+    "accuracy": 0.6415,
+    "precision": 0.6229022704837117,
+    "recall": 0.6532091097308489,
+    "f1": 0.6376958059626074,
+    "roc_auc": 0.6818071690874651
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 250,
+   "seed": 1,
+   "fit_seconds": 0.3977607499982696,
+   "metrics": {
+    "accuracy": 0.5135,
+    "precision": 0.4969217238346526,
+    "recall": 0.5848861283643892,
+    "f1": 0.5373276271992392,
+    "roc_auc": 0.5151364977914469
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 250,
+   "seed": 1,
+   "fit_seconds": 0.2629714169888757,
+   "metrics": {
+    "accuracy": 0.523,
+    "precision": 0.5052910052910053,
+    "recall": 0.593167701863354,
+    "f1": 0.5457142857142857,
+    "roc_auc": 0.5376154834989247
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 250,
+   "seed": 2,
+   "fit_seconds": 9.069572832988342,
+   "metrics": {
+    "accuracy": 0.652,
+    "precision": 0.6333333333333333,
+    "recall": 0.7351190476190477,
+    "f1": 0.6804407713498623,
+    "roc_auc": 0.7173449100742447
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 250,
+   "seed": 2,
+   "fit_seconds": 0.05617558301310055,
+   "metrics": {
+    "accuracy": 0.504,
+    "precision": 0.5069204152249135,
+    "recall": 0.5813492063492064,
+    "f1": 0.5415896487985212,
+    "roc_auc": 0.49478866647465436
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 250,
+   "seed": 2,
+   "fit_seconds": 0.12925450000329874,
+   "metrics": {
+    "accuracy": 0.5205,
+    "precision": 0.5222121486854034,
+    "recall": 0.5714285714285714,
+    "f1": 0.5457129322595926,
+    "roc_auc": 0.5199442764336918
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 250,
+   "seed": 2,
+   "fit_seconds": 0.2134895829949528,
+   "metrics": {
+    "accuracy": 0.508,
+    "precision": 0.5107719928186715,
+    "recall": 0.564484126984127,
+    "f1": 0.5362865221489161,
+    "roc_auc": 0.5228334613415259
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 250,
+   "seed": 2,
+   "fit_seconds": 0.3882530420087278,
+   "metrics": {
+    "accuracy": 0.5205,
+    "precision": 0.5221318879855466,
+    "recall": 0.5734126984126984,
+    "f1": 0.5465721040189124,
+    "roc_auc": 0.5320980542754736
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 250,
+   "seed": 2,
+   "fit_seconds": 0.2551913329807576,
+   "metrics": {
+    "accuracy": 0.5015,
+    "precision": 0.5045342126957956,
+    "recall": 0.6071428571428571,
+    "f1": 0.5511031067086898,
+    "roc_auc": 0.5090115767409115
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 500,
+   "seed": 0,
+   "fit_seconds": 13.886802707973402,
+   "metrics": {
+    "accuracy": 0.816,
+    "precision": 0.8052580331061344,
+    "recall": 0.8311557788944723,
+    "f1": 0.8180019782393668,
+    "roc_auc": 0.9031155778894472
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 500,
+   "seed": 0,
+   "fit_seconds": 0.10593362501822412,
+   "metrics": {
+    "accuracy": 0.524,
+    "precision": 0.521608040201005,
+    "recall": 0.521608040201005,
+    "f1": 0.521608040201005,
+    "roc_auc": 0.5248741218530463
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 500,
+   "seed": 0,
+   "fit_seconds": 0.26647529201,
+   "metrics": {
+    "accuracy": 0.7325,
+    "precision": 0.7309236947791165,
+    "recall": 0.7316582914572864,
+    "f1": 0.731290808638875,
+    "roc_auc": 0.8030600765019126
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 500,
+   "seed": 0,
+   "fit_seconds": 0.49751108401687816,
+   "metrics": {
+    "accuracy": 0.5755,
+    "precision": 0.5712890625,
+    "recall": 0.5879396984924623,
+    "f1": 0.5794947994056464,
+    "roc_auc": 0.5998999974999375
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 500,
+   "seed": 0,
+   "fit_seconds": 0.9358758750022389,
+   "metrics": {
+    "accuracy": 0.5605,
+    "precision": 0.5557692307692308,
+    "recall": 0.5809045226130654,
+    "f1": 0.568058968058968,
+    "roc_auc": 0.5866616665416635
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 500,
+   "seed": 0,
+   "fit_seconds": 0.6277856249944307,
+   "metrics": {
+    "accuracy": 0.5335,
+    "precision": 0.5289719626168224,
+    "recall": 0.5688442211055277,
+    "f1": 0.5481840193704601,
+    "roc_auc": 0.5401945048626215
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 500,
+   "seed": 1,
+   "fit_seconds": 13.89903366699582,
+   "metrics": {
+    "accuracy": 0.8355,
+    "precision": 0.8349106203995794,
+    "recall": 0.8219461697722568,
+    "f1": 0.828377673448096,
+    "roc_auc": 0.9117129401588236
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 500,
+   "seed": 1,
+   "fit_seconds": 0.1031352499849163,
+   "metrics": {
+    "accuracy": 0.485,
+    "precision": 0.4689922480620155,
+    "recall": 0.5010351966873706,
+    "f1": 0.48448448448448445,
+    "roc_auc": 0.4921559322576899
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 500,
+   "seed": 1,
+   "fit_seconds": 0.259589583001798,
+   "metrics": {
+    "accuracy": 0.785,
+    "precision": 0.79004329004329,
+    "recall": 0.7556935817805382,
+    "f1": 0.7724867724867723,
+    "roc_auc": 0.8587587250861997
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 500,
+   "seed": 1,
+   "fit_seconds": 0.5030561669846065,
+   "metrics": {
+    "accuracy": 0.617,
+    "precision": 0.6018329938900203,
+    "recall": 0.6118012422360248,
+    "f1": 0.6067761806981519,
+    "roc_auc": 0.6668759085502841
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 500,
+   "seed": 1,
+   "fit_seconds": 0.9481014169869013,
+   "metrics": {
+    "accuracy": 0.5765,
+    "precision": 0.570414201183432,
+    "recall": 0.4989648033126294,
+    "f1": 0.5323025952512423,
+    "roc_auc": 0.6023112718302358
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 500,
+   "seed": 1,
+   "fit_seconds": 0.6097087909874972,
+   "metrics": {
+    "accuracy": 0.5475,
+    "precision": 0.532620320855615,
+    "recall": 0.515527950310559,
+    "f1": 0.5239347711730669,
+    "roc_auc": 0.5638758404715851
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 500,
+   "seed": 2,
+   "fit_seconds": 14.129357833997346,
+   "metrics": {
+    "accuracy": 0.8265,
+    "precision": 0.8619934282584885,
+    "recall": 0.7807539682539683,
+    "f1": 0.8193649141072358,
+    "roc_auc": 0.900016601062468
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 500,
+   "seed": 2,
+   "fit_seconds": 0.11240795798948966,
+   "metrics": {
+    "accuracy": 0.495,
+    "precision": 0.4988888888888889,
+    "recall": 0.44543650793650796,
+    "f1": 0.47064989517819705,
+    "roc_auc": 0.49116043426779316
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 500,
+   "seed": 2,
+   "fit_seconds": 0.2631744170212187,
+   "metrics": {
+    "accuracy": 0.5795,
+    "precision": 0.5854657113613101,
+    "recall": 0.5674603174603174,
+    "f1": 0.5763224181360201,
+    "roc_auc": 0.6083439340117768
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 500,
+   "seed": 2,
+   "fit_seconds": 0.5008732090063859,
+   "metrics": {
+    "accuracy": 0.614,
+    "precision": 0.6229166666666667,
+    "recall": 0.5932539682539683,
+    "f1": 0.6077235772357724,
+    "roc_auc": 0.6603302611367128
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 500,
+   "seed": 2,
+   "fit_seconds": 0.9305496250162832,
+   "metrics": {
+    "accuracy": 0.583,
+    "precision": 0.5990888382687927,
+    "recall": 0.5218253968253969,
+    "f1": 0.55779427359491,
+    "roc_auc": 0.6096090149769585
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 500,
+   "seed": 2,
+   "fit_seconds": 0.603895916021429,
+   "metrics": {
+    "accuracy": 0.5895,
+    "precision": 0.6040044493882091,
+    "recall": 0.5386904761904762,
+    "f1": 0.5694808599895123,
+    "roc_auc": 0.6069188428059396
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 22.82177920799586,
+   "metrics": {
+    "accuracy": 0.943,
+    "precision": 0.9357072205736894,
+    "recall": 0.9507537688442211,
+    "f1": 0.9431704885343969,
+    "roc_auc": 0.9849436235905897
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 0.190344583010301,
+   "metrics": {
+    "accuracy": 0.512,
+    "precision": 0.5091965150048403,
+    "recall": 0.528643216080402,
+    "f1": 0.5187376725838265,
+    "roc_auc": 0.5099317482937074
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 0.5158107500174083,
+   "metrics": {
+    "accuracy": 0.8265,
+    "precision": 0.8246492985971944,
+    "recall": 0.8271356783919598,
+    "f1": 0.8258906171600602,
+    "roc_auc": 0.888723218080452
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 0.9783881250186823,
+   "metrics": {
+    "accuracy": 0.7835,
+    "precision": 0.7696737044145874,
+    "recall": 0.8060301507537688,
+    "f1": 0.7874324987727049,
+    "roc_auc": 0.8691287282182054
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 1.9396740829979535,
+   "metrics": {
+    "accuracy": 0.673,
+    "precision": 0.6666666666666666,
+    "recall": 0.685427135678392,
+    "f1": 0.6759167492566898,
+    "roc_auc": 0.7262721568039201
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 1.256184083991684,
+   "metrics": {
+    "accuracy": 0.6685,
+    "precision": 0.6697341513292433,
+    "recall": 0.6582914572864321,
+    "f1": 0.6639635073492143,
+    "roc_auc": 0.7380434510862771
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 22.97932916600257,
+   "metrics": {
+    "accuracy": 0.9205,
+    "precision": 0.9242902208201893,
+    "recall": 0.9099378881987578,
+    "f1": 0.9170579029733958,
+    "roc_auc": 0.9764838152904758
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 0.19249395802034996,
+   "metrics": {
+    "accuracy": 0.5035,
+    "precision": 0.4857744994731296,
+    "recall": 0.4772256728778468,
+    "f1": 0.4814621409921671,
+    "roc_auc": 0.4913500006006944
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 0.5234362499904819,
+   "metrics": {
+    "accuracy": 0.8155,
+    "precision": 0.7940886699507389,
+    "recall": 0.8343685300207039,
+    "f1": 0.8137304391721353,
+    "roc_auc": 0.8963151403021893
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 0.9871636250172742,
+   "metrics": {
+    "accuracy": 0.8115,
+    "precision": 0.8096740273396424,
+    "recall": 0.7971014492753623,
+    "f1": 0.803338549817423,
+    "roc_auc": 0.8913924496718206
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 1.8912808750174008,
+   "metrics": {
+    "accuracy": 0.696,
+    "precision": 0.6808080808080809,
+    "recall": 0.6977225672877847,
+    "f1": 0.6891615541922291,
+    "roc_auc": 0.7690640380279603
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 1.2270947500073817,
+   "metrics": {
+    "accuracy": 0.6185,
+    "precision": 0.6038894575230297,
+    "recall": 0.6107660455486542,
+    "f1": 0.6073082861554296,
+    "roc_auc": 0.6680172279154702
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 23.183293249981944,
+   "metrics": {
+    "accuracy": 0.9735,
+    "precision": 0.961352657004831,
+    "recall": 0.9871031746031746,
+    "f1": 0.9740577581987274,
+    "roc_auc": 0.996799795186892
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 0.20120199999655597,
+   "metrics": {
+    "accuracy": 0.51,
+    "precision": 0.5141987829614605,
+    "recall": 0.5029761904761905,
+    "f1": 0.5085255767301906,
+    "roc_auc": 0.5164110503072197
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 0.5270956250024028,
+   "metrics": {
+    "accuracy": 0.8075,
+    "precision": 0.7947019867549668,
+    "recall": 0.8333333333333334,
+    "f1": 0.8135593220338982,
+    "roc_auc": 0.8784642217101895
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 0.9876597499824129,
+   "metrics": {
+    "accuracy": 0.7775,
+    "precision": 0.7887179487179488,
+    "recall": 0.7628968253968254,
+    "f1": 0.7755925365607665,
+    "roc_auc": 0.8428189404121864
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 1.901639209012501,
+   "metrics": {
+    "accuracy": 0.701,
+    "precision": 0.7013752455795678,
+    "recall": 0.7083333333333334,
+    "f1": 0.7048371174728529,
+    "roc_auc": 0.7719024017537123
+   }
+  },
+  {
+   "scenario": "bump_order",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 1.211289917002432,
+   "metrics": {
+    "accuracy": 0.6565,
+    "precision": 0.6524216524216524,
+    "recall": 0.6815476190476191,
+    "f1": 0.6666666666666667,
+    "roc_auc": 0.7170298899129545
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 100,
+   "seed": 0,
+   "fit_seconds": 4.728660832974128,
+   "metrics": {
+    "accuracy": 0.8915,
+    "precision": 0.9223181257706535,
+    "recall": 0.8292682926829268,
+    "f1": 0.8733216579100992,
+    "roc_auc": 0.9563093954337457
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 100,
+   "seed": 0,
+   "fit_seconds": 0.020790375012438744,
+   "metrics": {
+    "accuracy": 0.591,
+    "precision": 0.5575342465753425,
+    "recall": 0.45121951219512196,
+    "f1": 0.4987745098039215,
+    "roc_auc": 0.6085091216038837
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 100,
+   "seed": 0,
+   "fit_seconds": 0.02747512498172,
+   "metrics": {
+    "accuracy": 0.8585,
+    "precision": 0.8883312421580929,
+    "recall": 0.7849223946784922,
+    "f1": 0.83343143025309,
+    "roc_auc": 0.9361558406940255
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 100,
+   "seed": 0,
+   "fit_seconds": 0.05055100002209656,
+   "metrics": {
+    "accuracy": 0.8325,
+    "precision": 0.8495684340320592,
+    "recall": 0.7638580931263859,
+    "f1": 0.804436660828955,
+    "roc_auc": 0.9048097932544154
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 100,
+   "seed": 0,
+   "fit_seconds": 0.09471395800937898,
+   "metrics": {
+    "accuracy": 0.6945,
+    "precision": 0.7161961367013373,
+    "recall": 0.5343680709534369,
+    "f1": 0.6120634920634922,
+    "roc_auc": 0.7654998606617959
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 100,
+   "seed": 0,
+   "fit_seconds": 0.06893208299879916,
+   "metrics": {
+    "accuracy": 0.6445,
+    "precision": 0.6275033377837116,
+    "recall": 0.5210643015521065,
+    "f1": 0.5693519079345852,
+    "roc_auc": 0.690119911631307
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 100,
+   "seed": 1,
+   "fit_seconds": 4.785752083989792,
+   "metrics": {
+    "accuracy": 0.937,
+    "precision": 0.893223819301848,
+    "recall": 0.9753363228699552,
+    "f1": 0.932475884244373,
+    "roc_auc": 0.9915625860031406
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 100,
+   "seed": 1,
+   "fit_seconds": 0.015155291999690235,
+   "metrics": {
+    "accuracy": 0.6635,
+    "precision": 0.6037914691943128,
+    "recall": 0.7141255605381166,
+    "f1": 0.6543400102722137,
+    "roc_auc": 0.7056097319130337
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 100,
+   "seed": 1,
+   "fit_seconds": 0.03124154100078158,
+   "metrics": {
+    "accuracy": 0.863,
+    "precision": 0.8358695652173913,
+    "recall": 0.8621076233183856,
+    "f1": 0.8487858719646799,
+    "roc_auc": 0.9383762202327953
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 100,
+   "seed": 1,
+   "fit_seconds": 0.04511204198934138,
+   "metrics": {
+    "accuracy": 0.813,
+    "precision": 0.7263986013986014,
+    "recall": 0.9316143497757847,
+    "f1": 0.8163064833005893,
+    "roc_auc": 0.9314393080895566
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 100,
+   "seed": 1,
+   "fit_seconds": 0.09198437500162981,
+   "metrics": {
+    "accuracy": 0.731,
+    "precision": 0.6654205607476635,
+    "recall": 0.7982062780269058,
+    "f1": 0.7257900101936798,
+    "roc_auc": 0.820053099350828
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 100,
+   "seed": 1,
+   "fit_seconds": 0.06129370801500045,
+   "metrics": {
+    "accuracy": 0.746,
+    "precision": 0.6758241758241759,
+    "recall": 0.827354260089686,
+    "f1": 0.7439516129032258,
+    "roc_auc": 0.8270466723867187
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 100,
+   "seed": 2,
+   "fit_seconds": 4.750298875005683,
+   "metrics": {
+    "accuracy": 0.8955,
+    "precision": 0.8448448448448449,
+    "recall": 0.9398663697104677,
+    "f1": 0.8898260411175541,
+    "roc_auc": 0.9765389108282572
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 100,
+   "seed": 2,
+   "fit_seconds": 0.021760917006758973,
+   "metrics": {
+    "accuracy": 0.6195,
+    "precision": 0.5571309424520434,
+    "recall": 0.7438752783964365,
+    "f1": 0.637100619933238,
+    "roc_auc": 0.6904534779849555
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 100,
+   "seed": 2,
+   "fit_seconds": 0.025542666990077123,
+   "metrics": {
+    "accuracy": 0.904,
+    "precision": 0.8467583497053045,
+    "recall": 0.9599109131403119,
+    "f1": 0.8997912317327766,
+    "roc_auc": 0.9785255801357322
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 100,
+   "seed": 2,
+   "fit_seconds": 0.05115404198295437,
+   "metrics": {
+    "accuracy": 0.858,
+    "precision": 0.8063872255489022,
+    "recall": 0.8997772828507795,
+    "f1": 0.8505263157894737,
+    "roc_auc": 0.9390256225772942
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 100,
+   "seed": 2,
+   "fit_seconds": 0.09987129201181233,
+   "metrics": {
+    "accuracy": 0.809,
+    "precision": 0.7524461839530333,
+    "recall": 0.856347438752784,
+    "f1": 0.8010416666666668,
+    "roc_auc": 0.9054240316250268
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 100,
+   "seed": 2,
+   "fit_seconds": 0.06968583300476894,
+   "metrics": {
+    "accuracy": 0.7365,
+    "precision": 0.6672678088367899,
+    "recall": 0.8240534521158129,
+    "f1": 0.7374190333831591,
+    "roc_auc": 0.8299174612670221
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 250,
+   "seed": 0,
+   "fit_seconds": 8.93053779201,
+   "metrics": {
+    "accuracy": 0.9595,
+    "precision": 0.958659217877095,
+    "recall": 0.9512195121951219,
+    "f1": 0.9549248747913189,
+    "roc_auc": 0.9919900726578056
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 250,
+   "seed": 0,
+   "fit_seconds": 0.056462083011865616,
+   "metrics": {
+    "accuracy": 0.6575,
+    "precision": 0.6344485749690211,
+    "recall": 0.5676274944567627,
+    "f1": 0.5991808074897602,
+    "roc_auc": 0.6960650083400983
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 250,
+   "seed": 0,
+   "fit_seconds": 0.09050679201027378,
+   "metrics": {
+    "accuracy": 0.931,
+    "precision": 0.9235033259423503,
+    "recall": 0.9235033259423503,
+    "f1": 0.9235033259423503,
+    "roc_auc": 0.9776039079317768
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 250,
+   "seed": 0,
+   "fit_seconds": 0.16874758398626,
+   "metrics": {
+    "accuracy": 0.9215,
+    "precision": 0.9134295227524972,
+    "recall": 0.9124168514412417,
+    "f1": 0.9129229062673322,
+    "roc_auc": 0.971347824506561
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 250,
+   "seed": 0,
+   "fit_seconds": 0.3411280839936808,
+   "metrics": {
+    "accuracy": 0.8875,
+    "precision": 0.8968347010550997,
+    "recall": 0.8481152993348116,
+    "f1": 0.8717948717948718,
+    "roc_auc": 0.9492092052068062
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 250,
+   "seed": 0,
+   "fit_seconds": 0.22916824999265373,
+   "metrics": {
+    "accuracy": 0.8135,
+    "precision": 0.8072009291521487,
+    "recall": 0.770509977827051,
+    "f1": 0.7884288145207033,
+    "roc_auc": 0.8923168106494775
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 250,
+   "seed": 1,
+   "fit_seconds": 8.777645249996567,
+   "metrics": {
+    "accuracy": 0.9595,
+    "precision": 0.9431693989071038,
+    "recall": 0.9674887892376681,
+    "f1": 0.9551743220807969,
+    "roc_auc": 0.9946718524874132
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 250,
+   "seed": 1,
+   "fit_seconds": 0.055734208988724276,
+   "metrics": {
+    "accuracy": 0.6415,
+    "precision": 0.5886524822695035,
+    "recall": 0.6513452914798207,
+    "f1": 0.61841405002661,
+    "roc_auc": 0.6898534506483625
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 250,
+   "seed": 1,
+   "fit_seconds": 0.07700641598785296,
+   "metrics": {
+    "accuracy": 0.914,
+    "precision": 0.8805496828752643,
+    "recall": 0.9338565022421524,
+    "f1": 0.9064200217627857,
+    "roc_auc": 0.9782179339819657
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 250,
+   "seed": 1,
+   "fit_seconds": 0.16403412498766556,
+   "metrics": {
+    "accuracy": 0.917,
+    "precision": 0.8911637931034483,
+    "recall": 0.9271300448430493,
+    "f1": 0.9087912087912087,
+    "roc_auc": 0.9739936620744363
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 250,
+   "seed": 1,
+   "fit_seconds": 0.3240456659987103,
+   "metrics": {
+    "accuracy": 0.8845,
+    "precision": 0.838974358974359,
+    "recall": 0.9170403587443946,
+    "f1": 0.8762720942688805,
+    "roc_auc": 0.9520942270644801
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 250,
+   "seed": 1,
+   "fit_seconds": 0.23832999999285676,
+   "metrics": {
+    "accuracy": 0.8495,
+    "precision": 0.8068535825545171,
+    "recall": 0.8710762331838565,
+    "f1": 0.8377358490566039,
+    "roc_auc": 0.9255678230885043
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 250,
+   "seed": 2,
+   "fit_seconds": 8.77226183298626,
+   "metrics": {
+    "accuracy": 0.946,
+    "precision": 0.9302832244008714,
+    "recall": 0.9510022271714922,
+    "f1": 0.9405286343612335,
+    "roc_auc": 0.9913985100990708
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 250,
+   "seed": 2,
+   "fit_seconds": 0.05308525002328679,
+   "metrics": {
+    "accuracy": 0.661,
+    "precision": 0.6175213675213675,
+    "recall": 0.643652561247216,
+    "f1": 0.6303162486368592,
+    "roc_auc": 0.7170309904243752
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 250,
+   "seed": 2,
+   "fit_seconds": 0.08435191700118594,
+   "metrics": {
+    "accuracy": 0.917,
+    "precision": 0.8927038626609443,
+    "recall": 0.9265033407572383,
+    "f1": 0.9092896174863389,
+    "roc_auc": 0.9730950812250656
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 250,
+   "seed": 2,
+   "fit_seconds": 0.1584924999915529,
+   "metrics": {
+    "accuracy": 0.9185,
+    "precision": 0.8990228013029316,
+    "recall": 0.9220489977728286,
+    "f1": 0.9103903243540408,
+    "roc_auc": 0.9741237838471457
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 250,
+   "seed": 2,
+   "fit_seconds": 0.31954225001391023,
+   "metrics": {
+    "accuracy": 0.883,
+    "precision": 0.8624454148471615,
+    "recall": 0.8797327394209354,
+    "f1": 0.8710033076074972,
+    "roc_auc": 0.9509436173953816
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 250,
+   "seed": 2,
+   "fit_seconds": 0.2429659169865772,
+   "metrics": {
+    "accuracy": 0.7985,
+    "precision": 0.7624602332979852,
+    "recall": 0.8006681514476615,
+    "f1": 0.7810972297664313,
+    "roc_auc": 0.8823085380296606
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 500,
+   "seed": 0,
+   "fit_seconds": 13.69117604198982,
+   "metrics": {
+    "accuracy": 0.9665,
+    "precision": 0.9572836801752465,
+    "recall": 0.9689578713968958,
+    "f1": 0.9630853994490358,
+    "roc_auc": 0.9956068077819378
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 500,
+   "seed": 0,
+   "fit_seconds": 0.10016916698077694,
+   "metrics": {
+    "accuracy": 0.6645,
+    "precision": 0.6267837541163557,
+    "recall": 0.6330376940133038,
+    "f1": 0.6298952013237727,
+    "roc_auc": 0.7208157141183931
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 500,
+   "seed": 0,
+   "fit_seconds": 0.2052238330070395,
+   "metrics": {
+    "accuracy": 0.9345,
+    "precision": 0.9176598049837487,
+    "recall": 0.9390243902439024,
+    "f1": 0.9282191780821918,
+    "roc_auc": 0.9860076171551582
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 500,
+   "seed": 0,
+   "fit_seconds": 0.3818673750211019,
+   "metrics": {
+    "accuracy": 0.945,
+    "precision": 0.9351648351648352,
+    "recall": 0.9434589800443459,
+    "f1": 0.9392935982339956,
+    "roc_auc": 0.9885550830172981
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 500,
+   "seed": 0,
+   "fit_seconds": 0.7323686669988092,
+   "metrics": {
+    "accuracy": 0.9275,
+    "precision": 0.9136612021857924,
+    "recall": 0.926829268292683,
+    "f1": 0.9201981287837095,
+    "roc_auc": 0.9802170041074479
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 500,
+   "seed": 0,
+   "fit_seconds": 0.5535226250067353,
+   "metrics": {
+    "accuracy": 0.8695,
+    "precision": 0.8549280177187154,
+    "recall": 0.8558758314855875,
+    "f1": 0.8554016620498615,
+    "roc_auc": 0.9456601197904676
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 500,
+   "seed": 1,
+   "fit_seconds": 13.926526625000406,
+   "metrics": {
+    "accuracy": 0.978,
+    "precision": 0.9659340659340659,
+    "recall": 0.9854260089686099,
+    "f1": 0.9755826859045504,
+    "roc_auc": 0.9983183856502242
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 500,
+   "seed": 1,
+   "fit_seconds": 0.10986145801143721,
+   "metrics": {
+    "accuracy": 0.6585,
+    "precision": 0.6046046046046046,
+    "recall": 0.6771300448430493,
+    "f1": 0.6388154415653093,
+    "roc_auc": 0.7179258875524114
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 500,
+   "seed": 1,
+   "fit_seconds": 0.1972479590040166,
+   "metrics": {
+    "accuracy": 0.937,
+    "precision": 0.9190371991247265,
+    "recall": 0.9417040358744395,
+    "f1": 0.930232558139535,
+    "roc_auc": 0.9852115070178563
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 500,
+   "seed": 1,
+   "fit_seconds": 0.38612558299792,
+   "metrics": {
+    "accuracy": 0.9415,
+    "precision": 0.916219119226638,
+    "recall": 0.9562780269058296,
+    "f1": 0.9358200767964894,
+    "roc_auc": 0.9887649544284535
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 500,
+   "seed": 1,
+   "fit_seconds": 0.7761605420091655,
+   "metrics": {
+    "accuracy": 0.9335,
+    "precision": 0.9129488574537541,
+    "recall": 0.9405829596412556,
+    "f1": 0.9265599116510216,
+    "roc_auc": 0.9845153874795616
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 500,
+   "seed": 1,
+   "fit_seconds": 0.5465136250131764,
+   "metrics": {
+    "accuracy": 0.89,
+    "precision": 0.8605150214592274,
+    "recall": 0.899103139013453,
+    "f1": 0.8793859649122807,
+    "roc_auc": 0.9586891502484984
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 500,
+   "seed": 2,
+   "fit_seconds": 13.648712124995654,
+   "metrics": {
+    "accuracy": 0.962,
+    "precision": 0.9617977528089887,
+    "recall": 0.9532293986636972,
+    "f1": 0.9574944071588367,
+    "roc_auc": 0.9960165562512379
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 500,
+   "seed": 2,
+   "fit_seconds": 0.11530879198107868,
+   "metrics": {
+    "accuracy": 0.686,
+    "precision": 0.6530612244897959,
+    "recall": 0.6414253897550112,
+    "f1": 0.647191011235955,
+    "roc_auc": 0.7497251403603087
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 500,
+   "seed": 2,
+   "fit_seconds": 0.21304104101727717,
+   "metrics": {
+    "accuracy": 0.9415,
+    "precision": 0.942242355605889,
+    "recall": 0.9265033407572383,
+    "f1": 0.9343065693430657,
+    "roc_auc": 0.9864965096867813
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 500,
+   "seed": 2,
+   "fit_seconds": 0.39330745799816214,
+   "metrics": {
+    "accuracy": 0.94,
+    "precision": 0.9481566820276498,
+    "recall": 0.9164810690423163,
+    "f1": 0.9320498301245753,
+    "roc_auc": 0.9889187102615613
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 500,
+   "seed": 2,
+   "fit_seconds": 0.8088156660087407,
+   "metrics": {
+    "accuracy": 0.92,
+    "precision": 0.9382422802850356,
+    "recall": 0.8797327394209354,
+    "f1": 0.9080459770114943,
+    "roc_auc": 0.9759760548749187
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 500,
+   "seed": 2,
+   "fit_seconds": 0.5324053329823073,
+   "metrics": {
+    "accuracy": 0.869,
+    "precision": 0.8741176470588236,
+    "recall": 0.8273942093541202,
+    "f1": 0.8501144164759725,
+    "roc_auc": 0.9476998694416712
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 22.98982391701429,
+   "metrics": {
+    "accuracy": 0.978,
+    "precision": 0.9693654266958425,
+    "recall": 0.9822616407982262,
+    "f1": 0.9757709251101322,
+    "roc_auc": 0.9982744276026962
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 0.20576112499111332,
+   "metrics": {
+    "accuracy": 0.67,
+    "precision": 0.6255186721991701,
+    "recall": 0.6685144124168514,
+    "f1": 0.6463022508038585,
+    "roc_auc": 0.7325685887261257
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 0.4869048330001533,
+   "metrics": {
+    "accuracy": 0.954,
+    "precision": 0.944078947368421,
+    "recall": 0.9545454545454546,
+    "f1": 0.9492833517089305,
+    "roc_auc": 0.9922122060266803
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 0.8806372500257567,
+   "metrics": {
+    "accuracy": 0.9515,
+    "precision": 0.9457364341085271,
+    "recall": 0.9467849223946785,
+    "f1": 0.9462603878116345,
+    "roc_auc": 0.992393951510305
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 1.7556812920083757,
+   "metrics": {
+    "accuracy": 0.956,
+    "precision": 0.9532293986636972,
+    "recall": 0.9490022172949002,
+    "f1": 0.951111111111111,
+    "roc_auc": 0.993060351616929
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 1.1816436249937396,
+   "metrics": {
+    "accuracy": 0.921,
+    "precision": 0.9133333333333333,
+    "recall": 0.9113082039911308,
+    "f1": 0.9123196448390676,
+    "roc_auc": 0.9797060973590361
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 22.88291562499944,
+   "metrics": {
+    "accuracy": 0.9775,
+    "precision": 0.9710789766407119,
+    "recall": 0.9786995515695067,
+    "f1": 0.9748743718592966,
+    "roc_auc": 0.9983193974518787
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 0.2162841249955818,
+   "metrics": {
+    "accuracy": 0.675,
+    "precision": 0.6493827160493827,
+    "recall": 0.5896860986547086,
+    "f1": 0.618096357226792,
+    "roc_auc": 0.7354765990513348
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 0.46509558300022036,
+   "metrics": {
+    "accuracy": 0.955,
+    "precision": 0.9406593406593406,
+    "recall": 0.9596412556053812,
+    "f1": 0.9500554938956716,
+    "roc_auc": 0.991878268119344
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 0.897316916991258,
+   "metrics": {
+    "accuracy": 0.965,
+    "precision": 0.9659863945578231,
+    "recall": 0.9551569506726457,
+    "f1": 0.9605411499436302,
+    "roc_auc": 0.9943308753298473
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 1.7678602920204867,
+   "metrics": {
+    "accuracy": 0.9575,
+    "precision": 0.9498327759197325,
+    "recall": 0.9551569506726457,
+    "f1": 0.9524874231414198,
+    "roc_auc": 0.992148419161095
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 1.1832022499875166,
+   "metrics": {
+    "accuracy": 0.9255,
+    "precision": 0.9178852643419573,
+    "recall": 0.9147982062780269,
+    "f1": 0.9163391353172375,
+    "roc_auc": 0.9828631153777663
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 23.215804582985584,
+   "metrics": {
+    "accuracy": 0.971,
+    "precision": 0.9605263157894737,
+    "recall": 0.9755011135857461,
+    "f1": 0.9679558011049724,
+    "roc_auc": 0.9973261815932967
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 0.20680795900989324,
+   "metrics": {
+    "accuracy": 0.662,
+    "precision": 0.6170886075949367,
+    "recall": 0.6514476614699332,
+    "f1": 0.6338028169014084,
+    "roc_auc": 0.7274372572241602
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 0.4895001249969937,
+   "metrics": {
+    "accuracy": 0.948,
+    "precision": 0.9315217391304348,
+    "recall": 0.9543429844097996,
+    "f1": 0.9427942794279429,
+    "roc_auc": 0.9903475761826038
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 0.8807346670073457,
+   "metrics": {
+    "accuracy": 0.946,
+    "precision": 0.9302832244008714,
+    "recall": 0.9510022271714922,
+    "f1": 0.9405286343612335,
+    "roc_auc": 0.9907578446153784
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 1.7669674580101855,
+   "metrics": {
+    "accuracy": 0.9485,
+    "precision": 0.9325353645266594,
+    "recall": 0.9543429844097996,
+    "f1": 0.9433131535498073,
+    "roc_auc": 0.9905628155328032
+   }
+  },
+  {
+   "scenario": "timing",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 1.1486867080093361,
+   "metrics": {
+    "accuracy": 0.9175,
+    "precision": 0.8979370249728555,
+    "recall": 0.920935412026726,
+    "f1": 0.9092908191313909,
+    "roc_auc": 0.9771714922048997
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 100,
+   "seed": 0,
+   "fit_seconds": 5.5487805000157095,
+   "metrics": {
+    "accuracy": 0.531,
+    "precision": 0.5784615384615385,
+    "recall": 0.19009100101112233,
+    "f1": 0.2861491628614916,
+    "roc_auc": 0.5603518025681108
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 100,
+   "seed": 0,
+   "fit_seconds": 0.01950695799314417,
+   "metrics": {
+    "accuracy": 0.515,
+    "precision": 0.5147286821705427,
+    "recall": 0.3356926188068756,
+    "f1": 0.40636474908200737,
+    "roc_auc": 0.5088775741864766
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 100,
+   "seed": 0,
+   "fit_seconds": 0.03866654197918251,
+   "metrics": {
+    "accuracy": 0.51,
+    "precision": 0.5082568807339449,
+    "recall": 0.2800808897876643,
+    "f1": 0.36114732724902215,
+    "roc_auc": 0.5104307621222168
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 100,
+   "seed": 0,
+   "fit_seconds": 0.05895008298102766,
+   "metrics": {
+    "accuracy": 0.535,
+    "precision": 0.5490848585690515,
+    "recall": 0.33367037411526795,
+    "f1": 0.4150943396226415,
+    "roc_auc": 0.5608458623493443
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 100,
+   "seed": 0,
+   "fit_seconds": 0.10481212500599213,
+   "metrics": {
+    "accuracy": 0.517,
+    "precision": 0.5230460921843687,
+    "recall": 0.2639029322548028,
+    "f1": 0.35080645161290325,
+    "roc_auc": 0.5218721465297301
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 100,
+   "seed": 0,
+   "fit_seconds": 0.10580362498876639,
+   "metrics": {
+    "accuracy": 0.502,
+    "precision": 0.49401709401709404,
+    "recall": 0.29221435793731043,
+    "f1": 0.3672172808132147,
+    "roc_auc": 0.5292700416750427
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 100,
+   "seed": 1,
+   "fit_seconds": 5.701324708003085,
+   "metrics": {
+    "accuracy": 0.5725,
+    "precision": 0.6040540540540541,
+    "recall": 0.44301288404360756,
+    "f1": 0.5111492281303602,
+    "roc_auc": 0.6227504427858657
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 100,
+   "seed": 1,
+   "fit_seconds": 0.021770791994640604,
+   "metrics": {
+    "accuracy": 0.517,
+    "precision": 0.5227995758218452,
+    "recall": 0.4886025768087215,
+    "f1": 0.5051229508196722,
+    "roc_auc": 0.5213072258852967
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 100,
+   "seed": 1,
+   "fit_seconds": 0.04042441601632163,
+   "metrics": {
+    "accuracy": 0.494,
+    "precision": 0.49819059107358266,
+    "recall": 0.4093161546085233,
+    "f1": 0.44940152339499456,
+    "roc_auc": 0.49809534572300357
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 100,
+   "seed": 1,
+   "fit_seconds": 0.06225554199772887,
+   "metrics": {
+    "accuracy": 0.516,
+    "precision": 0.5281980742778541,
+    "recall": 0.38057482656095143,
+    "f1": 0.44239631336405527,
+    "roc_auc": 0.5137181111670045
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 100,
+   "seed": 1,
+   "fit_seconds": 0.1150804579956457,
+   "metrics": {
+    "accuracy": 0.508,
+    "precision": 0.5149700598802395,
+    "recall": 0.4261645193260654,
+    "f1": 0.46637744034707157,
+    "roc_auc": 0.49775731834278575
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 100,
+   "seed": 1,
+   "fit_seconds": 0.10981841699685901,
+   "metrics": {
+    "accuracy": 0.4925,
+    "precision": 0.49601063829787234,
+    "recall": 0.36967294350842417,
+    "f1": 0.4236229415105054,
+    "roc_auc": 0.4921108609797394
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 100,
+   "seed": 2,
+   "fit_seconds": 5.869908166991081,
+   "metrics": {
+    "accuracy": 0.549,
+    "precision": 0.5387509405568096,
+    "recall": 0.7124378109452736,
+    "f1": 0.6135389888603257,
+    "roc_auc": 0.5762184054601365
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 100,
+   "seed": 2,
+   "fit_seconds": 0.02341241601970978,
+   "metrics": {
+    "accuracy": 0.5325,
+    "precision": 0.5280898876404494,
+    "recall": 0.6547263681592039,
+    "f1": 0.5846290537538871,
+    "roc_auc": 0.557191929798245
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 100,
+   "seed": 2,
+   "fit_seconds": 0.03985783300595358,
+   "metrics": {
+    "accuracy": 0.5055,
+    "precision": 0.5069808027923212,
+    "recall": 0.5781094527363184,
+    "f1": 0.5402138540213854,
+    "roc_auc": 0.5103187579689492
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 100,
+   "seed": 2,
+   "fit_seconds": 0.06934520800132304,
+   "metrics": {
+    "accuracy": 0.691,
+    "precision": 0.6689956331877729,
+    "recall": 0.7621890547263681,
+    "f1": 0.7125581395348837,
+    "roc_auc": 0.7639530988274706
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 100,
+   "seed": 2,
+   "fit_seconds": 0.11662983300630003,
+   "metrics": {
+    "accuracy": 0.4975,
+    "precision": 0.5,
+    "recall": 0.5920398009950248,
+    "f1": 0.5421412300683371,
+    "roc_auc": 0.5001795044876122
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 100,
+   "seed": 2,
+   "fit_seconds": 0.10508683399530128,
+   "metrics": {
+    "accuracy": 0.5115,
+    "precision": 0.5121317157712305,
+    "recall": 0.5880597014925373,
+    "f1": 0.5474756831866605,
+    "roc_auc": 0.5080207005175129
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 250,
+   "seed": 0,
+   "fit_seconds": 10.28098729098565,
+   "metrics": {
+    "accuracy": 0.792,
+    "precision": 0.7560321715817694,
+    "recall": 0.8554095045500506,
+    "f1": 0.8026565464895635,
+    "roc_auc": 0.8712834252944607
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 250,
+   "seed": 0,
+   "fit_seconds": 0.05223475000821054,
+   "metrics": {
+    "accuracy": 0.6015,
+    "precision": 0.5858676207513417,
+    "recall": 0.6622851365015167,
+    "f1": 0.6217370669197912,
+    "roc_auc": 0.6245760737049183
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 250,
+   "seed": 0,
+   "fit_seconds": 0.13454587498563342,
+   "metrics": {
+    "accuracy": 0.617,
+    "precision": 0.6100691016781836,
+    "recall": 0.6248736097067745,
+    "f1": 0.6173826173826173,
+    "roc_auc": 0.6611580001180143
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 250,
+   "seed": 0,
+   "fit_seconds": 0.17825258398079313,
+   "metrics": {
+    "accuracy": 0.957,
+    "precision": 0.9556004036326943,
+    "recall": 0.9575328614762386,
+    "f1": 0.9565656565656566,
+    "roc_auc": 0.9870434322553029
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 250,
+   "seed": 0,
+   "fit_seconds": 0.4213324580050539,
+   "metrics": {
+    "accuracy": 0.7055,
+    "precision": 0.6897533206831119,
+    "recall": 0.7350859453993933,
+    "f1": 0.7116984826235927,
+    "roc_auc": 0.782031625826725
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 250,
+   "seed": 0,
+   "fit_seconds": 0.34537237501353957,
+   "metrics": {
+    "accuracy": 0.566,
+    "precision": 0.5537777777777778,
+    "recall": 0.6299292214357938,
+    "f1": 0.5894039735099339,
+    "roc_auc": 0.5942509043594275
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 250,
+   "seed": 1,
+   "fit_seconds": 10.349168624990853,
+   "metrics": {
+    "accuracy": 0.71,
+    "precision": 0.693069306930693,
+    "recall": 0.7631318136769079,
+    "f1": 0.7264150943396227,
+    "roc_auc": 0.7911260812125782
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 250,
+   "seed": 1,
+   "fit_seconds": 0.0567244169942569,
+   "metrics": {
+    "accuracy": 0.5695,
+    "precision": 0.5714285714285714,
+    "recall": 0.5867195242814668,
+    "f1": 0.5789731051344742,
+    "roc_auc": 0.5749995749655722
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 250,
+   "seed": 1,
+   "fit_seconds": 0.13485574998776428,
+   "metrics": {
+    "accuracy": 0.572,
+    "precision": 0.5767301905717152,
+    "recall": 0.5698711595639246,
+    "f1": 0.5732801595214357,
+    "roc_auc": 0.6117365506606035
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 250,
+   "seed": 1,
+   "fit_seconds": 0.2172074169793632,
+   "metrics": {
+    "accuracy": 0.888,
+    "precision": 0.8571428571428571,
+    "recall": 0.933597621407334,
+    "f1": 0.8937381404174572,
+    "roc_auc": 0.9596747336534259
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 250,
+   "seed": 1,
+   "fit_seconds": 0.4625191660015844,
+   "metrics": {
+    "accuracy": 0.544,
+    "precision": 0.5505735140771637,
+    "recall": 0.5232903865213082,
+    "f1": 0.5365853658536586,
+    "roc_auc": 0.556450072455869
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 250,
+   "seed": 1,
+   "fit_seconds": 0.3436066669819411,
+   "metrics": {
+    "accuracy": 0.584,
+    "precision": 0.5835694050991501,
+    "recall": 0.6124876114965312,
+    "f1": 0.5976789168278529,
+    "roc_auc": 0.602910835777698
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 250,
+   "seed": 2,
+   "fit_seconds": 10.34186045799288,
+   "metrics": {
+    "accuracy": 0.74,
+    "precision": 0.7046413502109705,
+    "recall": 0.8308457711442786,
+    "f1": 0.7625570776255708,
+    "roc_auc": 0.8178124453111327
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 250,
+   "seed": 2,
+   "fit_seconds": 0.06161237499327399,
+   "metrics": {
+    "accuracy": 0.59,
+    "precision": 0.5795356835769562,
+    "recall": 0.6706467661691542,
+    "f1": 0.6217712177121771,
+    "roc_auc": 0.6231325783144579
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 250,
+   "seed": 2,
+   "fit_seconds": 0.12983454199275002,
+   "metrics": {
+    "accuracy": 0.594,
+    "precision": 0.5907808090310442,
+    "recall": 0.6248756218905472,
+    "f1": 0.607350096711799,
+    "roc_auc": 0.6297377434435861
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 250,
+   "seed": 2,
+   "fit_seconds": 0.21362266602227464,
+   "metrics": {
+    "accuracy": 0.7665,
+    "precision": 0.7467889908256881,
+    "recall": 0.8099502487562189,
+    "f1": 0.7770883054892601,
+    "roc_auc": 0.8596409910247756
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 250,
+   "seed": 2,
+   "fit_seconds": 0.4097207500017248,
+   "metrics": {
+    "accuracy": 0.55,
+    "precision": 0.5461741424802111,
+    "recall": 0.6179104477611941,
+    "f1": 0.5798319327731093,
+    "roc_auc": 0.5849326233155829
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 250,
+   "seed": 2,
+   "fit_seconds": 0.3536064169893507,
+   "metrics": {
+    "accuracy": 0.539,
+    "precision": 0.5368234250221828,
+    "recall": 0.6019900497512438,
+    "f1": 0.5675422138836773,
+    "roc_auc": 0.5581559538988474
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 500,
+   "seed": 0,
+   "fit_seconds": 16.044260790979024,
+   "metrics": {
+    "accuracy": 0.942,
+    "precision": 0.9542143600416233,
+    "recall": 0.9271991911021233,
+    "f1": 0.9405128205128205,
+    "roc_auc": 0.9871714477451772
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 500,
+   "seed": 0,
+   "fit_seconds": 0.11101229200721718,
+   "metrics": {
+    "accuracy": 0.627,
+    "precision": 0.6226034308779012,
+    "recall": 0.6238624873609707,
+    "f1": 0.6232323232323234,
+    "roc_auc": 0.6728874193777447
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 500,
+   "seed": 0,
+   "fit_seconds": 0.27245575000415556,
+   "metrics": {
+    "accuracy": 0.8995,
+    "precision": 0.9129979035639413,
+    "recall": 0.8806875631951466,
+    "f1": 0.8965517241379312,
+    "roc_auc": 0.9617693740942654
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 500,
+   "seed": 0,
+   "fit_seconds": 0.3493050840042997,
+   "metrics": {
+    "accuracy": 0.9885,
+    "precision": 0.9849397590361446,
+    "recall": 0.9919110212335692,
+    "f1": 0.9884130982367757,
+    "roc_auc": 0.9985858288852951
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 500,
+   "seed": 0,
+   "fit_seconds": 0.9271981249912642,
+   "metrics": {
+    "accuracy": 0.8315,
+    "precision": 0.8333333333333334,
+    "recall": 0.8240647118301314,
+    "f1": 0.8286731062531776,
+    "roc_auc": 0.9071857694781068
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 500,
+   "seed": 0,
+   "fit_seconds": 0.7442507920204662,
+   "metrics": {
+    "accuracy": 0.687,
+    "precision": 0.6970684039087948,
+    "recall": 0.6491405460060667,
+    "f1": 0.6722513089005235,
+    "roc_auc": 0.7517529621084151
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 500,
+   "seed": 1,
+   "fit_seconds": 16.103358541993657,
+   "metrics": {
+    "accuracy": 0.899,
+    "precision": 0.9260823653643083,
+    "recall": 0.869177403369673,
+    "f1": 0.8967280163599183,
+    "roc_auc": 0.966047249827236
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 500,
+   "seed": 1,
+   "fit_seconds": 0.1124575829890091,
+   "metrics": {
+    "accuracy": 0.5975,
+    "precision": 0.6038696537678208,
+    "recall": 0.5877106045589693,
+    "f1": 0.5956805625313912,
+    "roc_auc": 0.6322792146163839
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 500,
+   "seed": 1,
+   "fit_seconds": 0.2845213749969844,
+   "metrics": {
+    "accuracy": 0.6495,
+    "precision": 0.6627906976744186,
+    "recall": 0.6214073339940536,
+    "f1": 0.6414322250639385,
+    "roc_auc": 0.705168118617608
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 500,
+   "seed": 1,
+   "fit_seconds": 0.47663145800470375,
+   "metrics": {
+    "accuracy": 0.99,
+    "precision": 0.995987963891675,
+    "recall": 0.9841427155599604,
+    "f1": 0.9900299102691924,
+    "roc_auc": 0.997992837419831
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 500,
+   "seed": 1,
+   "fit_seconds": 0.9526464999944437,
+   "metrics": {
+    "accuracy": 0.7975,
+    "precision": 0.8126293995859213,
+    "recall": 0.777998017839445,
+    "f1": 0.7949367088607595,
+    "roc_auc": 0.877224055148467
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 500,
+   "seed": 1,
+   "fit_seconds": 0.7223142909933813,
+   "metrics": {
+    "accuracy": 0.6255,
+    "precision": 0.6323828920570265,
+    "recall": 0.6154608523290387,
+    "f1": 0.6238071320944248,
+    "roc_auc": 0.6651628781931337
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 500,
+   "seed": 2,
+   "fit_seconds": 16.300397249986418,
+   "metrics": {
+    "accuracy": 0.8425,
+    "precision": 0.8058510638297872,
+    "recall": 0.9044776119402985,
+    "f1": 0.8523206751054851,
+    "roc_auc": 0.929582239555989
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 500,
+   "seed": 2,
+   "fit_seconds": 0.10687320900615305,
+   "metrics": {
+    "accuracy": 0.6065,
+    "precision": 0.5954465849387041,
+    "recall": 0.6766169154228856,
+    "f1": 0.6334420121099209,
+    "roc_auc": 0.6461541538538463
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 500,
+   "seed": 2,
+   "fit_seconds": 0.2664927910082042,
+   "metrics": {
+    "accuracy": 0.813,
+    "precision": 0.7850045167118338,
+    "recall": 0.8646766169154229,
+    "f1": 0.8229166666666666,
+    "roc_auc": 0.9002085052126303
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 500,
+   "seed": 2,
+   "fit_seconds": 0.34340658300789073,
+   "metrics": {
+    "accuracy": 0.9885,
+    "precision": 0.9851778656126482,
+    "recall": 0.9920398009950249,
+    "f1": 0.9885969261279127,
+    "roc_auc": 0.998919972999325
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 500,
+   "seed": 2,
+   "fit_seconds": 0.9678495829866733,
+   "metrics": {
+    "accuracy": 0.807,
+    "precision": 0.786308973172988,
+    "recall": 0.845771144278607,
+    "f1": 0.8149568552253117,
+    "roc_auc": 0.8773139328483212
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 500,
+   "seed": 2,
+   "fit_seconds": 0.7219678330002353,
+   "metrics": {
+    "accuracy": 0.6545,
+    "precision": 0.6453703703703704,
+    "recall": 0.6935323383084577,
+    "f1": 0.6685851318944844,
+    "roc_auc": 0.7047406185154629
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 27.093113165989053,
+   "metrics": {
+    "accuracy": 0.981,
+    "precision": 0.9666339548577036,
+    "recall": 0.9959555106167847,
+    "f1": 0.9810756972111555,
+    "roc_auc": 0.9991098922969679
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 0.1986400419846177,
+   "metrics": {
+    "accuracy": 0.642,
+    "precision": 0.6301239275500476,
+    "recall": 0.6683518705763397,
+    "f1": 0.648675171736997,
+    "roc_auc": 0.6957631873456688
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 0.5277752080000937,
+   "metrics": {
+    "accuracy": 0.9385,
+    "precision": 0.9373737373737374,
+    "recall": 0.9383215369059656,
+    "f1": 0.9378473976755938,
+    "roc_auc": 0.9802766134702299
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 0.7892294999910519,
+   "metrics": {
+    "accuracy": 0.9925,
+    "precision": 0.996938775510204,
+    "recall": 0.9878665318503539,
+    "f1": 0.9923819197562214,
+    "roc_auc": 0.9994319312636829
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 1.926936875010142,
+   "metrics": {
+    "accuracy": 0.8775,
+    "precision": 0.859073359073359,
+    "recall": 0.8998988877654196,
+    "f1": 0.8790123456790122,
+    "roc_auc": 0.9405778099149997
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 1.4653420830145478,
+   "metrics": {
+    "accuracy": 0.8375,
+    "precision": 0.8333333333333334,
+    "recall": 0.839231547017189,
+    "f1": 0.836272040302267,
+    "roc_auc": 0.916510897818636
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 26.95829412501189,
+   "metrics": {
+    "accuracy": 0.988,
+    "precision": 0.9833169774288518,
+    "recall": 0.9930624380574826,
+    "f1": 0.9881656804733728,
+    "roc_auc": 0.999666973024815
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 0.19785391699406318,
+   "metrics": {
+    "accuracy": 0.6355,
+    "precision": 0.6386138613861386,
+    "recall": 0.6392467789890981,
+    "f1": 0.6389301634472511,
+    "roc_auc": 0.688490767752188
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 0.538870374992257,
+   "metrics": {
+    "accuracy": 0.909,
+    "precision": 0.9010669253152279,
+    "recall": 0.9207135777998018,
+    "f1": 0.9107843137254903,
+    "roc_auc": 0.970622620432255
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 0.8655434169922955,
+   "metrics": {
+    "accuracy": 0.996,
+    "precision": 0.9990029910269193,
+    "recall": 0.9930624380574826,
+    "f1": 0.9960238568588469,
+    "roc_auc": 0.9991449307393899
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 1.9693110410007648,
+   "metrics": {
+    "accuracy": 0.844,
+    "precision": 0.8567041965199591,
+    "recall": 0.8295341922695738,
+    "f1": 0.8429003021148037,
+    "roc_auc": 0.9237098204954601
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 1.4380746249807999,
+   "metrics": {
+    "accuracy": 0.758,
+    "precision": 0.7531340405014465,
+    "recall": 0.7740336967294351,
+    "f1": 0.7634408602150538,
+    "roc_auc": 0.8474706451222549
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 27.247094375023153,
+   "metrics": {
+    "accuracy": 0.9725,
+    "precision": 0.96751968503937,
+    "recall": 0.9781094527363184,
+    "f1": 0.9727857496288966,
+    "roc_auc": 0.9965269131728294
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 0.20614929200382903,
+   "metrics": {
+    "accuracy": 0.6665,
+    "precision": 0.6625,
+    "recall": 0.6855721393034826,
+    "f1": 0.6738386308068459,
+    "roc_auc": 0.7164339108477712
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 0.5467529169982299,
+   "metrics": {
+    "accuracy": 0.8465,
+    "precision": 0.8304924242424242,
+    "recall": 0.872636815920398,
+    "f1": 0.8510431829209121,
+    "roc_auc": 0.9223980599514988
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 0.8723919999902137,
+   "metrics": {
+    "accuracy": 0.9925,
+    "precision": 0.9940119760479041,
+    "recall": 0.991044776119403,
+    "f1": 0.9925261584454409,
+    "roc_auc": 0.9987829695742394
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 1.982891749998089,
+   "metrics": {
+    "accuracy": 0.835,
+    "precision": 0.8192999053926207,
+    "recall": 0.8616915422885573,
+    "f1": 0.8399612027158099,
+    "roc_auc": 0.9107067676691917
+   }
+  },
+  {
+   "scenario": "slope_window",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 1.4595512080122717,
+   "metrics": {
+    "accuracy": 0.775,
+    "precision": 0.7543538038496792,
+    "recall": 0.8189054726368159,
+    "f1": 0.7853053435114503,
+    "roc_auc": 0.8607525188129703
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "heartwood",
+   "n_train": 100,
+   "seed": 0,
+   "fit_seconds": 4.288037082995288,
+   "metrics": {
+    "rmse": 0.5695447235726954,
+    "mae": 0.45141989921156295,
+    "r2": 0.7890694413192475
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "agg",
+   "n_train": 100,
+   "seed": 0,
+   "fit_seconds": 0.03135937498882413,
+   "metrics": {
+    "rmse": 0.8545412355955142,
+    "mae": 0.6675361506409196,
+    "r2": 0.5251571685663535
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg4",
+   "n_train": 100,
+   "seed": 0,
+   "fit_seconds": 0.05919995898148045,
+   "metrics": {
+    "rmse": 0.5114258754743896,
+    "mae": 0.40679289723996237,
+    "r2": 0.829921572458527
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg8",
+   "n_train": 100,
+   "seed": 0,
+   "fit_seconds": 0.10249129199655727,
+   "metrics": {
+    "rmse": 0.6745641858751059,
+    "mae": 0.519605361878878,
+    "r2": 0.7041099256463155
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg16",
+   "n_train": 100,
+   "seed": 0,
+   "fit_seconds": 0.1902927499904763,
+   "metrics": {
+    "rmse": 0.738635831127437,
+    "mae": 0.5636863095552744,
+    "r2": 0.6452318852148688
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "raw_flat",
+   "n_train": 100,
+   "seed": 0,
+   "fit_seconds": 0.12182800000300631,
+   "metrics": {
+    "rmse": 0.8346866082867043,
+    "mae": 0.6504679239573491,
+    "r2": 0.5469660709244978
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "heartwood",
+   "n_train": 100,
+   "seed": 1,
+   "fit_seconds": 4.3427010829909705,
+   "metrics": {
+    "rmse": 0.5826115278285379,
+    "mae": 0.4599521396996111,
+    "r2": 0.774452094821241
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "agg",
+   "n_train": 100,
+   "seed": 1,
+   "fit_seconds": 0.03398866701172665,
+   "metrics": {
+    "rmse": 0.8563592204116934,
+    "mae": 0.6699400868441449,
+    "r2": 0.5127042686271563
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg4",
+   "n_train": 100,
+   "seed": 1,
+   "fit_seconds": 0.06909820801229216,
+   "metrics": {
+    "rmse": 0.49073749018321217,
+    "mae": 0.38668266310411414,
+    "r2": 0.8399782094295227
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg8",
+   "n_train": 100,
+   "seed": 1,
+   "fit_seconds": 0.09740016600699164,
+   "metrics": {
+    "rmse": 0.5901045676933453,
+    "mae": 0.4650233012549007,
+    "r2": 0.7686131875280559
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg16",
+   "n_train": 100,
+   "seed": 1,
+   "fit_seconds": 0.19460491702193394,
+   "metrics": {
+    "rmse": 0.7237055870992801,
+    "mae": 0.5646281301192086,
+    "r2": 0.6519797603964502
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "raw_flat",
+   "n_train": 100,
+   "seed": 1,
+   "fit_seconds": 0.12041279199183919,
+   "metrics": {
+    "rmse": 0.8684185603181446,
+    "mae": 0.6639155701283159,
+    "r2": 0.4988833364430295
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "heartwood",
+   "n_train": 100,
+   "seed": 2,
+   "fit_seconds": 4.4286604579829145,
+   "metrics": {
+    "rmse": 0.5648560643068262,
+    "mae": 0.4442454545980166,
+    "r2": 0.7852554111045762
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "agg",
+   "n_train": 100,
+   "seed": 2,
+   "fit_seconds": 0.031843499979004264,
+   "metrics": {
+    "rmse": 0.8335587920455351,
+    "mae": 0.6479419815330137,
+    "r2": 0.5323519678501143
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg4",
+   "n_train": 100,
+   "seed": 2,
+   "fit_seconds": 0.061184082995168865,
+   "metrics": {
+    "rmse": 0.5461046014044607,
+    "mae": 0.4171869695193311,
+    "r2": 0.7992764590918322
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg8",
+   "n_train": 100,
+   "seed": 2,
+   "fit_seconds": 0.1092339169990737,
+   "metrics": {
+    "rmse": 0.6556979485306949,
+    "mae": 0.49779258130543796,
+    "r2": 0.7106294779962573
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg16",
+   "n_train": 100,
+   "seed": 2,
+   "fit_seconds": 0.17661450000014156,
+   "metrics": {
+    "rmse": 0.6449229363764215,
+    "mae": 0.5016365881036414,
+    "r2": 0.7200617242386618
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "raw_flat",
+   "n_train": 100,
+   "seed": 2,
+   "fit_seconds": 0.12544595799408853,
+   "metrics": {
+    "rmse": 0.7648905056444191,
+    "mae": 0.5920504144239506,
+    "r2": 0.6062276855207891
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "heartwood",
+   "n_train": 250,
+   "seed": 0,
+   "fit_seconds": 8.583606166997924,
+   "metrics": {
+    "rmse": 0.4412623820024583,
+    "mae": 0.3404011189651184,
+    "r2": 0.873387189999351
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "agg",
+   "n_train": 250,
+   "seed": 0,
+   "fit_seconds": 0.05402629199670628,
+   "metrics": {
+    "rmse": 0.8016879799435731,
+    "mae": 0.6044023772188191,
+    "r2": 0.5820786274911199
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg4",
+   "n_train": 250,
+   "seed": 0,
+   "fit_seconds": 0.1528762919770088,
+   "metrics": {
+    "rmse": 0.41251279518405454,
+    "mae": 0.3141086895324514,
+    "r2": 0.8893481485136404
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg8",
+   "n_train": 250,
+   "seed": 0,
+   "fit_seconds": 0.298376124992501,
+   "metrics": {
+    "rmse": 0.48705137824984823,
+    "mae": 0.37183352458650554,
+    "r2": 0.8457470811682527
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg16",
+   "n_train": 250,
+   "seed": 0,
+   "fit_seconds": 0.5432426249899436,
+   "metrics": {
+    "rmse": 0.5115950801307412,
+    "mae": 0.39223318583756744,
+    "r2": 0.8298090133415194
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "raw_flat",
+   "n_train": 250,
+   "seed": 0,
+   "fit_seconds": 0.3419055829872377,
+   "metrics": {
+    "rmse": 0.5795514743846115,
+    "mae": 0.4435642766857587,
+    "r2": 0.7815923392329773
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "heartwood",
+   "n_train": 250,
+   "seed": 1,
+   "fit_seconds": 8.539494208001997,
+   "metrics": {
+    "rmse": 0.42492248890431883,
+    "mae": 0.33013192730236746,
+    "r2": 0.8800224238036116
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "agg",
+   "n_train": 250,
+   "seed": 1,
+   "fit_seconds": 0.0601234580099117,
+   "metrics": {
+    "rmse": 0.7974531693848772,
+    "mae": 0.6091984688243144,
+    "r2": 0.5774374276256105
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg4",
+   "n_train": 250,
+   "seed": 1,
+   "fit_seconds": 0.15205479200812988,
+   "metrics": {
+    "rmse": 0.42816756961686053,
+    "mae": 0.32743077711827767,
+    "r2": 0.8781829185399241
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg8",
+   "n_train": 250,
+   "seed": 1,
+   "fit_seconds": 0.27544058399507776,
+   "metrics": {
+    "rmse": 0.4596567103964799,
+    "mae": 0.34992525077004766,
+    "r2": 0.8596062223237787
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg16",
+   "n_train": 250,
+   "seed": 1,
+   "fit_seconds": 0.5298927080002613,
+   "metrics": {
+    "rmse": 0.5198758997839797,
+    "mae": 0.3902677821928382,
+    "r2": 0.8204108806286515
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "raw_flat",
+   "n_train": 250,
+   "seed": 1,
+   "fit_seconds": 0.36450087500270456,
+   "metrics": {
+    "rmse": 0.5420312534515234,
+    "mae": 0.40884378912080704,
+    "r2": 0.8047777526140145
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "heartwood",
+   "n_train": 250,
+   "seed": 2,
+   "fit_seconds": 8.482965874980437,
+   "metrics": {
+    "rmse": 0.45024401983137424,
+    "mae": 0.3492112215937626,
+    "r2": 0.8635597381125564
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "agg",
+   "n_train": 250,
+   "seed": 2,
+   "fit_seconds": 0.06131933399592526,
+   "metrics": {
+    "rmse": 0.7948291833274557,
+    "mae": 0.6116144186487376,
+    "r2": 0.5747990296902705
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg4",
+   "n_train": 250,
+   "seed": 2,
+   "fit_seconds": 0.15271408300031908,
+   "metrics": {
+    "rmse": 0.4122160959124216,
+    "mae": 0.3187193085789768,
+    "r2": 0.8856341059241166
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg8",
+   "n_train": 250,
+   "seed": 2,
+   "fit_seconds": 0.26806862498051487,
+   "metrics": {
+    "rmse": 0.5363315348772687,
+    "mae": 0.40046876195041187,
+    "r2": 0.8063964555147349
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg16",
+   "n_train": 250,
+   "seed": 2,
+   "fit_seconds": 0.5183885829756036,
+   "metrics": {
+    "rmse": 0.5282358368023689,
+    "mae": 0.3985607576236446,
+    "r2": 0.8121970711932245
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "raw_flat",
+   "n_train": 250,
+   "seed": 2,
+   "fit_seconds": 0.3434994999843184,
+   "metrics": {
+    "rmse": 0.5479139396715044,
+    "mae": 0.4187229018523589,
+    "r2": 0.7979441926497167
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "heartwood",
+   "n_train": 500,
+   "seed": 0,
+   "fit_seconds": 13.518994125013705,
+   "metrics": {
+    "rmse": 0.38334023110998017,
+    "mae": 0.29643364028085567,
+    "r2": 0.9044451713447076
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "agg",
+   "n_train": 500,
+   "seed": 0,
+   "fit_seconds": 0.11225316600757651,
+   "metrics": {
+    "rmse": 0.7525121531864747,
+    "mae": 0.5681415402117234,
+    "r2": 0.6317770323130045
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg4",
+   "n_train": 500,
+   "seed": 0,
+   "fit_seconds": 0.2851786249957513,
+   "metrics": {
+    "rmse": 0.3773047051648417,
+    "mae": 0.2875080435148312,
+    "r2": 0.9074304229256674
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg8",
+   "n_train": 500,
+   "seed": 0,
+   "fit_seconds": 0.5280724589829333,
+   "metrics": {
+    "rmse": 0.40406605212282687,
+    "mae": 0.31238969011176987,
+    "r2": 0.8938332393875148
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg16",
+   "n_train": 500,
+   "seed": 0,
+   "fit_seconds": 0.9989992910122965,
+   "metrics": {
+    "rmse": 0.41818555813879027,
+    "mae": 0.3229085209511242,
+    "r2": 0.8862839152465007
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "raw_flat",
+   "n_train": 500,
+   "seed": 0,
+   "fit_seconds": 0.6598339579941239,
+   "metrics": {
+    "rmse": 0.4538884214370851,
+    "mae": 0.3482963705784292,
+    "r2": 0.8660378695424704
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "heartwood",
+   "n_train": 500,
+   "seed": 1,
+   "fit_seconds": 13.672539374994813,
+   "metrics": {
+    "rmse": 0.3927726314655784,
+    "mae": 0.3012431446291133,
+    "r2": 0.8974907425668711
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "agg",
+   "n_train": 500,
+   "seed": 1,
+   "fit_seconds": 0.11424987501231954,
+   "metrics": {
+    "rmse": 0.7257417410696257,
+    "mae": 0.5607845912732555,
+    "r2": 0.6500186876495858
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg4",
+   "n_train": 500,
+   "seed": 1,
+   "fit_seconds": 0.3023789169965312,
+   "metrics": {
+    "rmse": 0.382882530439523,
+    "mae": 0.29128078726729906,
+    "r2": 0.9025881584247678
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg8",
+   "n_train": 500,
+   "seed": 1,
+   "fit_seconds": 0.5200697909749579,
+   "metrics": {
+    "rmse": 0.4162007974164483,
+    "mae": 0.3180438110325724,
+    "r2": 0.8848970467397353
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg16",
+   "n_train": 500,
+   "seed": 1,
+   "fit_seconds": 0.9942908330122009,
+   "metrics": {
+    "rmse": 0.45752333971385994,
+    "mae": 0.34630787511150357,
+    "r2": 0.860906396611181
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "raw_flat",
+   "n_train": 500,
+   "seed": 1,
+   "fit_seconds": 0.6564823329972569,
+   "metrics": {
+    "rmse": 0.4683088148087095,
+    "mae": 0.35204041793342744,
+    "r2": 0.8542712245239861
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "heartwood",
+   "n_train": 500,
+   "seed": 2,
+   "fit_seconds": 13.624255208007526,
+   "metrics": {
+    "rmse": 0.4029081327902149,
+    "mae": 0.3067752800509352,
+    "r2": 0.8907406265939765
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "agg",
+   "n_train": 500,
+   "seed": 2,
+   "fit_seconds": 0.10855558299226686,
+   "metrics": {
+    "rmse": 0.6929602489873082,
+    "mae": 0.5414433276303049,
+    "r2": 0.6768060050905049
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg4",
+   "n_train": 500,
+   "seed": 2,
+   "fit_seconds": 0.29012849999708124,
+   "metrics": {
+    "rmse": 0.37871066568229705,
+    "mae": 0.2889762062268204,
+    "r2": 0.9034701323572243
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg8",
+   "n_train": 500,
+   "seed": 2,
+   "fit_seconds": 0.519717875024071,
+   "metrics": {
+    "rmse": 0.43262837594078446,
+    "mae": 0.32751433524160617,
+    "r2": 0.8740272412170107
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg16",
+   "n_train": 500,
+   "seed": 2,
+   "fit_seconds": 1.0084940000087954,
+   "metrics": {
+    "rmse": 0.46383903500919865,
+    "mae": 0.3524980929401073,
+    "r2": 0.8551957772332829
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "raw_flat",
+   "n_train": 500,
+   "seed": 2,
+   "fit_seconds": 0.6591905829845928,
+   "metrics": {
+    "rmse": 0.46663567102945497,
+    "mae": 0.35558331844166524,
+    "r2": 0.8534443699285494
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "heartwood",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 22.42377324998961,
+   "metrics": {
+    "rmse": 0.3633547741324074,
+    "mae": 0.2804382501532282,
+    "r2": 0.9141489563698237
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "agg",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 0.20711154199671,
+   "metrics": {
+    "rmse": 0.6935883106134774,
+    "mae": 0.5288235106596471,
+    "r2": 0.6871851457483
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg4",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 0.5429266249993816,
+   "metrics": {
+    "rmse": 0.35738596244593057,
+    "mae": 0.27378565308420955,
+    "r2": 0.9169463319794839
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg8",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 0.9707220830023289,
+   "metrics": {
+    "rmse": 0.37495057483855115,
+    "mae": 0.28902877838293867,
+    "r2": 0.908581964399474
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg16",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 1.8913670409820043,
+   "metrics": {
+    "rmse": 0.3868628442677472,
+    "mae": 0.3001167923716224,
+    "r2": 0.9026809460734652
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "raw_flat",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 1.2415550829900894,
+   "metrics": {
+    "rmse": 0.39754462174158084,
+    "mae": 0.3054990103941095,
+    "r2": 0.8972325448423925
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "heartwood",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 22.119871000002604,
+   "metrics": {
+    "rmse": 0.3687844841772375,
+    "mae": 0.28409076165884534,
+    "r2": 0.9096296566583897
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "agg",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 0.1987018329964485,
+   "metrics": {
+    "rmse": 0.6930376572394673,
+    "mae": 0.534085822371889,
+    "r2": 0.6808503905014857
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg4",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 0.5551427500031423,
+   "metrics": {
+    "rmse": 0.3578974275752185,
+    "mae": 0.27339607620464995,
+    "r2": 0.9148866264531774
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg8",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 0.9847430829831865,
+   "metrics": {
+    "rmse": 0.38790639545179567,
+    "mae": 0.29779993845091574,
+    "r2": 0.9000150737455876
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg16",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 1.9437371670210268,
+   "metrics": {
+    "rmse": 0.3955671587263486,
+    "mae": 0.30050054110043234,
+    "r2": 0.8960268727753306
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "raw_flat",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 1.3093680839810986,
+   "metrics": {
+    "rmse": 0.4106031536567003,
+    "mae": 0.3132272775678542,
+    "r2": 0.887972353551192
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "heartwood",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 21.789759792009136,
+   "metrics": {
+    "rmse": 0.37153765762820673,
+    "mae": 0.2861992454114774,
+    "r2": 0.9070921702537172
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "agg",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 0.17730850001680665,
+   "metrics": {
+    "rmse": 0.6806147851723611,
+    "mae": 0.5222884531908804,
+    "r2": 0.6882191790641832
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg4",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 0.503678957989905,
+   "metrics": {
+    "rmse": 0.3615038919527345,
+    "mae": 0.27678392848707273,
+    "r2": 0.9120425576238821
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg8",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 0.9838622499955818,
+   "metrics": {
+    "rmse": 0.3837622279726877,
+    "mae": 0.29016102593929427,
+    "r2": 0.9008777637155694
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "wagg16",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 1.8285187920264434,
+   "metrics": {
+    "rmse": 0.40677595285408324,
+    "mae": 0.3051259832397627,
+    "r2": 0.8886328309476158
+   }
+  },
+  {
+   "scenario": "amp_regression",
+   "task": "regression",
+   "model": "raw_flat",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 1.1233579169784207,
+   "metrics": {
+    "rmse": 0.4031779868641407,
+    "mae": 0.30486513316078645,
+    "r2": 0.8905942212060286
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 100,
+   "seed": 0,
+   "fit_seconds": 5.04921637501684,
+   "metrics": {
+    "accuracy": 0.8805,
+    "precision": 0.8839556004036327,
+    "recall": 0.876,
+    "f1": 0.8799598191863386,
+    "roc_auc": 0.962036
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 100,
+   "seed": 0,
+   "fit_seconds": 0.018015584006207064,
+   "metrics": {
+    "accuracy": 0.876,
+    "precision": 0.8657587548638133,
+    "recall": 0.89,
+    "f1": 0.8777120315581853,
+    "roc_auc": 0.951877
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 100,
+   "seed": 0,
+   "fit_seconds": 0.03084637498250231,
+   "metrics": {
+    "accuracy": 0.872,
+    "precision": 0.8604651162790697,
+    "recall": 0.888,
+    "f1": 0.8740157480314961,
+    "roc_auc": 0.950125
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 100,
+   "seed": 0,
+   "fit_seconds": 0.05293558299308643,
+   "metrics": {
+    "accuracy": 0.8615,
+    "precision": 0.858987090367428,
+    "recall": 0.865,
+    "f1": 0.8619830592924764,
+    "roc_auc": 0.944571
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 100,
+   "seed": 0,
+   "fit_seconds": 0.09079720900626853,
+   "metrics": {
+    "accuracy": 0.8465,
+    "precision": 0.8729817007534983,
+    "recall": 0.811,
+    "f1": 0.8408501814411611,
+    "roc_auc": 0.927659
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 100,
+   "seed": 0,
+   "fit_seconds": 0.06090070799109526,
+   "metrics": {
+    "accuracy": 0.8515,
+    "precision": 0.8743343982960596,
+    "recall": 0.821,
+    "f1": 0.8468282619907169,
+    "roc_auc": 0.931495
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 100,
+   "seed": 1,
+   "fit_seconds": 4.826739040989196,
+   "metrics": {
+    "accuracy": 0.829,
+    "precision": 0.7985480943738656,
+    "recall": 0.88,
+    "f1": 0.8372978116079922,
+    "roc_auc": 0.911085
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 100,
+   "seed": 1,
+   "fit_seconds": 0.015431249979883432,
+   "metrics": {
+    "accuracy": 0.842,
+    "precision": 0.8226415094339623,
+    "recall": 0.872,
+    "f1": 0.8466019417475728,
+    "roc_auc": 0.907845
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 100,
+   "seed": 1,
+   "fit_seconds": 0.030559000006178394,
+   "metrics": {
+    "accuracy": 0.835,
+    "precision": 0.8208812260536399,
+    "recall": 0.857,
+    "f1": 0.8385518590998042,
+    "roc_auc": 0.9051585
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 100,
+   "seed": 1,
+   "fit_seconds": 0.041499708022456616,
+   "metrics": {
+    "accuracy": 0.811,
+    "precision": 0.7967557251908397,
+    "recall": 0.835,
+    "f1": 0.8154296875,
+    "roc_auc": 0.894524
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 100,
+   "seed": 1,
+   "fit_seconds": 0.08996658399701118,
+   "metrics": {
+    "accuracy": 0.8215,
+    "precision": 0.8205383848454636,
+    "recall": 0.823,
+    "f1": 0.8217673489765351,
+    "roc_auc": 0.901991
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 100,
+   "seed": 1,
+   "fit_seconds": 0.05049291599425487,
+   "metrics": {
+    "accuracy": 0.8225,
+    "precision": 0.81648675171737,
+    "recall": 0.832,
+    "f1": 0.8241703813769193,
+    "roc_auc": 0.898782
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 100,
+   "seed": 2,
+   "fit_seconds": 5.022641042014584,
+   "metrics": {
+    "accuracy": 0.8605,
+    "precision": 0.8068085106382978,
+    "recall": 0.948,
+    "f1": 0.8717241379310344,
+    "roc_auc": 0.958739
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 100,
+   "seed": 2,
+   "fit_seconds": 0.01567383299698122,
+   "metrics": {
+    "accuracy": 0.8605,
+    "precision": 0.8176211453744493,
+    "recall": 0.928,
+    "f1": 0.869320843091335,
+    "roc_auc": 0.949058
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 100,
+   "seed": 2,
+   "fit_seconds": 0.029438333003781736,
+   "metrics": {
+    "accuracy": 0.8465,
+    "precision": 0.794392523364486,
+    "recall": 0.935,
+    "f1": 0.8589802480477721,
+    "roc_auc": 0.941398
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 100,
+   "seed": 2,
+   "fit_seconds": 0.04651208300492726,
+   "metrics": {
+    "accuracy": 0.8435,
+    "precision": 0.8,
+    "recall": 0.916,
+    "f1": 0.8540792540792541,
+    "roc_auc": 0.938834
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 100,
+   "seed": 2,
+   "fit_seconds": 0.08085320898680948,
+   "metrics": {
+    "accuracy": 0.854,
+    "precision": 0.8025641025641026,
+    "recall": 0.939,
+    "f1": 0.8654377880184333,
+    "roc_auc": 0.943166
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 100,
+   "seed": 2,
+   "fit_seconds": 0.05521287501323968,
+   "metrics": {
+    "accuracy": 0.848,
+    "precision": 0.797945205479452,
+    "recall": 0.932,
+    "f1": 0.8597785977859779,
+    "roc_auc": 0.945437
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 250,
+   "seed": 0,
+   "fit_seconds": 9.305115833994932,
+   "metrics": {
+    "accuracy": 0.9185,
+    "precision": 0.9147670961347869,
+    "recall": 0.923,
+    "f1": 0.9188651070184172,
+    "roc_auc": 0.980755
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 250,
+   "seed": 0,
+   "fit_seconds": 0.046146166016114876,
+   "metrics": {
+    "accuracy": 0.913,
+    "precision": 0.9097222222222222,
+    "recall": 0.917,
+    "f1": 0.9133466135458168,
+    "roc_auc": 0.977332
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 250,
+   "seed": 0,
+   "fit_seconds": 0.09969041700242087,
+   "metrics": {
+    "accuracy": 0.912,
+    "precision": 0.9136546184738956,
+    "recall": 0.91,
+    "f1": 0.9118236472945893,
+    "roc_auc": 0.9752195
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 250,
+   "seed": 0,
+   "fit_seconds": 0.15781691600568593,
+   "metrics": {
+    "accuracy": 0.905,
+    "precision": 0.8955078125,
+    "recall": 0.917,
+    "f1": 0.9061264822134387,
+    "roc_auc": 0.972576
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 250,
+   "seed": 0,
+   "fit_seconds": 0.2878259169810917,
+   "metrics": {
+    "accuracy": 0.9115,
+    "precision": 0.9062191510365252,
+    "recall": 0.918,
+    "f1": 0.9120715350223547,
+    "roc_auc": 0.972258
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 250,
+   "seed": 0,
+   "fit_seconds": 0.19838600000366569,
+   "metrics": {
+    "accuracy": 0.908,
+    "precision": 0.8984375,
+    "recall": 0.92,
+    "f1": 0.9090909090909092,
+    "roc_auc": 0.97269
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 250,
+   "seed": 1,
+   "fit_seconds": 9.234951375023229,
+   "metrics": {
+    "accuracy": 0.9275,
+    "precision": 0.8896991795806746,
+    "recall": 0.976,
+    "f1": 0.9308536003814973,
+    "roc_auc": 0.983291
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 250,
+   "seed": 1,
+   "fit_seconds": 0.04484212500392459,
+   "metrics": {
+    "accuracy": 0.92,
+    "precision": 0.8770197486535009,
+    "recall": 0.977,
+    "f1": 0.9243140964995269,
+    "roc_auc": 0.982768
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 250,
+   "seed": 1,
+   "fit_seconds": 0.08200291698449291,
+   "metrics": {
+    "accuracy": 0.9045,
+    "precision": 0.858281665190434,
+    "recall": 0.969,
+    "f1": 0.9102865194927197,
+    "roc_auc": 0.97436
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 250,
+   "seed": 1,
+   "fit_seconds": 0.1599222089862451,
+   "metrics": {
+    "accuracy": 0.9045,
+    "precision": 0.8640864086408641,
+    "recall": 0.96,
+    "f1": 0.9095215537659875,
+    "roc_auc": 0.97335
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 250,
+   "seed": 1,
+   "fit_seconds": 0.2984045830089599,
+   "metrics": {
+    "accuracy": 0.8895,
+    "precision": 0.8407699037620298,
+    "recall": 0.961,
+    "f1": 0.8968735417638823,
+    "roc_auc": 0.969221
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 250,
+   "seed": 1,
+   "fit_seconds": 0.1914283750229515,
+   "metrics": {
+    "accuracy": 0.914,
+    "precision": 0.870304114490161,
+    "recall": 0.973,
+    "f1": 0.9187913125590179,
+    "roc_auc": 0.977186
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 250,
+   "seed": 2,
+   "fit_seconds": 9.405346624989761,
+   "metrics": {
+    "accuracy": 0.9225,
+    "precision": 0.9229229229229229,
+    "recall": 0.922,
+    "f1": 0.9224612306153076,
+    "roc_auc": 0.974399
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 250,
+   "seed": 2,
+   "fit_seconds": 0.04966350001632236,
+   "metrics": {
+    "accuracy": 0.9165,
+    "precision": 0.9211324570273003,
+    "recall": 0.911,
+    "f1": 0.9160382101558573,
+    "roc_auc": 0.974305
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 250,
+   "seed": 2,
+   "fit_seconds": 0.09881145801045932,
+   "metrics": {
+    "accuracy": 0.9145,
+    "precision": 0.9116186693147964,
+    "recall": 0.918,
+    "f1": 0.9147982062780269,
+    "roc_auc": 0.972581
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 250,
+   "seed": 2,
+   "fit_seconds": 0.17338070800178684,
+   "metrics": {
+    "accuracy": 0.9115,
+    "precision": 0.9119119119119119,
+    "recall": 0.911,
+    "f1": 0.9114557278639319,
+    "roc_auc": 0.968882
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 250,
+   "seed": 2,
+   "fit_seconds": 0.2832832919957582,
+   "metrics": {
+    "accuracy": 0.9075,
+    "precision": 0.9062811565304087,
+    "recall": 0.909,
+    "f1": 0.90763854218672,
+    "roc_auc": 0.967832
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 250,
+   "seed": 2,
+   "fit_seconds": 0.208862625004258,
+   "metrics": {
+    "accuracy": 0.919,
+    "precision": 0.9124015748031497,
+    "recall": 0.927,
+    "f1": 0.9196428571428572,
+    "roc_auc": 0.970257
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 500,
+   "seed": 0,
+   "fit_seconds": 14.262781750003342,
+   "metrics": {
+    "accuracy": 0.945,
+    "precision": 0.9388560157790927,
+    "recall": 0.952,
+    "f1": 0.945382323733863,
+    "roc_auc": 0.989713
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 500,
+   "seed": 0,
+   "fit_seconds": 0.09900537499925122,
+   "metrics": {
+    "accuracy": 0.9375,
+    "precision": 0.9379379379379379,
+    "recall": 0.937,
+    "f1": 0.9374687343671836,
+    "roc_auc": 0.988777
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 500,
+   "seed": 0,
+   "fit_seconds": 0.22002495802007616,
+   "metrics": {
+    "accuracy": 0.9355,
+    "precision": 0.9376884422110553,
+    "recall": 0.933,
+    "f1": 0.9353383458646617,
+    "roc_auc": 0.988107
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 500,
+   "seed": 0,
+   "fit_seconds": 0.3654158749850467,
+   "metrics": {
+    "accuracy": 0.9375,
+    "precision": 0.9370629370629371,
+    "recall": 0.938,
+    "f1": 0.9375312343828086,
+    "roc_auc": 0.98718
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 500,
+   "seed": 0,
+   "fit_seconds": 0.6632154169783462,
+   "metrics": {
+    "accuracy": 0.937,
+    "precision": 0.9292730844793713,
+    "recall": 0.946,
+    "f1": 0.9375619425173439,
+    "roc_auc": 0.986165
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 500,
+   "seed": 0,
+   "fit_seconds": 0.43928950000554323,
+   "metrics": {
+    "accuracy": 0.9365,
+    "precision": 0.9317507418397626,
+    "recall": 0.942,
+    "f1": 0.9368473396320238,
+    "roc_auc": 0.9858005
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 500,
+   "seed": 1,
+   "fit_seconds": 14.13213904100121,
+   "metrics": {
+    "accuracy": 0.9455,
+    "precision": 0.9459459459459459,
+    "recall": 0.945,
+    "f1": 0.9454727363681841,
+    "roc_auc": 0.988208
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 500,
+   "seed": 1,
+   "fit_seconds": 0.08899708298849873,
+   "metrics": {
+    "accuracy": 0.9445,
+    "precision": 0.9531090723751274,
+    "recall": 0.935,
+    "f1": 0.9439676930843008,
+    "roc_auc": 0.988117
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 500,
+   "seed": 1,
+   "fit_seconds": 0.19550841697491705,
+   "metrics": {
+    "accuracy": 0.9435,
+    "precision": 0.943943943943944,
+    "recall": 0.943,
+    "f1": 0.943471735867934,
+    "roc_auc": 0.987714
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 500,
+   "seed": 1,
+   "fit_seconds": 0.3582239999959711,
+   "metrics": {
+    "accuracy": 0.945,
+    "precision": 0.9441117764471058,
+    "recall": 0.946,
+    "f1": 0.9450549450549449,
+    "roc_auc": 0.988089
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 500,
+   "seed": 1,
+   "fit_seconds": 0.7815661669883411,
+   "metrics": {
+    "accuracy": 0.935,
+    "precision": 0.9367469879518072,
+    "recall": 0.933,
+    "f1": 0.934869739478958,
+    "roc_auc": 0.983677
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 500,
+   "seed": 1,
+   "fit_seconds": 0.6132097920053639,
+   "metrics": {
+    "accuracy": 0.9415,
+    "precision": 0.9410589410589411,
+    "recall": 0.942,
+    "f1": 0.9415292353823088,
+    "roc_auc": 0.986557
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 500,
+   "seed": 2,
+   "fit_seconds": 14.123330375005025,
+   "metrics": {
+    "accuracy": 0.9375,
+    "precision": 0.9194630872483222,
+    "recall": 0.959,
+    "f1": 0.9388154674498287,
+    "roc_auc": 0.988179
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 500,
+   "seed": 2,
+   "fit_seconds": 0.11307391701848246,
+   "metrics": {
+    "accuracy": 0.945,
+    "precision": 0.9312015503875969,
+    "recall": 0.961,
+    "f1": 0.9458661417322834,
+    "roc_auc": 0.988428
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 500,
+   "seed": 2,
+   "fit_seconds": 0.18930662499042228,
+   "metrics": {
+    "accuracy": 0.9365,
+    "precision": 0.9209257473481196,
+    "recall": 0.955,
+    "f1": 0.9376534118802161,
+    "roc_auc": 0.986266
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 500,
+   "seed": 2,
+   "fit_seconds": 0.3181747079943307,
+   "metrics": {
+    "accuracy": 0.931,
+    "precision": 0.9073724007561437,
+    "recall": 0.96,
+    "f1": 0.9329446064139941,
+    "roc_auc": 0.984421
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 500,
+   "seed": 2,
+   "fit_seconds": 0.5707274580199737,
+   "metrics": {
+    "accuracy": 0.9305,
+    "precision": 0.9111747851002865,
+    "recall": 0.954,
+    "f1": 0.93209574987787,
+    "roc_auc": 0.984433
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 500,
+   "seed": 2,
+   "fit_seconds": 0.38090120899141766,
+   "metrics": {
+    "accuracy": 0.931,
+    "precision": 0.9112595419847328,
+    "recall": 0.955,
+    "f1": 0.9326171875,
+    "roc_auc": 0.984271
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 21.031259417010006,
+   "metrics": {
+    "accuracy": 0.9505,
+    "precision": 0.9421000981354269,
+    "recall": 0.96,
+    "f1": 0.9509658246656761,
+    "roc_auc": 0.992145
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 0.18052649998571724,
+   "metrics": {
+    "accuracy": 0.955,
+    "precision": 0.9504950495049505,
+    "recall": 0.96,
+    "f1": 0.9552238805970149,
+    "roc_auc": 0.993204
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 0.40637362501001917,
+   "metrics": {
+    "accuracy": 0.952,
+    "precision": 0.9510978043912176,
+    "recall": 0.953,
+    "f1": 0.952047952047952,
+    "roc_auc": 0.992872
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 0.7204803749918938,
+   "metrics": {
+    "accuracy": 0.958,
+    "precision": 0.9561752988047809,
+    "recall": 0.96,
+    "f1": 0.9580838323353293,
+    "roc_auc": 0.992839
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 1.3111017080082092,
+   "metrics": {
+    "accuracy": 0.955,
+    "precision": 0.9496047430830039,
+    "recall": 0.961,
+    "f1": 0.9552683896620279,
+    "roc_auc": 0.991726
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 0.8630187079834286,
+   "metrics": {
+    "accuracy": 0.957,
+    "precision": 0.9506903353057199,
+    "recall": 0.964,
+    "f1": 0.9572989076464747,
+    "roc_auc": 0.992329
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 20.59959358398919,
+   "metrics": {
+    "accuracy": 0.9535,
+    "precision": 0.9521435692921236,
+    "recall": 0.955,
+    "f1": 0.9535696455317024,
+    "roc_auc": 0.992445
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 0.1802285409939941,
+   "metrics": {
+    "accuracy": 0.956,
+    "precision": 0.956,
+    "recall": 0.956,
+    "f1": 0.956,
+    "roc_auc": 0.99349
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 0.4133021669986192,
+   "metrics": {
+    "accuracy": 0.951,
+    "precision": 0.9492031872509961,
+    "recall": 0.953,
+    "f1": 0.9510978043912175,
+    "roc_auc": 0.992125
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 0.7203693340125028,
+   "metrics": {
+    "accuracy": 0.95,
+    "precision": 0.9455445544554455,
+    "recall": 0.955,
+    "f1": 0.9502487562189055,
+    "roc_auc": 0.992184
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 1.3038970419729594,
+   "metrics": {
+    "accuracy": 0.9495,
+    "precision": 0.9446092977250248,
+    "recall": 0.955,
+    "f1": 0.9497762307309796,
+    "roc_auc": 0.99083
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 0.8488969589816406,
+   "metrics": {
+    "accuracy": 0.954,
+    "precision": 0.952191235059761,
+    "recall": 0.956,
+    "f1": 0.9540918163672655,
+    "roc_auc": 0.992079
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "heartwood",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 20.32296191601199,
+   "metrics": {
+    "accuracy": 0.953,
+    "precision": 0.9566532258064516,
+    "recall": 0.949,
+    "f1": 0.9528112449799196,
+    "roc_auc": 0.992569
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "agg",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 0.1830773749970831,
+   "metrics": {
+    "accuracy": 0.9515,
+    "precision": 0.9574468085106383,
+    "recall": 0.945,
+    "f1": 0.9511826874685456,
+    "roc_auc": 0.99302
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg4",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 0.42258433302049525,
+   "metrics": {
+    "accuracy": 0.953,
+    "precision": 0.9548192771084337,
+    "recall": 0.951,
+    "f1": 0.9529058116232464,
+    "roc_auc": 0.993052
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg8",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 0.7248807919968385,
+   "metrics": {
+    "accuracy": 0.9525,
+    "precision": 0.9556898288016112,
+    "recall": 0.949,
+    "f1": 0.9523331660812844,
+    "roc_auc": 0.992538
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "wagg16",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 1.301545875001466,
+   "metrics": {
+    "accuracy": 0.951,
+    "precision": 0.951,
+    "recall": 0.951,
+    "f1": 0.951,
+    "roc_auc": 0.991869
+   }
+  },
+  {
+   "scenario": "static_control",
+   "task": "binary",
+   "model": "raw_flat",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 0.8408357920125127,
+   "metrics": {
+    "accuracy": 0.9515,
+    "precision": 0.9483614697120158,
+    "recall": 0.955,
+    "f1": 0.9516691579471848,
+    "roc_auc": 0.992399
+   }
+  }
+ ]
+}

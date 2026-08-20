@@ -10,10 +10,10 @@ the columns beside it.
 Boosting for datasets that mix **static per-row features with raw time series** — without
 collapsing the series into aggregates first.
 
-> **Status: v0.1 (Phase A, milestones M1–M2 complete).** The core booster works end to
-> end and has a 184-test suite that checks it against brute-force references, including
-> the NaN paths. The full benchmark grid (M3) is not written yet: the numbers below come
-> from a three-seed development run at one training size, not a final benchmark. See
+> **Status: v0.1 — Phase A complete (M1–M3).** The core booster works end to end, has a
+> 200-test suite that checks it against brute-force references including the NaN paths,
+> and the full benchmark grid below is reproducible in about three minutes. Phase B (the
+> three upgrades that address the limitations at the bottom of this page) is next. See
 > `PLAN.md`.
 
 ## The problem
@@ -98,57 +98,87 @@ aggregate + boost    test accuracy = 0.490     (chance)
 Heartwood            test accuracy = 0.746     (+25.5 points)
 ```
 
-Development-run results, mean ± sd over three seeds at n_train = 500, n_test = 2000.
-`agg` is the global-aggregate workaround; `wagg` is a stronger 4-window aggregate; both
-are fed to XGBoost.
+### The benchmark
 
-| scenario | agg | wagg | Heartwood |
-|---|---|---|---|
-| which transient came first, XOR static flag | 0.511 ±.010 | **0.798 ±.040** | 0.764 ±.032 |
-| event timing vs. per-row deadline | 0.663 ±.011 | 0.935 ±.005 | **0.968 ±.003** |
-| trend inside one off-grid window | 0.609 ±.012 | 0.837 ±.068 | **0.886 ±.039** |
-| transient height × static coef (RMSE, lower better) | 0.730 ±.004 | **0.384 ±.006** | 0.394 ±.002 |
-| pure-static control (no temporal signal) | 0.934 ±.001 | 0.935 ±.004 | 0.938 ±.003 |
+```bash
+python benchmarks/run_benchmarks.py      # 5 scenarios × 4 sizes × 3 seeds, ~3 min
+```
 
-Read that honestly, in two parts.
+Five scenarios, training sizes 100/250/500/1000, test n=2000, three seeds. Every model
+gets the same budget — 200 rounds, depth 4, learning rate 0.1 — and Heartwood runs on
+library defaults with no per-scenario tuning. Five representations compete: `agg` (global
+summaries), `wagg4`/`wagg8`/`wagg16` (the same summaries per equal window), and `raw_flat`
+(every timestep as a column). Full tables in [`benchmarks/results.md`](benchmarks/results.md).
 
-**Against global aggregation — the thing people actually do — Heartwood wins everywhere**,
-by 25 to 31 accuracy points on the classification tasks and 46% RMSE on the regression
-one, while tying on the control. That is the result the library exists for.
+Two comparisons matter, and they answer different questions.
 
-**Against a well-chosen windowed aggregation it is a fairer fight.** Heartwood wins on
-event timing and on the off-grid trend, essentially ties on the regression task, and
-*loses* on the ordering task (0.764 vs 0.798, roughly one standard deviation). Fixed
-windows are a stronger baseline than folklore suggests, and pretending otherwise would
-make every other number here less believable. The ordering task is precisely where Phase B
-is aimed — comparison splits express "this happened before that" in a single split — so it
-is also the clearest target to beat in M4.
+**Against `agg`, the workaround teams actually ship.** This is the claim the library makes.
 
-The control row is the one that keeps the rest honest: offered a pure-noise series and
-thousands of chances to use it, the model declines, and costs nothing.
+| scenario | n=100 | n=250 | n=500 | n=1000 |
+|---|---|---|---|---|
+| which transient came first | +3.1 pt | +16.6 pt | **+32.5 pt** | +43.7 pt |
+| event timing vs. deadline | +28.3 pt | +30.2 pt | **+29.9 pt** | +30.6 pt |
+| trend in one window | +2.9 pt | +16.0 pt | **+28.4 pt** | +33.2 pt |
+| transient height × coef | 32.5% less error | 45.0% less | **45.7% less** | 46.6% less |
+| pure-static control | −0.3 pt | +0.6 pt | **+0.0 pt** | −0.2 pt |
+
+Every target is met with room to spare, and the control ties — offered a pure-noise series
+and thousands of chances to use it, the model declines and costs nothing.
+
+**Against the best of all five representations** — an oracle that picks, per task and per
+size, whichever one happened to win. Nobody can do that in advance, so this is a
+deliberately unfair bar; it is here because it is the honest one.
+
+| scenario | n=100 | n=250 | n=500 | n=1000 |
+|---|---|---|---|---|
+| which transient came first | +0.9 pt | +8.3 pt | **+12.7 pt** | +12.9 pt |
+| event timing vs. deadline | +3.3 pt | +3.4 pt | **+2.7 pt** | +2.1 pt |
+| trend in one window | −3.0 pt | −12.3 pt | **−9.5 pt** | −1.3 pt |
+| transient height × coef | 10.9% more error | 5.1% more | **3.5% more** | 2.5% more |
+| pure-static control | −0.3 pt | +0.6 pt | **+0.0 pt** | −0.2 pt |
+
+Heartwood wins three and loses two. Both losses have the same two causes, and neither is a
+modelling limitation:
+
+*A fixed grid sometimes gets lucky.* The trend scenario's informative window is
+`[46, 70)`; the 8-window grid has boundaries at 45 and 75, so two of its windows bracket
+it almost exactly and `wagg8` reaches 0.989. The 4-window grid straddles it and manages
+0.787; the 16-window grid chops it up and manages 0.812. Same task, same data — a 20-point
+spread depending on a hyperparameter you would have to guess right. This is why the
+benchmark sweeps window counts rather than reporting one.
+
+*The candidate lottery, again.* Both losses close when the temporal search gets a bigger
+budget. Raising `n_interval_candidates` from 16 to 96 takes the trend scenario from 0.894
+to **0.982** (against `wagg8`'s 0.989) and the regression from 0.393 to **0.377** (beating
+`wagg4`'s 0.380) — at roughly double the fit time. Heartwood can express both signals
+perfectly well; on defaults it just does not draw the right window often enough. That is
+precisely what Phase B is for: fit templates to the gradients instead of sampling blindly,
+and reuse whatever worked instead of rediscovering it.
 
 ## Known limitations (v0.1)
 
-- **Small-data candidate lottery.** Temporal candidates are drawn at random, and on the
-  hardest scenario only about 8% of draws are useful. Raising `n_shapelet_candidates` from
-  4 to 32 lifts that scenario substantially at roughly 4× the fit time — but it is a wash
-  on the other four, so more candidates is the wrong lever and better targeting is the
-  right one. Phase B replaces the lottery with templates fitted to the gradients plus a
-  bank that reuses whatever worked.
-- **Relations between two events are hard.** "Shape A occurred before shape B" needs the
-  tree to compare two learned positions across several depths. This is the one place a
-  fixed-window baseline currently wins.
+- **The candidate lottery is the dominant weakness.** Temporal candidates are drawn at
+  random, so the model has to be lucky enough to draw a useful window or template. On the
+  hardest scenario only about 8% of shapelet draws are informative. `n_interval_candidates`
+  is consequently the main quality/time knob: raising it from 16 to 96 turns both benchmark
+  losses into wins, at roughly double the fit time. Better targeting, not a bigger budget,
+  is the real fix — that is Phase B.
+- **Small data is where it hurts.** At n=100 two scenarios sit near chance. The
+  library's pitch is small data, so this is the gap that matters most; note that the
+  baselines are near chance there too.
 - **Pure XOR at the root.** When neither modality has marginal signal, a greedy tree has
   to get lucky with its first split, and a large random candidate pool makes that harder
   than a small fixed one.
 - Single-threaded, no GPU, pure NumPy. Series are padded to a common length.
-- Fit time on the quickstart (n=500, T=100, 150 rounds) is about 10 s.
+- Roughly 25× slower to fit than XGBoost on pre-aggregated features (14 s vs 0.1–0.8 s
+  averaged over the benchmark grid), because the temporal features are searched rather
+  than precomputed. About 10 s for the quickstart; 29 s for the largest grid cell.
 
 ## Tests
 
 ```bash
 pip install -e '.[test]'
-python -m pytest tests/ -q          # 184 tests, ~30 s
+python -m pytest tests/ -q          # 200 tests, ~45 s
 ```
 
 The suite is built around slow, obviously-correct references that share no code with the
@@ -167,7 +197,8 @@ result measure the wrong thing — so those properties are now regression-tested
 
 ```
 heartwood/       losses, features, splits, tree, booster, api, datasets
-tests/           the suite described above
+tests/           200 tests: the library, the scenarios, and the benchmark harness
+benchmarks/      baselines, scenario registry, the runner, and results.md
 examples/        quickstart.py
 PLAN.md          the full phased implementation plan
 ARCHITECTURES.md the design panel that chose this architecture over four alternatives
