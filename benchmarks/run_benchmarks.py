@@ -42,6 +42,13 @@ ABLATIONS: dict[str, dict] = {
     "hw_filters": dict(bank_enabled=True, n_comparison_candidates=4, n_filter_candidates=8),
 }
 
+#: --phasec adds the opt-in Phase C extras.
+PHASE_C: dict[str, dict] = {
+    "hw_levy": dict(levy_areas=True),
+    "hw_dense": dict(dense_base=True),
+    "hw_both": dict(levy_areas=True, dense_base=True),
+}
+
 
 # ------------------------------------------------------------------- metrics
 
@@ -300,6 +307,8 @@ def main() -> int:
     parser.add_argument("--quick", action="store_true", help="tiny grid, for smoke tests")
     parser.add_argument("--ablation", action="store_true",
                         help="also run the Phase-B ablation variants")
+    parser.add_argument("--phasec", action="store_true",
+                        help="also run the opt-in Phase-C variants")
     args = parser.parse_args()
 
     if args.quick:
@@ -309,6 +318,8 @@ def main() -> int:
     variants = {HEARTWOOD: {}}
     if args.ablation:
         variants.update(ABLATIONS)
+    if args.phasec:
+        variants.update(PHASE_C)
     models = list(variants) + representations
     config = {
         "test_size": args.test_size, "rounds": args.rounds, "depth": args.depth,

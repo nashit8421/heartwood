@@ -38,6 +38,7 @@ class Loss:
     """Interface shared by all losses."""
 
     metric_name = ""
+    task = "classification"
 
     def n_outputs(self, y: np.ndarray) -> int:
         raise NotImplementedError
@@ -59,6 +60,7 @@ class SquaredError(Loss):
     """l(y, r) = ½ (r − y)² — plain least squares regression."""
 
     metric_name = "rmse"
+    task = "regression"
 
     def n_outputs(self, y):
         return 1

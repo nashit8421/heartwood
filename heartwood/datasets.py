@@ -19,6 +19,7 @@ __all__ = [
     "make_timing_task",
     "make_slope_window",
     "make_shape_amplitude_regression",
+    "make_lead_lag",
     "make_pure_static",
     "make_static_plus_noise_series",
 ]
@@ -189,6 +190,40 @@ def make_shape_amplitude_regression(n=500, T=100, noise=0.5, seed=0, n_noise_sta
     coef = rng.uniform(0.5, 2.0, size=n)
     X_static = np.column_stack([coef, _noise_cols(rng, n, n_noise_static)])
     y = amplitude * coef + rng.normal(scale=0.1, size=n)
+    return X_static, series, y
+
+
+def make_lead_lag(n=500, T=100, noise=0.5, seed=0, n_noise_static=4, lag=6, amp=3.0):
+    """Two channels, one leading the other — which one, XOR a static flag.
+
+    Both channels carry the same transient, offset by a small lag, and the label
+    is which of them moved first.  This is the one thing no per-channel summary
+    can express, however many windows you give it: each channel's own statistics
+    are the same in both classes, and the information lives entirely in the
+    *joint* trajectory.  Signed cross-channel area answers it in one number.
+
+    The two centres are placed symmetrically around a random midpoint so neither
+    channel's marginal position distribution favours a class, and the XOR with
+    the static flag removes what little marginal signal remains.
+    """
+    rng = np.random.default_rng(seed)
+    series = rng.normal(scale=noise, size=(n, 2, T))
+    sigma = max(1.5, T / 40.0)
+
+    midpoint = rng.uniform(0.25 * T, 0.75 * T, size=n)
+    early = midpoint - lag / 2.0
+    late = midpoint + lag / 2.0
+
+    a_leads = rng.integers(0, 2, size=n).astype(bool)
+    first = np.where(a_leads, early, late)
+    second = np.where(a_leads, late, early)
+    height = np.full(n, amp * noise)
+    series[:, 0, :] += _bump(T, first, sigma=sigma, amplitude=height)
+    series[:, 1, :] += _bump(T, second, sigma=sigma, amplitude=height)
+
+    flag = rng.integers(0, 2, size=n)
+    X_static = np.column_stack([flag.astype(np.float64), _noise_cols(rng, n, n_noise_static)])
+    y = (a_leads ^ (flag == 1)).astype(np.int64)
     return X_static, series, y
 
 

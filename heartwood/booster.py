@@ -6,6 +6,7 @@ import numpy as np
 
 from ._util import spawn_rng
 from .bank import FeatureBank
+from .dense import DenseBase, dense_bank, levy_area_columns
 from .filters import Pyramid
 from .losses import Loss
 from .tree import FitContext, TemporalTree, TreeParams
@@ -20,7 +21,7 @@ class _BoosterCore:
 
     def __init__(self, tree_params: TreeParams, n_estimators=200, learning_rate=0.1,
                  subsample=1.0, early_stopping_rounds=None, random_state=None,
-                 bank_enabled=True, bank_max=32):
+                 bank_enabled=True, bank_max=32, dense_base=False, levy_areas=False):
         self.tree_params = tree_params
         self.n_estimators = int(n_estimators)
         self.learning_rate = float(learning_rate)
@@ -30,6 +31,10 @@ class _BoosterCore:
         self.bank_enabled = bool(bank_enabled)
         self.bank_max = int(bank_max)
         self.bank: FeatureBank | None = None
+        self.dense_base = bool(dense_base)
+        self.levy_areas = bool(levy_areas)
+        self.dense_: DenseBase | None = None
+        self.static_names_: list[str] = []
 
         self.trees_: list[list[TemporalTree]] = []
         self.base_score_: np.ndarray | None = None
@@ -45,6 +50,40 @@ class _BoosterCore:
             return None
         return Pyramid(X_series, self.tree_params.filter_len)
 
+    def _augment(self, X_static, X_series, y=None, loss=None):
+        """Attach the optional dense columns, identically at fit and predict time.
+
+        Returns ``(X_static_augmented, base_raw)``.  ``base_raw`` is the starting
+        point for boosting: leave-one-out ridge margins while fitting, full-fit
+        margins afterwards.  Using the honest out-of-fold value during training is
+        the difference between the trees learning what the ridge could not and
+        the trees learning nothing at all.
+        """
+        fitting = y is not None
+        blocks, names = [X_static], [f"static[{j}]" for j in range(X_static.shape[1])]
+        base_raw = None
+
+        if self.levy_areas and X_series is not None:
+            areas = levy_area_columns(X_series)
+            if areas.shape[1]:
+                blocks.append(areas)
+                names += [f"levy_area[{i}]" for i in range(areas.shape[1])]
+
+        if self.dense_base and X_series is not None:
+            bank = dense_bank(X_series)
+            if fitting:
+                self.dense_ = DenseBase(loss.task, loss.n_outputs(y))
+                base_raw = self.dense_.fit(bank, y)
+            elif self.dense_ is not None:
+                base_raw = self.dense_.transform(bank)
+            if base_raw is not None:
+                blocks.append(base_raw)
+                names += [f"dense_margin[{k}]" for k in range(base_raw.shape[1])]
+
+        if fitting:
+            self.static_names_ = names
+        return (np.hstack(blocks) if len(blocks) > 1 else X_static), base_raw
+
     @staticmethod
     def _static_grids(X_static):
         """Frozen sorted training columns, so a rank means the same thing later."""
@@ -58,6 +97,7 @@ class _BoosterCore:
     def fit(self, X_static, X_series, y, loss: Loss, eval_set=None, verbose=False):
         n = X_static.shape[0]
         K = loss.n_outputs(y)
+        X_static, base_raw = self._augment(X_static, X_series, y=y, loss=loss)
         self.n_outputs_ = K
         self.base_score_ = np.asarray(loss.init_score(y), dtype=np.float64)
         self.trees_ = []
@@ -66,18 +106,24 @@ class _BoosterCore:
         self.best_iteration_ = -1
         self.best_score_ = np.inf
 
-        raw = np.tile(self.base_score_, (n, 1))
+        raw = base_raw.copy() if base_raw is not None else np.tile(self.base_score_, (n, 1))
 
         pyramid = self._pyramid(X_series)
         self.bank = FeatureBank(self.bank_max) if self.bank_enabled else None
         context = FitContext(
-            pyramid=pyramid, bank=self.bank, static_grids=self._static_grids(X_static)
+            pyramid=pyramid, bank=self.bank,
+            static_grids=self._static_grids(X_static),
+            static_names=self.static_names_,
         )
 
         has_eval = eval_set is not None
         if has_eval:
             Xs_val, Xt_val, y_val = eval_set
-            raw_val = np.tile(self.base_score_, (Xs_val.shape[0], 1))
+            Xs_val, base_val = self._augment(Xs_val, Xt_val)
+            raw_val = (
+                base_val.copy() if base_val is not None
+                else np.tile(self.base_score_, (Xs_val.shape[0], 1))
+            )
             pyramid_val = self._pyramid(Xt_val)
 
         master = np.random.default_rng(self.random_state)
@@ -159,8 +205,9 @@ class _BoosterCore:
             )
         n_rounds = int(np.clip(iteration + 1, 0, len(self.trees_)))
 
+        X_static, base_raw = self._augment(X_static, X_series)
         n = X_static.shape[0]
-        raw = np.tile(self.base_score_, (n, 1))
+        raw = base_raw.copy() if base_raw is not None else np.tile(self.base_score_, (n, 1))
         pyramid = self._pyramid(X_series)
         for round_trees in self.trees_[:n_rounds]:
             for k, tree in enumerate(round_trees):

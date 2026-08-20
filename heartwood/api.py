@@ -49,6 +49,8 @@ class _BaseHeartwood:
         bank_max: int = 32,
         bank_colsample: float = 0.25,
         n_comparison_candidates: int = 4,
+        dense_base: bool = False,
+        levy_areas: bool = True,
         early_stopping_rounds: int | None = None,
         random_state: int | None = None,
     ):
@@ -79,6 +81,8 @@ class _BaseHeartwood:
         self.bank_max = bank_max
         self.bank_colsample = bank_colsample
         self.n_comparison_candidates = n_comparison_candidates
+        self.dense_base = dense_base
+        self.levy_areas = levy_areas
         self.early_stopping_rounds = early_stopping_rounds
         self.random_state = random_state
 
@@ -168,6 +172,8 @@ class _BaseHeartwood:
             random_state=self.random_state,
             bank_enabled=self.bank_enabled,
             bank_max=self.bank_max,
+            dense_base=self.dense_base,
+            levy_areas=self.levy_areas,
         )
         self._core.fit(Xs, Xt, y, loss, eval_set=prepared_eval, verbose=verbose)
         return self

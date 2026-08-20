@@ -25,6 +25,7 @@ class SplitSpec:
     gain: float = -np.inf
     # static
     col: int = -1
+    name_hint: str = ""
     # interval (and the channel for shapelets and filters)
     channel: int = -1
     start: int = -1
@@ -54,7 +55,7 @@ class SplitSpec:
     def feature_name(self) -> str:
         """Human-readable name of the scalar this split thresholds."""
         if self.kind == "static":
-            return f"static[{self.col}]"
+            return self.name_hint or f"static[{self.col}]"
         if self.kind == "interval":
             return f"series[ch={self.channel}].{self.stat}[t={self.start}:{self.end}]"
         if self.kind in ("shapelet_dist", "shapelet_pos"):
@@ -70,13 +71,13 @@ class SplitSpec:
             )
         if self.kind == "comparison":
             inner = "?" if self.position_spec is None else self.position_spec.feature_name()
-            return f"rank({inner}) - rank(static[{self.col}])"
+            return f"rank({inner}) - rank({self.name_hint or f'static[{self.col}]'})"
         return self.kind
 
     def family(self) -> str:
         """Coarser key used to aggregate importances."""
         if self.kind == "static":
-            return f"static[{self.col}]"
+            return self.name_hint or f"static[{self.col}]"
         if self.kind == "interval":
             return f"interval(ch={self.channel}, {self.stat})"
         if self.kind == "comparison":

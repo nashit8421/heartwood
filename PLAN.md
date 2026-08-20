@@ -6,7 +6,8 @@
 > **Phase B (v0.2)** = §10, three additive upgrades. ✅ complete (§8.4) — comparison
 > splits and the feature bank ship on by default; matched filters are implemented and
 > tested but default OFF, because the benchmark says they do not earn their cost.
-> **Phase C (opt-in)** = §11, not started.
+> **Phase C (v0.3)** = §11. ✅ complete (§8.5) — Lévy areas ship ON by default
+> (measured strictly dominant); the dense LOO-ridge base stays opt-in.
 
 **Goal:** An XGBoost-style gradient boosting library that natively handles datasets with
 **static (per-row) features + raw time series** together, without pre-aggregating the series.
@@ -19,7 +20,7 @@ lives in the *temporal journey*.
 (scikit-learn / xgboost used only in benchmarks). No compiled code, no deep learning.
 
 **Environment (verified):** Python 3.10.17, numpy 2.2.6, sklearn 1.7.1, xgboost 3.0.4,
-pytest 9.1.1 (installed during M2).  `python -m pytest tests/ -q` → 242 passed, ~52 s.
+pytest 9.1.1 (installed during M2).  `python -m pytest tests/ -q` → 267 passed, ~60 s.
 `python benchmarks/run_benchmarks.py` → full grid in ~2.6 min (`--ablation`: 13.4 min).
 
 ---
@@ -526,7 +527,7 @@ Smoke bar for CI: `python -m pytest tests/ -x -q` green, and
    ablation grid (core / +filters / +bank / +comparison) — each addition must not
    regress any scenario by more than noise, and the pure-static control must stay
    within ±2 points of XGBoost with everything enabled.
-5. **M5 extras (Phase C, optional):** §11 behind flags, each with its own ablation row
+5. **M5 extras (Phase C, optional):** ✅ **DONE — see §8.5.** §11 behind flags, each with its own ablation row
    and the §6 Phase-C tests.
 
 ## 8.1 M1 results and findings (recorded 2026-08-20) — **read before M2/M3**
@@ -777,6 +778,62 @@ chance for everyone, and ordering's seed spread is ±0.18. (2) the two oracle lo
 3. **Comparison splits are approximate** — ranking makes two quantities comparable only
    monotonically. A learned affine alignment might close the remaining gap.
 4. §11 (dense LOO-ridge base, Lévy areas) is untouched and still optional.
+
+## 8.5 M5 results and findings — **Phase C complete; all milestones done**
+
+**Status: M5 COMPLETE.** `dense.py` implements §11.1 (LOO-ridge base) and §11.2 (Lévy
+areas); suite is **267 tests**; a sixth benchmark scenario (`make_lead_lag`) was added
+because §11.2 is meaningless on single-channel data and all five existing scenarios were
+C=1 — a gap in the benchmark, not just in the feature. Ablate with
+`python benchmarks/run_benchmarks.py --phasec`.
+
+**Finding 12 — the leave-one-out ridge leaked, exactly as §6's Phase-C test predicted.**
+The first implementation scored **1.00 train / 0.47 test**. Cause: with ~490 features and
+n≈120 the ridge interpolates, so every leverage `h_ii → 1`, the LOO denominator `1 − h_ii`
+→ 0, and `(ŷ_i − h_ii y_i)/(1 − h_ii)` becomes a rounding error divided by a rounding
+error — which still carries `sign(y_i)`. λ selection then *preferred* that λ, because its
+LOO error looked like zero. Two fixes: scale the λ grid by the data's own spectrum
+(`logspace(-3,3) × mean(s²)`), and **refuse any λ whose effective degrees of freedom
+exceed 0.9n or whose max leverage exceeds 0.99** — such a λ is not a bad choice, it is an
+uninformative one. This is the single most valuable test in the project; it would have
+been undetectable from training metrics.
+
+**Finding 13 — Lévy areas are strictly dominant, so the plan's "opt-in" was overridden.**
+`levy_areas=True` is now the default:
+* single-channel data → the function returns a zero-width block, no columns are appended,
+  and predictions are **bit-identical** (regression-tested);
+* multichannel pure-noise control → 0.926 → 0.930, fit time +5% (i.e. nothing);
+* `lead_lag` at n=500 → **0.555 → 0.652 (+9.7 pt)** while every baseline sits at 0.51.
+
+**Finding 14 — the dense base is a genuine trade, and stays opt-in.** It helps only where
+the series has marginal (linear) signal. Measured deltas at n=500: bump_order +0.3 pt,
+timing 0.0, slope_window 0.0 (but **+5.2 pt at n=250**), amp_regression **10% more error**,
+lead_lag **−5.2 pt**, control −0.0. Three of six scenarios are XOR tasks where the ridge
+is provably flat, which is exactly what the architecture panel predicted about RocketFuse
+("ridge base is flat on pure-interaction tasks"). Documented guidance rather than a default.
+
+**Finding 15 — the benchmark itself was single-channel throughout M1–M4.** Every claim
+about multichannel behaviour was therefore untested. `make_lead_lag` closes that: two
+channels carrying the same transient at a small offset, label = which led, XOR a static
+flag. Verified per-channel-blind (worst |AUC−0.5| over all ten global aggregates: 0.062
+for ch0, 0.051 for ch1) and Lévy-visible (full-window AUC 0.800).
+
+**Final defaults after all phases:**
+```
+n_interval_candidates=16, n_shapelet_candidates=4, n_filter_candidates=0,
+bank_enabled=True, bank_max=32, bank_colsample=0.25,
+n_comparison_candidates=4, levy_areas=True, dense_base=False
+```
+
+**Remaining work, unchanged in priority from §8.4:**
+1. **n=100 discovery.** Still the frontier; Phase C did not move it (dense base is flat on
+   the XOR tasks that dominate the small-n gap). Gradient-saliency aiming of candidate
+   generation remains the most promising untried idea.
+2. **Cost.** ~13–18 s per fit. The bank scan is the obvious target (cached global argsort
+   restricted per node).
+3. **Multichannel coverage.** One scenario is a start, not a suite; C>2, and channels of
+   differing length or sampling rate, are untested.
+4. Comparison splits remain monotone-approximate (§8.4 item 3).
 
 ## 9. Known pitfalls checklist (re-read before coding each file)
 

@@ -71,6 +71,7 @@ class FitContext:
     pyramid: Pyramid | None = None
     bank: object | None = None
     static_grids: list[np.ndarray] | None = None
+    static_names: list[str] | None = None
     round_index: int = 0
 
 
@@ -180,8 +181,12 @@ class TemporalTree:
                 if k >= n_cols
                 else rng.choice(n_cols, size=k, replace=False)
             )
+            names = self._context.static_names
             for col in cols:
-                yield X_static[rows, col], SplitSpec(kind="static", col=int(col))
+                yield X_static[rows, col], SplitSpec(
+                    kind="static", col=int(col),
+                    name_hint=names[col] if names else "",
+                )
 
         bank = self._context.bank
         if bank is not None:
@@ -332,9 +337,11 @@ class TemporalTree:
             values = ecdf(entry.column[rows], entry.grid) - ecdf(
                 X_static[rows, col], grids[col]
             )
+            names = self._context.static_names
             yield values, SplitSpec(
                 kind="comparison",
                 col=col,
+                name_hint=names[col] if names else "",
                 position_spec=replace(entry.spec),
                 position_grid=entry.grid,
                 static_grid=grids[col],

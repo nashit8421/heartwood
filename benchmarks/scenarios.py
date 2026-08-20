@@ -68,6 +68,17 @@ SCENARIOS: dict[str, Scenario] = {
             "target is only readable in the right window"
         ),
     ),
+    "lead_lag": Scenario(
+        key="lead_lag",
+        generator=datasets.make_lead_lag,
+        task="binary",
+        question="which of two channels moved first, XOR a static flag",
+        why_aggregation_fails=(
+            "both channels carry the same transient in both classes, so every "
+            "per-channel statistic is blind; the information is in the joint "
+            "trajectory, which only a cross-channel quantity can see"
+        ),
+    ),
     "static_control": Scenario(
         key="static_control",
         generator=datasets.make_static_plus_noise_series,
@@ -82,5 +93,6 @@ SCENARIOS: dict[str, Scenario] = {
 }
 
 DEFAULT_ORDER = [
-    "bump_order", "timing", "slope_window", "amp_regression", "static_control",
+    "bump_order", "timing", "slope_window", "amp_regression", "lead_lag",
+    "static_control",
 ]

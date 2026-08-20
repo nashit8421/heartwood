@@ -1,0 +1,281 @@
+"""The linear base and the cross-channel areas — Phase C (PLAN.md §11).
+
+The leave-one-out test here is not a formality.  A first implementation of this
+module passed every other check while quietly leaking: with more features than
+rows the ridge interpolated, every leverage went to 1, and the leave-one-out
+formula divided a rounding error by another rounding error — producing margins
+that still carried the sign of the label.  Training accuracy was 1.00 and test
+accuracy was 0.47.  Nothing raised.  The two tests that catch that are
+``test_loo_margins_match_an_explicit_refit`` and ``test_no_leak_on_random_labels``.
+"""
+
+from __future__ import annotations
+
+import numpy as np
+import pytest
+
+from heartwood import HeartwoodClassifier, HeartwoodRegressor
+from heartwood.datasets import make_lead_lag, make_shape_amplitude_regression
+from heartwood.dense import (
+    DenseBase,
+    dense_bank,
+    dyadic_windows,
+    levy_area_columns,
+)
+
+
+# ------------------------------------------------------------- the bank
+
+
+def test_dyadic_windows_are_the_specified_pyramid():
+    windows = dyadic_windows(100)
+    assert len(windows) == 26  # 1 + 3 + 7 + 15
+    assert windows[0] == (0, 100)
+    assert all(0 <= a < b <= 100 for a, b in windows)
+    assert len(set(windows)) == len(windows)
+
+
+def test_dyadic_windows_cope_with_short_series():
+    assert dyadic_windows(4)
+    assert all(b - a >= 2 for a, b in dyadic_windows(4))
+
+
+def test_dense_bank_contains_the_global_aggregate(rng):
+    """The linear layer must be at least as expressive as the baseline it beats."""
+    X = rng.normal(size=(20, 1, 64))
+    bank = dense_bank(X, stats=("mean",))
+    whole_series_mean = X[:, 0, :].mean(axis=1)
+    assert any(
+        np.allclose(bank[:, j], whole_series_mean) for j in range(bank.shape[1])
+    ), "the whole-series mean should appear as one of the columns"
+
+
+def test_dense_bank_is_finite_and_wide(rng):
+    X = rng.normal(size=(15, 2, 100))
+    bank = dense_bank(X)
+    assert bank.shape[0] == 15
+    assert bank.shape[1] > 400
+    assert np.isfinite(bank).all()
+
+
+# ------------------------------------------------- leave-one-out correctness
+
+
+def test_loo_margins_match_an_explicit_refit(rng):
+    """The closed form must equal actually refitting without each row.
+
+    Preprocessing (imputation, standardisation, target centring) is treated as
+    fixed and given, which is what the closed form assumes; the check is on the
+    ridge solve itself.
+    """
+    n, p = 30, 12
+    X_raw = rng.normal(size=(n, p))
+    y = X_raw[:, 0] * 1.5 - X_raw[:, 3] + rng.normal(scale=0.3, size=n)
+
+    base = DenseBase("regression", 1)
+    loo = base.fit(X_raw, y)[:, 0]
+
+    # rebuild exactly the matrix the ridge saw
+    X = base._prepare(X_raw, fitting=False)
+    lam = base.lambda_
+    centre = float(base.target_center_[0])
+    yc = y - centre
+
+    for i in range(n):
+        keep = np.arange(n) != i
+        Xi, yi = X[keep], yc[keep]
+        weights = np.linalg.solve(Xi.T @ Xi + lam * np.eye(p), Xi.T @ yi)
+        explicit = float(X[i] @ weights) + centre
+        assert np.isclose(loo[i], explicit, rtol=1e-6, atol=1e-8), (
+            f"row {i}: closed form {loo[i]:.6f} vs explicit refit {explicit:.6f}"
+        )
+
+
+def test_loo_is_not_the_in_sample_fit(rng):
+    """If the two coincided, the whole exercise would be pointless."""
+    n, p = 40, 25
+    X = rng.normal(size=(n, p))
+    y = rng.normal(size=n)
+    base = DenseBase("regression", 1)
+    loo = base.fit(X, y)[:, 0]
+    fitted = base.transform(X)[:, 0]
+    assert not np.allclose(loo, fitted, atol=1e-6)
+    # and leave-one-out must be the more pessimistic of the two on noise
+    assert np.mean((loo - y) ** 2) > np.mean((fitted - y) ** 2)
+
+
+@pytest.mark.parametrize("n", [80, 200])
+def test_no_leak_on_random_labels(n, rng):
+    """With nothing to learn, the training margins must predict at chance.
+
+    A leaky implementation looks near-perfect here while being worthless out of
+    sample, which is precisely how this failure hides.
+    """
+    X_series = rng.normal(size=(n, 1, 100))
+    y = rng.integers(0, 2, size=n).astype(np.float64)
+
+    base = DenseBase("classification", 1)
+    margins = base.fit(dense_bank(X_series), y)[:, 0]
+    accuracy = ((margins > 0).astype(int) == y).mean()
+    assert accuracy < 0.70, f"leave-one-out margins scored {accuracy:.3f} on noise"
+
+
+def test_refuses_to_interpolate(rng):
+    """More features than rows must not be answered with a near-zero penalty."""
+    X = rng.normal(size=(40, 300))
+    y = rng.normal(size=40)
+    base = DenseBase("regression", 1)
+    base.fit(X, y)
+    assert base.effective_dof_ < 0.9 * 40
+
+
+def test_learns_a_real_linear_signal(rng):
+    """The counterpart to the leak test: it must still find signal when present."""
+    X_static, X_series, y = make_shape_amplitude_regression(n=400, seed=0)
+    _, X_series_te, y_te = make_shape_amplitude_regression(n=1000, seed=99)
+
+    base = DenseBase("regression", 1)
+    base.fit(dense_bank(X_series), y)
+    predictions = base.transform(dense_bank(X_series_te))[:, 0]
+
+    rmse = np.sqrt(np.mean((predictions - y_te) ** 2))
+    trivial = np.sqrt(np.mean((y_te - y.mean()) ** 2))
+    assert rmse < 0.85 * trivial
+
+
+def test_transform_before_fit_is_an_error():
+    with pytest.raises(RuntimeError, match="not fitted"):
+        DenseBase("regression", 1).transform(np.zeros((3, 5)))
+
+
+# --------------------------------------------------------------- Lévy areas
+
+
+def test_levy_area_matches_the_closed_form():
+    """A quarter circle has signed area ½(π/2 − 1) relative to its start."""
+    theta = np.linspace(0.0, np.pi / 2, 2000)
+    path = np.stack([np.cos(theta), np.sin(theta)])[None, :, :]
+    area = levy_area_columns(path)[0, 0]
+    assert np.isclose(area, 0.5 * (np.pi / 2 - 1), atol=1e-4)
+
+
+def test_levy_area_flips_sign_when_the_path_reverses():
+    theta = np.linspace(0.0, np.pi / 2, 500)
+    forward = np.stack([np.cos(theta), np.sin(theta)])[None, :, :]
+    swapped = forward[:, ::-1, :]  # exchange the two channels
+    assert np.isclose(
+        levy_area_columns(forward)[0, 0], -levy_area_columns(swapped)[0, 0], atol=1e-9
+    )
+
+
+def test_levy_area_is_zero_for_a_straight_line(rng):
+    """Two channels moving in lockstep enclose no area."""
+    t = np.linspace(0, 1, 200)
+    path = np.stack([t, 2.0 * t + 1.0])[None, :, :]
+    assert abs(levy_area_columns(path)[0, 0]) < 1e-9
+
+
+def test_levy_area_ignores_nan_padding(rng):
+    """A padded series must give the same area as the unpadded one."""
+    theta = np.linspace(0.0, np.pi / 2, 128)
+    path = np.stack([np.cos(theta), np.sin(theta)])[None, :, :]
+    padded = np.full((1, 2, 192), np.nan)
+    padded[:, :, :128] = path
+    assert np.isclose(levy_area_columns(path)[0, 0], levy_area_columns(padded)[0, 0], atol=1e-9)
+
+
+def test_levy_areas_are_empty_for_one_channel(rng):
+    assert levy_area_columns(rng.normal(size=(5, 1, 50))).shape == (5, 0)
+
+
+def test_levy_areas_detect_which_channel_leads():
+    """The point of the whole feature, on the scenario built for it."""
+    X_static, X_series, y = make_lead_lag(n=800, seed=0)
+    a_leads = (y.astype(bool) ^ (X_static[:, 0] == 1)).astype(int)
+    areas = levy_area_columns(X_series)
+
+    full_window = areas[:, 0]
+    separation = abs(full_window[a_leads == 1].mean() - full_window[a_leads == 0].mean())
+    assert separation > 0.5 * full_window.std()
+
+
+# ------------------------------------------------------------- integration
+
+
+@pytest.mark.parametrize("flags", [
+    dict(dense_base=True),
+    dict(levy_areas=True),
+    dict(dense_base=True, levy_areas=True),
+])
+def test_the_flags_fit_and_predict(flags):
+    X_static, X_series, y = make_lead_lag(n=200, seed=0)
+    model = HeartwoodClassifier(n_estimators=15, random_state=0, **flags)
+    model.fit(X_static, X_series, y)
+
+    proba = model.predict_proba(X_static, X_series)
+    assert proba.shape == (200, 2)
+    assert np.allclose(proba.sum(axis=1), 1.0)
+    assert np.isfinite(proba).all()
+
+
+def test_extra_columns_are_named_in_the_dump():
+    X_static, X_series, y = make_lead_lag(n=250, seed=0)
+    model = HeartwoodClassifier(
+        n_estimators=25, random_state=0, dense_base=True, levy_areas=True
+    ).fit(X_static, X_series, y)
+
+    names = " ".join(model.feature_importances())
+    assert "levy_area[" in names or "dense_margin[" in names, names
+    assert all("<=" in description for description, _ in model.dump_splits())
+
+
+def test_dense_base_survives_regression_and_early_stopping():
+    X_static, X_series, y = make_shape_amplitude_regression(n=250, seed=0)
+    X_val, S_val, y_val = make_shape_amplitude_regression(n=200, seed=5)
+
+    model = HeartwoodRegressor(
+        n_estimators=60, early_stopping_rounds=5, random_state=0, dense_base=True
+    ).fit(X_static, X_series, y, eval_set=(X_val, S_val, y_val))
+
+    assert np.isfinite(model.predict(X_val, S_val)).all()
+    assert model.best_iteration_ >= 0
+
+
+def test_predict_uses_full_fit_margins_not_leave_one_out():
+    """Train-time and predict-time bases differ by design; both must be finite."""
+    X_static, X_series, y = make_shape_amplitude_regression(n=200, seed=0)
+    model = HeartwoodRegressor(n_estimators=10, random_state=0, dense_base=True)
+    model.fit(X_static, X_series, y)
+
+    dense = model._core.dense_
+    loo = dense.fit(dense_bank(X_series), y)
+    full = dense.transform(dense_bank(X_series))
+    assert np.isfinite(loo).all() and np.isfinite(full).all()
+    assert not np.allclose(loo, full, atol=1e-6)
+
+
+def test_dense_base_is_opt_in_and_levy_is_not():
+    """The defaults follow the measurements, not the original plan.
+
+    ``dense_base`` helps only when the temporal signal has genuine linear
+    structure and hurts when it is purely interaction-based, so it stays opt-in.
+    ``levy_areas`` is a no-op on single-channel data, costs nothing on
+    multichannel noise, and is worth ~10 accuracy points where lead-lag matters,
+    so it is on.
+    """
+    model = HeartwoodClassifier()
+    assert model.dense_base is False
+    assert model.levy_areas is True
+
+
+def test_levy_areas_are_a_no_op_on_single_channel_data():
+    """Which is what makes turning them on by default safe."""
+    X_static, X_series, y = make_shape_amplitude_regression(n=200, seed=0)
+    assert X_series.shape[1] == 1
+
+    off = HeartwoodRegressor(n_estimators=15, random_state=0, levy_areas=False)
+    on = HeartwoodRegressor(n_estimators=15, random_state=0, levy_areas=True)
+    predictions = [
+        m.fit(X_static, X_series, y).predict(X_static, X_series) for m in (off, on)
+    ]
+    assert np.array_equal(*predictions)
