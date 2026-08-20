@@ -36,11 +36,13 @@ room to show.
 |---|---|---|---|---|---|
 | Handwriting (26 classes) | 0.321±0.011 | 0.308±0.013 | **0.336±0.019** | 0.514 | 9.1× |
 | NATOPS | **0.891±0.012** | 0.865±0.020 | 0.872±0.011 | 0.944 | 7.0× |
-| Libras | **0.898±0.003** | 0.869±0.009 | — | 0.917 | — |
+| Libras | **0.898±0.003** | 0.869±0.009 | 0.894±0.010 | 0.917 | 9.5× |
 
 **It is signal, not search.** Sixteen times the candidate budget buys +1.5 points on
-Handwriting against a ~20-point deficit, at nine times the fit cost — and on NATOPS and
-Libras a bigger budget is *worse*, not merely flat. The deficit is not a sampling problem.
+Handwriting against a ~20-point deficit, at nine times the fit cost. On NATOPS and Libras
+×16 lands *below* the default (−1.9 and −0.4), and ×4 is worse than default on all three.
+One dataset of three improves slightly; two get worse. The deficit is not a sampling
+problem, and the budget knob is not merely exhausted — past a point it is harmful.
 
 ## Why more candidates can hurt
 
