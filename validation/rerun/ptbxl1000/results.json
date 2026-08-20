@@ -1,0 +1,299 @@
+{
+ "config": {
+  "datasets": "['ptbxl']",
+  "sizes": "[1000]",
+  "seeds": "3",
+  "full_seeds": "2",
+  "rounds": "200",
+  "depth": "4",
+  "learning_rate": "0.1",
+  "no_minirocket": "False",
+  "representations": "['static_only', 'agg', 'wagg4', 'wagg8', 'agg_naive']",
+  "out": "validation/rerun/ptbxl1000"
+ },
+ "unavailable": {},
+ "results": [
+  {
+   "dataset": "ptbxl",
+   "model": "heartwood",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 1787.2478062080045,
+   "metrics": {
+    "balanced_accuracy": 0.47695485400979987,
+    "accuracy": 0.7181818181818181,
+    "roc_auc": 0.871486866194368
+   }
+  },
+  {
+   "dataset": "ptbxl",
+   "model": "static_only",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 0.14811566701973788,
+   "metrics": {
+    "balanced_accuracy": 0.23215004405439582,
+    "accuracy": 0.5248484848484849,
+    "roc_auc": 0.617155470988751
+   }
+  },
+  {
+   "dataset": "ptbxl",
+   "model": "agg",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 5.0477765839896165,
+   "metrics": {
+    "balanced_accuracy": 0.3901632681967675,
+    "accuracy": 0.6345454545454545,
+    "roc_auc": 0.7976455045936208
+   }
+  },
+  {
+   "dataset": "ptbxl",
+   "model": "wagg4",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 18.510647541988874,
+   "metrics": {
+    "balanced_accuracy": 0.39830324159752595,
+    "accuracy": 0.6381818181818182,
+    "roc_auc": 0.8069264110747586
+   }
+  },
+  {
+   "dataset": "ptbxl",
+   "model": "wagg8",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 35.66742670899839,
+   "metrics": {
+    "balanced_accuracy": 0.4201929953454423,
+    "accuracy": 0.6509090909090909,
+    "roc_auc": 0.8189621108465129
+   }
+  },
+  {
+   "dataset": "ptbxl",
+   "model": "agg_naive",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 5.05311704101041,
+   "metrics": {
+    "balanced_accuracy": 0.3901632681967675,
+    "accuracy": 0.6345454545454545,
+    "roc_auc": 0.7976455045936208
+   }
+  },
+  {
+   "dataset": "ptbxl",
+   "model": "minirocket",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 34.42099449998932,
+   "metrics": {
+    "balanced_accuracy": 0.4593196745006606,
+    "accuracy": 0.713939393939394
+   }
+  },
+  {
+   "dataset": "ptbxl",
+   "model": "minirocket10k",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 48.65124420801294,
+   "metrics": {
+    "balanced_accuracy": 0.5138971771134178,
+    "accuracy": 0.7321212121212122
+   }
+  },
+  {
+   "dataset": "ptbxl",
+   "model": "heartwood",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 1810.4871076669951,
+   "metrics": {
+    "balanced_accuracy": 0.5012289646873652,
+    "accuracy": 0.7327272727272728,
+    "roc_auc": 0.8769250838014949
+   }
+  },
+  {
+   "dataset": "ptbxl",
+   "model": "static_only",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 0.14335979198222049,
+   "metrics": {
+    "balanced_accuracy": 0.2371101260551216,
+    "accuracy": 0.5436363636363636,
+    "roc_auc": 0.6189337183924207
+   }
+  },
+  {
+   "dataset": "ptbxl",
+   "model": "agg",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 5.041576041985536,
+   "metrics": {
+    "balanced_accuracy": 0.42072931413378933,
+    "accuracy": 0.6381818181818182,
+    "roc_auc": 0.8097822860354436
+   }
+  },
+  {
+   "dataset": "ptbxl",
+   "model": "wagg4",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 18.558670250000432,
+   "metrics": {
+    "balanced_accuracy": 0.40678740298126737,
+    "accuracy": 0.6454545454545455,
+    "roc_auc": 0.8128584518293669
+   }
+  },
+  {
+   "dataset": "ptbxl",
+   "model": "wagg8",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 35.320225667004706,
+   "metrics": {
+    "balanced_accuracy": 0.4000646428042348,
+    "accuracy": 0.6484848484848484,
+    "roc_auc": 0.8143094105290816
+   }
+  },
+  {
+   "dataset": "ptbxl",
+   "model": "agg_naive",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 5.039058000023942,
+   "metrics": {
+    "balanced_accuracy": 0.42072931413378933,
+    "accuracy": 0.6381818181818182,
+    "roc_auc": 0.8097822860354436
+   }
+  },
+  {
+   "dataset": "ptbxl",
+   "model": "minirocket",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 33.362058625003556,
+   "metrics": {
+    "balanced_accuracy": 0.48521994650995975,
+    "accuracy": 0.723030303030303
+   }
+  },
+  {
+   "dataset": "ptbxl",
+   "model": "minirocket10k",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 48.53811074999976,
+   "metrics": {
+    "balanced_accuracy": 0.5018899670686778,
+    "accuracy": 0.7333333333333333
+   }
+  },
+  {
+   "dataset": "ptbxl",
+   "model": "heartwood",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 1833.9498786249897,
+   "metrics": {
+    "balanced_accuracy": 0.49077908133273357,
+    "accuracy": 0.730909090909091,
+    "roc_auc": 0.8811633569380752
+   }
+  },
+  {
+   "dataset": "ptbxl",
+   "model": "static_only",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 0.14576366698020138,
+   "metrics": {
+    "balanced_accuracy": 0.24570515302471954,
+    "accuracy": 0.5181818181818182,
+    "roc_auc": 0.6416314167491588
+   }
+  },
+  {
+   "dataset": "ptbxl",
+   "model": "agg",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 5.0806384589814115,
+   "metrics": {
+    "balanced_accuracy": 0.3888633391779845,
+    "accuracy": 0.6296969696969696,
+    "roc_auc": 0.8161602187757779
+   }
+  },
+  {
+   "dataset": "ptbxl",
+   "model": "wagg4",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 18.83204849998583,
+   "metrics": {
+    "balanced_accuracy": 0.39590175638971664,
+    "accuracy": 0.6418181818181818,
+    "roc_auc": 0.8122106629277528
+   }
+  },
+  {
+   "dataset": "ptbxl",
+   "model": "wagg8",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 35.99351754199597,
+   "metrics": {
+    "balanced_accuracy": 0.40390045544264,
+    "accuracy": 0.6454545454545455,
+    "roc_auc": 0.8133249121891423
+   }
+  },
+  {
+   "dataset": "ptbxl",
+   "model": "agg_naive",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 5.085367416002555,
+   "metrics": {
+    "balanced_accuracy": 0.3888633391779845,
+    "accuracy": 0.6296969696969696,
+    "roc_auc": 0.8161602187757779
+   }
+  },
+  {
+   "dataset": "ptbxl",
+   "model": "minirocket",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 33.38909675000468,
+   "metrics": {
+    "balanced_accuracy": 0.47626319661892785,
+    "accuracy": 0.7193939393939394
+   }
+  },
+  {
+   "dataset": "ptbxl",
+   "model": "minirocket10k",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 48.57775333401514,
+   "metrics": {
+    "balanced_accuracy": 0.5161932282534398,
+    "accuracy": 0.74
+   }
+  }
+ ]
+}

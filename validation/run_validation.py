@@ -245,11 +245,27 @@ def main() -> int:
     results: list[Row] = []
     unavailable: dict[str, str] = {}
 
+    args.out.mkdir(parents=True, exist_ok=True)
+
+    def checkpoint() -> None:
+        """Write results after every cell, not once at the end.
+
+        A PTB-XL grid is hours long, and an interrupted run used to lose every
+        completed cell because the only write happened after the last dataset.
+        Compute this expensive is worth flushing.
+        """
+        (args.out / "results.json").write_text(json.dumps({
+            "config": {k: str(v) for k, v in vars(args).items()},
+            "unavailable": unavailable,
+            "results": [asdict(r) for r in results],
+        }, indent=1))
+
     for key in args.datasets:
         try:
             dataset = load_uea(key.split(":", 1)[1]) if key.startswith("uea:") else MIXED[key]()
         except Exception as error:
             unavailable[key] = f"{type(error).__name__}: {error}"
+            checkpoint()
             print(f"UNAVAILABLE {key}: {unavailable[key]}", flush=True)
             continue
 
@@ -274,6 +290,7 @@ def main() -> int:
                 started = time.perf_counter()
                 cells = run_cell(dataset, train_idx, test_idx, size, seed, config)
                 results.extend(cells)
+                checkpoint()
                 label = size or len(train_idx)
                 print(f"  seed {seed} n={label}: "
                       + "  ".join(
@@ -282,13 +299,7 @@ def main() -> int:
                       )
                       + f"  ({time.perf_counter() - started:.0f}s)", flush=True)
 
-    args.out.mkdir(parents=True, exist_ok=True)
-    payload = {
-        "config": {k: str(v) for k, v in vars(args).items()},
-        "unavailable": unavailable,
-        "results": [asdict(r) for r in results],
-    }
-    (args.out / "results.json").write_text(json.dumps(payload, indent=1))
+    checkpoint()
     print(f"\nwrote {args.out / 'results.json'} ({len(results)} rows)")
     return 0
 

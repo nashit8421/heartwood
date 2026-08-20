@@ -10,13 +10,16 @@ the columns beside it.
 Boosting for datasets that mix **static per-row features with raw time series** — without
 collapsing the series into aggregates first.
 
-> **Status: v0.4 — the real-data claim did not survive its own audit.** 273 tests, a
-> reproducible benchmark grid, and a pre-registered real-data study whose headline result
-> turned out to rest on a bug in the baseline. Corrected, **H1 fails**: against an
-> aggregate baseline that handles missing data the way Heartwood does, Heartwood ties on
-> two of three mixed datasets and wins on one. The full account is in
-> [`validation/CORRECTION.md`](validation/CORRECTION.md); the successor study is
-> pre-registered in [`VALIDATION_V5.md`](VALIDATION_V5.md).
+> **Status: v0.4 — the real-data claim did not survive its own audit, and the successor
+> claim did not survive its own test.** 273 tests, a reproducible benchmark grid, and two
+> pre-registered real-data studies. **H1 fails** once the aggregate baseline handles
+> missing data the way Heartwood does ([`validation/CORRECTION.md`](validation/CORRECTION.md)).
+> The conditional restatement fails too ([`VALIDATION_V5.md`](VALIDATION_V5.md),
+> [`validation/RESULTS_V5.md`](validation/RESULTS_V5.md)) — not because Heartwood does not
+> beat aggregation, which it does, reliably, by +4 to +14 points where aggregation
+> demonstrably loses, but because MiniROCKET beats Heartwood almost everywhere it wins.
+> **This is a well-engineered research artifact without a demonstrated niche.** Do not
+> reach for it over a rocket-style classifier on evidence currently in this repository.
 
 ## Validation on real data — the honest verdict
 
@@ -102,6 +105,49 @@ limit, recorded rather than dropped.
 Full tables: [`validation/RESULTS_CORRECTED.md`](validation/RESULTS_CORRECTED.md). The
 pre-registered originals are preserved unedited in
 [`validation/RESULTS.md`](validation/RESULTS.md).
+
+## V5: the conditional claim, and the cell that was empty
+
+The corrected failures were not scattered — Heartwood tied `agg` on the two datasets whose
+series summarise well and beat it on the one whose series do not — so
+[`VALIDATION_V5.md`](VALIDATION_V5.md) pre-registered the conditional version of the claim
+and tested it on datasets v0.3 never touched. Regime is decided by a diagnostic computed
+from **baselines only**, so it cannot be fitted to the answer.
+
+Arm A is **PTB-XL** (12-lead ECG, 100 Hz × 10 s, plus age/sex/height/weight), chosen
+because no v0.3 dataset occupied the cell this library was built for: ICU and credit have
+real statics whose series summarise away, and HAR's "static block" is a subject id that is
+disjoint across the split. Arm B is UEA ranks 9–16 by training-set size.
+
+| | verdict | |
+|---|---|---|
+| **H-V5.1** conditional claim | **FAIL** | *helps where it should*: **7/8** shape-regime cells at ≥2 pt (+3.8 to +14.5). *harms nowhere*: 0/1 — and one cell is not a test |
+| **H-V5.2** regime robustness | **FAIL** | mean rank: minirocket **1.50**, heartwood 2.33, wagg4 3.67, wagg8 4.00, agg 4.08, raw_flat 5.12 |
+| **H-V5.3** the empty cell | **FAIL** | 0/4 sizes beat both `agg` and MiniROCKET |
+
+On PTB-XL, Heartwood beats the fair aggregate baseline by **+3.8, +7.2, +9.9, +9.0** points
+at n=100/250/500/1000 — the largest, most seed-stable win over `agg` anywhere in this
+project, on a genuinely mixed dataset. It loses to MiniROCKET at every size: −6.6, −4.0,
+−1.0, −2.1.
+
+So the empty cell is occupied, Heartwood is genuinely good in it, and it does not own it.
+
+### Why, and what that rules out
+
+The obvious hypothesis was search: ~4 random shapelet draws per node cannot find what
+10,000 dilated kernels find. [`validation/HEADROOM.md`](validation/HEADROOM.md) tests it by
+multiplying the candidate budget ×4 and ×16. **It is signal, not search** — ×16 buys +1.5
+points on a ~20-point deficit at 9× the cost, and on two of three datasets a bigger budget
+is *worse*.
+
+That last part is the interesting one, and it is structural rather than accidental. A node
+takes the single highest-gain split from a pool of random candidates, so enlarging the pool
+raises the winner's expected gain **whether or not anything in it is informative**.
+Heartwood cannot buy accuracy with candidates, by construction. MiniROCKET avoids this
+entirely by not selecting: it computes every kernel and lets a ridge shrink them jointly.
+
+This retires the assumption the README has carried since v0.1 — that better *targeting* is
+the open problem. The bottleneck is the selection rule, not the sampler feeding it.
 
 ### The lesson worth keeping
 
@@ -343,18 +389,25 @@ that lets the model interpolate, and two tests hold that line: one checks the cl
 against literally refitting without each row, the other checks that random labels stay at
 chance.
 
-## Known limitations (v0.1)
+## Known limitations (v0.4)
 
 - **n=100 is still the frontier.** The library's pitch is small data, and Phase B helped
   there (the ordering task went 0.533 → 0.641, timing 0.908 → 0.959) but did not solve it:
   the trend scenario sits at chance for everyone, and the ordering task's spread across
   seeds is ±0.18, meaning the model either finds the signal or does not. Discovery is
   still a lottery; only *keeping* what was discovered has been fixed.
-- **The candidate lottery underneath.** Temporal candidates are drawn at random, and on
-  the hardest scenario fewer than one shapelet draw in ten is informative.
-  `n_interval_candidates` remains the main quality/time knob. Better targeting rather than
-  a bigger budget is the open problem — matched filters were the attempt, and they did not
-  pay off.
+- **Greedy selection over random candidates is the ceiling, and it is structural.**
+  Temporal candidates are drawn at random and each node keeps the single highest-gain one,
+  so enlarging the pool raises the winner's expected gain whether or not anything in it is
+  informative. Measured: ×16 the candidate budget moves a ~20-point deficit by +1.5 points
+  at 9× the cost, and makes two of three datasets *worse*
+  ([`validation/HEADROOM.md`](validation/HEADROOM.md)). Earlier versions of this section
+  called better *targeting* the open problem; that is retired — targeting feeds the
+  sampler, and the sampler is not the bottleneck.
+- **Beaten by rocket-style classifiers on real shape-regime data.** MiniROCKET has a lower
+  mean rank across every V5 cell (1.50 vs 2.33) and is roughly two orders of magnitude
+  faster. It avoids the ceiling above by not selecting at all: every kernel is computed and
+  a ridge shrinks them jointly. If your data has no static block, use it instead.
 - **Comparison splits are approximate.** Ranking two quantities against their own training
   distributions makes them comparable, but that mapping is monotone rather than exact, so
   a single comparison split does not reach the oracle rule when the two quantities have
@@ -400,5 +453,22 @@ ARCHITECTURES.md the design panel that chose this architecture over four alterna
 The ingredients are known: XGBoost's gain machinery, interval features from Time Series
 Forest / CIF, shapelets. What is new here is the packaging — one regularised booster with
 a unified per-node split search over static and temporal candidates, guided by the
-gradients. Claims are meant to be demonstrated by benchmark, not asserted; the benchmark
-grid lands in M3.
+gradients.
+
+**What two pre-registered studies actually support.** Heartwood beats the aggregate
+workaround reliably and substantially — +3.8 to +14.5 points — on data where a global
+summary demonstrably loses information, and ties it where one does not. Its splits stay
+readable, and on ICU it recovered the standard clinical mortality predictors unprompted.
+Those are real results and they reproduce.
+
+**What they do not support** is the claim on the tin. Where Heartwood beats aggregation,
+MiniROCKET beats Heartwood, on 11 of 12 V5 cells, while being far simpler and far faster.
+The one thing Heartwood does that rocket-style methods have no answer for — carrying a
+static block and letting splits interact statics with temporal quantities — has not yet
+been shown to be worth the deficit it comes with. On PTB-XL, the one dataset in this
+project with both a real static block and shape-regime series, it was not.
+
+So: interesting architecture, honest measurements, no demonstrated niche. If you need this
+dataset shape today, run a rocket-style classifier and paste its predictions next to your
+static columns. The case for this library depends on a V6 that changes the selection rule,
+and that has not been written, let alone earned.
