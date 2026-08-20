@@ -1,0 +1,157 @@
+{
+ "config": {
+  "datasets": "['uea:Cricket', 'uea:DuckDuckGeese']",
+  "sizes": "[0]",
+  "seeds": "3",
+  "rounds": "200",
+  "depth": "4",
+  "learning_rate": "0.1",
+  "no_minirocket": "False",
+  "out": "validation/uea2"
+ },
+ "unavailable": {},
+ "results": [
+  {
+   "dataset": "uea:Cricket",
+   "model": "heartwood",
+   "n_train": 108,
+   "seed": 0,
+   "fit_seconds": 269.3810020000092,
+   "metrics": {
+    "balanced_accuracy": 0.9583333333333335,
+    "accuracy": 0.9583333333333334,
+    "roc_auc": 0.9978956228956228
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "agg",
+   "n_train": 108,
+   "seed": 0,
+   "fit_seconds": 0.14612629200564697,
+   "metrics": {
+    "balanced_accuracy": 0.861111111111111,
+    "accuracy": 0.8611111111111112,
+    "roc_auc": 0.9785353535353534
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "wagg4",
+   "n_train": 108,
+   "seed": 0,
+   "fit_seconds": 0.44896287500159815,
+   "metrics": {
+    "balanced_accuracy": 0.8333333333333334,
+    "accuracy": 0.8333333333333334,
+    "roc_auc": 0.9877946127946128
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "wagg8",
+   "n_train": 108,
+   "seed": 0,
+   "fit_seconds": 0.8566209580167197,
+   "metrics": {
+    "balanced_accuracy": 0.8055555555555555,
+    "accuracy": 0.8055555555555556,
+    "roc_auc": 0.9757996632996634
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "raw_flat",
+   "n_train": 108,
+   "seed": 0,
+   "fit_seconds": 12.540652875002706,
+   "metrics": {
+    "balanced_accuracy": 0.7916666666666666,
+    "accuracy": 0.7916666666666666,
+    "roc_auc": 0.9612794612794612
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "minirocket",
+   "n_train": 108,
+   "seed": 0,
+   "fit_seconds": 2.6579085000266787,
+   "metrics": {
+    "balanced_accuracy": 0.9861111111111112,
+    "accuracy": 0.9861111111111112
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "heartwood",
+   "n_train": 50,
+   "seed": 0,
+   "fit_seconds": 21.599668207985815,
+   "metrics": {
+    "balanced_accuracy": 0.52,
+    "accuracy": 0.52,
+    "roc_auc": 0.732
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "agg",
+   "n_train": 50,
+   "seed": 0,
+   "fit_seconds": 5.620932332996745,
+   "metrics": {
+    "balanced_accuracy": 0.52,
+    "accuracy": 0.52,
+    "roc_auc": 0.7969999999999999
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "wagg4",
+   "n_train": 50,
+   "seed": 0,
+   "fit_seconds": 21.275970415998017,
+   "metrics": {
+    "balanced_accuracy": 0.38,
+    "accuracy": 0.38,
+    "roc_auc": 0.659
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "wagg8",
+   "n_train": 50,
+   "seed": 0,
+   "fit_seconds": 41.89914745799615,
+   "metrics": {
+    "balanced_accuracy": 0.3,
+    "accuracy": 0.3,
+    "roc_auc": 0.6765000000000001
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "raw_flat",
+   "n_train": 50,
+   "seed": 0,
+   "fit_seconds": 137.39627450000262,
+   "metrics": {
+    "balanced_accuracy": 0.32000000000000006,
+    "accuracy": 0.32,
+    "roc_auc": 0.67
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "minirocket",
+   "n_train": 50,
+   "seed": 0,
+   "fit_seconds": 4.599337291991105,
+   "metrics": {
+    "balanced_accuracy": 0.66,
+    "accuracy": 0.66
+   }
+  }
+ ]
+}

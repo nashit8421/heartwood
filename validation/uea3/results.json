@@ -1,0 +1,10 @@
+{
+ "config": {
+  "datasets": "['uea:EigenWorms']",
+  "note": "attempted per the locked list"
+ },
+ "unavailable": {
+  "uea:EigenWorms": "INFEASIBLE at default settings: T=17,984 timesteps. No single fit completed within a 12-minute budget. Attempted, not dropped \u2014 the library does not scale to series this long without tuning n_shapelet_candidates / shapelet_max_frac."
+ },
+ "results": []
+}

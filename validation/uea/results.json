@@ -1,0 +1,370 @@
+{
+ "config": {
+  "datasets": "['uea:StandWalkJump', 'uea:AtrialFibrillation', 'uea:ERing', 'uea:BasicMotions', 'uea:UWaveGestureLibrary']",
+  "sizes": "[0]",
+  "seeds": "3",
+  "rounds": "200",
+  "depth": "4",
+  "learning_rate": "0.1",
+  "no_minirocket": "False",
+  "out": "validation/uea"
+ },
+ "unavailable": {},
+ "results": [
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "heartwood",
+   "n_train": 12,
+   "seed": 0,
+   "fit_seconds": 14.35561054199934,
+   "metrics": {
+    "balanced_accuracy": 0.4000000000000001,
+    "accuracy": 0.4,
+    "roc_auc": 0.5466666666666666
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "agg",
+   "n_train": 12,
+   "seed": 0,
+   "fit_seconds": 0.013410665997071192,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.54
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "wagg4",
+   "n_train": 12,
+   "seed": 0,
+   "fit_seconds": 0.01844891600194387,
+   "metrics": {
+    "balanced_accuracy": 0.39999999999999997,
+    "accuracy": 0.4,
+    "roc_auc": 0.6333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "wagg8",
+   "n_train": 12,
+   "seed": 0,
+   "fit_seconds": 0.03021087500383146,
+   "metrics": {
+    "balanced_accuracy": 0.4000000000000001,
+    "accuracy": 0.4,
+    "roc_auc": 0.6333333333333334
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "raw_flat",
+   "n_train": 12,
+   "seed": 0,
+   "fit_seconds": 0.524424708011793,
+   "metrics": {
+    "balanced_accuracy": 0.4666666666666666,
+    "accuracy": 0.4666666666666667,
+    "roc_auc": 0.5866666666666667
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "minirocket",
+   "n_train": 12,
+   "seed": 0,
+   "fit_seconds": 1.554050417005783,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "heartwood",
+   "n_train": 15,
+   "seed": 0,
+   "fit_seconds": 3.826532250008313,
+   "metrics": {
+    "balanced_accuracy": 0.4666666666666666,
+    "accuracy": 0.4666666666666667,
+    "roc_auc": 0.62
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "agg",
+   "n_train": 15,
+   "seed": 0,
+   "fit_seconds": 0.011039959004847333,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.52
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "wagg4",
+   "n_train": 15,
+   "seed": 0,
+   "fit_seconds": 0.014955916994949803,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.4000000000000001
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "wagg8",
+   "n_train": 15,
+   "seed": 0,
+   "fit_seconds": 0.02172620897181332,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.43999999999999995
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "raw_flat",
+   "n_train": 15,
+   "seed": 0,
+   "fit_seconds": 0.09327512499294244,
+   "metrics": {
+    "balanced_accuracy": 0.19999999999999998,
+    "accuracy": 0.2,
+    "roc_auc": 0.5
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "minirocket",
+   "n_train": 15,
+   "seed": 0,
+   "fit_seconds": 0.12199337501078844,
+   "metrics": {
+    "balanced_accuracy": 0.13333333333333333,
+    "accuracy": 0.13333333333333333
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "heartwood",
+   "n_train": 30,
+   "seed": 0,
+   "fit_seconds": 8.677296583016869,
+   "metrics": {
+    "balanced_accuracy": 0.8703703703703703,
+    "accuracy": 0.8703703703703703,
+    "roc_auc": 0.9893004115226337
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "agg",
+   "n_train": 30,
+   "seed": 0,
+   "fit_seconds": 0.025973332987632602,
+   "metrics": {
+    "balanced_accuracy": 0.8111111111111112,
+    "accuracy": 0.8111111111111111,
+    "roc_auc": 0.9797201646090535
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "wagg4",
+   "n_train": 30,
+   "seed": 0,
+   "fit_seconds": 0.05637570799444802,
+   "metrics": {
+    "balanced_accuracy": 0.6666666666666666,
+    "accuracy": 0.6666666666666666,
+    "roc_auc": 0.9341069958847736
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "wagg8",
+   "n_train": 30,
+   "seed": 0,
+   "fit_seconds": 0.10166370798833668,
+   "metrics": {
+    "balanced_accuracy": 0.7444444444444445,
+    "accuracy": 0.7444444444444445,
+    "roc_auc": 0.9094320987654321
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "raw_flat",
+   "n_train": 30,
+   "seed": 0,
+   "fit_seconds": 0.0883877919986844,
+   "metrics": {
+    "balanced_accuracy": 0.7222222222222222,
+    "accuracy": 0.7222222222222222,
+    "roc_auc": 0.9202304526748971
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "minirocket",
+   "n_train": 30,
+   "seed": 0,
+   "fit_seconds": 0.19358729201485403,
+   "metrics": {
+    "balanced_accuracy": 0.9814814814814815,
+    "accuracy": 0.9814814814814815
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "heartwood",
+   "n_train": 40,
+   "seed": 0,
+   "fit_seconds": 8.036828750016866,
+   "metrics": {
+    "balanced_accuracy": 0.925,
+    "accuracy": 0.925,
+    "roc_auc": 0.9975
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "agg",
+   "n_train": 40,
+   "seed": 0,
+   "fit_seconds": 0.02447995901457034,
+   "metrics": {
+    "balanced_accuracy": 0.975,
+    "accuracy": 0.975,
+    "roc_auc": 0.9974999999999999
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "wagg4",
+   "n_train": 40,
+   "seed": 0,
+   "fit_seconds": 0.06377945799613371,
+   "metrics": {
+    "balanced_accuracy": 0.85,
+    "accuracy": 0.85,
+    "roc_auc": 0.9875
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "wagg8",
+   "n_train": 40,
+   "seed": 0,
+   "fit_seconds": 0.12681445898488164,
+   "metrics": {
+    "balanced_accuracy": 0.875,
+    "accuracy": 0.875,
+    "roc_auc": 0.9833333333333334
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "raw_flat",
+   "n_train": 40,
+   "seed": 0,
+   "fit_seconds": 0.18795670801773667,
+   "metrics": {
+    "balanced_accuracy": 0.825,
+    "accuracy": 0.825,
+    "roc_auc": 0.9658333333333333
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "minirocket",
+   "n_train": 40,
+   "seed": 0,
+   "fit_seconds": 0.08306737500242889,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "heartwood",
+   "n_train": 120,
+   "seed": 0,
+   "fit_seconds": 54.26659195800312,
+   "metrics": {
+    "balanced_accuracy": 0.903125,
+    "accuracy": 0.903125,
+    "roc_auc": 0.9925558035714286
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "agg",
+   "n_train": 120,
+   "seed": 0,
+   "fit_seconds": 0.09251099999528378,
+   "metrics": {
+    "balanced_accuracy": 0.7625,
+    "accuracy": 0.7625,
+    "roc_auc": 0.9582700892857142
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "wagg4",
+   "n_train": 120,
+   "seed": 0,
+   "fit_seconds": 0.25735929200891405,
+   "metrics": {
+    "balanced_accuracy": 0.834375,
+    "accuracy": 0.834375,
+    "roc_auc": 0.9818638392857142
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "wagg8",
+   "n_train": 120,
+   "seed": 0,
+   "fit_seconds": 0.4671485839935485,
+   "metrics": {
+    "balanced_accuracy": 0.7406250000000001,
+    "accuracy": 0.740625,
+    "roc_auc": 0.9610714285714286
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "raw_flat",
+   "n_train": 120,
+   "seed": 0,
+   "fit_seconds": 1.9169103330059443,
+   "metrics": {
+    "balanced_accuracy": 0.75,
+    "accuracy": 0.75,
+    "roc_auc": 0.9569196428571428
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "minirocket",
+   "n_train": 120,
+   "seed": 0,
+   "fit_seconds": 1.0220918749982957,
+   "metrics": {
+    "balanced_accuracy": 0.93125,
+    "accuracy": 0.93125
+   }
+  }
+ ]
+}

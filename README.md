@@ -10,11 +10,60 @@ the columns beside it.
 Boosting for datasets that mix **static per-row features with raw time series** — without
 collapsing the series into aggregates first.
 
-> **Status: v0.3 — all three phases complete (M1–M5).** 267 tests, six benchmark
-> scenarios, and a reproducible grid. Heartwood beats every baseline on five of six
-> scenarios and ties the control. Three of the five upgrades across Phases B and C earned
-> a place in the defaults; two are opt-in or off, with the measurements that decided it
-> recorded below. See `PLAN.md`.
+> **Status: v0.3 — all three phases complete (M1–M5), plus pre-registered validation on
+> real data.** 267 tests and a reproducible benchmark grid. On synthetic tasks it beats
+> every baseline on five of six scenarios; on real data the picture is more mixed and is
+> reported first, below, rather than last. See `PLAN.md` and `VALIDATION.md`.
+
+## Validation on real data — the honest verdict
+
+Everything below this section is measured on synthetic data I wrote myself, which is not
+evidence of much. So the hypotheses, thresholds, datasets and baselines were
+[pre-registered](VALIDATION.md) and committed **before** any real dataset was downloaded,
+and then evaluated mechanically. Reproduce with `python validation/run_validation.py`.
+
+**The result depends almost entirely on one thing: whether the series is long enough to
+have a journey at all.**
+
+| dataset | series | Heartwood vs `agg`, by training size |
+|---|---|---|
+| Credit default (UCI) | 3 channels × **6 months** | −0.4, −0.0, +0.6, +0.8, −0.2 pt AUC — **no benefit, 0/5** |
+| Human activity (UCI HAR) | 9 channels × **128 steps** | +4.7, +9.2, +4.5, +2.9, +5.1 pt — **wins 5/5** |
+
+On credit, the series matters enormously — using it is worth ~15 AUC points over the static
+columns alone — but *every* representation extracts it equally well. Global aggregates,
+windowed aggregates, raw timesteps and Heartwood all land within a point of each other at
+every training size. With six monthly points there is no journey to capture: ten summary
+statistics over six numbers essentially *are* the series. On HAR, with 128 timesteps, the
+same comparison goes the other way at every single training size.
+
+**Pre-registered verdicts:**
+
+- **H1 (beats the aggregate workaround)** — **INCONCLUSIVE**: 5/10 cells, exactly on the
+  boundary, and split perfectly by dataset (credit 0/5, HAR 5/5). Not a pass.
+- **H2 (small data)** — **PASS**: at n=100 and n=250 the margin was positive on half the
+  cells and strongly positive on HAR (+4.7, +9.2).
+- **H3 (vs MiniROCKET, a real time-series method)** — **PASS**: median gap −2.8 points
+  across seven UEA datasets. Heartwood *beats* MiniROCKET on the two smallest
+  (StandWalkJump n=12: +6.7; AtrialFibrillation n=15: +33.3), where a ridge over 10,000
+  random kernels has too little data to fit, and loses on the widest and longest
+  (DuckDuckGeese −14.0, ERing −11.1). That is a real, interpretable small-data result.
+- **H4 (no harm)** — not testable: no real dataset had an uninformative series.
+
+One dataset from the locked list could not be run: **EigenWorms** (T=17,984) did not
+complete a single fit in twelve minutes at default settings. That is a genuine scaling
+limit, recorded rather than dropped — the library is built for series of tens to low
+thousands of steps, not tens of thousands.
+
+**What this does and does not establish.** It establishes that the idea is worth something
+on real data when the series is long enough — on HAR it beat the workaround at every size,
+and against a genuine TSC method it is competitive at very small n. It does not establish
+the broad claim: on one of the two mixed datasets the entire apparatus bought nothing, and
+three mixed datasets is not a survey. If your series are a handful of monthly aggregates
+already, this library is unlikely to help you. If they are hundreds of samples of a
+trajectory, the evidence says it probably will.
+
+Full tables, every dataset and baseline: [`validation/RESULTS.md`](validation/RESULTS.md).
 
 ## The problem
 
