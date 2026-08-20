@@ -17,8 +17,8 @@ lives in the *temporal journey*.
 **Package name:** `heartwood` · **Language:** Python 3.10+, NumPy only for the core
 (scikit-learn / xgboost used only in benchmarks). No compiled code, no deep learning.
 
-**Environment (verified):** Python 3.10.17, numpy 2.2.6, sklearn 1.7.1, xgboost 3.0.4.
-`pytest` is NOT installed — install it before running tests (`pip install pytest`).
+**Environment (verified):** Python 3.10.17, numpy 2.2.6, sklearn 1.7.1, xgboost 3.0.4,
+pytest 9.1.1 (installed during M2).  `python -m pytest tests/ -q` → 184 passed, ~31 s.
 
 ---
 
@@ -496,11 +496,11 @@ Smoke bar for CI: `python -m pytest tests/ -x -q` green, and
 
 ## 8. Milestones
 
-1. **M1 core (Phase A):** losses, features, splits, tree, booster, api, `__init__`,
+1. **M1 core (Phase A):** ✅ **DONE — see §8.1.** losses, features, splits, tree, booster, api, `__init__`,
    pyproject — quickstart runs on `make_bump_interaction`, train loss decreases
    monotonically-ish.
 2. **M2 quality (Phase A):** full §6 Phase-A test suite green (incl. finite-difference
-   and brute-force refs).
+   and brute-force refs). ✅ **DONE — 184 tests, ~31 s. See §8.2.**
 3. **M3 proof (Phase A):** benchmark suite runs; results table meets §5.8 acceptance
    targets; README with usage, algorithm explanation, results table, honest limitations
    (no GPU, single-thread, equal-length-after-padding, v0.1 scope).
@@ -514,6 +514,12 @@ Smoke bar for CI: `python -m pytest tests/ -x -q` green, and
 
 ## 8.1 M1 results and findings (recorded 2026-08-20) — **read before M2/M3**
 
+> ⚠️ **Superseded by §8.2 in two places.** The `tests/smoke/` scripts described below were
+> replaced by the pytest suite and deleted, and the results table is stale: M2 found that
+> two of these scenarios leaked the label through the global slope, so the numbers below
+> were measured on generators that have since been fixed. The *findings* still stand; the
+> *numbers* do not. Use §8.2's table.
+
 **Status: M1 COMPLETE.** All modules implemented; `examples/quickstart.py` runs in 28 s
 and shows train logloss 0.674 → 0.040. Two runnable brute-force suites live in
 `tests/smoke/` (plain `python`, no pytest needed) and pass with zero failures:
@@ -521,7 +527,7 @@ and shows train logloss 0.674 → 0.040. Two runnable brute-force suites live in
 references, incl. all the NaN cases) and `smoke_model.py` (estimator mechanics).
 
 **Measured at n_train=500, n_test=2000, 150 rounds, single seed** (development run, not
-the M3 benchmark):
+the M3 benchmark; see the warning above — these generators had a slope leak):
 
 | scenario | agg | wagg | Heartwood |
 |---|---|---|---|
@@ -564,6 +570,64 @@ would lose precision on series whose values dwarf their fluctuations.
 
 **Deviations from spec: none other than the above.** Defaults, math, API, and the pitfalls
 checklist in §9 were followed as written; every §9 item was exercised by the smoke suites.
+
+## 8.2 M2 results and findings — **read before M3/M4**
+
+**Status: M2 COMPLETE.** `python -m pytest tests/ -q` → **184 passed in ~31 s**. Files:
+`conftest.py` (the slow references), `test_losses.py`, `test_features.py`,
+`test_splits.py`, `test_tree.py`, `test_booster_api.py`, `test_datasets.py`. The M1
+`tests/smoke/` scripts were deleted — the pytest suite strictly supersedes them, and
+keeping both would only let them drift apart.
+
+**Finding 3 — two scenarios leaked the label through the global slope.** The tests caught
+what analysis had waved away. A localized feature of area A at position c contributes
+`A·(c − t̄)` to the global slope, so:
+* `make_timing_task`'s Gaussian bump betrayed its own position (slope AUC 0.79 → the
+  "aggregates carry no timing" claim in M1 was simply **wrong**, and the baseline's 0.827
+  was it reading position off the slope);
+* `make_bump_interaction`'s doublet betrayed its orientation through its internal dipole
+  (slope AUC 0.72).
+
+Fixes: the timing task now plants a **zero-area doublet** (the `A·(c−t̄)` term vanishes and
+the remaining internal dipole is identical for every row); the ordering task now plants
+**both** orientations in every series so the dipoles cancel regardless of order. Both are
+now pinned by `test_no_global_aggregate_predicts_*`, parametrized over all ten aggregates.
+
+**Finding 4 — fixed-window aggregation is a much stronger baseline than expected, and
+scenario geometry decides the winner.** With the two transients in tidy early/late slots,
+a 4-window baseline scored **0.943** (it reads the answer off whichever window holds the
+first shape); with the positions scattered it drops to **0.798**. Same task, same model —
+only the geometry changed. Any scenario that pins a feature to a predictable stretch is
+secretly testing fixed windows. `make_shape_amplitude_regression` also had its nuisance
+transient moved out of the signal window; previously even the correct window recovered the
+amplitude at only r=0.34, so the task was unsolvable rather than merely hard.
+
+**Multi-seed results (mean ± sd, seeds 0/1/2, n_train=500, n_test=2000, 150 rounds):**
+
+| scenario | agg | wagg4 | Heartwood |
+|---|---|---|---|
+| bump_order (acc) | 0.511 ±.010 | **0.798 ±.040** | 0.764 ±.032 |
+| timing (acc) | 0.663 ±.011 | 0.935 ±.005 | **0.968 ±.003** |
+| slope_window (acc) | 0.609 ±.012 | 0.837 ±.068 | **0.886 ±.039** |
+| amp_regression (RMSE ↓) | 0.730 ±.004 | **0.384 ±.006** | 0.394 ±.002 |
+| static control (acc) | 0.934 ±.001 | 0.935 ±.004 | 0.938 ±.003 |
+
+Against §5.8's acceptance targets, judged against the *best* baseline: timing ✓ (+3.3),
+slope ✓ (+4.9), control ✓ (tie), **regression ✗** (0.394 vs 0.384 — a tie, not the −10%
+target), **bump_order ✗** (−3.4, the baseline wins). Against *global* aggregation alone —
+the practice the library replaces — every target is met by a wide margin (+25 to +31
+points, −46% RMSE).
+
+**M3/M4 implications, in priority order:**
+1. `bump_order` is the sharpest Phase-B target. "A before B" needs two learned positions
+   compared across depths; §10.3 comparison splits express it in one split. If M4 does not
+   move this number, the comparison-split design is wrong.
+2. The §5.8 acceptance targets should be restated against *both* baselines rather than
+   "the best baseline", since the two answer different questions (what practitioners do vs.
+   how strong a fixed-window scheme can be). Do not quietly drop `wagg` because it wins.
+3. Add a `wagg` variant sweep (4/8/16 windows) to the M3 grid — window count changes the
+   answer a lot (0.94 → 0.86 → 0.74 on the slotted variant) and a single k is cherry-picking.
+4. Regression is a tie, not a win. Worth a Phase-B ablation of its own.
 
 ## 9. Known pitfalls checklist (re-read before coding each file)
 
