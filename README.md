@@ -59,6 +59,31 @@ the fact that four cells in five were never measured at all. Missingness is a fi
 feature here rather than something to impute away, which is exactly what the split scan's
 learned missing-direction was built for.
 
+### What it learned, in its own words
+
+Interpretability is only worth claiming if the explanations survive contact with someone
+who knows the domain. Here are the ICU model's highest-gain splits, with channel indices
+replaced by their clinical names — nothing else edited:
+
+```
+gain=90.5   series[BUN].last[t=0:48]    <= 30.5    [missing->left]
+gain=66.2   series[GCS].min[t=18:23]    <= 9.25    [missing->right]
+gain=59.2   series[Urine].mean[t=0:48]  <= 59.62   [missing->right]
+gain=43.7   series[FiO2].min[t=27:33]   <= 0.29    [missing->left]
+```
+
+Top families by total gain: Glasgow Coma Scale (last, median, and **delta** — its change
+across the stay), age, blood urea nitrogen, urine output, temperature, minimum lactate.
+
+Read that as a clinician would. Low GCS is impaired consciousness, and the thresholds it
+picked — 9.25 and 10.5 — sit right at the conventional coma boundary. Elevated BUN is
+renal dysfunction. Urine output under ~60 mL/h is oliguria, a standard organ-failure
+criterion. Lactate is the shock marker. Raised FiO2 means ventilator support. Nobody told
+the model any of this; it found the standard ICU risk factors from raw hourly readings,
+and reported them in one line each. The `GCS.delta` family is the one a global aggregate
+cannot produce at all: it is deterioration versus recovery over the stay, which is the
+"journey" the whole project is named for.
+
 **Pre-registered verdicts:**
 
 - **H1 (beats the aggregate workaround)** — **PASS**: 10/15 cells at ≥2 points (67%;
@@ -70,6 +95,8 @@ learned missing-direction was built for.
   AtrialFibrillation n=15: +33.3), where a ridge over 10,000 random kernels has too little
   data to fit, and loses on the widest and longest (DuckDuckGeese −14.0, ERing −11.1).
 - **H4 (no harm)** — not testable: no real dataset had an uninformative series.
+- **H5 (interpretability, qualitative)** — the ICU splits above are domain-plausible
+  without cherry-picking; the top families are the standard ICU mortality predictors.
 
 One dataset from the locked list could not be run: **EigenWorms** (T=17,984) did not
 complete a single fit in twelve minutes at default settings. That is a genuine scaling
