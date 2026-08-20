@@ -1,0 +1,3726 @@
+{
+ "config": {
+  "datasets": "['uea:StandWalkJump', 'uea:AtrialFibrillation', 'uea:ERing', 'uea:BasicMotions', 'uea:UWaveGestureLibrary', 'uea:Cricket', 'uea:DuckDuckGeese']",
+  "sizes": "[0]",
+  "seeds": "5",
+  "full_seeds": "5",
+  "rounds": "200",
+  "depth": "4",
+  "learning_rate": "0.1",
+  "no_minirocket": "False",
+  "out": "validation/rerun/uea"
+ },
+ "unavailable": {},
+ "results": [
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "heartwood",
+   "n_train": 12,
+   "seed": 0,
+   "fit_seconds": 14.265870875009568,
+   "metrics": {
+    "balanced_accuracy": 0.4000000000000001,
+    "accuracy": 0.4,
+    "roc_auc": 0.5466666666666666
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "agg",
+   "n_train": 12,
+   "seed": 0,
+   "fit_seconds": 0.013028041983488947,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.54
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "wagg4",
+   "n_train": 12,
+   "seed": 0,
+   "fit_seconds": 0.01817887500510551,
+   "metrics": {
+    "balanced_accuracy": 0.39999999999999997,
+    "accuracy": 0.4,
+    "roc_auc": 0.6333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "wagg8",
+   "n_train": 12,
+   "seed": 0,
+   "fit_seconds": 0.02972508399398066,
+   "metrics": {
+    "balanced_accuracy": 0.4000000000000001,
+    "accuracy": 0.4,
+    "roc_auc": 0.6333333333333334
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "raw_flat",
+   "n_train": 12,
+   "seed": 0,
+   "fit_seconds": 0.514146208006423,
+   "metrics": {
+    "balanced_accuracy": 0.4666666666666666,
+    "accuracy": 0.4666666666666667,
+    "roc_auc": 0.5866666666666667
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "agg_naive",
+   "n_train": 12,
+   "seed": 0,
+   "fit_seconds": 0.010878250002861023,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.54
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "wagg8_naive",
+   "n_train": 12,
+   "seed": 0,
+   "fit_seconds": 0.029009707999648526,
+   "metrics": {
+    "balanced_accuracy": 0.4000000000000001,
+    "accuracy": 0.4,
+    "roc_auc": 0.6333333333333334
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "minirocket",
+   "n_train": 12,
+   "seed": 0,
+   "fit_seconds": 1.427431832998991,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "minirocket10k",
+   "n_train": 12,
+   "seed": 0,
+   "fit_seconds": 0.9445303330139723,
+   "metrics": {
+    "balanced_accuracy": 0.4000000000000001,
+    "accuracy": 0.4
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "heartwood",
+   "n_train": 12,
+   "seed": 1,
+   "fit_seconds": 15.201044249988627,
+   "metrics": {
+    "balanced_accuracy": 0.26666666666666666,
+    "accuracy": 0.26666666666666666,
+    "roc_auc": 0.49333333333333335
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "agg",
+   "n_train": 12,
+   "seed": 1,
+   "fit_seconds": 0.011321375000989065,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.54
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "wagg4",
+   "n_train": 12,
+   "seed": 1,
+   "fit_seconds": 0.017528500000480562,
+   "metrics": {
+    "balanced_accuracy": 0.39999999999999997,
+    "accuracy": 0.4,
+    "roc_auc": 0.6333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "wagg8",
+   "n_train": 12,
+   "seed": 1,
+   "fit_seconds": 0.029132916999515146,
+   "metrics": {
+    "balanced_accuracy": 0.4000000000000001,
+    "accuracy": 0.4,
+    "roc_auc": 0.6333333333333334
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "raw_flat",
+   "n_train": 12,
+   "seed": 1,
+   "fit_seconds": 0.5213392500008922,
+   "metrics": {
+    "balanced_accuracy": 0.4666666666666666,
+    "accuracy": 0.4666666666666667,
+    "roc_auc": 0.5866666666666667
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "agg_naive",
+   "n_train": 12,
+   "seed": 1,
+   "fit_seconds": 0.010672458010958508,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.54
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "wagg8_naive",
+   "n_train": 12,
+   "seed": 1,
+   "fit_seconds": 0.028855707991169766,
+   "metrics": {
+    "balanced_accuracy": 0.4000000000000001,
+    "accuracy": 0.4,
+    "roc_auc": 0.6333333333333334
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "minirocket",
+   "n_train": 12,
+   "seed": 1,
+   "fit_seconds": 0.5802489169873297,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "minirocket10k",
+   "n_train": 12,
+   "seed": 1,
+   "fit_seconds": 0.9420039160177112,
+   "metrics": {
+    "balanced_accuracy": 0.4000000000000001,
+    "accuracy": 0.4
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "heartwood",
+   "n_train": 12,
+   "seed": 2,
+   "fit_seconds": 15.271846624993486,
+   "metrics": {
+    "balanced_accuracy": 0.4000000000000001,
+    "accuracy": 0.4,
+    "roc_auc": 0.48
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "agg",
+   "n_train": 12,
+   "seed": 2,
+   "fit_seconds": 0.011031708010705188,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.54
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "wagg4",
+   "n_train": 12,
+   "seed": 2,
+   "fit_seconds": 0.017367166990879923,
+   "metrics": {
+    "balanced_accuracy": 0.39999999999999997,
+    "accuracy": 0.4,
+    "roc_auc": 0.6333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "wagg8",
+   "n_train": 12,
+   "seed": 2,
+   "fit_seconds": 0.029207582992967218,
+   "metrics": {
+    "balanced_accuracy": 0.4000000000000001,
+    "accuracy": 0.4,
+    "roc_auc": 0.6333333333333334
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "raw_flat",
+   "n_train": 12,
+   "seed": 2,
+   "fit_seconds": 0.519474500004435,
+   "metrics": {
+    "balanced_accuracy": 0.4666666666666666,
+    "accuracy": 0.4666666666666667,
+    "roc_auc": 0.5866666666666667
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "agg_naive",
+   "n_train": 12,
+   "seed": 2,
+   "fit_seconds": 0.0107865410100203,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.54
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "wagg8_naive",
+   "n_train": 12,
+   "seed": 2,
+   "fit_seconds": 0.02906599998823367,
+   "metrics": {
+    "balanced_accuracy": 0.4000000000000001,
+    "accuracy": 0.4,
+    "roc_auc": 0.6333333333333334
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "minirocket",
+   "n_train": 12,
+   "seed": 2,
+   "fit_seconds": 0.5825255840027239,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "minirocket10k",
+   "n_train": 12,
+   "seed": 2,
+   "fit_seconds": 0.9536342500068713,
+   "metrics": {
+    "balanced_accuracy": 0.4000000000000001,
+    "accuracy": 0.4
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "heartwood",
+   "n_train": 12,
+   "seed": 3,
+   "fit_seconds": 13.34323949998361,
+   "metrics": {
+    "balanced_accuracy": 0.5333333333333333,
+    "accuracy": 0.5333333333333333,
+    "roc_auc": 0.6266666666666666
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "agg",
+   "n_train": 12,
+   "seed": 3,
+   "fit_seconds": 0.011040082987165079,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.54
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "wagg4",
+   "n_train": 12,
+   "seed": 3,
+   "fit_seconds": 0.01753591699525714,
+   "metrics": {
+    "balanced_accuracy": 0.39999999999999997,
+    "accuracy": 0.4,
+    "roc_auc": 0.6333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "wagg8",
+   "n_train": 12,
+   "seed": 3,
+   "fit_seconds": 0.029112874995917082,
+   "metrics": {
+    "balanced_accuracy": 0.4000000000000001,
+    "accuracy": 0.4,
+    "roc_auc": 0.6333333333333334
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "raw_flat",
+   "n_train": 12,
+   "seed": 3,
+   "fit_seconds": 0.5207617499982007,
+   "metrics": {
+    "balanced_accuracy": 0.4666666666666666,
+    "accuracy": 0.4666666666666667,
+    "roc_auc": 0.5866666666666667
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "agg_naive",
+   "n_train": 12,
+   "seed": 3,
+   "fit_seconds": 0.010939707979559898,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.54
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "wagg8_naive",
+   "n_train": 12,
+   "seed": 3,
+   "fit_seconds": 0.02954608399886638,
+   "metrics": {
+    "balanced_accuracy": 0.4000000000000001,
+    "accuracy": 0.4,
+    "roc_auc": 0.6333333333333334
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "minirocket",
+   "n_train": 12,
+   "seed": 3,
+   "fit_seconds": 0.5842002499848604,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "minirocket10k",
+   "n_train": 12,
+   "seed": 3,
+   "fit_seconds": 0.9578567089920398,
+   "metrics": {
+    "balanced_accuracy": 0.4000000000000001,
+    "accuracy": 0.4
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "heartwood",
+   "n_train": 12,
+   "seed": 4,
+   "fit_seconds": 14.023184666002635,
+   "metrics": {
+    "balanced_accuracy": 0.39999999999999997,
+    "accuracy": 0.4,
+    "roc_auc": 0.5666666666666667
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "agg",
+   "n_train": 12,
+   "seed": 4,
+   "fit_seconds": 0.011177917011082172,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.54
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "wagg4",
+   "n_train": 12,
+   "seed": 4,
+   "fit_seconds": 0.017866292007965967,
+   "metrics": {
+    "balanced_accuracy": 0.39999999999999997,
+    "accuracy": 0.4,
+    "roc_auc": 0.6333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "wagg8",
+   "n_train": 12,
+   "seed": 4,
+   "fit_seconds": 0.02954824999324046,
+   "metrics": {
+    "balanced_accuracy": 0.4000000000000001,
+    "accuracy": 0.4,
+    "roc_auc": 0.6333333333333334
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "raw_flat",
+   "n_train": 12,
+   "seed": 4,
+   "fit_seconds": 0.5168682920048013,
+   "metrics": {
+    "balanced_accuracy": 0.4666666666666666,
+    "accuracy": 0.4666666666666667,
+    "roc_auc": 0.5866666666666667
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "agg_naive",
+   "n_train": 12,
+   "seed": 4,
+   "fit_seconds": 0.010902374982833862,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.54
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "wagg8_naive",
+   "n_train": 12,
+   "seed": 4,
+   "fit_seconds": 0.02936399998725392,
+   "metrics": {
+    "balanced_accuracy": 0.4000000000000001,
+    "accuracy": 0.4,
+    "roc_auc": 0.6333333333333334
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "minirocket",
+   "n_train": 12,
+   "seed": 4,
+   "fit_seconds": 0.581437790999189,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "minirocket10k",
+   "n_train": 12,
+   "seed": 4,
+   "fit_seconds": 0.9546300410002004,
+   "metrics": {
+    "balanced_accuracy": 0.4000000000000001,
+    "accuracy": 0.4
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "heartwood",
+   "n_train": 15,
+   "seed": 0,
+   "fit_seconds": 3.740905832994031,
+   "metrics": {
+    "balanced_accuracy": 0.4666666666666666,
+    "accuracy": 0.4666666666666667,
+    "roc_auc": 0.62
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "agg",
+   "n_train": 15,
+   "seed": 0,
+   "fit_seconds": 0.01028487499570474,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.52
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "wagg4",
+   "n_train": 15,
+   "seed": 0,
+   "fit_seconds": 0.01453658301034011,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.4000000000000001
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "wagg8",
+   "n_train": 15,
+   "seed": 0,
+   "fit_seconds": 0.02127295799436979,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.43999999999999995
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "raw_flat",
+   "n_train": 15,
+   "seed": 0,
+   "fit_seconds": 0.09291954198852181,
+   "metrics": {
+    "balanced_accuracy": 0.19999999999999998,
+    "accuracy": 0.2,
+    "roc_auc": 0.5
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "agg_naive",
+   "n_train": 15,
+   "seed": 0,
+   "fit_seconds": 0.010003959003370255,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.52
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "wagg8_naive",
+   "n_train": 15,
+   "seed": 0,
+   "fit_seconds": 0.021584291011095047,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.43999999999999995
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "minirocket",
+   "n_train": 15,
+   "seed": 0,
+   "fit_seconds": 0.11890487500932068,
+   "metrics": {
+    "balanced_accuracy": 0.13333333333333333,
+    "accuracy": 0.13333333333333333
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "minirocket10k",
+   "n_train": 15,
+   "seed": 0,
+   "fit_seconds": 0.21163745800731704,
+   "metrics": {
+    "balanced_accuracy": 0.13333333333333333,
+    "accuracy": 0.13333333333333333
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "heartwood",
+   "n_train": 15,
+   "seed": 1,
+   "fit_seconds": 3.630939249997027,
+   "metrics": {
+    "balanced_accuracy": 0.26666666666666666,
+    "accuracy": 0.26666666666666666,
+    "roc_auc": 0.3066666666666667
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "agg",
+   "n_train": 15,
+   "seed": 1,
+   "fit_seconds": 0.01029987502261065,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.52
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "wagg4",
+   "n_train": 15,
+   "seed": 1,
+   "fit_seconds": 0.014470041991444305,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.4000000000000001
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "wagg8",
+   "n_train": 15,
+   "seed": 1,
+   "fit_seconds": 0.02106433399603702,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.43999999999999995
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "raw_flat",
+   "n_train": 15,
+   "seed": 1,
+   "fit_seconds": 0.09253125000395812,
+   "metrics": {
+    "balanced_accuracy": 0.19999999999999998,
+    "accuracy": 0.2,
+    "roc_auc": 0.5
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "agg_naive",
+   "n_train": 15,
+   "seed": 1,
+   "fit_seconds": 0.009999083005823195,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.52
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "wagg8_naive",
+   "n_train": 15,
+   "seed": 1,
+   "fit_seconds": 0.021160750009585172,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.43999999999999995
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "minirocket",
+   "n_train": 15,
+   "seed": 1,
+   "fit_seconds": 0.11995720802224241,
+   "metrics": {
+    "balanced_accuracy": 0.13333333333333333,
+    "accuracy": 0.13333333333333333
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "minirocket10k",
+   "n_train": 15,
+   "seed": 1,
+   "fit_seconds": 0.21071533299982548,
+   "metrics": {
+    "balanced_accuracy": 0.13333333333333333,
+    "accuracy": 0.13333333333333333
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "heartwood",
+   "n_train": 15,
+   "seed": 2,
+   "fit_seconds": 3.6135502080142032,
+   "metrics": {
+    "balanced_accuracy": 0.19999999999999998,
+    "accuracy": 0.2,
+    "roc_auc": 0.45333333333333337
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "agg",
+   "n_train": 15,
+   "seed": 2,
+   "fit_seconds": 0.010248375008814037,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.52
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "wagg4",
+   "n_train": 15,
+   "seed": 2,
+   "fit_seconds": 0.014573708991520107,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.4000000000000001
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "wagg8",
+   "n_train": 15,
+   "seed": 2,
+   "fit_seconds": 0.021194999979343265,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.43999999999999995
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "raw_flat",
+   "n_train": 15,
+   "seed": 2,
+   "fit_seconds": 0.09275287497439422,
+   "metrics": {
+    "balanced_accuracy": 0.19999999999999998,
+    "accuracy": 0.2,
+    "roc_auc": 0.5
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "agg_naive",
+   "n_train": 15,
+   "seed": 2,
+   "fit_seconds": 0.009970375016564503,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.52
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "wagg8_naive",
+   "n_train": 15,
+   "seed": 2,
+   "fit_seconds": 0.02118924999376759,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.43999999999999995
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "minirocket",
+   "n_train": 15,
+   "seed": 2,
+   "fit_seconds": 0.11922720799339004,
+   "metrics": {
+    "balanced_accuracy": 0.13333333333333333,
+    "accuracy": 0.13333333333333333
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "minirocket10k",
+   "n_train": 15,
+   "seed": 2,
+   "fit_seconds": 0.21117337499163114,
+   "metrics": {
+    "balanced_accuracy": 0.13333333333333333,
+    "accuracy": 0.13333333333333333
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "heartwood",
+   "n_train": 15,
+   "seed": 3,
+   "fit_seconds": 3.4347832080093212,
+   "metrics": {
+    "balanced_accuracy": 0.26666666666666666,
+    "accuracy": 0.26666666666666666,
+    "roc_auc": 0.54
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "agg",
+   "n_train": 15,
+   "seed": 3,
+   "fit_seconds": 0.010254124994389713,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.52
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "wagg4",
+   "n_train": 15,
+   "seed": 3,
+   "fit_seconds": 0.014519999996991828,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.4000000000000001
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "wagg8",
+   "n_train": 15,
+   "seed": 3,
+   "fit_seconds": 0.021099999983562157,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.43999999999999995
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "raw_flat",
+   "n_train": 15,
+   "seed": 3,
+   "fit_seconds": 0.09247120900545269,
+   "metrics": {
+    "balanced_accuracy": 0.19999999999999998,
+    "accuracy": 0.2,
+    "roc_auc": 0.5
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "agg_naive",
+   "n_train": 15,
+   "seed": 3,
+   "fit_seconds": 0.01001329199061729,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.52
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "wagg8_naive",
+   "n_train": 15,
+   "seed": 3,
+   "fit_seconds": 0.021433541987789795,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.43999999999999995
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "minirocket",
+   "n_train": 15,
+   "seed": 3,
+   "fit_seconds": 0.11869000000297092,
+   "metrics": {
+    "balanced_accuracy": 0.13333333333333333,
+    "accuracy": 0.13333333333333333
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "minirocket10k",
+   "n_train": 15,
+   "seed": 3,
+   "fit_seconds": 0.21039208400179632,
+   "metrics": {
+    "balanced_accuracy": 0.13333333333333333,
+    "accuracy": 0.13333333333333333
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "heartwood",
+   "n_train": 15,
+   "seed": 4,
+   "fit_seconds": 3.829174290993251,
+   "metrics": {
+    "balanced_accuracy": 0.26666666666666666,
+    "accuracy": 0.26666666666666666,
+    "roc_auc": 0.41333333333333333
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "agg",
+   "n_train": 15,
+   "seed": 4,
+   "fit_seconds": 0.010403084015706554,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.52
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "wagg4",
+   "n_train": 15,
+   "seed": 4,
+   "fit_seconds": 0.014703249995363876,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.4000000000000001
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "wagg8",
+   "n_train": 15,
+   "seed": 4,
+   "fit_seconds": 0.021245582989649847,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.43999999999999995
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "raw_flat",
+   "n_train": 15,
+   "seed": 4,
+   "fit_seconds": 0.09260562501731329,
+   "metrics": {
+    "balanced_accuracy": 0.19999999999999998,
+    "accuracy": 0.2,
+    "roc_auc": 0.5
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "agg_naive",
+   "n_train": 15,
+   "seed": 4,
+   "fit_seconds": 0.009985916985897347,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.52
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "wagg8_naive",
+   "n_train": 15,
+   "seed": 4,
+   "fit_seconds": 0.02135779199306853,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "roc_auc": 0.43999999999999995
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "minirocket",
+   "n_train": 15,
+   "seed": 4,
+   "fit_seconds": 0.12008258301648311,
+   "metrics": {
+    "balanced_accuracy": 0.13333333333333333,
+    "accuracy": 0.13333333333333333
+   }
+  },
+  {
+   "dataset": "uea:AtrialFibrillation",
+   "model": "minirocket10k",
+   "n_train": 15,
+   "seed": 4,
+   "fit_seconds": 0.21190266698249616,
+   "metrics": {
+    "balanced_accuracy": 0.13333333333333333,
+    "accuracy": 0.13333333333333333
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "heartwood",
+   "n_train": 30,
+   "seed": 0,
+   "fit_seconds": 8.522563125006855,
+   "metrics": {
+    "balanced_accuracy": 0.8703703703703703,
+    "accuracy": 0.8703703703703703,
+    "roc_auc": 0.9893004115226337
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "agg",
+   "n_train": 30,
+   "seed": 0,
+   "fit_seconds": 0.025651250005466864,
+   "metrics": {
+    "balanced_accuracy": 0.8111111111111112,
+    "accuracy": 0.8111111111111111,
+    "roc_auc": 0.9797201646090535
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "wagg4",
+   "n_train": 30,
+   "seed": 0,
+   "fit_seconds": 0.05561091602430679,
+   "metrics": {
+    "balanced_accuracy": 0.6666666666666666,
+    "accuracy": 0.6666666666666666,
+    "roc_auc": 0.9341069958847736
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "wagg8",
+   "n_train": 30,
+   "seed": 0,
+   "fit_seconds": 0.09861445799469948,
+   "metrics": {
+    "balanced_accuracy": 0.7481481481481481,
+    "accuracy": 0.7481481481481481,
+    "roc_auc": 0.9084444444444445
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "raw_flat",
+   "n_train": 30,
+   "seed": 0,
+   "fit_seconds": 0.08737254102015868,
+   "metrics": {
+    "balanced_accuracy": 0.7222222222222222,
+    "accuracy": 0.7222222222222222,
+    "roc_auc": 0.9202304526748971
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "agg_naive",
+   "n_train": 30,
+   "seed": 0,
+   "fit_seconds": 0.024911665997933596,
+   "metrics": {
+    "balanced_accuracy": 0.8111111111111112,
+    "accuracy": 0.8111111111111111,
+    "roc_auc": 0.9797201646090535
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "wagg8_naive",
+   "n_train": 30,
+   "seed": 0,
+   "fit_seconds": 0.10066066597937606,
+   "metrics": {
+    "balanced_accuracy": 0.7444444444444445,
+    "accuracy": 0.7444444444444445,
+    "roc_auc": 0.9094320987654321
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "minirocket",
+   "n_train": 30,
+   "seed": 0,
+   "fit_seconds": 0.20656770799541846,
+   "metrics": {
+    "balanced_accuracy": 0.9814814814814815,
+    "accuracy": 0.9814814814814815
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "minirocket10k",
+   "n_train": 30,
+   "seed": 0,
+   "fit_seconds": 0.27085379100753926,
+   "metrics": {
+    "balanced_accuracy": 0.9777777777777779,
+    "accuracy": 0.9777777777777777
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "heartwood",
+   "n_train": 30,
+   "seed": 1,
+   "fit_seconds": 8.030339292017743,
+   "metrics": {
+    "balanced_accuracy": 0.8814814814814814,
+    "accuracy": 0.8814814814814815,
+    "roc_auc": 0.9870452674897119
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "agg",
+   "n_train": 30,
+   "seed": 1,
+   "fit_seconds": 0.025177667004754767,
+   "metrics": {
+    "balanced_accuracy": 0.8111111111111112,
+    "accuracy": 0.8111111111111111,
+    "roc_auc": 0.9797201646090535
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "wagg4",
+   "n_train": 30,
+   "seed": 1,
+   "fit_seconds": 0.05484920900198631,
+   "metrics": {
+    "balanced_accuracy": 0.6666666666666666,
+    "accuracy": 0.6666666666666666,
+    "roc_auc": 0.9341069958847736
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "wagg8",
+   "n_train": 30,
+   "seed": 1,
+   "fit_seconds": 0.10085233300924301,
+   "metrics": {
+    "balanced_accuracy": 0.7481481481481481,
+    "accuracy": 0.7481481481481481,
+    "roc_auc": 0.9084444444444445
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "raw_flat",
+   "n_train": 30,
+   "seed": 1,
+   "fit_seconds": 0.08745220801210962,
+   "metrics": {
+    "balanced_accuracy": 0.7222222222222222,
+    "accuracy": 0.7222222222222222,
+    "roc_auc": 0.9202304526748971
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "agg_naive",
+   "n_train": 30,
+   "seed": 1,
+   "fit_seconds": 0.02484962498419918,
+   "metrics": {
+    "balanced_accuracy": 0.8111111111111112,
+    "accuracy": 0.8111111111111111,
+    "roc_auc": 0.9797201646090535
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "wagg8_naive",
+   "n_train": 30,
+   "seed": 1,
+   "fit_seconds": 0.09984158401493914,
+   "metrics": {
+    "balanced_accuracy": 0.7444444444444445,
+    "accuracy": 0.7444444444444445,
+    "roc_auc": 0.9094320987654321
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "minirocket",
+   "n_train": 30,
+   "seed": 1,
+   "fit_seconds": 0.18381924999994226,
+   "metrics": {
+    "balanced_accuracy": 0.9814814814814815,
+    "accuracy": 0.9814814814814815
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "minirocket10k",
+   "n_train": 30,
+   "seed": 1,
+   "fit_seconds": 0.24333929101703689,
+   "metrics": {
+    "balanced_accuracy": 0.9777777777777779,
+    "accuracy": 0.9777777777777777
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "heartwood",
+   "n_train": 30,
+   "seed": 2,
+   "fit_seconds": 8.305746541998815,
+   "metrics": {
+    "balanced_accuracy": 0.8740740740740741,
+    "accuracy": 0.8740740740740741,
+    "roc_auc": 0.9880823045267491
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "agg",
+   "n_train": 30,
+   "seed": 2,
+   "fit_seconds": 0.025273292005294934,
+   "metrics": {
+    "balanced_accuracy": 0.8111111111111112,
+    "accuracy": 0.8111111111111111,
+    "roc_auc": 0.9797201646090535
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "wagg4",
+   "n_train": 30,
+   "seed": 2,
+   "fit_seconds": 0.05584275000728667,
+   "metrics": {
+    "balanced_accuracy": 0.6666666666666666,
+    "accuracy": 0.6666666666666666,
+    "roc_auc": 0.9341069958847736
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "wagg8",
+   "n_train": 30,
+   "seed": 2,
+   "fit_seconds": 0.10271300000022165,
+   "metrics": {
+    "balanced_accuracy": 0.7481481481481481,
+    "accuracy": 0.7481481481481481,
+    "roc_auc": 0.9084444444444445
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "raw_flat",
+   "n_train": 30,
+   "seed": 2,
+   "fit_seconds": 0.08724995801458135,
+   "metrics": {
+    "balanced_accuracy": 0.7222222222222222,
+    "accuracy": 0.7222222222222222,
+    "roc_auc": 0.9202304526748971
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "agg_naive",
+   "n_train": 30,
+   "seed": 2,
+   "fit_seconds": 0.025065624999115244,
+   "metrics": {
+    "balanced_accuracy": 0.8111111111111112,
+    "accuracy": 0.8111111111111111,
+    "roc_auc": 0.9797201646090535
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "wagg8_naive",
+   "n_train": 30,
+   "seed": 2,
+   "fit_seconds": 0.10163020799518563,
+   "metrics": {
+    "balanced_accuracy": 0.7444444444444445,
+    "accuracy": 0.7444444444444445,
+    "roc_auc": 0.9094320987654321
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "minirocket",
+   "n_train": 30,
+   "seed": 2,
+   "fit_seconds": 0.18327162499190308,
+   "metrics": {
+    "balanced_accuracy": 0.9814814814814815,
+    "accuracy": 0.9814814814814815
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "minirocket10k",
+   "n_train": 30,
+   "seed": 2,
+   "fit_seconds": 0.2434995420044288,
+   "metrics": {
+    "balanced_accuracy": 0.9777777777777779,
+    "accuracy": 0.9777777777777777
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "heartwood",
+   "n_train": 30,
+   "seed": 3,
+   "fit_seconds": 8.973433250008384,
+   "metrics": {
+    "balanced_accuracy": 0.8703703703703703,
+    "accuracy": 0.8703703703703703,
+    "roc_auc": 0.9860576131687243
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "agg",
+   "n_train": 30,
+   "seed": 3,
+   "fit_seconds": 0.025292125006671995,
+   "metrics": {
+    "balanced_accuracy": 0.8111111111111112,
+    "accuracy": 0.8111111111111111,
+    "roc_auc": 0.9797201646090535
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "wagg4",
+   "n_train": 30,
+   "seed": 3,
+   "fit_seconds": 0.055698417010717094,
+   "metrics": {
+    "balanced_accuracy": 0.6666666666666666,
+    "accuracy": 0.6666666666666666,
+    "roc_auc": 0.9341069958847736
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "wagg8",
+   "n_train": 30,
+   "seed": 3,
+   "fit_seconds": 0.10014462500112131,
+   "metrics": {
+    "balanced_accuracy": 0.7481481481481481,
+    "accuracy": 0.7481481481481481,
+    "roc_auc": 0.9084444444444445
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "raw_flat",
+   "n_train": 30,
+   "seed": 3,
+   "fit_seconds": 0.08676149998791516,
+   "metrics": {
+    "balanced_accuracy": 0.7222222222222222,
+    "accuracy": 0.7222222222222222,
+    "roc_auc": 0.9202304526748971
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "agg_naive",
+   "n_train": 30,
+   "seed": 3,
+   "fit_seconds": 0.02503749998868443,
+   "metrics": {
+    "balanced_accuracy": 0.8111111111111112,
+    "accuracy": 0.8111111111111111,
+    "roc_auc": 0.9797201646090535
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "wagg8_naive",
+   "n_train": 30,
+   "seed": 3,
+   "fit_seconds": 0.1011929580126889,
+   "metrics": {
+    "balanced_accuracy": 0.7444444444444445,
+    "accuracy": 0.7444444444444445,
+    "roc_auc": 0.9094320987654321
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "minirocket",
+   "n_train": 30,
+   "seed": 3,
+   "fit_seconds": 0.18468579099862836,
+   "metrics": {
+    "balanced_accuracy": 0.9814814814814815,
+    "accuracy": 0.9814814814814815
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "minirocket10k",
+   "n_train": 30,
+   "seed": 3,
+   "fit_seconds": 0.2441717920009978,
+   "metrics": {
+    "balanced_accuracy": 0.9777777777777779,
+    "accuracy": 0.9777777777777777
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "heartwood",
+   "n_train": 30,
+   "seed": 4,
+   "fit_seconds": 8.587013250013115,
+   "metrics": {
+    "balanced_accuracy": 0.8703703703703703,
+    "accuracy": 0.8703703703703703,
+    "roc_auc": 0.9893497942386832
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "agg",
+   "n_train": 30,
+   "seed": 4,
+   "fit_seconds": 0.025205332989571616,
+   "metrics": {
+    "balanced_accuracy": 0.8111111111111112,
+    "accuracy": 0.8111111111111111,
+    "roc_auc": 0.9797201646090535
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "wagg4",
+   "n_train": 30,
+   "seed": 4,
+   "fit_seconds": 0.05589720801799558,
+   "metrics": {
+    "balanced_accuracy": 0.6666666666666666,
+    "accuracy": 0.6666666666666666,
+    "roc_auc": 0.9341069958847736
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "wagg8",
+   "n_train": 30,
+   "seed": 4,
+   "fit_seconds": 0.1005408329947386,
+   "metrics": {
+    "balanced_accuracy": 0.7481481481481481,
+    "accuracy": 0.7481481481481481,
+    "roc_auc": 0.9084444444444445
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "raw_flat",
+   "n_train": 30,
+   "seed": 4,
+   "fit_seconds": 0.08708733401726931,
+   "metrics": {
+    "balanced_accuracy": 0.7222222222222222,
+    "accuracy": 0.7222222222222222,
+    "roc_auc": 0.9202304526748971
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "agg_naive",
+   "n_train": 30,
+   "seed": 4,
+   "fit_seconds": 0.02515979201416485,
+   "metrics": {
+    "balanced_accuracy": 0.8111111111111112,
+    "accuracy": 0.8111111111111111,
+    "roc_auc": 0.9797201646090535
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "wagg8_naive",
+   "n_train": 30,
+   "seed": 4,
+   "fit_seconds": 0.10049579199403524,
+   "metrics": {
+    "balanced_accuracy": 0.7444444444444445,
+    "accuracy": 0.7444444444444445,
+    "roc_auc": 0.9094320987654321
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "minirocket",
+   "n_train": 30,
+   "seed": 4,
+   "fit_seconds": 0.18857991599361412,
+   "metrics": {
+    "balanced_accuracy": 0.9814814814814815,
+    "accuracy": 0.9814814814814815
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "minirocket10k",
+   "n_train": 30,
+   "seed": 4,
+   "fit_seconds": 0.24852904200088233,
+   "metrics": {
+    "balanced_accuracy": 0.9777777777777779,
+    "accuracy": 0.9777777777777777
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "heartwood",
+   "n_train": 40,
+   "seed": 0,
+   "fit_seconds": 7.827780499996152,
+   "metrics": {
+    "balanced_accuracy": 0.925,
+    "accuracy": 0.925,
+    "roc_auc": 0.9975
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "agg",
+   "n_train": 40,
+   "seed": 0,
+   "fit_seconds": 0.024114125000778586,
+   "metrics": {
+    "balanced_accuracy": 0.975,
+    "accuracy": 0.975,
+    "roc_auc": 0.9974999999999999
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "wagg4",
+   "n_train": 40,
+   "seed": 0,
+   "fit_seconds": 0.06486462501925416,
+   "metrics": {
+    "balanced_accuracy": 0.85,
+    "accuracy": 0.85,
+    "roc_auc": 0.9875
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "wagg8",
+   "n_train": 40,
+   "seed": 0,
+   "fit_seconds": 0.12423654200392775,
+   "metrics": {
+    "balanced_accuracy": 0.875,
+    "accuracy": 0.875,
+    "roc_auc": 0.9833333333333334
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "raw_flat",
+   "n_train": 40,
+   "seed": 0,
+   "fit_seconds": 0.18506229101330973,
+   "metrics": {
+    "balanced_accuracy": 0.825,
+    "accuracy": 0.825,
+    "roc_auc": 0.9658333333333333
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "agg_naive",
+   "n_train": 40,
+   "seed": 0,
+   "fit_seconds": 0.02458254198427312,
+   "metrics": {
+    "balanced_accuracy": 0.975,
+    "accuracy": 0.975,
+    "roc_auc": 0.9974999999999999
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "wagg8_naive",
+   "n_train": 40,
+   "seed": 0,
+   "fit_seconds": 0.12462700001196936,
+   "metrics": {
+    "balanced_accuracy": 0.875,
+    "accuracy": 0.875,
+    "roc_auc": 0.9833333333333334
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "minirocket",
+   "n_train": 40,
+   "seed": 0,
+   "fit_seconds": 0.0786824589886237,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "minirocket10k",
+   "n_train": 40,
+   "seed": 0,
+   "fit_seconds": 0.10995516600087285,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "heartwood",
+   "n_train": 40,
+   "seed": 1,
+   "fit_seconds": 8.109865833015647,
+   "metrics": {
+    "balanced_accuracy": 0.95,
+    "accuracy": 0.95,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "agg",
+   "n_train": 40,
+   "seed": 1,
+   "fit_seconds": 0.024070790997939184,
+   "metrics": {
+    "balanced_accuracy": 0.975,
+    "accuracy": 0.975,
+    "roc_auc": 0.9974999999999999
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "wagg4",
+   "n_train": 40,
+   "seed": 1,
+   "fit_seconds": 0.06528254202567041,
+   "metrics": {
+    "balanced_accuracy": 0.85,
+    "accuracy": 0.85,
+    "roc_auc": 0.9875
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "wagg8",
+   "n_train": 40,
+   "seed": 1,
+   "fit_seconds": 0.12499850001768209,
+   "metrics": {
+    "balanced_accuracy": 0.875,
+    "accuracy": 0.875,
+    "roc_auc": 0.9833333333333334
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "raw_flat",
+   "n_train": 40,
+   "seed": 1,
+   "fit_seconds": 0.18504437498631887,
+   "metrics": {
+    "balanced_accuracy": 0.825,
+    "accuracy": 0.825,
+    "roc_auc": 0.9658333333333333
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "agg_naive",
+   "n_train": 40,
+   "seed": 1,
+   "fit_seconds": 0.023930291994474828,
+   "metrics": {
+    "balanced_accuracy": 0.975,
+    "accuracy": 0.975,
+    "roc_auc": 0.9974999999999999
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "wagg8_naive",
+   "n_train": 40,
+   "seed": 1,
+   "fit_seconds": 0.12458708300255239,
+   "metrics": {
+    "balanced_accuracy": 0.875,
+    "accuracy": 0.875,
+    "roc_auc": 0.9833333333333334
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "minirocket",
+   "n_train": 40,
+   "seed": 1,
+   "fit_seconds": 0.08020262501668185,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "minirocket10k",
+   "n_train": 40,
+   "seed": 1,
+   "fit_seconds": 0.11051512500853278,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "heartwood",
+   "n_train": 40,
+   "seed": 2,
+   "fit_seconds": 8.872253540990641,
+   "metrics": {
+    "balanced_accuracy": 0.9,
+    "accuracy": 0.9,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "agg",
+   "n_train": 40,
+   "seed": 2,
+   "fit_seconds": 0.02450683299684897,
+   "metrics": {
+    "balanced_accuracy": 0.975,
+    "accuracy": 0.975,
+    "roc_auc": 0.9974999999999999
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "wagg4",
+   "n_train": 40,
+   "seed": 2,
+   "fit_seconds": 0.06556812499184161,
+   "metrics": {
+    "balanced_accuracy": 0.85,
+    "accuracy": 0.85,
+    "roc_auc": 0.9875
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "wagg8",
+   "n_train": 40,
+   "seed": 2,
+   "fit_seconds": 0.12502916701487266,
+   "metrics": {
+    "balanced_accuracy": 0.875,
+    "accuracy": 0.875,
+    "roc_auc": 0.9833333333333334
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "raw_flat",
+   "n_train": 40,
+   "seed": 2,
+   "fit_seconds": 0.18143345799762756,
+   "metrics": {
+    "balanced_accuracy": 0.825,
+    "accuracy": 0.825,
+    "roc_auc": 0.9658333333333333
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "agg_naive",
+   "n_train": 40,
+   "seed": 2,
+   "fit_seconds": 0.026070082996739075,
+   "metrics": {
+    "balanced_accuracy": 0.975,
+    "accuracy": 0.975,
+    "roc_auc": 0.9974999999999999
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "wagg8_naive",
+   "n_train": 40,
+   "seed": 2,
+   "fit_seconds": 0.12577587499981746,
+   "metrics": {
+    "balanced_accuracy": 0.875,
+    "accuracy": 0.875,
+    "roc_auc": 0.9833333333333334
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "minirocket",
+   "n_train": 40,
+   "seed": 2,
+   "fit_seconds": 0.08435620798263699,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "minirocket10k",
+   "n_train": 40,
+   "seed": 2,
+   "fit_seconds": 0.11290454099071212,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "heartwood",
+   "n_train": 40,
+   "seed": 3,
+   "fit_seconds": 7.8760752079833765,
+   "metrics": {
+    "balanced_accuracy": 0.95,
+    "accuracy": 0.95,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "agg",
+   "n_train": 40,
+   "seed": 3,
+   "fit_seconds": 0.023923125001601875,
+   "metrics": {
+    "balanced_accuracy": 0.975,
+    "accuracy": 0.975,
+    "roc_auc": 0.9974999999999999
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "wagg4",
+   "n_train": 40,
+   "seed": 3,
+   "fit_seconds": 0.0651165829913225,
+   "metrics": {
+    "balanced_accuracy": 0.85,
+    "accuracy": 0.85,
+    "roc_auc": 0.9875
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "wagg8",
+   "n_train": 40,
+   "seed": 3,
+   "fit_seconds": 0.1262807910097763,
+   "metrics": {
+    "balanced_accuracy": 0.875,
+    "accuracy": 0.875,
+    "roc_auc": 0.9833333333333334
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "raw_flat",
+   "n_train": 40,
+   "seed": 3,
+   "fit_seconds": 0.189820083003724,
+   "metrics": {
+    "balanced_accuracy": 0.825,
+    "accuracy": 0.825,
+    "roc_auc": 0.9658333333333333
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "agg_naive",
+   "n_train": 40,
+   "seed": 3,
+   "fit_seconds": 0.02368274997570552,
+   "metrics": {
+    "balanced_accuracy": 0.975,
+    "accuracy": 0.975,
+    "roc_auc": 0.9974999999999999
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "wagg8_naive",
+   "n_train": 40,
+   "seed": 3,
+   "fit_seconds": 0.12409308398491703,
+   "metrics": {
+    "balanced_accuracy": 0.875,
+    "accuracy": 0.875,
+    "roc_auc": 0.9833333333333334
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "minirocket",
+   "n_train": 40,
+   "seed": 3,
+   "fit_seconds": 0.07871983302175067,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "minirocket10k",
+   "n_train": 40,
+   "seed": 3,
+   "fit_seconds": 0.10889987502014264,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "heartwood",
+   "n_train": 40,
+   "seed": 4,
+   "fit_seconds": 8.22330141699058,
+   "metrics": {
+    "balanced_accuracy": 0.95,
+    "accuracy": 0.95,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "agg",
+   "n_train": 40,
+   "seed": 4,
+   "fit_seconds": 0.024054459005128592,
+   "metrics": {
+    "balanced_accuracy": 0.975,
+    "accuracy": 0.975,
+    "roc_auc": 0.9974999999999999
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "wagg4",
+   "n_train": 40,
+   "seed": 4,
+   "fit_seconds": 0.06555058399681002,
+   "metrics": {
+    "balanced_accuracy": 0.85,
+    "accuracy": 0.85,
+    "roc_auc": 0.9875
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "wagg8",
+   "n_train": 40,
+   "seed": 4,
+   "fit_seconds": 0.12443012499716133,
+   "metrics": {
+    "balanced_accuracy": 0.875,
+    "accuracy": 0.875,
+    "roc_auc": 0.9833333333333334
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "raw_flat",
+   "n_train": 40,
+   "seed": 4,
+   "fit_seconds": 0.1858446670230478,
+   "metrics": {
+    "balanced_accuracy": 0.825,
+    "accuracy": 0.825,
+    "roc_auc": 0.9658333333333333
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "agg_naive",
+   "n_train": 40,
+   "seed": 4,
+   "fit_seconds": 0.023802666022675112,
+   "metrics": {
+    "balanced_accuracy": 0.975,
+    "accuracy": 0.975,
+    "roc_auc": 0.9974999999999999
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "wagg8_naive",
+   "n_train": 40,
+   "seed": 4,
+   "fit_seconds": 0.12464266602182761,
+   "metrics": {
+    "balanced_accuracy": 0.875,
+    "accuracy": 0.875,
+    "roc_auc": 0.9833333333333334
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "minirocket",
+   "n_train": 40,
+   "seed": 4,
+   "fit_seconds": 0.07944733399199322,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "minirocket10k",
+   "n_train": 40,
+   "seed": 4,
+   "fit_seconds": 0.10931562501355074,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "heartwood",
+   "n_train": 120,
+   "seed": 0,
+   "fit_seconds": 53.32479691700428,
+   "metrics": {
+    "balanced_accuracy": 0.903125,
+    "accuracy": 0.903125,
+    "roc_auc": 0.9925558035714286
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "agg",
+   "n_train": 120,
+   "seed": 0,
+   "fit_seconds": 0.09131024999078363,
+   "metrics": {
+    "balanced_accuracy": 0.7625,
+    "accuracy": 0.7625,
+    "roc_auc": 0.9582700892857142
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "wagg4",
+   "n_train": 120,
+   "seed": 0,
+   "fit_seconds": 0.252373166003963,
+   "metrics": {
+    "balanced_accuracy": 0.8375,
+    "accuracy": 0.8375,
+    "roc_auc": 0.9816741071428572
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "wagg8",
+   "n_train": 120,
+   "seed": 0,
+   "fit_seconds": 0.4557453750167042,
+   "metrics": {
+    "balanced_accuracy": 0.734375,
+    "accuracy": 0.734375,
+    "roc_auc": 0.9597991071428571
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "raw_flat",
+   "n_train": 120,
+   "seed": 0,
+   "fit_seconds": 1.8755777500045951,
+   "metrics": {
+    "balanced_accuracy": 0.75,
+    "accuracy": 0.75,
+    "roc_auc": 0.9569196428571428
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "agg_naive",
+   "n_train": 120,
+   "seed": 0,
+   "fit_seconds": 0.09041070801322348,
+   "metrics": {
+    "balanced_accuracy": 0.7625,
+    "accuracy": 0.7625,
+    "roc_auc": 0.9582700892857142
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "wagg8_naive",
+   "n_train": 120,
+   "seed": 0,
+   "fit_seconds": 0.4670358749863226,
+   "metrics": {
+    "balanced_accuracy": 0.7406250000000001,
+    "accuracy": 0.740625,
+    "roc_auc": 0.9610714285714286
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "minirocket",
+   "n_train": 120,
+   "seed": 0,
+   "fit_seconds": 0.9975564579945058,
+   "metrics": {
+    "balanced_accuracy": 0.93125,
+    "accuracy": 0.93125
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "minirocket10k",
+   "n_train": 120,
+   "seed": 0,
+   "fit_seconds": 1.5143929159967229,
+   "metrics": {
+    "balanced_accuracy": 0.93125,
+    "accuracy": 0.93125
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "heartwood",
+   "n_train": 120,
+   "seed": 1,
+   "fit_seconds": 53.50137529199128,
+   "metrics": {
+    "balanced_accuracy": 0.890625,
+    "accuracy": 0.890625,
+    "roc_auc": 0.9897098214285714
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "agg",
+   "n_train": 120,
+   "seed": 1,
+   "fit_seconds": 0.09142004200839438,
+   "metrics": {
+    "balanced_accuracy": 0.7625,
+    "accuracy": 0.7625,
+    "roc_auc": 0.9582700892857142
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "wagg4",
+   "n_train": 120,
+   "seed": 1,
+   "fit_seconds": 0.2512452079972718,
+   "metrics": {
+    "balanced_accuracy": 0.8375,
+    "accuracy": 0.8375,
+    "roc_auc": 0.9816741071428572
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "wagg8",
+   "n_train": 120,
+   "seed": 1,
+   "fit_seconds": 0.45866483298595995,
+   "metrics": {
+    "balanced_accuracy": 0.734375,
+    "accuracy": 0.734375,
+    "roc_auc": 0.9597991071428571
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "raw_flat",
+   "n_train": 120,
+   "seed": 1,
+   "fit_seconds": 1.8823984159971587,
+   "metrics": {
+    "balanced_accuracy": 0.75,
+    "accuracy": 0.75,
+    "roc_auc": 0.9569196428571428
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "agg_naive",
+   "n_train": 120,
+   "seed": 1,
+   "fit_seconds": 0.09050575000583194,
+   "metrics": {
+    "balanced_accuracy": 0.7625,
+    "accuracy": 0.7625,
+    "roc_auc": 0.9582700892857142
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "wagg8_naive",
+   "n_train": 120,
+   "seed": 1,
+   "fit_seconds": 0.46013804199174047,
+   "metrics": {
+    "balanced_accuracy": 0.7406250000000001,
+    "accuracy": 0.740625,
+    "roc_auc": 0.9610714285714286
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "minirocket",
+   "n_train": 120,
+   "seed": 1,
+   "fit_seconds": 0.9883834579959512,
+   "metrics": {
+    "balanced_accuracy": 0.93125,
+    "accuracy": 0.93125
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "minirocket10k",
+   "n_train": 120,
+   "seed": 1,
+   "fit_seconds": 1.5091950420173816,
+   "metrics": {
+    "balanced_accuracy": 0.93125,
+    "accuracy": 0.93125
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "heartwood",
+   "n_train": 120,
+   "seed": 2,
+   "fit_seconds": 52.36220308401971,
+   "metrics": {
+    "balanced_accuracy": 0.8875,
+    "accuracy": 0.8875,
+    "roc_auc": 0.9883258928571428
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "agg",
+   "n_train": 120,
+   "seed": 2,
+   "fit_seconds": 0.09145025000907481,
+   "metrics": {
+    "balanced_accuracy": 0.7625,
+    "accuracy": 0.7625,
+    "roc_auc": 0.9582700892857142
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "wagg4",
+   "n_train": 120,
+   "seed": 2,
+   "fit_seconds": 0.2506174170121085,
+   "metrics": {
+    "balanced_accuracy": 0.8375,
+    "accuracy": 0.8375,
+    "roc_auc": 0.9816741071428572
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "wagg8",
+   "n_train": 120,
+   "seed": 2,
+   "fit_seconds": 0.4572131249879021,
+   "metrics": {
+    "balanced_accuracy": 0.734375,
+    "accuracy": 0.734375,
+    "roc_auc": 0.9597991071428571
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "raw_flat",
+   "n_train": 120,
+   "seed": 2,
+   "fit_seconds": 1.8779936250066385,
+   "metrics": {
+    "balanced_accuracy": 0.75,
+    "accuracy": 0.75,
+    "roc_auc": 0.9569196428571428
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "agg_naive",
+   "n_train": 120,
+   "seed": 2,
+   "fit_seconds": 0.09059470900683664,
+   "metrics": {
+    "balanced_accuracy": 0.7625,
+    "accuracy": 0.7625,
+    "roc_auc": 0.9582700892857142
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "wagg8_naive",
+   "n_train": 120,
+   "seed": 2,
+   "fit_seconds": 0.45821595800225623,
+   "metrics": {
+    "balanced_accuracy": 0.7406250000000001,
+    "accuracy": 0.740625,
+    "roc_auc": 0.9610714285714286
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "minirocket",
+   "n_train": 120,
+   "seed": 2,
+   "fit_seconds": 0.9711988749913871,
+   "metrics": {
+    "balanced_accuracy": 0.93125,
+    "accuracy": 0.93125
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "minirocket10k",
+   "n_train": 120,
+   "seed": 2,
+   "fit_seconds": 1.5004661249986384,
+   "metrics": {
+    "balanced_accuracy": 0.93125,
+    "accuracy": 0.93125
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "heartwood",
+   "n_train": 120,
+   "seed": 3,
+   "fit_seconds": 51.99787349998951,
+   "metrics": {
+    "balanced_accuracy": 0.903125,
+    "accuracy": 0.903125,
+    "roc_auc": 0.9890290178571428
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "agg",
+   "n_train": 120,
+   "seed": 3,
+   "fit_seconds": 0.09160712498123758,
+   "metrics": {
+    "balanced_accuracy": 0.7625,
+    "accuracy": 0.7625,
+    "roc_auc": 0.9582700892857142
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "wagg4",
+   "n_train": 120,
+   "seed": 3,
+   "fit_seconds": 0.25162529200315475,
+   "metrics": {
+    "balanced_accuracy": 0.8375,
+    "accuracy": 0.8375,
+    "roc_auc": 0.9816741071428572
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "wagg8",
+   "n_train": 120,
+   "seed": 3,
+   "fit_seconds": 0.4577918330032844,
+   "metrics": {
+    "balanced_accuracy": 0.734375,
+    "accuracy": 0.734375,
+    "roc_auc": 0.9597991071428571
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "raw_flat",
+   "n_train": 120,
+   "seed": 3,
+   "fit_seconds": 1.882903207995696,
+   "metrics": {
+    "balanced_accuracy": 0.75,
+    "accuracy": 0.75,
+    "roc_auc": 0.9569196428571428
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "agg_naive",
+   "n_train": 120,
+   "seed": 3,
+   "fit_seconds": 0.09033562502008863,
+   "metrics": {
+    "balanced_accuracy": 0.7625,
+    "accuracy": 0.7625,
+    "roc_auc": 0.9582700892857142
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "wagg8_naive",
+   "n_train": 120,
+   "seed": 3,
+   "fit_seconds": 0.4584329580247868,
+   "metrics": {
+    "balanced_accuracy": 0.7406250000000001,
+    "accuracy": 0.740625,
+    "roc_auc": 0.9610714285714286
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "minirocket",
+   "n_train": 120,
+   "seed": 3,
+   "fit_seconds": 0.9661011249991134,
+   "metrics": {
+    "balanced_accuracy": 0.93125,
+    "accuracy": 0.93125
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "minirocket10k",
+   "n_train": 120,
+   "seed": 3,
+   "fit_seconds": 1.4954729579912964,
+   "metrics": {
+    "balanced_accuracy": 0.93125,
+    "accuracy": 0.93125
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "heartwood",
+   "n_train": 120,
+   "seed": 4,
+   "fit_seconds": 54.10529004098498,
+   "metrics": {
+    "balanced_accuracy": 0.9125000000000001,
+    "accuracy": 0.9125,
+    "roc_auc": 0.9903348214285714
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "agg",
+   "n_train": 120,
+   "seed": 4,
+   "fit_seconds": 0.09191012498922646,
+   "metrics": {
+    "balanced_accuracy": 0.7625,
+    "accuracy": 0.7625,
+    "roc_auc": 0.9582700892857142
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "wagg4",
+   "n_train": 120,
+   "seed": 4,
+   "fit_seconds": 0.25150116698932834,
+   "metrics": {
+    "balanced_accuracy": 0.8375,
+    "accuracy": 0.8375,
+    "roc_auc": 0.9816741071428572
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "wagg8",
+   "n_train": 120,
+   "seed": 4,
+   "fit_seconds": 0.4585880420054309,
+   "metrics": {
+    "balanced_accuracy": 0.734375,
+    "accuracy": 0.734375,
+    "roc_auc": 0.9597991071428571
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "raw_flat",
+   "n_train": 120,
+   "seed": 4,
+   "fit_seconds": 1.8809956669865642,
+   "metrics": {
+    "balanced_accuracy": 0.75,
+    "accuracy": 0.75,
+    "roc_auc": 0.9569196428571428
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "agg_naive",
+   "n_train": 120,
+   "seed": 4,
+   "fit_seconds": 0.09039770800154656,
+   "metrics": {
+    "balanced_accuracy": 0.7625,
+    "accuracy": 0.7625,
+    "roc_auc": 0.9582700892857142
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "wagg8_naive",
+   "n_train": 120,
+   "seed": 4,
+   "fit_seconds": 0.45893733398406766,
+   "metrics": {
+    "balanced_accuracy": 0.7406250000000001,
+    "accuracy": 0.740625,
+    "roc_auc": 0.9610714285714286
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "minirocket",
+   "n_train": 120,
+   "seed": 4,
+   "fit_seconds": 0.971864999999525,
+   "metrics": {
+    "balanced_accuracy": 0.93125,
+    "accuracy": 0.93125
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "minirocket10k",
+   "n_train": 120,
+   "seed": 4,
+   "fit_seconds": 1.4982715420192108,
+   "metrics": {
+    "balanced_accuracy": 0.93125,
+    "accuracy": 0.93125
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "heartwood",
+   "n_train": 108,
+   "seed": 0,
+   "fit_seconds": 265.9622231660178,
+   "metrics": {
+    "balanced_accuracy": 0.9583333333333335,
+    "accuracy": 0.9583333333333334,
+    "roc_auc": 0.9978956228956228
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "agg",
+   "n_train": 108,
+   "seed": 0,
+   "fit_seconds": 0.14364429202396423,
+   "metrics": {
+    "balanced_accuracy": 0.861111111111111,
+    "accuracy": 0.8611111111111112,
+    "roc_auc": 0.9785353535353534
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "wagg4",
+   "n_train": 108,
+   "seed": 0,
+   "fit_seconds": 0.44853991700802,
+   "metrics": {
+    "balanced_accuracy": 0.8333333333333334,
+    "accuracy": 0.8333333333333334,
+    "roc_auc": 0.9877946127946128
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "wagg8",
+   "n_train": 108,
+   "seed": 0,
+   "fit_seconds": 0.8705814589920919,
+   "metrics": {
+    "balanced_accuracy": 0.8055555555555555,
+    "accuracy": 0.8055555555555556,
+    "roc_auc": 0.9757996632996634
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "raw_flat",
+   "n_train": 108,
+   "seed": 0,
+   "fit_seconds": 12.859229624998989,
+   "metrics": {
+    "balanced_accuracy": 0.7916666666666666,
+    "accuracy": 0.7916666666666666,
+    "roc_auc": 0.9612794612794612
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "agg_naive",
+   "n_train": 108,
+   "seed": 0,
+   "fit_seconds": 0.14264583299518563,
+   "metrics": {
+    "balanced_accuracy": 0.861111111111111,
+    "accuracy": 0.8611111111111112,
+    "roc_auc": 0.9785353535353534
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "wagg8_naive",
+   "n_train": 108,
+   "seed": 0,
+   "fit_seconds": 0.8712980000127573,
+   "metrics": {
+    "balanced_accuracy": 0.8055555555555555,
+    "accuracy": 0.8055555555555556,
+    "roc_auc": 0.9757996632996634
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "minirocket",
+   "n_train": 108,
+   "seed": 0,
+   "fit_seconds": 1.7923342919966672,
+   "metrics": {
+    "balanced_accuracy": 0.9861111111111112,
+    "accuracy": 0.9861111111111112
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "minirocket10k",
+   "n_train": 108,
+   "seed": 0,
+   "fit_seconds": 2.7303939999837894,
+   "metrics": {
+    "balanced_accuracy": 0.9861111111111112,
+    "accuracy": 0.9861111111111112
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "heartwood",
+   "n_train": 108,
+   "seed": 1,
+   "fit_seconds": 270.59031837500515,
+   "metrics": {
+    "balanced_accuracy": 0.9305555555555557,
+    "accuracy": 0.9305555555555556,
+    "roc_auc": 0.9945286195286195
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "agg",
+   "n_train": 108,
+   "seed": 1,
+   "fit_seconds": 0.14331608300562948,
+   "metrics": {
+    "balanced_accuracy": 0.861111111111111,
+    "accuracy": 0.8611111111111112,
+    "roc_auc": 0.9785353535353534
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "wagg4",
+   "n_train": 108,
+   "seed": 1,
+   "fit_seconds": 0.44693112501408905,
+   "metrics": {
+    "balanced_accuracy": 0.8333333333333334,
+    "accuracy": 0.8333333333333334,
+    "roc_auc": 0.9877946127946128
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "wagg8",
+   "n_train": 108,
+   "seed": 1,
+   "fit_seconds": 0.8691259579791222,
+   "metrics": {
+    "balanced_accuracy": 0.8055555555555555,
+    "accuracy": 0.8055555555555556,
+    "roc_auc": 0.9757996632996634
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "raw_flat",
+   "n_train": 108,
+   "seed": 1,
+   "fit_seconds": 12.578922124987002,
+   "metrics": {
+    "balanced_accuracy": 0.7916666666666666,
+    "accuracy": 0.7916666666666666,
+    "roc_auc": 0.9612794612794612
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "agg_naive",
+   "n_train": 108,
+   "seed": 1,
+   "fit_seconds": 0.14288462500553578,
+   "metrics": {
+    "balanced_accuracy": 0.861111111111111,
+    "accuracy": 0.8611111111111112,
+    "roc_auc": 0.9785353535353534
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "wagg8_naive",
+   "n_train": 108,
+   "seed": 1,
+   "fit_seconds": 0.8571160410065204,
+   "metrics": {
+    "balanced_accuracy": 0.8055555555555555,
+    "accuracy": 0.8055555555555556,
+    "roc_auc": 0.9757996632996634
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "minirocket",
+   "n_train": 108,
+   "seed": 1,
+   "fit_seconds": 1.7903751670091879,
+   "metrics": {
+    "balanced_accuracy": 0.9861111111111112,
+    "accuracy": 0.9861111111111112
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "minirocket10k",
+   "n_train": 108,
+   "seed": 1,
+   "fit_seconds": 2.728997333004372,
+   "metrics": {
+    "balanced_accuracy": 0.9861111111111112,
+    "accuracy": 0.9861111111111112
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "heartwood",
+   "n_train": 108,
+   "seed": 2,
+   "fit_seconds": 277.2593662919826,
+   "metrics": {
+    "balanced_accuracy": 0.9444444444444445,
+    "accuracy": 0.9444444444444444,
+    "roc_auc": 0.9945286195286195
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "agg",
+   "n_train": 108,
+   "seed": 2,
+   "fit_seconds": 0.14357749998453073,
+   "metrics": {
+    "balanced_accuracy": 0.861111111111111,
+    "accuracy": 0.8611111111111112,
+    "roc_auc": 0.9785353535353534
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "wagg4",
+   "n_train": 108,
+   "seed": 2,
+   "fit_seconds": 0.44840645900694653,
+   "metrics": {
+    "balanced_accuracy": 0.8333333333333334,
+    "accuracy": 0.8333333333333334,
+    "roc_auc": 0.9877946127946128
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "wagg8",
+   "n_train": 108,
+   "seed": 2,
+   "fit_seconds": 0.8714396670111455,
+   "metrics": {
+    "balanced_accuracy": 0.8055555555555555,
+    "accuracy": 0.8055555555555556,
+    "roc_auc": 0.9757996632996634
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "raw_flat",
+   "n_train": 108,
+   "seed": 2,
+   "fit_seconds": 12.57892537501175,
+   "metrics": {
+    "balanced_accuracy": 0.7916666666666666,
+    "accuracy": 0.7916666666666666,
+    "roc_auc": 0.9612794612794612
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "agg_naive",
+   "n_train": 108,
+   "seed": 2,
+   "fit_seconds": 0.14287495901226066,
+   "metrics": {
+    "balanced_accuracy": 0.861111111111111,
+    "accuracy": 0.8611111111111112,
+    "roc_auc": 0.9785353535353534
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "wagg8_naive",
+   "n_train": 108,
+   "seed": 2,
+   "fit_seconds": 0.8550926250172779,
+   "metrics": {
+    "balanced_accuracy": 0.8055555555555555,
+    "accuracy": 0.8055555555555556,
+    "roc_auc": 0.9757996632996634
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "minirocket",
+   "n_train": 108,
+   "seed": 2,
+   "fit_seconds": 1.790233250008896,
+   "metrics": {
+    "balanced_accuracy": 0.9861111111111112,
+    "accuracy": 0.9861111111111112
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "minirocket10k",
+   "n_train": 108,
+   "seed": 2,
+   "fit_seconds": 2.7303518329863437,
+   "metrics": {
+    "balanced_accuracy": 0.9861111111111112,
+    "accuracy": 0.9861111111111112
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "heartwood",
+   "n_train": 108,
+   "seed": 3,
+   "fit_seconds": 278.67489979197853,
+   "metrics": {
+    "balanced_accuracy": 0.9166666666666666,
+    "accuracy": 0.9166666666666666,
+    "roc_auc": 0.9976851851851851
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "agg",
+   "n_train": 108,
+   "seed": 3,
+   "fit_seconds": 0.1428708340099547,
+   "metrics": {
+    "balanced_accuracy": 0.861111111111111,
+    "accuracy": 0.8611111111111112,
+    "roc_auc": 0.9785353535353534
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "wagg4",
+   "n_train": 108,
+   "seed": 3,
+   "fit_seconds": 0.44719725000322796,
+   "metrics": {
+    "balanced_accuracy": 0.8333333333333334,
+    "accuracy": 0.8333333333333334,
+    "roc_auc": 0.9877946127946128
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "wagg8",
+   "n_train": 108,
+   "seed": 3,
+   "fit_seconds": 0.857292625005357,
+   "metrics": {
+    "balanced_accuracy": 0.8055555555555555,
+    "accuracy": 0.8055555555555556,
+    "roc_auc": 0.9757996632996634
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "raw_flat",
+   "n_train": 108,
+   "seed": 3,
+   "fit_seconds": 12.819739541999297,
+   "metrics": {
+    "balanced_accuracy": 0.7916666666666666,
+    "accuracy": 0.7916666666666666,
+    "roc_auc": 0.9612794612794612
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "agg_naive",
+   "n_train": 108,
+   "seed": 3,
+   "fit_seconds": 0.14207562498631887,
+   "metrics": {
+    "balanced_accuracy": 0.861111111111111,
+    "accuracy": 0.8611111111111112,
+    "roc_auc": 0.9785353535353534
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "wagg8_naive",
+   "n_train": 108,
+   "seed": 3,
+   "fit_seconds": 0.8669449580193032,
+   "metrics": {
+    "balanced_accuracy": 0.8055555555555555,
+    "accuracy": 0.8055555555555556,
+    "roc_auc": 0.9757996632996634
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "minirocket",
+   "n_train": 108,
+   "seed": 3,
+   "fit_seconds": 1.799696166999638,
+   "metrics": {
+    "balanced_accuracy": 0.9861111111111112,
+    "accuracy": 0.9861111111111112
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "minirocket10k",
+   "n_train": 108,
+   "seed": 3,
+   "fit_seconds": 2.7411488340003416,
+   "metrics": {
+    "balanced_accuracy": 0.9861111111111112,
+    "accuracy": 0.9861111111111112
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "heartwood",
+   "n_train": 108,
+   "seed": 4,
+   "fit_seconds": 265.44407991701155,
+   "metrics": {
+    "balanced_accuracy": 0.9444444444444446,
+    "accuracy": 0.9444444444444444,
+    "roc_auc": 0.9987373737373737
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "agg",
+   "n_train": 108,
+   "seed": 4,
+   "fit_seconds": 0.14372983400244266,
+   "metrics": {
+    "balanced_accuracy": 0.861111111111111,
+    "accuracy": 0.8611111111111112,
+    "roc_auc": 0.9785353535353534
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "wagg4",
+   "n_train": 108,
+   "seed": 4,
+   "fit_seconds": 0.44288545902236365,
+   "metrics": {
+    "balanced_accuracy": 0.8333333333333334,
+    "accuracy": 0.8333333333333334,
+    "roc_auc": 0.9877946127946128
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "wagg8",
+   "n_train": 108,
+   "seed": 4,
+   "fit_seconds": 0.871594540978549,
+   "metrics": {
+    "balanced_accuracy": 0.8055555555555555,
+    "accuracy": 0.8055555555555556,
+    "roc_auc": 0.9757996632996634
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "raw_flat",
+   "n_train": 108,
+   "seed": 4,
+   "fit_seconds": 12.606289124989416,
+   "metrics": {
+    "balanced_accuracy": 0.7916666666666666,
+    "accuracy": 0.7916666666666666,
+    "roc_auc": 0.9612794612794612
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "agg_naive",
+   "n_train": 108,
+   "seed": 4,
+   "fit_seconds": 0.14308412501122802,
+   "metrics": {
+    "balanced_accuracy": 0.861111111111111,
+    "accuracy": 0.8611111111111112,
+    "roc_auc": 0.9785353535353534
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "wagg8_naive",
+   "n_train": 108,
+   "seed": 4,
+   "fit_seconds": 0.8709454589989036,
+   "metrics": {
+    "balanced_accuracy": 0.8055555555555555,
+    "accuracy": 0.8055555555555556,
+    "roc_auc": 0.9757996632996634
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "minirocket",
+   "n_train": 108,
+   "seed": 4,
+   "fit_seconds": 1.7859083329967689,
+   "metrics": {
+    "balanced_accuracy": 0.9861111111111112,
+    "accuracy": 0.9861111111111112
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "minirocket10k",
+   "n_train": 108,
+   "seed": 4,
+   "fit_seconds": 2.726309082994703,
+   "metrics": {
+    "balanced_accuracy": 0.9861111111111112,
+    "accuracy": 0.9861111111111112
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "heartwood",
+   "n_train": 50,
+   "seed": 0,
+   "fit_seconds": 21.54062562499894,
+   "metrics": {
+    "balanced_accuracy": 0.52,
+    "accuracy": 0.52,
+    "roc_auc": 0.732
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "agg",
+   "n_train": 50,
+   "seed": 0,
+   "fit_seconds": 5.7687317919917405,
+   "metrics": {
+    "balanced_accuracy": 0.52,
+    "accuracy": 0.52,
+    "roc_auc": 0.7969999999999999
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "wagg4",
+   "n_train": 50,
+   "seed": 0,
+   "fit_seconds": 21.15851858400856,
+   "metrics": {
+    "balanced_accuracy": 0.38,
+    "accuracy": 0.38,
+    "roc_auc": 0.659
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "wagg8",
+   "n_train": 50,
+   "seed": 0,
+   "fit_seconds": 42.819018124981085,
+   "metrics": {
+    "balanced_accuracy": 0.3,
+    "accuracy": 0.3,
+    "roc_auc": 0.6765000000000001
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "raw_flat",
+   "n_train": 50,
+   "seed": 0,
+   "fit_seconds": 138.02751629200066,
+   "metrics": {
+    "balanced_accuracy": 0.32000000000000006,
+    "accuracy": 0.32,
+    "roc_auc": 0.67
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "agg_naive",
+   "n_train": 50,
+   "seed": 0,
+   "fit_seconds": 5.766888624988496,
+   "metrics": {
+    "balanced_accuracy": 0.52,
+    "accuracy": 0.52,
+    "roc_auc": 0.7969999999999999
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "wagg8_naive",
+   "n_train": 50,
+   "seed": 0,
+   "fit_seconds": 43.012721665989375,
+   "metrics": {
+    "balanced_accuracy": 0.3,
+    "accuracy": 0.3,
+    "roc_auc": 0.6765000000000001
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "minirocket",
+   "n_train": 50,
+   "seed": 0,
+   "fit_seconds": 5.1780668330029584,
+   "metrics": {
+    "balanced_accuracy": 0.66,
+    "accuracy": 0.66
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "minirocket10k",
+   "n_train": 50,
+   "seed": 0,
+   "fit_seconds": 6.095686207991093,
+   "metrics": {
+    "balanced_accuracy": 0.7,
+    "accuracy": 0.7
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "heartwood",
+   "n_train": 50,
+   "seed": 1,
+   "fit_seconds": 22.45679354199092,
+   "metrics": {
+    "balanced_accuracy": 0.44000000000000006,
+    "accuracy": 0.44,
+    "roc_auc": 0.773
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "agg",
+   "n_train": 50,
+   "seed": 1,
+   "fit_seconds": 5.876399458007654,
+   "metrics": {
+    "balanced_accuracy": 0.52,
+    "accuracy": 0.52,
+    "roc_auc": 0.7969999999999999
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "wagg4",
+   "n_train": 50,
+   "seed": 1,
+   "fit_seconds": 21.487282417016104,
+   "metrics": {
+    "balanced_accuracy": 0.38,
+    "accuracy": 0.38,
+    "roc_auc": 0.659
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "wagg8",
+   "n_train": 50,
+   "seed": 1,
+   "fit_seconds": 43.08359145899885,
+   "metrics": {
+    "balanced_accuracy": 0.3,
+    "accuracy": 0.3,
+    "roc_auc": 0.6765000000000001
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "raw_flat",
+   "n_train": 50,
+   "seed": 1,
+   "fit_seconds": 139.22955791599816,
+   "metrics": {
+    "balanced_accuracy": 0.32000000000000006,
+    "accuracy": 0.32,
+    "roc_auc": 0.67
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "agg_naive",
+   "n_train": 50,
+   "seed": 1,
+   "fit_seconds": 5.797054541995749,
+   "metrics": {
+    "balanced_accuracy": 0.52,
+    "accuracy": 0.52,
+    "roc_auc": 0.7969999999999999
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "wagg8_naive",
+   "n_train": 50,
+   "seed": 1,
+   "fit_seconds": 42.71625254198443,
+   "metrics": {
+    "balanced_accuracy": 0.3,
+    "accuracy": 0.3,
+    "roc_auc": 0.6765000000000001
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "minirocket",
+   "n_train": 50,
+   "seed": 1,
+   "fit_seconds": 4.972325625014491,
+   "metrics": {
+    "balanced_accuracy": 0.66,
+    "accuracy": 0.66
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "minirocket10k",
+   "n_train": 50,
+   "seed": 1,
+   "fit_seconds": 6.20979358398472,
+   "metrics": {
+    "balanced_accuracy": 0.7,
+    "accuracy": 0.7
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "heartwood",
+   "n_train": 50,
+   "seed": 2,
+   "fit_seconds": 22.310421457979828,
+   "metrics": {
+    "balanced_accuracy": 0.42000000000000004,
+    "accuracy": 0.42,
+    "roc_auc": 0.7535000000000001
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "agg",
+   "n_train": 50,
+   "seed": 2,
+   "fit_seconds": 5.757859333010856,
+   "metrics": {
+    "balanced_accuracy": 0.52,
+    "accuracy": 0.52,
+    "roc_auc": 0.7969999999999999
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "wagg4",
+   "n_train": 50,
+   "seed": 2,
+   "fit_seconds": 22.349265875003766,
+   "metrics": {
+    "balanced_accuracy": 0.38,
+    "accuracy": 0.38,
+    "roc_auc": 0.659
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "wagg8",
+   "n_train": 50,
+   "seed": 2,
+   "fit_seconds": 43.39538679199177,
+   "metrics": {
+    "balanced_accuracy": 0.3,
+    "accuracy": 0.3,
+    "roc_auc": 0.6765000000000001
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "raw_flat",
+   "n_train": 50,
+   "seed": 2,
+   "fit_seconds": 138.6417752080015,
+   "metrics": {
+    "balanced_accuracy": 0.32000000000000006,
+    "accuracy": 0.32,
+    "roc_auc": 0.67
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "agg_naive",
+   "n_train": 50,
+   "seed": 2,
+   "fit_seconds": 5.877068875008263,
+   "metrics": {
+    "balanced_accuracy": 0.52,
+    "accuracy": 0.52,
+    "roc_auc": 0.7969999999999999
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "wagg8_naive",
+   "n_train": 50,
+   "seed": 2,
+   "fit_seconds": 42.6318175419874,
+   "metrics": {
+    "balanced_accuracy": 0.3,
+    "accuracy": 0.3,
+    "roc_auc": 0.6765000000000001
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "minirocket",
+   "n_train": 50,
+   "seed": 2,
+   "fit_seconds": 5.270473624987062,
+   "metrics": {
+    "balanced_accuracy": 0.66,
+    "accuracy": 0.66
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "minirocket10k",
+   "n_train": 50,
+   "seed": 2,
+   "fit_seconds": 6.184569417004241,
+   "metrics": {
+    "balanced_accuracy": 0.7,
+    "accuracy": 0.7
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "heartwood",
+   "n_train": 50,
+   "seed": 3,
+   "fit_seconds": 23.03635591600323,
+   "metrics": {
+    "balanced_accuracy": 0.5,
+    "accuracy": 0.5,
+    "roc_auc": 0.7295
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "agg",
+   "n_train": 50,
+   "seed": 3,
+   "fit_seconds": 5.803292666008929,
+   "metrics": {
+    "balanced_accuracy": 0.52,
+    "accuracy": 0.52,
+    "roc_auc": 0.7969999999999999
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "wagg4",
+   "n_train": 50,
+   "seed": 3,
+   "fit_seconds": 21.656420042010723,
+   "metrics": {
+    "balanced_accuracy": 0.38,
+    "accuracy": 0.38,
+    "roc_auc": 0.659
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "wagg8",
+   "n_train": 50,
+   "seed": 3,
+   "fit_seconds": 43.16908733299351,
+   "metrics": {
+    "balanced_accuracy": 0.3,
+    "accuracy": 0.3,
+    "roc_auc": 0.6765000000000001
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "raw_flat",
+   "n_train": 50,
+   "seed": 3,
+   "fit_seconds": 141.68882545898668,
+   "metrics": {
+    "balanced_accuracy": 0.32000000000000006,
+    "accuracy": 0.32,
+    "roc_auc": 0.67
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "agg_naive",
+   "n_train": 50,
+   "seed": 3,
+   "fit_seconds": 5.734436291997554,
+   "metrics": {
+    "balanced_accuracy": 0.52,
+    "accuracy": 0.52,
+    "roc_auc": 0.7969999999999999
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "wagg8_naive",
+   "n_train": 50,
+   "seed": 3,
+   "fit_seconds": 43.843731917004334,
+   "metrics": {
+    "balanced_accuracy": 0.3,
+    "accuracy": 0.3,
+    "roc_auc": 0.6765000000000001
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "minirocket",
+   "n_train": 50,
+   "seed": 3,
+   "fit_seconds": 5.006052791984985,
+   "metrics": {
+    "balanced_accuracy": 0.66,
+    "accuracy": 0.66
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "minirocket10k",
+   "n_train": 50,
+   "seed": 3,
+   "fit_seconds": 6.240097124973545,
+   "metrics": {
+    "balanced_accuracy": 0.7,
+    "accuracy": 0.7
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "heartwood",
+   "n_train": 50,
+   "seed": 4,
+   "fit_seconds": 23.830689583992353,
+   "metrics": {
+    "balanced_accuracy": 0.5,
+    "accuracy": 0.5,
+    "roc_auc": 0.773
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "agg",
+   "n_train": 50,
+   "seed": 4,
+   "fit_seconds": 5.723094749992015,
+   "metrics": {
+    "balanced_accuracy": 0.52,
+    "accuracy": 0.52,
+    "roc_auc": 0.7969999999999999
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "wagg4",
+   "n_train": 50,
+   "seed": 4,
+   "fit_seconds": 21.699314124998637,
+   "metrics": {
+    "balanced_accuracy": 0.38,
+    "accuracy": 0.38,
+    "roc_auc": 0.659
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "wagg8",
+   "n_train": 50,
+   "seed": 4,
+   "fit_seconds": 43.15158295902074,
+   "metrics": {
+    "balanced_accuracy": 0.3,
+    "accuracy": 0.3,
+    "roc_auc": 0.6765000000000001
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "raw_flat",
+   "n_train": 50,
+   "seed": 4,
+   "fit_seconds": 141.2899396670109,
+   "metrics": {
+    "balanced_accuracy": 0.32000000000000006,
+    "accuracy": 0.32,
+    "roc_auc": 0.67
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "agg_naive",
+   "n_train": 50,
+   "seed": 4,
+   "fit_seconds": 5.760121041996172,
+   "metrics": {
+    "balanced_accuracy": 0.52,
+    "accuracy": 0.52,
+    "roc_auc": 0.7969999999999999
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "wagg8_naive",
+   "n_train": 50,
+   "seed": 4,
+   "fit_seconds": 43.81366633399739,
+   "metrics": {
+    "balanced_accuracy": 0.3,
+    "accuracy": 0.3,
+    "roc_auc": 0.6765000000000001
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "minirocket",
+   "n_train": 50,
+   "seed": 4,
+   "fit_seconds": 5.218019499996444,
+   "metrics": {
+    "balanced_accuracy": 0.66,
+    "accuracy": 0.66
+   }
+  },
+  {
+   "dataset": "uea:DuckDuckGeese",
+   "model": "minirocket10k",
+   "n_train": 50,
+   "seed": 4,
+   "fit_seconds": 6.109683791990392,
+   "metrics": {
+    "balanced_accuracy": 0.7,
+    "accuracy": 0.7
+   }
+  }
+ ]
+}

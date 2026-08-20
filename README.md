@@ -10,60 +10,72 @@ the columns beside it.
 Boosting for datasets that mix **static per-row features with raw time series** — without
 collapsing the series into aggregates first.
 
-> **Status: v0.3 — all phases complete, validated on real data.** 267 tests, a
-> reproducible benchmark grid, and a pre-registered real-data study whose three testable
-> hypotheses all passed. Headline: on ICU mortality prediction it beats every baseline at
-> every training size, including a real time-series method; on six months of credit data
-> it buys nothing. Both results are below. See `PLAN.md` and `VALIDATION.md`.
+> **Status: v0.4 — the real-data claim did not survive its own audit.** 273 tests, a
+> reproducible benchmark grid, and a pre-registered real-data study whose headline result
+> turned out to rest on a bug in the baseline. Corrected, **H1 fails**: against an
+> aggregate baseline that handles missing data the way Heartwood does, Heartwood ties on
+> two of three mixed datasets and wins on one. The full account is in
+> [`validation/CORRECTION.md`](validation/CORRECTION.md); the successor study is
+> pre-registered in [`VALIDATION_V5.md`](VALIDATION_V5.md).
 
 ## Validation on real data — the honest verdict
 
-Everything below this section is measured on synthetic data I wrote myself, which is not
-evidence of much. So the hypotheses, thresholds, datasets and baselines were
+The hypotheses, thresholds, datasets and baselines were
 [pre-registered](VALIDATION.md) and committed **before** any real dataset was downloaded,
-and then evaluated mechanically. Reproduce with `python validation/run_validation.py`.
+then evaluated mechanically. That part worked exactly as intended, and it is the reason
+this section can be written at all. What it did not protect against was the benchmark
+measuring the wrong thing.
 
-**All three pre-registered hypotheses passed.** The margin over the aggregate workaround
-ranges from nothing to eleven points, and *which* you get is predictable.
+**The v0.3 headline was wrong.** `benchmarks/baselines.py` summarised each window with
+bare NumPy reductions, so a single missing cell turned a whole statistic into NaN.
+Heartwood's own `interval_stat` has always skipped missing cells. On PhysioNet ICU, which
+is 80% missing, that left the `agg` design matrix 94% NaN with 176 of 370 series columns
+entirely empty — and the reported "+10 points over the aggregate workaround" was mostly
+the difference between two ways of averaging, not two ways of representing a series.
 
-| dataset | series | Heartwood vs `agg`, by training size |
-|---|---|---|
-| **ICU mortality** (PhysioNet 2012) | 37 channels × 48 h, **80% missing** | +10.5, +10.0, +11.2, +9.7, +8.0 pt AUC — **wins 5/5** |
-| **Human activity** (UCI HAR) | 9 channels × 128 steps | +4.7, +9.2, +4.5, +2.9, +5.1 pt — **wins 5/5** |
-| **Credit default** (UCI) | 3 channels × **6 months** | −0.4, −0.0, +0.6, +0.8, −0.2 pt — **no benefit, 0/5** |
+| ICU, ROC-AUC | n=100 | n=250 | n=500 | n=1000 | n=3997 |
+|---|---|---|---|---|---|
+| Heartwood | 0.689 | 0.787 | 0.814 | 0.833 | 0.862 |
+| `agg`, NaN-aware (correct) | 0.682 | 0.772 | 0.810 | 0.818 | 0.858 |
+| `agg`, NaN-propagating (v0.3) | 0.615 | 0.669 | 0.700 | 0.733 | 0.783 |
+| **published margin** | +10.5 | +10.0 | +11.2 | +9.7 | +8.0 |
+| **corrected margin** | +0.7 | +1.4 | +0.3 | +1.5 | +0.5 |
 
-### The ICU result
+A second defect: `run_validation.py` collapsed every official-split dataset to a single
+subsample seed, so each `±0.000` in the v0.3 tables meant *n=1*, not zero variance. Both
+are fixed, both are pinned by tests, and the pre-registered results are left in place
+rather than overwritten.
 
-This is the shape the library was built for: a few admission facts (age, gender, ICU type)
-plus 48 hours of sparse, irregular clinical measurements. Heartwood beats **every**
-baseline at **every** training size — including MiniROCKET, a real time-series method.
+### What the corrected study says
 
-| n_train | Heartwood | best baseline | static only |
+| dataset | series | Heartwood vs `agg`, by training size | won |
 |---|---|---|---|
-| 100 | **0.682** | 0.647 (MiniROCKET) | 0.530 |
-| 250 | **0.779** | 0.736 (MiniROCKET) | 0.521 |
-| 500 | **0.819** | 0.748 (MiniROCKET) | 0.602 |
-| 1000 | **0.851** | 0.788 (raw timesteps) | 0.618 |
-| 3997 (all) | **0.862** | 0.822 (raw timesteps) | 0.655 |
+| **ICU mortality** (PhysioNet 2012) | 37 channels × 48 h, 80% missing | +0.7, +1.4, +0.3, +1.5, +0.5 | 0/5 |
+| **Human activity** (UCI HAR) | 9 channels × 128 steps | **+3.5, +5.1, +4.6, +3.5, +5.2** | **5/5** |
+| **Credit default** (UCI) | 3 channels × 6 months | −0.4, −0.0, +0.6, +0.8, −0.2 | 0/5 |
 
-0.862 AUROC for in-hospital mortality is a respectable number on this dataset, and it is
-reached with library defaults on the challenge's own train/test split. Note where the
-margin is largest — at n=250–500, exactly the regime the project set out to serve.
+**H1 — FAIL**: 5/15 cells at ≥2 points (33%; pass needed 60%, fail is under 50%).
+**H2** — PASS. **H3** — PASS at −4.7 points against a −5.0 bar, having moved from −2.8 once
+the seeds were fixed. **H4** — not testable. **H5** — PASS, and it is the most defensible
+result in the study; `validation/dump_icu_splits.py` reproduces it.
 
-Why here and not on credit? Not simply series length. It is whether the trajectory holds
-structure that summary statistics throw away. Six monthly credit figures do not: ten
-statistics over six numbers essentially *are* the series, and every representation
-(global, windowed, raw, ours) lands within a point of the others at every size. Forty-eight
-hours of sparsely sampled vitals do, in two ways at once — *when* something happened, and
-the fact that four cells in five were never measured at all. Missingness is a first-class
-feature here rather than something to impute away, which is exactly what the split scan's
-learned missing-direction was built for.
+The failures are not scattered, which is the one genuinely useful thing here. Heartwood
+ties `agg` exactly where ten statistics over the series are nearly sufficient (ICU, credit)
+and beats it exactly where they are not (HAR). Where it wins, though, MiniROCKET wins by
+more: on HAR it beats Heartwood by 6 to 13 points at every size.
+
+**So the claim this library was built on is currently unsupported.** What the evidence
+supports is narrower: *where aggregation is enough, Heartwood matches it; where aggregation
+is not enough, Heartwood helps, but a dedicated time-series method helps more.*
+Whether anything stronger holds — in particular on data that has both real static
+covariates and series a summary genuinely loses, a combination none of these three datasets
+had — is the pre-registered question of [`VALIDATION_V5.md`](VALIDATION_V5.md).
 
 ### What it learned, in its own words
 
-Interpretability is only worth claiming if the explanations survive contact with someone
-who knows the domain. Here are the ICU model's highest-gain splits, with channel indices
-replaced by their clinical names — nothing else edited:
+This part is unaffected by either defect and reproduces exactly
+(`python validation/dump_icu_splits.py`). The ICU model's highest-gain splits, with channel
+indices replaced by their clinical names and nothing else edited:
 
 ```
 gain=90.5   series[BUN].last[t=0:48]    <= 30.5    [missing->left]
@@ -79,40 +91,30 @@ Read that as a clinician would. Low GCS is impaired consciousness, and the thres
 picked — 9.25 and 10.5 — sit right at the conventional coma boundary. Elevated BUN is
 renal dysfunction. Urine output under ~60 mL/h is oliguria, a standard organ-failure
 criterion. Lactate is the shock marker. Raised FiO2 means ventilator support. Nobody told
-the model any of this; it found the standard ICU risk factors from raw hourly readings,
-and reported them in one line each. The `GCS.delta` family is the one a global aggregate
-cannot produce at all: it is deterioration versus recovery over the stay, which is the
-"journey" the whole project is named for.
-
-**Pre-registered verdicts:**
-
-- **H1 (beats the aggregate workaround)** — **PASS**: 10/15 cells at ≥2 points (67%;
-  threshold 60%). Cleanly split by dataset — ICU 5/5, HAR 5/5, credit 0/5.
-- **H2 (small data)** — **PASS**: at n=100 and n=250 the margin was negative on only 2 of
-  6 cells, and both were credit, where nothing helps.
-- **H3 (vs MiniROCKET)** — **PASS**: median gap −2.8 points across seven UEA datasets.
-  Heartwood *beats* MiniROCKET on the two smallest (StandWalkJump n=12: +6.7;
-  AtrialFibrillation n=15: +33.3), where a ridge over 10,000 random kernels has too little
-  data to fit, and loses on the widest and longest (DuckDuckGeese −14.0, ERing −11.1).
-- **H4 (no harm)** — not testable: no real dataset had an uninformative series.
-- **H5 (interpretability, qualitative)** — the ICU splits above are domain-plausible
-  without cherry-picking; the top families are the standard ICU mortality predictors.
+the model any of this; it found the standard ICU risk factors from raw hourly readings and
+reported them in one line each. 0.862 AUROC on the challenge's own split is a respectable
+number — it is just not a number only this library can reach.
 
 One dataset from the locked list could not be run: **EigenWorms** (T=17,984) did not
 complete a single fit in twelve minutes at default settings. That is a genuine scaling
-limit, recorded rather than dropped — the library is built for series of tens to low
-thousands of steps, not tens of thousands.
+limit, recorded rather than dropped.
 
-**What this does and does not establish.** It establishes that the idea pays off on real
-data, sometimes substantially, and that it is a credible method rather than merely better
-than a strawman — on ICU it beat a real time-series method at every size, and across the
-UEA arm it is within three points of one. It does not establish that it always helps: on
-credit the entire apparatus bought nothing, and three mixed datasets is not a survey. The
-practical rule the evidence supports is narrow but usable: **if your series are a handful
-of periodic aggregates, this will not help you; if they are a trajectory — many samples,
-irregular timing, gaps that mean something — it probably will.**
+Full tables: [`validation/RESULTS_CORRECTED.md`](validation/RESULTS_CORRECTED.md). The
+pre-registered originals are preserved unedited in
+[`validation/RESULTS.md`](validation/RESULTS.md).
 
-Full tables, every dataset and baseline: [`validation/RESULTS.md`](validation/RESULTS.md).
+### The lesson worth keeping
+
+The most useful finding in this study is not about Heartwood. It is that on a dataset which
+is 80% missing, **whether your aggregate skips NaNs is worth about ten points of AUC — more
+than any representation choice tested here, including this one.** If you are pasting
+summary statistics next to static columns, check that a single missing cell is not voiding
+the whole statistic before you conclude anything about representations.
+
+The tell was in the published tables the whole time: on ICU, `raw_flat` — every timestep as
+its own column, no structure at all — beat `agg` by four points. A representation that
+throws everything away should not beat one that summarises it, and that inversion was the
+symptom.
 
 ## The problem
 
@@ -367,7 +369,7 @@ chance.
 
 ```bash
 pip install -e '.[test]'
-python -m pytest tests/ -q          # 267 tests, ~60 s
+python -m pytest tests/ -q          # 273 tests, ~60 s
 ```
 
 The suite is built around slow, obviously-correct references that share no code with the
@@ -386,7 +388,7 @@ result measure the wrong thing — so those properties are now regression-tested
 
 ```
 heartwood/       losses, features, splits, filters, bank, dense, tree, booster, api, datasets
-tests/           267 tests: the library, the scenarios, and the benchmark harness
+tests/           273 tests: the library, the scenarios, and the benchmark harness
 benchmarks/      baselines, scenario registry, the runner, and results.md
 examples/        quickstart.py
 PLAN.md          the full phased implementation plan
