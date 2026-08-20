@@ -15,14 +15,32 @@ from pathlib import Path
 
 import numpy as np
 
-HEADLINE = {"credit": "roc_auc", "har": "balanced_accuracy"}
-DEFAULT_HEADLINE = "balanced_accuracy"
+#: Fixed in VALIDATION.md §5 before anything was run: ROC-AUC for the imbalanced
+#: binary datasets, balanced accuracy for the multiclass ones.
+HEADLINE = {
+    "credit": "roc_auc",      # M1, imbalanced binary
+    "icu": "roc_auc",         # M2, imbalanced binary
+    "har": "balanced_accuracy",  # M3, multiclass
+}
 SERIES_MATTERS_MARGIN = 2.0  # points, from VALIDATION.md §6
 WIN_MARGIN = 2.0
 
 
 def headline_for(dataset: str) -> str:
-    return HEADLINE.get(dataset, DEFAULT_HEADLINE)
+    """The pre-registered metric, or an error — never a silent default.
+
+    An earlier version defaulted unknown datasets to balanced accuracy, which
+    quietly scored ICU on the wrong metric and understated it by ~8 points.
+    Failing loudly is the only safe behaviour here.
+    """
+    if dataset.startswith("uea:"):
+        return "balanced_accuracy"  # T1 arm, multiclass
+    if dataset not in HEADLINE:
+        raise KeyError(
+            f"no pre-registered headline metric for {dataset!r}; add it to HEADLINE "
+            "with the value fixed in VALIDATION.md §5"
+        )
+    return HEADLINE[dataset]
 
 
 def load(paths: list[Path]) -> list[dict]:

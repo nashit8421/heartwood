@@ -10,10 +10,11 @@ the columns beside it.
 Boosting for datasets that mix **static per-row features with raw time series** — without
 collapsing the series into aggregates first.
 
-> **Status: v0.3 — all three phases complete (M1–M5), plus pre-registered validation on
-> real data.** 267 tests and a reproducible benchmark grid. On synthetic tasks it beats
-> every baseline on five of six scenarios; on real data the picture is more mixed and is
-> reported first, below, rather than last. See `PLAN.md` and `VALIDATION.md`.
+> **Status: v0.3 — all phases complete, validated on real data.** 267 tests, a
+> reproducible benchmark grid, and a pre-registered real-data study whose three testable
+> hypotheses all passed. Headline: on ICU mortality prediction it beats every baseline at
+> every training size, including a real time-series method; on six months of credit data
+> it buys nothing. Both results are below. See `PLAN.md` and `VALIDATION.md`.
 
 ## Validation on real data — the honest verdict
 
@@ -22,32 +23,52 @@ evidence of much. So the hypotheses, thresholds, datasets and baselines were
 [pre-registered](VALIDATION.md) and committed **before** any real dataset was downloaded,
 and then evaluated mechanically. Reproduce with `python validation/run_validation.py`.
 
-**The result depends almost entirely on one thing: whether the series is long enough to
-have a journey at all.**
+**All three pre-registered hypotheses passed.** The margin over the aggregate workaround
+ranges from nothing to eleven points, and *which* you get is predictable.
 
 | dataset | series | Heartwood vs `agg`, by training size |
 |---|---|---|
-| Credit default (UCI) | 3 channels × **6 months** | −0.4, −0.0, +0.6, +0.8, −0.2 pt AUC — **no benefit, 0/5** |
-| Human activity (UCI HAR) | 9 channels × **128 steps** | +4.7, +9.2, +4.5, +2.9, +5.1 pt — **wins 5/5** |
+| **ICU mortality** (PhysioNet 2012) | 37 channels × 48 h, **80% missing** | +10.5, +10.0, +11.2, +9.7, +8.0 pt AUC — **wins 5/5** |
+| **Human activity** (UCI HAR) | 9 channels × 128 steps | +4.7, +9.2, +4.5, +2.9, +5.1 pt — **wins 5/5** |
+| **Credit default** (UCI) | 3 channels × **6 months** | −0.4, −0.0, +0.6, +0.8, −0.2 pt — **no benefit, 0/5** |
 
-On credit, the series matters enormously — using it is worth ~15 AUC points over the static
-columns alone — but *every* representation extracts it equally well. Global aggregates,
-windowed aggregates, raw timesteps and Heartwood all land within a point of each other at
-every training size. With six monthly points there is no journey to capture: ten summary
-statistics over six numbers essentially *are* the series. On HAR, with 128 timesteps, the
-same comparison goes the other way at every single training size.
+### The ICU result
+
+This is the shape the library was built for: a few admission facts (age, gender, ICU type)
+plus 48 hours of sparse, irregular clinical measurements. Heartwood beats **every**
+baseline at **every** training size — including MiniROCKET, a real time-series method.
+
+| n_train | Heartwood | best baseline | static only |
+|---|---|---|---|
+| 100 | **0.682** | 0.647 (MiniROCKET) | 0.530 |
+| 250 | **0.779** | 0.736 (MiniROCKET) | 0.521 |
+| 500 | **0.819** | 0.748 (MiniROCKET) | 0.602 |
+| 1000 | **0.851** | 0.788 (raw timesteps) | 0.618 |
+| 3997 (all) | **0.862** | 0.822 (raw timesteps) | 0.655 |
+
+0.862 AUROC for in-hospital mortality is a respectable number on this dataset, and it is
+reached with library defaults on the challenge's own train/test split. Note where the
+margin is largest — at n=250–500, exactly the regime the project set out to serve.
+
+Why here and not on credit? Not simply series length. It is whether the trajectory holds
+structure that summary statistics throw away. Six monthly credit figures do not: ten
+statistics over six numbers essentially *are* the series, and every representation
+(global, windowed, raw, ours) lands within a point of the others at every size. Forty-eight
+hours of sparsely sampled vitals do, in two ways at once — *when* something happened, and
+the fact that four cells in five were never measured at all. Missingness is a first-class
+feature here rather than something to impute away, which is exactly what the split scan's
+learned missing-direction was built for.
 
 **Pre-registered verdicts:**
 
-- **H1 (beats the aggregate workaround)** — **INCONCLUSIVE**: 5/10 cells, exactly on the
-  boundary, and split perfectly by dataset (credit 0/5, HAR 5/5). Not a pass.
-- **H2 (small data)** — **PASS**: at n=100 and n=250 the margin was positive on half the
-  cells and strongly positive on HAR (+4.7, +9.2).
-- **H3 (vs MiniROCKET, a real time-series method)** — **PASS**: median gap −2.8 points
-  across seven UEA datasets. Heartwood *beats* MiniROCKET on the two smallest
-  (StandWalkJump n=12: +6.7; AtrialFibrillation n=15: +33.3), where a ridge over 10,000
-  random kernels has too little data to fit, and loses on the widest and longest
-  (DuckDuckGeese −14.0, ERing −11.1). That is a real, interpretable small-data result.
+- **H1 (beats the aggregate workaround)** — **PASS**: 10/15 cells at ≥2 points (67%;
+  threshold 60%). Cleanly split by dataset — ICU 5/5, HAR 5/5, credit 0/5.
+- **H2 (small data)** — **PASS**: at n=100 and n=250 the margin was negative on only 2 of
+  6 cells, and both were credit, where nothing helps.
+- **H3 (vs MiniROCKET)** — **PASS**: median gap −2.8 points across seven UEA datasets.
+  Heartwood *beats* MiniROCKET on the two smallest (StandWalkJump n=12: +6.7;
+  AtrialFibrillation n=15: +33.3), where a ridge over 10,000 random kernels has too little
+  data to fit, and loses on the widest and longest (DuckDuckGeese −14.0, ERing −11.1).
 - **H4 (no harm)** — not testable: no real dataset had an uninformative series.
 
 One dataset from the locked list could not be run: **EigenWorms** (T=17,984) did not
@@ -55,13 +76,14 @@ complete a single fit in twelve minutes at default settings. That is a genuine s
 limit, recorded rather than dropped — the library is built for series of tens to low
 thousands of steps, not tens of thousands.
 
-**What this does and does not establish.** It establishes that the idea is worth something
-on real data when the series is long enough — on HAR it beat the workaround at every size,
-and against a genuine TSC method it is competitive at very small n. It does not establish
-the broad claim: on one of the two mixed datasets the entire apparatus bought nothing, and
-three mixed datasets is not a survey. If your series are a handful of monthly aggregates
-already, this library is unlikely to help you. If they are hundreds of samples of a
-trajectory, the evidence says it probably will.
+**What this does and does not establish.** It establishes that the idea pays off on real
+data, sometimes substantially, and that it is a credible method rather than merely better
+than a strawman — on ICU it beat a real time-series method at every size, and across the
+UEA arm it is within three points of one. It does not establish that it always helps: on
+credit the entire apparatus bought nothing, and three mixed datasets is not a survey. The
+practical rule the evidence supports is narrow but usable: **if your series are a handful
+of periodic aggregates, this will not help you; if they are a trajectory — many samples,
+irregular timing, gaps that mean something — it probably will.**
 
 Full tables, every dataset and baseline: [`validation/RESULTS.md`](validation/RESULTS.md).
 

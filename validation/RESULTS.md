@@ -29,6 +29,20 @@ Heartwood vs agg — n=100: -0.4pt, n=250: -0.0pt, n=500: +0.6pt, n=1000: +0.8pt
 
 Heartwood vs agg — n=100: +4.7pt, n=251: +9.2pt, n=499: +4.5pt, n=1000: +2.9pt, n=7352: +5.1pt
 
+### icu — roc_auc
+
+| model          | n=100       | n=250       | n=500       | n=1000      | n=3997      |
+|----------------|-------------|-------------|-------------|-------------|-------------|
+| heartwood      | 0.682±0.000 | 0.779±0.000 | 0.819±0.000 | 0.851±0.000 | 0.862±0.000 |
+| agg            | 0.576±0.000 | 0.679±0.000 | 0.707±0.000 | 0.755±0.000 | 0.783±0.000 |
+| minirocket     | 0.647±0.000 | 0.736±0.000 | 0.748±0.000 | 0.771±0.000 | 0.791±0.000 |
+| raw_flat       | 0.628±0.000 | 0.708±0.000 | 0.747±0.000 | 0.788±0.000 | 0.822±0.000 |
+| static_only    | 0.530±0.000 | 0.521±0.000 | 0.602±0.000 | 0.618±0.000 | 0.655±0.000 |
+| wagg4          | 0.564±0.000 | 0.680±0.000 | 0.735±0.000 | 0.776±0.000 | 0.805±0.000 |
+| wagg8          | 0.581±0.000 | 0.686±0.000 | 0.739±0.000 | 0.785±0.000 | 0.810±0.000 |
+
+Heartwood vs agg — n=100: +10.5pt, n=250: +10.0pt, n=500: +11.2pt, n=1000: +9.7pt, n=3997: +8.0pt
+
 ### uea:AtrialFibrillation — balanced_accuracy
 
 | model          | n=15        |
@@ -122,12 +136,13 @@ Heartwood vs agg — n=120: +14.1pt
 
 ## Hypothesis verdicts (pre-registered, VALIDATION.md §6)
 
-Mixed arm: credit, har. Temporal-only arm: uea:AtrialFibrillation, uea:BasicMotions, uea:Cricket, uea:DuckDuckGeese, uea:ERing, uea:StandWalkJump, uea:UWaveGestureLibrary.
+Mixed arm: credit, har, icu. Temporal-only arm: uea:AtrialFibrillation, uea:BasicMotions, uea:Cricket, uea:DuckDuckGeese, uea:ERing, uea:StandWalkJump, uea:UWaveGestureLibrary.
 
-**H1 (core claim, mixed arm only)** — INCONCLUSIVE. Heartwood beat `agg` by >= 2 points on 5/10 cells where the series is informative (50%); pass needs >=60%, fail is <50%.
+**H1 (core claim, mixed arm only)** — PASS. Heartwood beat `agg` by >= 2 points on 10/15 cells where the series is informative (67%); pass needs >=60%, fail is <50%.
   credit: 0/5 cells won, margins -0.4, -0.0, +0.6, +0.8, -0.2
   har: 5/5 cells won, margins +4.7, +9.2, +4.5, +2.9, +5.1
-**H2 (small data)** — PASS. At n=100/250, Heartwood's margin over `agg` was negative on 2/4 cells (credit@100:-0.4, credit@250:-0.0, har@100:+4.7, har@251:+9.2).
+  icu: 5/5 cells won, margins +10.5, +10.0, +11.2, +9.7, +8.0
+**H2 (small data)** — PASS. At n=100/250, Heartwood's margin over `agg` was negative on 2/6 cells (credit@100:-0.4, credit@250:-0.0, har@100:+4.7, har@251:+9.2, icu@100:+10.5, icu@250:+10.0).
 **H3 (temporal-only arm vs MiniROCKET)** — PASS. Median gap over 7 datasets: -2.8pt; pass needs >=-5, fail is <-10.
   per dataset: DuckDuckGeese -14.0, ERing -11.1, BasicMotions -7.5, UWaveGestureLibrary -2.8, Cricket -2.8, StandWalkJump +6.7, AtrialFibrillation +33.3
 **H4 (no harm)** — not testable: no cell had an uninformative series.
@@ -144,3 +159,8 @@ Mixed arm: credit, har. Temporal-only arm: uea:AtrialFibrillation, uea:BasicMoti
   har n=499: best series-using method is +79.1pt over static-only
   har n=1000: best series-using method is +79.6pt over static-only
   har n=7352: best series-using method is +81.5pt over static-only
+  icu n=100: best series-using method is +15.2pt over static-only
+  icu n=250: best series-using method is +25.7pt over static-only
+  icu n=500: best series-using method is +21.7pt over static-only
+  icu n=1000: best series-using method is +23.3pt over static-only
+  icu n=3997: best series-using method is +20.7pt over static-only

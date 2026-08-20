@@ -192,6 +192,140 @@ def load_har() -> Dataset:
     return dataset
 
 
+# -------------------------------------------------------------- M2: ICU 48h
+
+
+#: The six values recorded once at admission; everything else is time-varying.
+_ICU_DESCRIPTORS = ("RecordID", "Age", "Gender", "Height", "ICUType", "Weight")
+_ICU_STATIC = ("Age", "Gender", "Height", "ICUType", "Weight")
+
+
+def _parse_icu_record(path: Path):
+    """One patient file -> (record_id, static dict, list of (hour, parameter, value))."""
+    static: dict[str, float] = {}
+    observations: list[tuple[int, str, float]] = []
+    record_id = None
+
+    with path.open() as handle:
+        next(handle, None)  # header
+        for line in handle:
+            parts = line.strip().split(",")
+            if len(parts) != 3:
+                continue
+            stamp, parameter, raw = parts
+            try:
+                value = float(raw)
+            except ValueError:
+                continue
+            if parameter == "RecordID":
+                record_id = int(value)
+                continue
+            hours, minutes = stamp.split(":")
+            hour = int(hours)
+            if parameter in _ICU_STATIC and hour == 0 and parameter not in static:
+                # -1 is the dataset's sentinel for "not recorded"
+                static[parameter] = np.nan if value < 0 else value
+            else:
+                observations.append((min(hour, 47), parameter, value))
+    return record_id, static, observations
+
+
+def load_physionet_icu() -> Dataset:
+    """PhysioNet/CinC 2012: predict in-hospital death from the first 48 h in ICU.
+
+    This is the archetypal shape the library was built for — a handful of
+    admission facts plus a long, irregular, mostly-absent clinical trajectory.
+
+    Decisions, fixed in advance:
+
+    * **Split** is the challenge's own: set-a trains, set-b tests. Not re-drawn.
+    * **Static block** is the five admission descriptors (age, gender, height,
+      ICU type, weight). The dataset's ``-1`` sentinel becomes NaN rather than
+      being treated as a real measurement.
+    * **Series block** is *every* time-varying parameter, in sorted order — no
+      hand-picking of "useful" vitals, which would be a modelling choice smuggled
+      into preprocessing.
+    * **Binning is hourly**, 48 bins, taking the **mean** of whatever was
+      recorded within each hour. Observations past hour 47 are clipped into the
+      last bin.
+    * **Empty bins stay NaN.** No imputation, no forward-filling. Roughly nine in
+      ten cells are empty, and how a model handles that is precisely what is
+      under test; filling them would answer a different question.
+    """
+    files: dict[str, list[Path]] = {}
+    for split, url in (
+        ("set-a", "https://physionet.org/files/challenge-2012/1.0.0/set-a.tar.gz"),
+        ("set-b", "https://physionet.org/files/challenge-2012/1.0.0/set-b.tar.gz"),
+    ):
+        archive = _download(url, f"{split}.tar.gz")
+        folder = DATA_DIR / split
+        if not folder.exists():
+            import tarfile
+
+            with tarfile.open(archive) as tar:
+                tar.extractall(DATA_DIR)
+        files[split] = sorted(folder.glob("*.txt"))
+
+    outcomes: dict[int, int] = {}
+    for split in ("a", "b"):
+        path = _download(
+            f"https://physionet.org/files/challenge-2012/1.0.0/Outcomes-{split}.txt",
+            f"Outcomes-{split}.txt",
+        )
+        for line in path.read_text().splitlines()[1:]:
+            parts = line.split(",")
+            if len(parts) >= 6:
+                outcomes[int(parts[0])] = int(parts[5])
+
+    parsed = []
+    for split in ("set-a", "set-b"):
+        for path in files[split]:
+            record_id, static, observations = _parse_icu_record(path)
+            if record_id is None or record_id not in outcomes or not observations:
+                continue
+            parsed.append((split, record_id, static, observations))
+
+    parameters = sorted({p for _, _, _, obs in parsed for _, p, _ in obs})
+    index = {p: i for i, p in enumerate(parameters)}
+
+    n, T = len(parsed), 48
+    X_series = np.full((n, len(parameters), T), np.nan)
+    totals = np.zeros_like(X_series)
+    counts = np.zeros_like(X_series)
+    X_static = np.full((n, len(_ICU_STATIC)), np.nan)
+    y = np.empty(n, dtype=np.int64)
+    train_mask = np.zeros(n, dtype=bool)
+
+    for row, (split, record_id, static, observations) in enumerate(parsed):
+        for i, name in enumerate(_ICU_STATIC):
+            X_static[row, i] = static.get(name, np.nan)
+        for hour, parameter, value in observations:
+            channel = index[parameter]
+            totals[row, channel, hour] += value
+            counts[row, channel, hour] += 1
+        y[row] = outcomes[record_id]
+        train_mask[row] = split == "set-a"
+
+    observed = counts > 0
+    X_series[observed] = totals[observed] / counts[observed]
+
+    # keep the official split contiguous: train rows first
+    order = np.concatenate([np.nonzero(train_mask)[0], np.nonzero(~train_mask)[0]])
+    dataset = Dataset(
+        key="icu",
+        X_static=X_static[order],
+        X_series=X_series[order],
+        y=y[order],
+        task="binary",
+        headline="roc_auc",
+        static_names=list(_ICU_STATIC),
+        channel_names=parameters,
+        notes="set-a trains / set-b tests; hourly means; empty bins left missing",
+    )
+    dataset.n_official_train = int(train_mask.sum())  # type: ignore[attr-defined]
+    return dataset
+
+
 # ------------------------------------------------------ T1: UEA multivariate
 
 
@@ -225,4 +359,4 @@ def load_uea(name: str) -> Dataset:
     return dataset
 
 
-MIXED = {"credit": load_credit, "har": load_har}
+MIXED = {"credit": load_credit, "har": load_har, "icu": load_physionet_icu}
