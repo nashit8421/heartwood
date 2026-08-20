@@ -359,4 +359,162 @@ def load_uea(name: str) -> Dataset:
     return dataset
 
 
-MIXED = {"credit": load_credit, "har": load_har, "icu": load_physionet_icu}
+# ------------------------------------------------------- V5-A1: PTB-XL ECG
+
+
+#: The five diagnostic superclasses PTB-XL's own scp_statements.csv defines.
+_PTBXL_SUPERCLASSES = ("CD", "HYP", "MI", "NORM", "STTC")
+
+
+def _read_wfdb16(header: Path) -> np.ndarray:
+    """One WFDB format-16 record -> ``(n_signals, n_samples)`` in physical units.
+
+    PTB-XL ships as WFDB, and ``wfdb`` is a heavy dependency for a format this
+    small: a text header naming gain and baseline per signal, then interleaved
+    little-endian int16 samples.  Parsing it here keeps the project's "numpy
+    only" install promise intact.  Anything that is not format 16 raises rather
+    than being guessed at.
+    """
+    lines = [
+        line for line in header.read_text().splitlines()
+        if line.strip() and not line.startswith("#")
+    ]
+    fields = lines[0].split()
+    n_signals, n_samples = int(fields[1]), int(fields[3])
+
+    gains, baselines, data_file = [], [], None
+    for line in lines[1:1 + n_signals]:
+        parts = line.split()
+        data_file = parts[0]
+        if parts[1] != "16":
+            raise ValueError(f"{header}: expected format 16, got {parts[1]}")
+        spec = parts[2].split("/")[0]  # e.g. "1000.0(0)" or "200"
+        if "(" in spec:
+            gain, baseline = spec.split("(")
+            baselines.append(float(baseline.rstrip(")")))
+        else:
+            gain = spec
+            baselines.append(float(parts[4]))  # adc_zero
+        gains.append(float(gain) or 200.0)
+
+    raw = np.fromfile(header.parent / data_file, dtype="<i2")
+    raw = raw.reshape(-1, n_signals).T[:, :n_samples].astype(np.float32)
+    gain = np.asarray(gains, dtype=np.float32)[:, None]
+    baseline = np.asarray(baselines, dtype=np.float32)[:, None]
+    return (raw - baseline) / gain
+
+
+def load_ptbxl() -> Dataset:
+    """PTB-XL 1.0.3: 12-lead ECG plus real patient demographics.
+
+    Chosen for V5 because no v0.3 dataset occupied the cell this library was
+    designed for -- genuine static covariates *and* series that a global summary
+    demonstrably loses.  ICU and credit have statics whose series summarise
+    away; HAR has shape-regime series but a subject-id "static" block that is
+    disjoint across the split.  ECG has both.
+
+    Every decision below is fixed in VALIDATION_V5.md §3, written and committed
+    before this function was run:
+
+    * **Split** is the dataset's own ``strat_fold`` -- folds 1-8 train, fold 10
+      test, fold 9 unused.  Patient-disjoint by construction, never re-drawn.
+    * **Label** is the diagnostic superclass.  A record is kept only if its SCP
+      codes map to exactly one; records mapping to none and to two or more are
+      dropped and both counts are reported in ``notes``.
+    * **Static block** is age, sex, height, weight.  PTB-XL encodes ages over 89
+      as 300; those become 90.  Missing height/weight stay missing.
+    * **Series** is ``records100``: 12 leads x 1000 samples, float32.  The 500 Hz
+      records are not used.
+    """
+    import pandas as pd
+
+    root = DATA_DIR / "ptbxl"
+    if not root.exists():
+        # physionet.org serves this at ~100 KB/s, which is five hours for the
+        # full archive; the project's own S3 mirror carries the same bytes and
+        # lets the per-record files be fetched in parallel.  fetch_ptbxl.py does
+        # that.  The zip path stays here as the dependency-free fallback.
+        archive = _download(
+            "https://physionet.org/static/published-projects/ptb-xl/"
+            "ptb-xl-a-large-publicly-available-electrocardiography-dataset-1.0.3.zip",
+            "ptbxl.zip",
+        )
+        with zipfile.ZipFile(archive) as zf:
+            wanted = [
+                name for name in zf.namelist()
+                if "records100/" in name or name.endswith(
+                    ("ptbxl_database.csv", "scp_statements.csv")
+                )
+            ]
+            zf.extractall(root, members=wanted)
+
+    database = next(root.rglob("ptbxl_database.csv"))
+    base = database.parent
+    frame = pd.read_csv(database, index_col="ecg_id")
+    statements = pd.read_csv(base / "scp_statements.csv", index_col=0)
+    diagnostic = statements[statements.diagnostic == 1].diagnostic_class
+
+    cache = DATA_DIR / "ptbxl_series.npy"
+
+    def superclasses(codes: str) -> set[str]:
+        import ast
+        return {
+            diagnostic[code] for code in ast.literal_eval(codes)
+            if code in diagnostic.index
+        }
+
+    labels = frame.scp_codes.map(superclasses)
+    sizes = labels.map(len)
+    keep = sizes == 1
+    frame = frame[keep].copy()
+    frame["label"] = labels[keep].map(lambda s: next(iter(s)))
+    dropped = f"dropped {(sizes == 0).sum()} unlabelled, {(sizes > 1).sum()} multi-label"
+
+    # only the official train and test folds; fold 9 is the standard validation
+    # fold and is deliberately left unused so nothing can leak through it
+    frame = frame[frame.strat_fold.isin(list(range(1, 9)) + [10])]
+    frame = frame.sort_values(["strat_fold"], kind="stable")
+    is_train = (frame.strat_fold <= 8).to_numpy()
+    frame = frame.iloc[np.argsort(~is_train, kind="stable")]  # train rows first
+
+    if cache.exists() and len(np.load(cache, mmap_mode="r")) == len(frame):
+        X_series = np.load(cache)
+    else:
+        X_series = np.empty((len(frame), 12, 1000), dtype=np.float32)
+        for row, name in enumerate(frame.filename_lr):
+            X_series[row] = _read_wfdb16(base / f"{name}.hea")
+        np.save(cache, X_series)
+
+    age = frame.age.to_numpy(dtype=np.float64)
+    age[age > 89] = 90.0  # PTB-XL's sentinel for "older than 89"
+    X_static = np.column_stack([
+        age,
+        frame.sex.to_numpy(dtype=np.float64),
+        frame.height.to_numpy(dtype=np.float64),
+        frame.weight.to_numpy(dtype=np.float64),
+    ])
+
+    classes, y = np.unique(frame.label.to_numpy(), return_inverse=True)
+    dataset = Dataset(
+        key="ptbxl",
+        X_static=X_static,
+        X_series=X_series,
+        y=y.astype(np.int64),
+        task="multiclass",
+        headline="balanced_accuracy",
+        static_names=["age", "sex", "height", "weight"],
+        channel_names=["I", "II", "III", "aVR", "aVL", "aVF",
+                       "V1", "V2", "V3", "V4", "V5", "V6"],
+        notes=f"official strat_fold 1-8 train / 10 test; {dropped}; "
+              f"classes={list(classes)}",
+    )
+    dataset.n_official_train = int((frame.strat_fold <= 8).sum())  # type: ignore[attr-defined]
+    return dataset
+
+
+MIXED = {
+    "credit": load_credit,
+    "har": load_har,
+    "icu": load_physionet_icu,
+    "ptbxl": load_ptbxl,
+}

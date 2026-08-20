@@ -230,12 +230,15 @@ def main() -> int:
     parser.add_argument("--depth", type=int, default=4)
     parser.add_argument("--learning-rate", type=float, default=0.1)
     parser.add_argument("--no-minirocket", action="store_true")
+    parser.add_argument("--representations", nargs="+", default=REPRESENTATIONS,
+                        help="baselines to run; a wide one (raw_flat on 12k columns) can "
+                             "be split into its own pass so it cannot stall the grid")
     parser.add_argument("--out", type=Path, default=Path(__file__).parent)
     args = parser.parse_args()
 
     config = {
         "rounds": args.rounds, "depth": args.depth,
-        "learning_rate": args.learning_rate, "representations": REPRESENTATIONS,
+        "learning_rate": args.learning_rate, "representations": args.representations,
         "minirocket": not args.no_minirocket,
     }
 
