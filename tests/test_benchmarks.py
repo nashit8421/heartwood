@@ -155,7 +155,7 @@ def test_baseline_model_is_available():
 def test_one_benchmark_cell_runs_end_to_end(key):
     config = {
         "test_size": 200, "rounds": 5, "depth": 2, "learning_rate": 0.3,
-        "representations": ["agg", "wagg4"],
+        "representations": ["agg", "wagg4"], "heartwood_variants": {"heartwood": {}},
     }
     results = run_cell((key, 60, 0, config))
 
@@ -174,7 +174,7 @@ def test_one_benchmark_cell_runs_end_to_end(key):
 
 def test_summarise_averages_over_seeds():
     config = {"test_size": 150, "rounds": 3, "depth": 2, "learning_rate": 0.3,
-              "representations": ["agg"]}
+              "representations": ["agg"], "heartwood_variants": {"heartwood": {}}}
     results = run_cell(("timing", 60, 0, config)) + run_cell(("timing", 60, 1, config))
     stats = summarise(results, "accuracy")
     assert stats[("timing", "heartwood", 60)]["n"] == 2

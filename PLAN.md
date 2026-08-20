@@ -2,10 +2,11 @@
 
 > **Status:** architecture finalized after a 5-design × 3-judge exploration panel — see
 > `ARCHITECTURES.md` for the candidates, scores, and rationale. The plan is now PHASED:
-> **Phase A (v0.1)** = §1–§9 of this file, the core booster, implement first and exactly
-> as written. **Phase B (v0.2)** = §10, three additive upgrades (matched-filter splits,
-> winners-only feature bank, comparison splits). **Phase C (opt-in)** = §11.
-> Do not start §10 until §6's Phase-A tests are green.
+> **Phase A (v0.1)** = §1–§9, the core booster. ✅ complete (§8.1–§8.3).
+> **Phase B (v0.2)** = §10, three additive upgrades. ✅ complete (§8.4) — comparison
+> splits and the feature bank ship on by default; matched filters are implemented and
+> tested but default OFF, because the benchmark says they do not earn their cost.
+> **Phase C (opt-in)** = §11, not started.
 
 **Goal:** An XGBoost-style gradient boosting library that natively handles datasets with
 **static (per-row) features + raw time series** together, without pre-aggregating the series.
@@ -18,8 +19,8 @@ lives in the *temporal journey*.
 (scikit-learn / xgboost used only in benchmarks). No compiled code, no deep learning.
 
 **Environment (verified):** Python 3.10.17, numpy 2.2.6, sklearn 1.7.1, xgboost 3.0.4,
-pytest 9.1.1 (installed during M2).  `python -m pytest tests/ -q` → 200 passed, ~45 s.
-`python benchmarks/run_benchmarks.py` → full grid in ~2.6 min.
+pytest 9.1.1 (installed during M2).  `python -m pytest tests/ -q` → 242 passed, ~52 s.
+`python benchmarks/run_benchmarks.py` → full grid in ~2.6 min (`--ablation`: 13.4 min).
 
 ---
 
@@ -520,7 +521,7 @@ Smoke bar for CI: `python -m pytest tests/ -x -q` green, and
 3. **M3 proof (Phase A):** ✅ **DONE — see §8.3.** benchmark suite runs; results table meets §5.8 acceptance
    targets; README with usage, algorithm explanation, results table, honest limitations
    (no GPU, single-thread, equal-length-after-padding, v0.1 scope).
-4. **M4 upgrades (Phase B):** implement §10 in order (filters → bank → comparison
+4. **M4 upgrades (Phase B):** ✅ **DONE — see §8.4.** implement §10 in order (filters → bank → comparison
    splits); §6 Phase-B mandatory tests green after each; re-run benchmarks with the
    ablation grid (core / +filters / +bank / +comparison) — each addition must not
    regress any scenario by more than noise, and the pure-static control must stay
@@ -705,6 +706,77 @@ and diff against this `results.json`:
 3. **Fit time** — should improve, not regress, once features are banked.
 4. Do not chase `wagg8`'s 0.989 on slope_window by moving the window again. That is
    whack-a-mole; the honest framing is finding 5.
+
+## 8.4 M4 results and findings — **Phase B is complete**
+
+**Status: M4 COMPLETE.** All three §10 upgrades implemented and tested (`filters.py`,
+`bank.py`, comparison splits in `tree.py`); suite is **242 tests**. Full ablation:
+`python benchmarks/run_benchmarks.py --ablation` (13.4 min, four Heartwood variants).
+
+**Two of the three shipped. One did not.** Defaults are now
+`n_shapelet_candidates=4, n_filter_candidates=0, bank_enabled=True, bank_max=32,
+bank_colsample=0.25, n_comparison_candidates=4`.
+
+**Finding 8 — comparison splits are the entire Phase-B win, and they generalise far
+beyond the task they were designed for.** §10.3 justified them as the answer to
+"event time vs. per-row deadline". They turn out to matter most on `bump_order` and
+`slope_window`, whose labels are an XOR between a temporal quantity and a static one:
+`rank(temporal) − rank(static)` expresses that interaction in *one* split where a greedy
+axis-aligned tree needs a staircase. Ordering task at n=250: **0.665 → 0.958**.
+
+**Finding 9 — the bank is a supporting act, not a win on its own.** Ablated alone it is
+roughly a wash (sometimes slightly worse at small n, better on the regression). Caching
+what won does not help if the useful feature was never drawn in the first place. Its real
+job is being the substrate comparison splits need — a comparison requires a position
+feature that already exists. It also did **not** deliver the hoped-for speedup (M4 target
+3): fit time went 13.9 s → 18.2 s, because scanning banked columns costs more than the
+rediscovery it saves.
+
+**Finding 10 — subsampling the bank is essential, and this nearly sank Phase B.** The
+first implementation followed §10.2 literally ("every node's candidate list includes ALL
+bank columns"). With ~170 candidates per node versus Phase A's ~29, selection noise
+swamped everything: `bump_order` fell from 0.826 to **0.671** and fit time went up 2.5×.
+Adding `bank_colsample=0.25` reversed it. Every extra candidate is another draw in a
+max-of-many contest on in-sample gain — exactly the academic judge's warning that "the
+gain tournament is in-sample". Any future candidate family must be budgeted against this.
+
+**Finding 11 — matched filters did not earn their default, despite being the panel's
+top-scoring proposal.** Consistently a little worse than variable-length shapelets and
+~50% slower (28.1 s vs 18.2 s). Nine taps at dyadic scales appear to trade away length
+flexibility that these tasks need. Shipped tested behind `n_filter_candidates=8`. The
+`n_alt=0` reduction to the shapelet family is verified by test, so the family genuinely
+contains the old one — it simply does not improve on it here. Worth one retry sometime
+with variable tap counts before concluding the idea is wrong.
+
+**Results (mean ± sd, 3 seeds, 200 rounds). Deltas vs the best-of-five oracle:**
+
+| scenario | n=100 | n=250 | n=500 | n=1000 | (M3 was, n=500) |
+|---|---|---|---|---|---|
+| bump_order | +11.7 pt | +37.6 pt | +28.4 pt | +17.9 pt | +12.7 |
+| timing | +8.4 pt | +5.6 pt | +4.5 pt | +3.7 pt | +2.7 |
+| slope_window | −7.2 pt | +0.7 pt | +0.8 pt | +0.5 pt | **−9.5** |
+| amp_regression | −0.7% | −1.7% | +1.6% | +2.4% | **−3.5%** |
+| static control | −0.7 pt | −0.4 pt | −0.1 pt | −0.5 pt | +0.0 |
+
+Both M3 Tier-2 losses are now wins from n=500 up, without moving any benchmark window
+(§8.3's "do not do this" was honoured). Tier 1 vs `agg` is +32 to +49 points.
+
+**M4 target scorecard.** (1) small data: partial — n=100 improved on 3 of 5 (ordering
+0.533→0.641, timing 0.908→0.959, regression −9% RMSE) but `slope_window` is still at
+chance for everyone, and ordering's seed spread is ±0.18. (2) the two oracle losses:
+**done**. (3) fit time: **missed**, +31%. (4) did not chase `wagg8`: honoured.
+
+**Phase C / future work, in priority order:**
+1. **n=100 discovery is the remaining frontier.** Phase B fixed *keeping* what was found,
+   not *finding* it. Candidate generation is still uniform-random. Revisit GRAFT's
+   gradient-saliency aiming (§12) — rejected in the panel for being blind on
+   interaction-gated signals, but comparison splits now cover that weakness, so the
+   objection is weaker than it was.
+2. **Cost.** Profile the bank scan; a cached global argsort restricted per node is the
+   obvious win, and 18 s/fit is the main practical complaint.
+3. **Comparison splits are approximate** — ranking makes two quantities comparable only
+   monotonically. A learned affine alignment might close the remaining gap.
+4. §11 (dense LOO-ridge base, Lévy areas) is untouched and still optional.
 
 ## 9. Known pitfalls checklist (re-read before coding each file)
 

@@ -39,6 +39,16 @@ class _BaseHeartwood:
         shapelet_min_len: int = 3,
         shapelet_max_frac: float = 0.5,
         shapelet_znorm: bool = True,
+        n_filter_candidates: int = 0,
+        n_fitted_filters: int = 4,
+        filter_len: int = 9,
+        dct_components: int = 5,
+        ridge_beta: float = 1.0,
+        n_filter_alt: int = 1,
+        bank_enabled: bool = True,
+        bank_max: int = 32,
+        bank_colsample: float = 0.25,
+        n_comparison_candidates: int = 4,
         early_stopping_rounds: int | None = None,
         random_state: int | None = None,
     ):
@@ -59,6 +69,16 @@ class _BaseHeartwood:
         self.shapelet_min_len = shapelet_min_len
         self.shapelet_max_frac = shapelet_max_frac
         self.shapelet_znorm = shapelet_znorm
+        self.n_filter_candidates = n_filter_candidates
+        self.n_fitted_filters = n_fitted_filters
+        self.filter_len = filter_len
+        self.dct_components = dct_components
+        self.ridge_beta = ridge_beta
+        self.n_filter_alt = n_filter_alt
+        self.bank_enabled = bank_enabled
+        self.bank_max = bank_max
+        self.bank_colsample = bank_colsample
+        self.n_comparison_candidates = n_comparison_candidates
         self.early_stopping_rounds = early_stopping_rounds
         self.random_state = random_state
 
@@ -110,6 +130,14 @@ class _BaseHeartwood:
             shapelet_min_len=self.shapelet_min_len,
             shapelet_max_frac=self.shapelet_max_frac,
             shapelet_znorm=self.shapelet_znorm,
+            n_filter_candidates=self.n_filter_candidates,
+            n_fitted_filters=self.n_fitted_filters,
+            filter_len=self.filter_len,
+            dct_components=self.dct_components,
+            ridge_beta=self.ridge_beta,
+            n_filter_alt=self.n_filter_alt,
+            n_comparison_candidates=self.n_comparison_candidates,
+            bank_colsample=self.bank_colsample,
         )
 
     # ------------------------------------------------------------------ fit
@@ -138,6 +166,8 @@ class _BaseHeartwood:
             subsample=self.subsample,
             early_stopping_rounds=self.early_stopping_rounds,
             random_state=self.random_state,
+            bank_enabled=self.bank_enabled,
+            bank_max=self.bank_max,
         )
         self._core.fit(Xs, Xt, y, loss, eval_set=prepared_eval, verbose=verbose)
         return self

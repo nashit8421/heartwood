@@ -35,6 +35,13 @@ HEARTWOOD = "heartwood"
 PRIMARY = {"binary": "accuracy", "regression": "rmse"}
 LOWER_IS_BETTER = {"rmse", "mae"}
 
+#: --ablation adds these, to show what each Phase-B piece is worth.
+ABLATIONS: dict[str, dict] = {
+    "hw_phaseA": dict(bank_enabled=False, n_comparison_candidates=0, n_filter_candidates=0),
+    "hw_bank": dict(bank_enabled=True, n_comparison_candidates=0, n_filter_candidates=0),
+    "hw_filters": dict(bank_enabled=True, n_comparison_candidates=4, n_filter_candidates=8),
+}
+
 
 # ------------------------------------------------------------------- metrics
 
@@ -127,20 +134,21 @@ def run_cell(args) -> list[Result]:
                    elapsed, metrics)
         )
 
-    # --- Heartwood, on library defaults
+    # --- Heartwood, on library defaults (plus any ablation variants requested)
     estimator = HeartwoodRegressor if scenario.task == "regression" else HeartwoodClassifier
-    started = time.perf_counter()
-    model = estimator(
-        n_estimators=config["rounds"], max_depth=config["depth"],
-        learning_rate=config["learning_rate"], random_state=seed,
-    ).fit(X_static, X_series, y)
-    elapsed = time.perf_counter() - started
-    predictions = model.predict(X_static_te, X_series_te)
-    scores = (
-        None if scenario.task == "regression"
-        else model.predict_proba(X_static_te, X_series_te)[:, 1]
-    )
-    score(HEARTWOOD, predictions, scores, elapsed)
+    for name, overrides in config["heartwood_variants"].items():
+        started = time.perf_counter()
+        model = estimator(
+            n_estimators=config["rounds"], max_depth=config["depth"],
+            learning_rate=config["learning_rate"], random_state=seed, **overrides,
+        ).fit(X_static, X_series, y)
+        elapsed = time.perf_counter() - started
+        predictions = model.predict(X_static_te, X_series_te)
+        scores = (
+            None if scenario.task == "regression"
+            else model.predict_proba(X_static_te, X_series_te)[:, 1]
+        )
+        score(name, predictions, scores, elapsed)
 
     # --- the workarounds
     for name in config["representations"]:
@@ -186,8 +194,15 @@ def _is_better(metric: str, a: float, b: float) -> bool:
     return a < b if metric in LOWER_IS_BETTER else a > b
 
 
-def render_tables(results: list[Result], sizes: list[int], models: list[str]) -> str:
-    """One table per scenario: models down, training sizes across."""
+def render_tables(results, sizes, models, baselines=None) -> str:
+    """One table per scenario: models down, training sizes across.
+
+    ``baselines`` names the competing representations.  Ablation variants of
+    Heartwood are *not* baselines: scoring ourselves against our own
+    variants would quietly turn every comparison into a much softer one.
+    """
+    baselines = list(baselines if baselines is not None else
+                     [m for m in models if m != HEARTWOOD])
     lines: list[str] = []
     for key in DEFAULT_ORDER:
         rows = [r for r in results if r.scenario == key]
@@ -210,8 +225,8 @@ def render_tables(results: list[Result], sizes: list[int], models: list[str]) ->
         for size in sizes:
             candidates = [
                 stats[(key, m, size)]["mean"]
-                for m in models
-                if m != HEARTWOOD and (key, m, size) in stats
+                for m in baselines
+                if (key, m, size) in stats
             ]
             if candidates:
                 best_baseline[size] = (
@@ -283,16 +298,22 @@ def main() -> int:
     parser.add_argument("--jobs", type=int, default=0, help="0 = auto")
     parser.add_argument("--out", type=Path, default=Path(__file__).parent)
     parser.add_argument("--quick", action="store_true", help="tiny grid, for smoke tests")
+    parser.add_argument("--ablation", action="store_true",
+                        help="also run the Phase-B ablation variants")
     args = parser.parse_args()
 
     if args.quick:
         args.sizes, args.seeds, args.rounds = [100, 250], 1, 40
 
     representations = [name for name in REPRESENTATIONS if name != "static_only"]
-    models = [HEARTWOOD] + representations
+    variants = {HEARTWOOD: {}}
+    if args.ablation:
+        variants.update(ABLATIONS)
+    models = list(variants) + representations
     config = {
         "test_size": args.test_size, "rounds": args.rounds, "depth": args.depth,
         "learning_rate": args.learning_rate, "representations": representations,
+        "heartwood_variants": variants,
     }
 
     cells = [
@@ -317,7 +338,8 @@ def main() -> int:
                   f"n={batch[0].n_train} seed={batch[0].seed}", flush=True)
     wall_clock = time.perf_counter() - started
 
-    report = render_tables(results, args.sizes, models) + "\n" + render_timing(results)
+    report = (render_tables(results, args.sizes, models, representations)
+              + "\n" + render_timing(results))
     print(report)
     print(f"\ntotal wall clock: {wall_clock / 60:.1f} min")
 

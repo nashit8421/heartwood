@@ -5,8 +5,10 @@ from __future__ import annotations
 import numpy as np
 
 from ._util import spawn_rng
+from .bank import FeatureBank
+from .filters import Pyramid
 from .losses import Loss
-from .tree import TemporalTree, TreeParams
+from .tree import FitContext, TemporalTree, TreeParams
 
 
 class _BoosterCore:
@@ -17,13 +19,17 @@ class _BoosterCore:
     """
 
     def __init__(self, tree_params: TreeParams, n_estimators=200, learning_rate=0.1,
-                 subsample=1.0, early_stopping_rounds=None, random_state=None):
+                 subsample=1.0, early_stopping_rounds=None, random_state=None,
+                 bank_enabled=True, bank_max=32):
         self.tree_params = tree_params
         self.n_estimators = int(n_estimators)
         self.learning_rate = float(learning_rate)
         self.subsample = float(subsample)
         self.early_stopping_rounds = early_stopping_rounds
         self.random_state = random_state
+        self.bank_enabled = bool(bank_enabled)
+        self.bank_max = int(bank_max)
+        self.bank: FeatureBank | None = None
 
         self.trees_: list[list[TemporalTree]] = []
         self.base_score_: np.ndarray | None = None
@@ -32,6 +38,20 @@ class _BoosterCore:
         self.best_score_ = np.inf
         self.train_history_: list[float] = []
         self.eval_history_: list[float] = []
+
+    def _pyramid(self, X_series):
+        """Pooled copies of a batch's series, built once and shared by every tree."""
+        if X_series is None or self.tree_params.n_filter_candidates <= 0:
+            return None
+        return Pyramid(X_series, self.tree_params.filter_len)
+
+    @staticmethod
+    def _static_grids(X_static):
+        """Frozen sorted training columns, so a rank means the same thing later."""
+        return [
+            np.sort(X_static[np.isfinite(X_static[:, j]), j])
+            for j in range(X_static.shape[1])
+        ]
 
     # ------------------------------------------------------------------ fit
 
@@ -48,10 +68,17 @@ class _BoosterCore:
 
         raw = np.tile(self.base_score_, (n, 1))
 
+        pyramid = self._pyramid(X_series)
+        self.bank = FeatureBank(self.bank_max) if self.bank_enabled else None
+        context = FitContext(
+            pyramid=pyramid, bank=self.bank, static_grids=self._static_grids(X_static)
+        )
+
         has_eval = eval_set is not None
         if has_eval:
             Xs_val, Xt_val, y_val = eval_set
             raw_val = np.tile(self.base_score_, (Xs_val.shape[0], 1))
+            pyramid_val = self._pyramid(Xt_val)
 
         master = np.random.default_rng(self.random_state)
         n_sub = max(1, int(round(self.subsample * n))) if self.subsample < 1.0 else n
@@ -64,14 +91,19 @@ class _BoosterCore:
                 if n_sub >= n
                 else np.sort(master.choice(n, size=n_sub, replace=False)).astype(np.intp)
             )
+            context.round_index = m
 
             round_trees = []
             for k in range(K):
                 tree = TemporalTree(self.tree_params)
-                tree.fit(X_static, X_series, g[:, k], h[:, k], rows, spawn_rng(master))
-                raw[:, k] += self.learning_rate * tree.predict(X_static, X_series)
+                tree.fit(
+                    X_static, X_series, g[:, k], h[:, k], rows, spawn_rng(master), context
+                )
+                raw[:, k] += self.learning_rate * tree.predict(X_static, X_series, pyramid)
                 if has_eval:
-                    raw_val[:, k] += self.learning_rate * tree.predict(Xs_val, Xt_val)
+                    raw_val[:, k] += self.learning_rate * tree.predict(
+                        Xs_val, Xt_val, pyramid_val
+                    )
                 round_trees.append(tree)
             self.trees_.append(round_trees)
 
@@ -129,9 +161,10 @@ class _BoosterCore:
 
         n = X_static.shape[0]
         raw = np.tile(self.base_score_, (n, 1))
+        pyramid = self._pyramid(X_series)
         for round_trees in self.trees_[:n_rounds]:
             for k, tree in enumerate(round_trees):
-                raw[:, k] += self.learning_rate * tree.predict(X_static, X_series)
+                raw[:, k] += self.learning_rate * tree.predict(X_static, X_series, pyramid)
         return raw
 
     def n_rounds_used(self) -> int:

@@ -236,7 +236,21 @@ def shapelet_features(
     return dist_out, pos_out
 
 
-def eval_split_feature(spec, X_static, X_series, rows: np.ndarray) -> np.ndarray:
+def ecdf(values: np.ndarray, grid: np.ndarray) -> np.ndarray:
+    """Where each value falls in a *frozen* training distribution, in [0, 1].
+
+    The grid is the sorted training column, captured once and never recomputed —
+    a rank computed against the batch at hand would mean something different at
+    predict time than it did during fitting.
+    """
+    out = np.full(len(values), np.nan)
+    finite = np.isfinite(values)
+    if grid.size and finite.any():
+        out[finite] = np.searchsorted(grid, values[finite], side="right") / grid.size
+    return out
+
+
+def eval_split_feature(spec, X_static, X_series, rows: np.ndarray, pyramid=None) -> np.ndarray:
     """Compute a split's scalar feature for ``rows`` — shared by fit and predict.
 
     Using one function for both directions is what guarantees a row routes the
@@ -255,5 +269,21 @@ def eval_split_feature(spec, X_static, X_series, rows: np.ndarray) -> np.ndarray
             X_series[rows, spec.channel, :], spec.shapelet, znorm=spec.znorm
         )
         return dist if kind == "shapelet_dist" else pos
+
+    if kind in ("filter_resp", "filter_pos"):
+        from .filters import Pyramid, align
+
+        if pyramid is None:
+            pyramid = Pyramid(X_series, len(spec.template))
+        response, position = align(
+            pyramid.block(spec.scale, spec.channel, rows), spec.template
+        )
+        return response if kind == "filter_resp" else position
+
+    if kind == "comparison":
+        inner = eval_split_feature(spec.position_spec, X_static, X_series, rows, pyramid)
+        return ecdf(inner, spec.position_grid) - ecdf(
+            X_static[rows, spec.col], spec.static_grid
+        )
 
     raise ValueError(f"unknown split kind {kind!r}")

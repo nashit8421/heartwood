@@ -19,13 +19,13 @@ class SplitSpec:
     fitted tree never depends on the training arrays staying alive or unchanged.
     """
 
-    kind: str  # 'static' | 'interval' | 'shapelet_dist' | 'shapelet_pos'
+    kind: str  # 'static' | 'interval' | 'shapelet_*' | 'filter_*' | 'comparison'
     threshold: float = np.nan
     missing_left: bool = True
     gain: float = -np.inf
     # static
     col: int = -1
-    # interval (and the channel for shapelets)
+    # interval (and the channel for shapelets and filters)
     channel: int = -1
     start: int = -1
     end: int = -1
@@ -33,6 +33,23 @@ class SplitSpec:
     # shapelet
     shapelet: np.ndarray | None = field(default=None, repr=False)
     znorm: bool = True
+    # matched filter
+    scale: int = 0
+    template: np.ndarray | None = field(default=None, repr=False)
+    # comparison split: a position-valued spec ranked against a static column
+    position_spec: "SplitSpec | None" = field(default=None, repr=False)
+    position_grid: np.ndarray | None = field(default=None, repr=False)
+    static_grid: np.ndarray | None = field(default=None, repr=False)
+
+    def identity(self) -> tuple:
+        """What makes two specs the *same feature*, ignoring the threshold."""
+        return (
+            self.kind, self.col, self.channel, self.start, self.end, self.stat,
+            self.scale,
+            None if self.shapelet is None else self.shapelet.tobytes(),
+            None if self.template is None else self.template.tobytes(),
+            None if self.position_spec is None else self.position_spec.identity(),
+        )
 
     def feature_name(self) -> str:
         """Human-readable name of the scalar this split thresholds."""
@@ -40,9 +57,21 @@ class SplitSpec:
             return f"static[{self.col}]"
         if self.kind == "interval":
             return f"series[ch={self.channel}].{self.stat}[t={self.start}:{self.end}]"
-        length = 0 if self.shapelet is None else len(self.shapelet)
-        which = "dist" if self.kind == "shapelet_dist" else "pos"
-        return f"series[ch={self.channel}].shapelet_{which}(len={length})"
+        if self.kind in ("shapelet_dist", "shapelet_pos"):
+            length = 0 if self.shapelet is None else len(self.shapelet)
+            which = "dist" if self.kind == "shapelet_dist" else "pos"
+            return f"series[ch={self.channel}].shapelet_{which}(len={length})"
+        if self.kind in ("filter_resp", "filter_pos"):
+            taps = 0 if self.template is None else len(self.template)
+            which = "resp" if self.kind == "filter_resp" else "pos"
+            return (
+                f"series[ch={self.channel}].filter(scale={self.scale}, "
+                f"span~{taps * 2 ** self.scale}).{which}"
+            )
+        if self.kind == "comparison":
+            inner = "?" if self.position_spec is None else self.position_spec.feature_name()
+            return f"rank({inner}) - rank(static[{self.col}])"
+        return self.kind
 
     def family(self) -> str:
         """Coarser key used to aggregate importances."""
@@ -50,7 +79,13 @@ class SplitSpec:
             return f"static[{self.col}]"
         if self.kind == "interval":
             return f"interval(ch={self.channel}, {self.stat})"
+        if self.kind == "comparison":
+            return f"comparison(static[{self.col}])"
         return f"{self.kind}(ch={self.channel})"
+
+    def is_position(self) -> bool:
+        """Does this split's feature measure *when* something happened?"""
+        return self.kind in ("shapelet_pos", "filter_pos")
 
     def describe(self) -> str:
         side = "left" if self.missing_left else "right"
