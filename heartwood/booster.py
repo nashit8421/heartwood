@@ -7,6 +7,7 @@ import numpy as np
 from ._util import spawn_rng
 from .bank import FeatureBank
 from .dense import DenseBase, dense_bank, levy_area_columns
+from .rocket import RocketBank
 from .filters import Pyramid
 from .losses import Loss
 from .tree import FitContext, TemporalTree, TreeParams
@@ -21,7 +22,8 @@ class _BoosterCore:
 
     def __init__(self, tree_params: TreeParams, n_estimators=200, learning_rate=0.1,
                  subsample=1.0, early_stopping_rounds=None, random_state=None,
-                 bank_enabled=True, bank_max=32, dense_base=False, levy_areas=False):
+                 bank_enabled=True, bank_max=32, dense_base=False, levy_areas=False,
+                 dense_features="stats", n_rocket_features=10000):
         self.tree_params = tree_params
         self.n_estimators = int(n_estimators)
         self.learning_rate = float(learning_rate)
@@ -32,6 +34,13 @@ class _BoosterCore:
         self.bank_max = int(bank_max)
         self.bank: FeatureBank | None = None
         self.dense_base = bool(dense_base)
+        if dense_features not in ("stats", "rocket", "both"):
+            raise ValueError(
+                f"dense_features must be 'stats', 'rocket' or 'both', got {dense_features!r}"
+            )
+        self.dense_features = dense_features
+        self.n_rocket_features = int(n_rocket_features)
+        self.rocket_: RocketBank | None = None
         self.levy_areas = bool(levy_areas)
         self.dense_: DenseBase | None = None
         self.static_names_: list[str] = []
@@ -70,7 +79,7 @@ class _BoosterCore:
                 names += [f"levy_area[{i}]" for i in range(areas.shape[1])]
 
         if self.dense_base and X_series is not None:
-            bank = dense_bank(X_series)
+            bank = self._dense_bank(X_series, fitting)
             if fitting:
                 self.dense_ = DenseBase(loss.task, loss.n_outputs(y))
                 base_raw = self.dense_.fit(bank, y)
@@ -83,6 +92,33 @@ class _BoosterCore:
         if fitting:
             self.static_names_ = names
         return (np.hstack(blocks) if len(blocks) > 1 else X_static), base_raw
+
+    def _dense_bank(self, X_series, fitting: bool) -> np.ndarray:
+        """The feature bank the ridge base sees.
+
+        ``stats`` is the original dyadic window-statistic bank.  ``rocket`` is the
+        dilated-convolution bank, which exists because greedy per-node selection
+        is the measured ceiling on shape-regime data and a ridge over a large
+        fixed bank does not select at all (``validation/HEADROOM.md``).  ``both``
+        concatenates them and lets the ridge decide.
+
+        The rocket bank is stateful — its biases are quantiles of the *training*
+        convolutions — so it is fitted once and reused unchanged afterwards, the
+        same discipline as the frozen rank grids in ``features.ecdf``.
+        """
+        parts = []
+        if self.dense_features in ("stats", "both"):
+            parts.append(dense_bank(X_series))
+        if self.dense_features in ("rocket", "both"):
+            if fitting:
+                self.rocket_ = RocketBank(
+                    n_features=self.n_rocket_features,
+                    random_state=0 if self.random_state is None else self.random_state,
+                ).fit(X_series)
+            if self.rocket_ is None:
+                raise RuntimeError("rocket bank is not fitted")
+            parts.append(self.rocket_.transform(X_series))
+        return parts[0] if len(parts) == 1 else np.hstack(parts)
 
     @staticmethod
     def _static_grids(X_static):

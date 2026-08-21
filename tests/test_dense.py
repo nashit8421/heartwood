@@ -279,3 +279,98 @@ def test_levy_areas_are_a_no_op_on_single_channel_data():
         m.fit(X_static, X_series, y).predict(X_static, X_series) for m in (off, on)
     ]
     assert np.array_equal(*predictions)
+
+
+# ------------------------------------------------------- the rocket bank
+#
+# Added in V6. The bank exists because greedy per-node selection is the measured
+# ceiling on shape-regime data (validation/HEADROOM.md) and a ridge over a large
+# fixed bank does not select at all. These pin the properties the ridge on top
+# depends on: the bank is label-free, deterministic, and frozen after fitting.
+
+import numpy as np
+import pytest
+
+from heartwood import HeartwoodClassifier
+from heartwood.rocket import ALPHA_INDICES, KERNEL_LEN, N_KERNELS, RocketBank
+
+
+def test_there_are_eighty_four_zero_sum_kernels():
+    assert N_KERNELS == 84
+    for alpha in ALPHA_INDICES:
+        weights = np.full(KERNEL_LEN, -1.0)
+        weights[alpha] = 2.0
+        assert weights.sum() == pytest.approx(0.0), "a kernel that does not sum to zero"
+        assert (weights == 2.0).sum() == 3
+
+
+def test_features_are_proportions_and_are_finite(rng):
+    X = rng.normal(size=(30, 3, 90))
+    features = RocketBank(n_features=1500, random_state=0).fit_transform(X)
+    assert features.shape[0] == 30 and features.shape[1] > 0
+    assert np.isfinite(features).all()
+    assert features.min() >= 0.0 and features.max() <= 1.0
+
+
+def test_the_bank_never_sees_the_labels(rng):
+    """The ridge on top is only honest if the bank underneath is label-free."""
+    X = rng.normal(size=(25, 2, 60))
+    first = RocketBank(n_features=1000, random_state=3).fit_transform(X)
+    second = RocketBank(n_features=1000, random_state=3).fit_transform(X)
+    assert np.array_equal(first, second), "same data and seed must give the same bank"
+
+
+def test_biases_are_frozen_after_fitting(rng):
+    """A test row must be measured against the thresholds a training row was.
+
+    Recomputing biases per batch would make a row's features depend on whichever
+    other rows happened to arrive with it.
+    """
+    X = rng.normal(size=(40, 2, 70))
+    bank = RocketBank(n_features=1000, random_state=0).fit(X)
+    whole = bank.transform(X)
+    piecewise = np.vstack([bank.transform(X[:9]), bank.transform(X[9:])])
+    assert np.allclose(whole, piecewise)
+
+
+def test_a_shifted_pattern_is_seen_the_same_way(rng):
+    """PPV pools over time, so where the pattern sits should barely matter."""
+    base = np.zeros((2, 1, 120))
+    pattern = np.sin(np.linspace(0, 4 * np.pi, 30))
+    base[0, 0, 10:40] = pattern
+    base[1, 0, 70:100] = pattern
+    features = RocketBank(n_features=2000, random_state=0).fit_transform(base)
+    assert np.abs(features[0] - features[1]).mean() < 0.05
+
+
+def test_missing_values_do_not_produce_missing_features(rng):
+    """A convolution has no NaN-aware form, so the bank imputes and says so."""
+    X = rng.normal(size=(20, 2, 80))
+    X[3, 0, 10:30] = np.nan
+    X[7, 1, :] = np.nan  # an entirely absent channel
+    features = RocketBank(n_features=1000, random_state=0).fit_transform(X)
+    assert np.isfinite(features).all()
+
+
+def test_transform_rejects_a_different_series_shape(rng):
+    bank = RocketBank(n_features=500, random_state=0).fit(rng.normal(size=(10, 2, 50)))
+    with pytest.raises(ValueError, match="expected series of shape"):
+        bank.transform(rng.normal(size=(4, 3, 50)))
+
+
+def test_rocket_base_predicts_out_of_sample(rng):
+    """End to end: the base must help on new rows, not just training ones."""
+    X = rng.normal(size=(120, 2, 96))
+    y = (np.abs(X[:, 0, 30:60]).max(1) > 1.9).astype(int)
+    model = HeartwoodClassifier(n_estimators=40, max_depth=3, random_state=0,
+                                dense_base=True, dense_features="rocket",
+                                n_rocket_features=2000).fit(None, X[:80], y[:80])
+    held_out = (model.predict(None, X[80:]) == y[80:]).mean()
+    assert held_out > 0.6, f"rocket base predicts at {held_out:.2f} on held-out rows"
+
+
+def test_unknown_dense_features_fails_loudly():
+    with pytest.raises(ValueError, match="dense_features must be"):
+        HeartwoodClassifier(dense_features="convolutions").fit(
+            None, np.zeros((4, 1, 20)), np.array([0, 1, 0, 1])
+        )
