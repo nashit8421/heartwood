@@ -1,0 +1,1908 @@
+{
+ "config": {
+  "datasets": "['uea:Epilepsy', 'uea:Handwriting', 'uea:RacketSports', 'uea:HandMovementDirection', 'uea:Libras', 'uea:NATOPS', 'uea:SelfRegulationSCP2', 'uea:Heartbeat']",
+  "sizes": "[0]",
+  "seeds": "5",
+  "full_seeds": "5",
+  "rounds": "200",
+  "depth": "4",
+  "learning_rate": "0.1",
+  "no_minirocket": "False",
+  "variants": "['', 'rocket']",
+  "representations": "['agg']",
+  "out": "validation/rerun/v6_ueaB"
+ },
+ "unavailable": {},
+ "results": [
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood",
+   "n_train": 137,
+   "seed": 0,
+   "fit_seconds": 24.859139375010272,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood_rocket",
+   "n_train": 137,
+   "seed": 0,
+   "fit_seconds": 0.4464037500147242,
+   "metrics": {
+    "balanced_accuracy": 0.9932432432432432,
+    "accuracy": 0.9927536231884058,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "agg",
+   "n_train": 137,
+   "seed": 0,
+   "fit_seconds": 0.05561650000163354,
+   "metrics": {
+    "balanced_accuracy": 0.9566905140434552,
+    "accuracy": 0.9565217391304348,
+    "roc_auc": 0.9979952939420762
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "minirocket",
+   "n_train": 137,
+   "seed": 0,
+   "fit_seconds": 1.1503047080186661,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "minirocket10k",
+   "n_train": 137,
+   "seed": 0,
+   "fit_seconds": 0.5809494169952814,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood",
+   "n_train": 137,
+   "seed": 1,
+   "fit_seconds": 24.940774499991676,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood_rocket",
+   "n_train": 137,
+   "seed": 1,
+   "fit_seconds": 0.44761754100909457,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "agg",
+   "n_train": 137,
+   "seed": 1,
+   "fit_seconds": 0.054235707997577265,
+   "metrics": {
+    "balanced_accuracy": 0.9566905140434552,
+    "accuracy": 0.9565217391304348,
+    "roc_auc": 0.9979952939420762
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "minirocket",
+   "n_train": 137,
+   "seed": 1,
+   "fit_seconds": 0.38291304200538434,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "minirocket10k",
+   "n_train": 137,
+   "seed": 1,
+   "fit_seconds": 0.5801474580075592,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood",
+   "n_train": 137,
+   "seed": 2,
+   "fit_seconds": 24.090128208015813,
+   "metrics": {
+    "balanced_accuracy": 0.9932432432432432,
+    "accuracy": 0.9927536231884058,
+    "roc_auc": 0.9998624000607839
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood_rocket",
+   "n_train": 137,
+   "seed": 2,
+   "fit_seconds": 0.4468510409933515,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "agg",
+   "n_train": 137,
+   "seed": 2,
+   "fit_seconds": 0.05369795800652355,
+   "metrics": {
+    "balanced_accuracy": 0.9566905140434552,
+    "accuracy": 0.9565217391304348,
+    "roc_auc": 0.9979952939420762
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "minirocket",
+   "n_train": 137,
+   "seed": 2,
+   "fit_seconds": 0.3829899170086719,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "minirocket10k",
+   "n_train": 137,
+   "seed": 2,
+   "fit_seconds": 0.5786547079915181,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood",
+   "n_train": 137,
+   "seed": 3,
+   "fit_seconds": 25.114716500014765,
+   "metrics": {
+    "balanced_accuracy": 0.9926470588235294,
+    "accuracy": 0.9927536231884058,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood_rocket",
+   "n_train": 137,
+   "seed": 3,
+   "fit_seconds": 0.44682845802162774,
+   "metrics": {
+    "balanced_accuracy": 0.9864864864864865,
+    "accuracy": 0.9855072463768116,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "agg",
+   "n_train": 137,
+   "seed": 3,
+   "fit_seconds": 0.05398029100615531,
+   "metrics": {
+    "balanced_accuracy": 0.9566905140434552,
+    "accuracy": 0.9565217391304348,
+    "roc_auc": 0.9979952939420762
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "minirocket",
+   "n_train": 137,
+   "seed": 3,
+   "fit_seconds": 0.38493274999200366,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "minirocket10k",
+   "n_train": 137,
+   "seed": 3,
+   "fit_seconds": 0.5796034579980187,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood",
+   "n_train": 137,
+   "seed": 4,
+   "fit_seconds": 25.146304958005203,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood_rocket",
+   "n_train": 137,
+   "seed": 4,
+   "fit_seconds": 0.4512267090030946,
+   "metrics": {
+    "balanced_accuracy": 0.9932432432432432,
+    "accuracy": 0.9927536231884058,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "agg",
+   "n_train": 137,
+   "seed": 4,
+   "fit_seconds": 0.05372970798634924,
+   "metrics": {
+    "balanced_accuracy": 0.9566905140434552,
+    "accuracy": 0.9565217391304348,
+    "roc_auc": 0.9979952939420762
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "minirocket",
+   "n_train": 137,
+   "seed": 4,
+   "fit_seconds": 0.38478812502580695,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "minirocket10k",
+   "n_train": 137,
+   "seed": 4,
+   "fit_seconds": 0.5792089589813258,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood",
+   "n_train": 150,
+   "seed": 0,
+   "fit_seconds": 131.7445197920024,
+   "metrics": {
+    "balanced_accuracy": 0.30906758320871275,
+    "accuracy": 0.31058823529411766,
+    "roc_auc": 0.8083068077412855
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood_rocket",
+   "n_train": 150,
+   "seed": 0,
+   "fit_seconds": 133.55241937498795,
+   "metrics": {
+    "balanced_accuracy": 0.5452099198286333,
+    "accuracy": 0.5494117647058824,
+    "roc_auc": 0.9001881038912027
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "agg",
+   "n_train": 150,
+   "seed": 0,
+   "fit_seconds": 0.3726454160059802,
+   "metrics": {
+    "balanced_accuracy": 0.17087665933947835,
+    "accuracy": 0.17176470588235293,
+    "roc_auc": 0.7018764686923392
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "minirocket",
+   "n_train": 150,
+   "seed": 0,
+   "fit_seconds": 1.2670180420100223,
+   "metrics": {
+    "balanced_accuracy": 0.4410610853527684,
+    "accuracy": 0.4423529411764706
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "minirocket10k",
+   "n_train": 150,
+   "seed": 0,
+   "fit_seconds": 1.8191592500079423,
+   "metrics": {
+    "balanced_accuracy": 0.5137396517405894,
+    "accuracy": 0.5176470588235295
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood",
+   "n_train": 150,
+   "seed": 1,
+   "fit_seconds": 131.5362735830131,
+   "metrics": {
+    "balanced_accuracy": 0.3306248641985707,
+    "accuracy": 0.33294117647058824,
+    "roc_auc": 0.8106661415176435
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood_rocket",
+   "n_train": 150,
+   "seed": 1,
+   "fit_seconds": 127.98854904199834,
+   "metrics": {
+    "balanced_accuracy": 0.49930869605309336,
+    "accuracy": 0.5047058823529412,
+    "roc_auc": 0.8830005901400996
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "agg",
+   "n_train": 150,
+   "seed": 1,
+   "fit_seconds": 0.37163537499145605,
+   "metrics": {
+    "balanced_accuracy": 0.17087665933947835,
+    "accuracy": 0.17176470588235293,
+    "roc_auc": 0.7018764686923392
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "minirocket",
+   "n_train": 150,
+   "seed": 1,
+   "fit_seconds": 1.2704073339991737,
+   "metrics": {
+    "balanced_accuracy": 0.4410610853527684,
+    "accuracy": 0.4423529411764706
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "minirocket10k",
+   "n_train": 150,
+   "seed": 1,
+   "fit_seconds": 1.8157369999971706,
+   "metrics": {
+    "balanced_accuracy": 0.5137396517405894,
+    "accuracy": 0.5176470588235295
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood",
+   "n_train": 150,
+   "seed": 2,
+   "fit_seconds": 130.62187195802107,
+   "metrics": {
+    "balanced_accuracy": 0.3241195406038208,
+    "accuracy": 0.32235294117647056,
+    "roc_auc": 0.806514948972339
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood_rocket",
+   "n_train": 150,
+   "seed": 2,
+   "fit_seconds": 140.59566987500875,
+   "metrics": {
+    "balanced_accuracy": 0.5265040990665153,
+    "accuracy": 0.528235294117647,
+    "roc_auc": 0.9012848257115896
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "agg",
+   "n_train": 150,
+   "seed": 2,
+   "fit_seconds": 0.37996954200207256,
+   "metrics": {
+    "balanced_accuracy": 0.17087665933947835,
+    "accuracy": 0.17176470588235293,
+    "roc_auc": 0.7018764686923392
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "minirocket",
+   "n_train": 150,
+   "seed": 2,
+   "fit_seconds": 1.2958740839967504,
+   "metrics": {
+    "balanced_accuracy": 0.4410610853527684,
+    "accuracy": 0.4423529411764706
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "minirocket10k",
+   "n_train": 150,
+   "seed": 2,
+   "fit_seconds": 1.8557957919838373,
+   "metrics": {
+    "balanced_accuracy": 0.5137396517405894,
+    "accuracy": 0.5176470588235295
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood",
+   "n_train": 150,
+   "seed": 3,
+   "fit_seconds": 132.59255108301295,
+   "metrics": {
+    "balanced_accuracy": 0.2998819927980651,
+    "accuracy": 0.30117647058823527,
+    "roc_auc": 0.8018352672272543
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood_rocket",
+   "n_train": 150,
+   "seed": 3,
+   "fit_seconds": 133.4789692919876,
+   "metrics": {
+    "balanced_accuracy": 0.5248193844044631,
+    "accuracy": 0.528235294117647,
+    "roc_auc": 0.8951197286751726
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "agg",
+   "n_train": 150,
+   "seed": 3,
+   "fit_seconds": 0.37943670799722895,
+   "metrics": {
+    "balanced_accuracy": 0.17087665933947835,
+    "accuracy": 0.17176470588235293,
+    "roc_auc": 0.7018764686923392
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "minirocket",
+   "n_train": 150,
+   "seed": 3,
+   "fit_seconds": 1.2950892499939073,
+   "metrics": {
+    "balanced_accuracy": 0.4410610853527684,
+    "accuracy": 0.4423529411764706
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "minirocket10k",
+   "n_train": 150,
+   "seed": 3,
+   "fit_seconds": 1.8654682920023333,
+   "metrics": {
+    "balanced_accuracy": 0.5137396517405894,
+    "accuracy": 0.5176470588235295
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood",
+   "n_train": 150,
+   "seed": 4,
+   "fit_seconds": 135.0069261250028,
+   "metrics": {
+    "balanced_accuracy": 0.31476536374185193,
+    "accuracy": 0.31411764705882356,
+    "roc_auc": 0.8042274344770335
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood_rocket",
+   "n_train": 150,
+   "seed": 4,
+   "fit_seconds": 137.15546654199716,
+   "metrics": {
+    "balanced_accuracy": 0.5060525193578074,
+    "accuracy": 0.5117647058823529,
+    "roc_auc": 0.8823215330398301
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "agg",
+   "n_train": 150,
+   "seed": 4,
+   "fit_seconds": 0.3782062499958556,
+   "metrics": {
+    "balanced_accuracy": 0.17087665933947835,
+    "accuracy": 0.17176470588235293,
+    "roc_auc": 0.7018764686923392
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "minirocket",
+   "n_train": 150,
+   "seed": 4,
+   "fit_seconds": 1.294416791992262,
+   "metrics": {
+    "balanced_accuracy": 0.4410610853527684,
+    "accuracy": 0.4423529411764706
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "minirocket10k",
+   "n_train": 150,
+   "seed": 4,
+   "fit_seconds": 1.858713749999879,
+   "metrics": {
+    "balanced_accuracy": 0.5137396517405894,
+    "accuracy": 0.5176470588235295
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood",
+   "n_train": 151,
+   "seed": 0,
+   "fit_seconds": 24.14597949999734,
+   "metrics": {
+    "balanced_accuracy": 0.9015133378932969,
+    "accuracy": 0.8947368421052632,
+    "roc_auc": 0.9742932222294187
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood_rocket",
+   "n_train": 151,
+   "seed": 0,
+   "fit_seconds": 13.35736429100507,
+   "metrics": {
+    "balanced_accuracy": 0.9093023255813953,
+    "accuracy": 0.9013157894736842,
+    "roc_auc": 0.975387112720595
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "agg",
+   "n_train": 151,
+   "seed": 0,
+   "fit_seconds": 0.14463150000665337,
+   "metrics": {
+    "balanced_accuracy": 0.8327376880984952,
+    "accuracy": 0.8223684210526315,
+    "roc_auc": 0.934704591697346
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "minirocket",
+   "n_train": 151,
+   "seed": 0,
+   "fit_seconds": 0.058483791013713926,
+   "metrics": {
+    "balanced_accuracy": 0.865967607973422,
+    "accuracy": 0.8552631578947368
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "minirocket10k",
+   "n_train": 151,
+   "seed": 0,
+   "fit_seconds": 0.09528562499326654,
+   "metrics": {
+    "balanced_accuracy": 0.8664036544850499,
+    "accuracy": 0.8552631578947368
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood",
+   "n_train": 151,
+   "seed": 1,
+   "fit_seconds": 25.428569375013467,
+   "metrics": {
+    "balanced_accuracy": 0.8963455149501661,
+    "accuracy": 0.8881578947368421,
+    "roc_auc": 0.9702462830263963
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood_rocket",
+   "n_train": 151,
+   "seed": 1,
+   "fit_seconds": 9.378398917004233,
+   "metrics": {
+    "balanced_accuracy": 0.8900955149501661,
+    "accuracy": 0.881578947368421,
+    "roc_auc": 0.9734135688759182
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "agg",
+   "n_train": 151,
+   "seed": 1,
+   "fit_seconds": 0.14357612500316463,
+   "metrics": {
+    "balanced_accuracy": 0.8327376880984952,
+    "accuracy": 0.8223684210526315,
+    "roc_auc": 0.934704591697346
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "minirocket",
+   "n_train": 151,
+   "seed": 1,
+   "fit_seconds": 0.05854029202600941,
+   "metrics": {
+    "balanced_accuracy": 0.865967607973422,
+    "accuracy": 0.8552631578947368
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "minirocket10k",
+   "n_train": 151,
+   "seed": 1,
+   "fit_seconds": 0.09491274997708388,
+   "metrics": {
+    "balanced_accuracy": 0.8664036544850499,
+    "accuracy": 0.8552631578947368
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood",
+   "n_train": 151,
+   "seed": 2,
+   "fit_seconds": 24.010580915986793,
+   "metrics": {
+    "balanced_accuracy": 0.8956993844049248,
+    "accuracy": 0.8881578947368421,
+    "roc_auc": 0.9722626763745317
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood_rocket",
+   "n_train": 151,
+   "seed": 2,
+   "fit_seconds": 10.784395666996716,
+   "metrics": {
+    "balanced_accuracy": 0.8610257475083056,
+    "accuracy": 0.8486842105263158,
+    "roc_auc": 0.9701254524739863
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "agg",
+   "n_train": 151,
+   "seed": 2,
+   "fit_seconds": 0.14388595800846815,
+   "metrics": {
+    "balanced_accuracy": 0.8327376880984952,
+    "accuracy": 0.8223684210526315,
+    "roc_auc": 0.934704591697346
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "minirocket",
+   "n_train": 151,
+   "seed": 2,
+   "fit_seconds": 0.0577312920067925,
+   "metrics": {
+    "balanced_accuracy": 0.865967607973422,
+    "accuracy": 0.8552631578947368
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "minirocket10k",
+   "n_train": 151,
+   "seed": 2,
+   "fit_seconds": 0.09463891698396765,
+   "metrics": {
+    "balanced_accuracy": 0.8664036544850499,
+    "accuracy": 0.8552631578947368
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood",
+   "n_train": 151,
+   "seed": 3,
+   "fit_seconds": 25.326549874997,
+   "metrics": {
+    "balanced_accuracy": 0.8831993844049247,
+    "accuracy": 0.875,
+    "roc_auc": 0.9652748948707118
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood_rocket",
+   "n_train": 151,
+   "seed": 3,
+   "fit_seconds": 11.2918269590009,
+   "metrics": {
+    "balanced_accuracy": 0.8963455149501661,
+    "accuracy": 0.8881578947368421,
+    "roc_auc": 0.97642488224792
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "agg",
+   "n_train": 151,
+   "seed": 3,
+   "fit_seconds": 0.14385983301326632,
+   "metrics": {
+    "balanced_accuracy": 0.8327376880984952,
+    "accuracy": 0.8223684210526315,
+    "roc_auc": 0.934704591697346
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "minirocket",
+   "n_train": 151,
+   "seed": 3,
+   "fit_seconds": 0.05921345797833055,
+   "metrics": {
+    "balanced_accuracy": 0.865967607973422,
+    "accuracy": 0.8552631578947368
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "minirocket10k",
+   "n_train": 151,
+   "seed": 3,
+   "fit_seconds": 0.09488308301661164,
+   "metrics": {
+    "balanced_accuracy": 0.8664036544850499,
+    "accuracy": 0.8552631578947368
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood",
+   "n_train": 151,
+   "seed": 4,
+   "fit_seconds": 24.585989707993576,
+   "metrics": {
+    "balanced_accuracy": 0.8838455149501662,
+    "accuracy": 0.875,
+    "roc_auc": 0.970089682683776
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood_rocket",
+   "n_train": 151,
+   "seed": 4,
+   "fit_seconds": 7.101164124993375,
+   "metrics": {
+    "balanced_accuracy": 0.9021594684385382,
+    "accuracy": 0.8947368421052632,
+    "roc_auc": 0.977113677839922
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "agg",
+   "n_train": 151,
+   "seed": 4,
+   "fit_seconds": 0.14418879197910428,
+   "metrics": {
+    "balanced_accuracy": 0.8327376880984952,
+    "accuracy": 0.8223684210526315,
+    "roc_auc": 0.934704591697346
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "minirocket",
+   "n_train": 151,
+   "seed": 4,
+   "fit_seconds": 0.05922516601276584,
+   "metrics": {
+    "balanced_accuracy": 0.865967607973422,
+    "accuracy": 0.8552631578947368
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "minirocket10k",
+   "n_train": 151,
+   "seed": 4,
+   "fit_seconds": 0.09474966599373147,
+   "metrics": {
+    "balanced_accuracy": 0.8664036544850499,
+    "accuracy": 0.8552631578947368
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood",
+   "n_train": 160,
+   "seed": 0,
+   "fit_seconds": 81.50981266601593,
+   "metrics": {
+    "balanced_accuracy": 0.39761904761904765,
+    "accuracy": 0.40540540540540543,
+    "roc_auc": 0.6309381649424023
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood_rocket",
+   "n_train": 160,
+   "seed": 0,
+   "fit_seconds": 80.99472216601134,
+   "metrics": {
+    "balanced_accuracy": 0.4714285714285714,
+    "accuracy": 0.4594594594594595,
+    "roc_auc": 0.7162117543473475
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "agg",
+   "n_train": 160,
+   "seed": 0,
+   "fit_seconds": 0.3945197089924477,
+   "metrics": {
+    "balanced_accuracy": 0.2892857142857143,
+    "accuracy": 0.28378378378378377,
+    "roc_auc": 0.6001279440898084
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "minirocket",
+   "n_train": 160,
+   "seed": 0,
+   "fit_seconds": 0.8844885840080678,
+   "metrics": {
+    "balanced_accuracy": 0.35238095238095235,
+    "accuracy": 0.3783783783783784
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "minirocket10k",
+   "n_train": 160,
+   "seed": 0,
+   "fit_seconds": 1.3199146249971818,
+   "metrics": {
+    "balanced_accuracy": 0.3869047619047619,
+    "accuracy": 0.3918918918918919
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood",
+   "n_train": 160,
+   "seed": 1,
+   "fit_seconds": 80.08599695799057,
+   "metrics": {
+    "balanced_accuracy": 0.488095238095238,
+    "accuracy": 0.4864864864864865,
+    "roc_auc": 0.7366672169638271
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood_rocket",
+   "n_train": 160,
+   "seed": 1,
+   "fit_seconds": 80.51894650000031,
+   "metrics": {
+    "balanced_accuracy": 0.4869047619047619,
+    "accuracy": 0.5135135135135135,
+    "roc_auc": 0.6977680864333407
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "agg",
+   "n_train": 160,
+   "seed": 1,
+   "fit_seconds": 0.39254249999066815,
+   "metrics": {
+    "balanced_accuracy": 0.2892857142857143,
+    "accuracy": 0.28378378378378377,
+    "roc_auc": 0.6001279440898084
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "minirocket",
+   "n_train": 160,
+   "seed": 1,
+   "fit_seconds": 0.8822504999989178,
+   "metrics": {
+    "balanced_accuracy": 0.35238095238095235,
+    "accuracy": 0.3783783783783784
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "minirocket10k",
+   "n_train": 160,
+   "seed": 1,
+   "fit_seconds": 1.3173529580235481,
+   "metrics": {
+    "balanced_accuracy": 0.3869047619047619,
+    "accuracy": 0.3918918918918919
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood",
+   "n_train": 160,
+   "seed": 2,
+   "fit_seconds": 77.28504066698952,
+   "metrics": {
+    "balanced_accuracy": 0.319047619047619,
+    "accuracy": 0.35135135135135137,
+    "roc_auc": 0.6812284466945484
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood_rocket",
+   "n_train": 160,
+   "seed": 2,
+   "fit_seconds": 79.33124195801793,
+   "metrics": {
+    "balanced_accuracy": 0.46904761904761905,
+    "accuracy": 0.4864864864864865,
+    "roc_auc": 0.7355418592706728
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "agg",
+   "n_train": 160,
+   "seed": 2,
+   "fit_seconds": 0.39346037499490194,
+   "metrics": {
+    "balanced_accuracy": 0.2892857142857143,
+    "accuracy": 0.28378378378378377,
+    "roc_auc": 0.6001279440898084
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "minirocket",
+   "n_train": 160,
+   "seed": 2,
+   "fit_seconds": 0.8809200830000918,
+   "metrics": {
+    "balanced_accuracy": 0.35238095238095235,
+    "accuracy": 0.3783783783783784
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "minirocket10k",
+   "n_train": 160,
+   "seed": 2,
+   "fit_seconds": 1.3123012500000186,
+   "metrics": {
+    "balanced_accuracy": 0.3869047619047619,
+    "accuracy": 0.3918918918918919
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood",
+   "n_train": 160,
+   "seed": 3,
+   "fit_seconds": 76.85627254200517,
+   "metrics": {
+    "balanced_accuracy": 0.4666666666666667,
+    "accuracy": 0.47297297297297297,
+    "roc_auc": 0.6892568236847898
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood_rocket",
+   "n_train": 160,
+   "seed": 3,
+   "fit_seconds": 79.74340970799676,
+   "metrics": {
+    "balanced_accuracy": 0.42857142857142855,
+    "accuracy": 0.4594594594594595,
+    "roc_auc": 0.7106601731601732
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "agg",
+   "n_train": 160,
+   "seed": 3,
+   "fit_seconds": 0.3931900830066297,
+   "metrics": {
+    "balanced_accuracy": 0.2892857142857143,
+    "accuracy": 0.28378378378378377,
+    "roc_auc": 0.6001279440898084
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "minirocket",
+   "n_train": 160,
+   "seed": 3,
+   "fit_seconds": 0.879097166005522,
+   "metrics": {
+    "balanced_accuracy": 0.35238095238095235,
+    "accuracy": 0.3783783783783784
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "minirocket10k",
+   "n_train": 160,
+   "seed": 3,
+   "fit_seconds": 1.3130307500250638,
+   "metrics": {
+    "balanced_accuracy": 0.3869047619047619,
+    "accuracy": 0.3918918918918919
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood",
+   "n_train": 160,
+   "seed": 4,
+   "fit_seconds": 77.42506183299702,
+   "metrics": {
+    "balanced_accuracy": 0.4714285714285714,
+    "accuracy": 0.5,
+    "roc_auc": 0.7183097622716267
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood_rocket",
+   "n_train": 160,
+   "seed": 4,
+   "fit_seconds": 81.24765645799926,
+   "metrics": {
+    "balanced_accuracy": 0.43690476190476185,
+    "accuracy": 0.43243243243243246,
+    "roc_auc": 0.6889225181598063
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "agg",
+   "n_train": 160,
+   "seed": 4,
+   "fit_seconds": 0.3925466249929741,
+   "metrics": {
+    "balanced_accuracy": 0.2892857142857143,
+    "accuracy": 0.28378378378378377,
+    "roc_auc": 0.6001279440898084
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "minirocket",
+   "n_train": 160,
+   "seed": 4,
+   "fit_seconds": 0.881843499984825,
+   "metrics": {
+    "balanced_accuracy": 0.35238095238095235,
+    "accuracy": 0.3783783783783784
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "minirocket10k",
+   "n_train": 160,
+   "seed": 4,
+   "fit_seconds": 1.3130429580050986,
+   "metrics": {
+    "balanced_accuracy": 0.3869047619047619,
+    "accuracy": 0.3918918918918919
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 47.427915459004,
+   "metrics": {
+    "balanced_accuracy": 0.8999999999999999,
+    "accuracy": 0.9,
+    "roc_auc": 0.99484126984127
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood_rocket",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 28.108518541994272,
+   "metrics": {
+    "balanced_accuracy": 0.922222222222222,
+    "accuracy": 0.9222222222222223,
+    "roc_auc": 0.983101851851852
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "agg",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 0.16998512501595542,
+   "metrics": {
+    "balanced_accuracy": 0.7611111111111111,
+    "accuracy": 0.7611111111111111,
+    "roc_auc": 0.9853505291005291
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "minirocket",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 0.09815183299360797,
+   "metrics": {
+    "balanced_accuracy": 0.9166666666666666,
+    "accuracy": 0.9166666666666666
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "minirocket10k",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 0.15038354098214768,
+   "metrics": {
+    "balanced_accuracy": 0.9166666666666666,
+    "accuracy": 0.9166666666666666
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 47.99584600000526,
+   "metrics": {
+    "balanced_accuracy": 0.8944444444444443,
+    "accuracy": 0.8944444444444445,
+    "roc_auc": 0.9930886243386242
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood_rocket",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 20.138353208021726,
+   "metrics": {
+    "balanced_accuracy": 0.8944444444444444,
+    "accuracy": 0.8944444444444445,
+    "roc_auc": 0.9813492063492063
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "agg",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 0.17459854201297276,
+   "metrics": {
+    "balanced_accuracy": 0.7611111111111111,
+    "accuracy": 0.7611111111111111,
+    "roc_auc": 0.9853505291005291
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "minirocket",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 0.09940874998574145,
+   "metrics": {
+    "balanced_accuracy": 0.9166666666666666,
+    "accuracy": 0.9166666666666666
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "minirocket10k",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 0.151434875006089,
+   "metrics": {
+    "balanced_accuracy": 0.9166666666666666,
+    "accuracy": 0.9166666666666666
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 47.7410437920189,
+   "metrics": {
+    "balanced_accuracy": 0.8999999999999998,
+    "accuracy": 0.9,
+    "roc_auc": 0.9958664021164022
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood_rocket",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 22.400980499980506,
+   "metrics": {
+    "balanced_accuracy": 0.9111111111111111,
+    "accuracy": 0.9111111111111111,
+    "roc_auc": 0.9882605820105821
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "agg",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 0.17098300001816824,
+   "metrics": {
+    "balanced_accuracy": 0.7611111111111111,
+    "accuracy": 0.7611111111111111,
+    "roc_auc": 0.9853505291005291
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "minirocket",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 0.09757725000963546,
+   "metrics": {
+    "balanced_accuracy": 0.9166666666666666,
+    "accuracy": 0.9166666666666666
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "minirocket10k",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 0.14902862499002367,
+   "metrics": {
+    "balanced_accuracy": 0.9166666666666666,
+    "accuracy": 0.9166666666666666
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 48.514218041993445,
+   "metrics": {
+    "balanced_accuracy": 0.8833333333333333,
+    "accuracy": 0.8833333333333333,
+    "roc_auc": 0.9959656084656086
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood_rocket",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 24.27184191599372,
+   "metrics": {
+    "balanced_accuracy": 0.9333333333333332,
+    "accuracy": 0.9333333333333333,
+    "roc_auc": 0.9823247354497355
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "agg",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 0.17075991598539986,
+   "metrics": {
+    "balanced_accuracy": 0.7611111111111111,
+    "accuracy": 0.7611111111111111,
+    "roc_auc": 0.9853505291005291
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "minirocket",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 0.09800766699481755,
+   "metrics": {
+    "balanced_accuracy": 0.9166666666666666,
+    "accuracy": 0.9166666666666666
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "minirocket10k",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 0.14916762500070035,
+   "metrics": {
+    "balanced_accuracy": 0.9166666666666666,
+    "accuracy": 0.9166666666666666
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 44.969169083982706,
+   "metrics": {
+    "balanced_accuracy": 0.8666666666666666,
+    "accuracy": 0.8666666666666667,
+    "roc_auc": 0.9927579365079365
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood_rocket",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 20.958829500013962,
+   "metrics": {
+    "balanced_accuracy": 0.9166666666666665,
+    "accuracy": 0.9166666666666666,
+    "roc_auc": 0.9789021164021163
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "agg",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 0.17287120799301192,
+   "metrics": {
+    "balanced_accuracy": 0.7611111111111111,
+    "accuracy": 0.7611111111111111,
+    "roc_auc": 0.9853505291005291
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "minirocket",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 0.09731920799822547,
+   "metrics": {
+    "balanced_accuracy": 0.9166666666666666,
+    "accuracy": 0.9166666666666666
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "minirocket10k",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 0.15047091600717977,
+   "metrics": {
+    "balanced_accuracy": 0.9166666666666666,
+    "accuracy": 0.9166666666666666
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 32.61735391698312,
+   "metrics": {
+    "balanced_accuracy": 0.8944444444444445,
+    "accuracy": 0.8944444444444445,
+    "roc_auc": 0.9814074074074074
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood_rocket",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 19.52792058401974,
+   "metrics": {
+    "balanced_accuracy": 0.9,
+    "accuracy": 0.9,
+    "roc_auc": 0.9907407407407408
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "agg",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 0.6336042920011096,
+   "metrics": {
+    "balanced_accuracy": 0.888888888888889,
+    "accuracy": 0.8888888888888888,
+    "roc_auc": 0.9836296296296295
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "minirocket",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 0.1732570839812979,
+   "metrics": {
+    "balanced_accuracy": 0.9388888888888888,
+    "accuracy": 0.9388888888888889
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "minirocket10k",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 0.2266637920110952,
+   "metrics": {
+    "balanced_accuracy": 0.9444444444444443,
+    "accuracy": 0.9444444444444444
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 33.356769875012105,
+   "metrics": {
+    "balanced_accuracy": 0.9,
+    "accuracy": 0.9,
+    "roc_auc": 0.9865185185185185
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood_rocket",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 22.382415375002893,
+   "metrics": {
+    "balanced_accuracy": 0.938888888888889,
+    "accuracy": 0.9388888888888889,
+    "roc_auc": 0.9938518518518519
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "agg",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 0.6342327079910319,
+   "metrics": {
+    "balanced_accuracy": 0.888888888888889,
+    "accuracy": 0.8888888888888888,
+    "roc_auc": 0.9836296296296295
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "minirocket",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 0.17264599999180064,
+   "metrics": {
+    "balanced_accuracy": 0.9388888888888888,
+    "accuracy": 0.9388888888888889
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "minirocket10k",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 0.22781924999435432,
+   "metrics": {
+    "balanced_accuracy": 0.9444444444444443,
+    "accuracy": 0.9444444444444444
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 34.50825333301327,
+   "metrics": {
+    "balanced_accuracy": 0.8777777777777778,
+    "accuracy": 0.8777777777777778,
+    "roc_auc": 0.9764074074074074
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood_rocket",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 20.331613916991046,
+   "metrics": {
+    "balanced_accuracy": 0.9333333333333332,
+    "accuracy": 0.9333333333333333,
+    "roc_auc": 0.9952592592592593
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "agg",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 0.634330917004263,
+   "metrics": {
+    "balanced_accuracy": 0.888888888888889,
+    "accuracy": 0.8888888888888888,
+    "roc_auc": 0.9836296296296295
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "minirocket",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 0.172706624987768,
+   "metrics": {
+    "balanced_accuracy": 0.9388888888888888,
+    "accuracy": 0.9388888888888889
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "minirocket10k",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 0.22788295801728964,
+   "metrics": {
+    "balanced_accuracy": 0.9444444444444443,
+    "accuracy": 0.9444444444444444
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 32.39042425001389,
+   "metrics": {
+    "balanced_accuracy": 0.9111111111111111,
+    "accuracy": 0.9111111111111111,
+    "roc_auc": 0.9875555555555554
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood_rocket",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 21.318616957985796,
+   "metrics": {
+    "balanced_accuracy": 0.9333333333333332,
+    "accuracy": 0.9333333333333333,
+    "roc_auc": 0.9921851851851852
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "agg",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 0.6349738340068143,
+   "metrics": {
+    "balanced_accuracy": 0.888888888888889,
+    "accuracy": 0.8888888888888888,
+    "roc_auc": 0.9836296296296295
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "minirocket",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 0.17168604099424556,
+   "metrics": {
+    "balanced_accuracy": 0.9388888888888888,
+    "accuracy": 0.9388888888888889
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "minirocket10k",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 0.2257403749972582,
+   "metrics": {
+    "balanced_accuracy": 0.9444444444444443,
+    "accuracy": 0.9444444444444444
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 33.27307458300493,
+   "metrics": {
+    "balanced_accuracy": 0.8666666666666667,
+    "accuracy": 0.8666666666666667,
+    "roc_auc": 0.9792222222222223
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood_rocket",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 19.968140624987427,
+   "metrics": {
+    "balanced_accuracy": 0.9166666666666666,
+    "accuracy": 0.9166666666666666,
+    "roc_auc": 0.9934444444444445
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "agg",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 0.6335742080118507,
+   "metrics": {
+    "balanced_accuracy": 0.888888888888889,
+    "accuracy": 0.8888888888888888,
+    "roc_auc": 0.9836296296296295
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "minirocket",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 0.17327187498449348,
+   "metrics": {
+    "balanced_accuracy": 0.9388888888888888,
+    "accuracy": 0.9388888888888889
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "minirocket10k",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 0.22705329197924584,
+   "metrics": {
+    "balanced_accuracy": 0.9444444444444443,
+    "accuracy": 0.9444444444444444
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood",
+   "n_train": 200,
+   "seed": 0,
+   "fit_seconds": 91.55979529200704,
+   "metrics": {
+    "balanced_accuracy": 0.5277777777777778,
+    "accuracy": 0.5277777777777778,
+    "precision": 0.5342465753424658,
+    "recall": 0.43333333333333335,
+    "f1": 0.4785276073619632,
+    "roc_auc": 0.5381481481481482
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood_rocket",
+   "n_train": 200,
+   "seed": 0,
+   "fit_seconds": 82.45042795801419,
+   "metrics": {
+    "balanced_accuracy": 0.40555555555555556,
+    "accuracy": 0.40555555555555556,
+    "precision": 0.3924050632911392,
+    "recall": 0.34444444444444444,
+    "f1": 0.3668639053254438,
+    "roc_auc": 0.39308641975308645
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "agg",
+   "n_train": 200,
+   "seed": 0,
+   "fit_seconds": 0.11715270800050348,
+   "metrics": {
+    "balanced_accuracy": 0.5222222222222223,
+    "accuracy": 0.5222222222222223,
+    "precision": 0.5185185185185185,
+    "recall": 0.6222222222222222,
+    "f1": 0.5656565656565656,
+    "roc_auc": 0.5259259259259259
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "minirocket",
+   "n_train": 200,
+   "seed": 0,
+   "fit_seconds": 3.849725958018098,
+   "metrics": {
+    "balanced_accuracy": 0.5555555555555556,
+    "accuracy": 0.5555555555555556,
+    "precision": 0.5531914893617021,
+    "recall": 0.5777777777777777,
+    "f1": 0.5652173913043478,
+    "roc_auc": 0.5460493827160494
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "minirocket10k",
+   "n_train": 200,
+   "seed": 0,
+   "fit_seconds": 5.826011917000869,
+   "metrics": {
+    "balanced_accuracy": 0.5444444444444444,
+    "accuracy": 0.5444444444444444,
+    "precision": 0.5476190476190477,
+    "recall": 0.5111111111111111,
+    "f1": 0.5287356321839081,
+    "roc_auc": 0.5638271604938272
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood",
+   "n_train": 200,
+   "seed": 1,
+   "fit_seconds": 91.56641041699913,
+   "metrics": {
+    "balanced_accuracy": 0.4722222222222222,
+    "accuracy": 0.4722222222222222,
+    "precision": 0.47191011235955055,
+    "recall": 0.4666666666666667,
+    "f1": 0.4692737430167598,
+    "roc_auc": 0.48246913580246914
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood_rocket",
+   "n_train": 200,
+   "seed": 1,
+   "fit_seconds": 96.1602486250049,
+   "metrics": {
+    "balanced_accuracy": 0.4388888888888889,
+    "accuracy": 0.4388888888888889,
+    "precision": 0.42028985507246375,
+    "recall": 0.32222222222222224,
+    "f1": 0.36477987421383645,
+    "roc_auc": 0.4165432098765432
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "agg",
+   "n_train": 200,
+   "seed": 1,
+   "fit_seconds": 0.11839154199697077,
+   "metrics": {
+    "balanced_accuracy": 0.5222222222222223,
+    "accuracy": 0.5222222222222223,
+    "precision": 0.5185185185185185,
+    "recall": 0.6222222222222222,
+    "f1": 0.5656565656565656,
+    "roc_auc": 0.5259259259259259
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "minirocket",
+   "n_train": 200,
+   "seed": 1,
+   "fit_seconds": 3.8700005410064477,
+   "metrics": {
+    "balanced_accuracy": 0.5555555555555556,
+    "accuracy": 0.5555555555555556,
+    "precision": 0.5531914893617021,
+    "recall": 0.5777777777777777,
+    "f1": 0.5652173913043478,
+    "roc_auc": 0.5460493827160494
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "minirocket10k",
+   "n_train": 200,
+   "seed": 1,
+   "fit_seconds": 5.867318000004161,
+   "metrics": {
+    "balanced_accuracy": 0.5444444444444444,
+    "accuracy": 0.5444444444444444,
+    "precision": 0.5476190476190477,
+    "recall": 0.5111111111111111,
+    "f1": 0.5287356321839081,
+    "roc_auc": 0.5638271604938272
+   }
+  }
+ ]
+}

@@ -158,21 +158,26 @@ def run_cell(dataset, train_idx, test_idx, size, seed, config) -> list[Row]:
         rows.append(Row(dataset.key, name, n_train, seed, elapsed,
                         evaluate(dataset.task, y_te, predictions, scores)))
 
-    # --- Heartwood, library defaults
+    # --- Heartwood, library defaults, plus any requested base variants
     estimator = HeartwoodRegressor if dataset.task == "regression" else HeartwoodClassifier
-    started = time.perf_counter()
-    model = estimator(
-        n_estimators=config["rounds"], max_depth=config["depth"],
-        learning_rate=config["learning_rate"], random_state=seed,
-    ).fit(Xs if Xs.shape[1] else None, Xt, y)
-    elapsed = time.perf_counter() - started
     static_arg = Xs_te if Xs.shape[1] else None
-    predictions = model.predict(static_arg, Xt_te)
-    scores = None
-    if dataset.task != "regression":
-        proba = model.predict_proba(static_arg, Xt_te)
-        scores = proba[:, 1] if dataset.task == "binary" else proba
-    record(HEARTWOOD, predictions, scores, elapsed)
+    for variant in config["variants"]:
+        # "" is the shipped default; the others put a ridge over a feature bank
+        # underneath the trees (V6). Named so a table shows them side by side.
+        extra = {} if not variant else {"dense_base": True, "dense_features": variant}
+        name = HEARTWOOD if not variant else f"{HEARTWOOD}_{variant}"
+        started = time.perf_counter()
+        model = estimator(
+            n_estimators=config["rounds"], max_depth=config["depth"],
+            learning_rate=config["learning_rate"], random_state=seed, **extra,
+        ).fit(Xs if Xs.shape[1] else None, Xt, y)
+        elapsed = time.perf_counter() - started
+        predictions = model.predict(static_arg, Xt_te)
+        scores = None
+        if dataset.task != "regression":
+            proba = model.predict_proba(static_arg, Xt_te)
+            scores = proba[:, 1] if dataset.task == "binary" else proba
+        record(name, predictions, scores, elapsed)
 
     # --- the workarounds
     for name in config["representations"]:
@@ -230,6 +235,10 @@ def main() -> int:
     parser.add_argument("--depth", type=int, default=4)
     parser.add_argument("--learning-rate", type=float, default=0.1)
     parser.add_argument("--no-minirocket", action="store_true")
+    parser.add_argument("--variants", nargs="+", default=[""],
+                        help='Heartwood configurations to run: "" is the shipped '
+                             'default, "rocket"/"stats"/"both" put a ridge over that '
+                             "feature bank underneath the trees")
     parser.add_argument("--representations", nargs="+", default=REPRESENTATIONS,
                         help="baselines to run; a wide one (raw_flat on 12k columns) can "
                              "be split into its own pass so it cannot stall the grid")
@@ -239,7 +248,7 @@ def main() -> int:
     config = {
         "rounds": args.rounds, "depth": args.depth,
         "learning_rate": args.learning_rate, "representations": args.representations,
-        "minirocket": not args.no_minirocket,
+        "minirocket": not args.no_minirocket, "variants": args.variants,
     }
 
     results: list[Row] = []
