@@ -17,6 +17,7 @@ import pytest
 from heartwood import HeartwoodClassifier, HeartwoodRegressor
 from heartwood.datasets import make_lead_lag, make_shape_amplitude_regression
 from heartwood.dense import (
+    _platt,
     DenseBase,
     dense_bank,
     dyadic_windows,
@@ -106,18 +107,50 @@ def test_loo_is_not_the_in_sample_fit(rng):
 
 @pytest.mark.parametrize("n", [80, 200])
 def test_no_leak_on_random_labels(n, rng):
-    """With nothing to learn, the training margins must predict at chance.
+    """With nothing to learn, the base must decline rather than invent a signal.
 
     A leaky implementation looks near-perfect here while being worthless out of
-    sample, which is precisely how this failure hides.
+    sample, which is precisely how this failure hides.  The base now says so
+    explicitly by returning ``None``; if it ever does return margins on noise,
+    they must still be at chance.
     """
     X_series = rng.normal(size=(n, 1, 100))
     y = rng.integers(0, 2, size=n).astype(np.float64)
 
     base = DenseBase("classification", 1)
-    margins = base.fit(dense_bank(X_series), y)[:, 0]
-    accuracy = ((margins > 0).astype(int) == y).mean()
+    margins = base.fit(dense_bank(X_series), y)
+    if margins is None:
+        assert base.degenerate_ and base.loo_r2_ <= 0.0
+        return
+    accuracy = ((margins[:, 0] > 0).astype(int) == y).mean()
     assert accuracy < 0.70, f"leave-one-out margins scored {accuracy:.3f} on noise"
+
+
+def test_an_uninformative_base_is_declined_at_predict_time_too(rng):
+    """Whatever ``fit`` decided, ``transform`` must decide the same thing.
+
+    Otherwise a row is scored one way in training and another way in inference,
+    which is the shape of the bug this guard was added for.
+    """
+    X_series = rng.normal(size=(120, 1, 100))
+    y = rng.integers(0, 2, size=120).astype(np.float64)
+    base = DenseBase("classification", 1)
+    fitted = base.fit(dense_bank(X_series), y)
+    transformed = base.transform(dense_bank(rng.normal(size=(9, 1, 100))))
+    assert (fitted is None) == (transformed is None)
+
+
+def test_calibration_never_flips_the_margin(rng):
+    """Platt rescales a score; it does not get to reverse it.
+
+    A negative slope turned a null ridge's anti-correlated leave-one-out margins
+    into confident backwards predictions on unseen rows -- 0.422 balanced
+    accuracy on a binary task, below chance and below no base at all.
+    """
+    margins = rng.normal(size=300)
+    backwards = (margins < 0).astype(np.float64)  # labels that argue for a < 0
+    a, b = _platt(margins, backwards)
+    assert a >= 0.0, f"calibration fitted a negative slope ({a:.1f})"
 
 
 def test_refuses_to_interpolate(rng):

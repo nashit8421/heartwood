@@ -107,7 +107,14 @@ def levy_area_columns(X_series: np.ndarray, max_pairs: int = 6) -> np.ndarray:
 
 
 def _platt(margins: np.ndarray, y: np.ndarray, iterations: int = 50) -> tuple[float, float]:
-    """Map least-squares margins onto logits by fitting ``sigmoid(a·m + b)``."""
+    """Map least-squares margins onto logits by fitting ``sigmoid(a·m + b)``.
+
+    The slope is clamped at zero on the way out.  A calibration map is monotone
+    *increasing* by construction: it rescales a score, it does not get to decide
+    the score points the wrong way.  Letting it go negative is how a ridge with
+    no out-of-sample signal produced confident backwards predictions — see
+    :meth:`DenseBase.fit`.
+    """
     a, b = 1.0, 0.0
     for _ in range(iterations):
         z = a * margins + b
@@ -124,7 +131,7 @@ def _platt(margins: np.ndarray, y: np.ndarray, iterations: int = 50) -> tuple[fl
         a, b = a - step[0], b - step[1]
         if np.max(np.abs(step)) < 1e-10:
             break
-    return float(a), float(b)
+    return (float(a), float(b)) if a > 0 else (0.0, float(b))
 
 
 class DenseBase:
@@ -146,6 +153,8 @@ class DenseBase:
         self.target_center_: np.ndarray | None = None
         self.lambda_: float = 1.0
         self.calibration_: list[tuple[float, float]] = []
+        self.degenerate_ = False
+        self.loo_r2_: float = 0.0
 
     # ---------------------------------------------------------------- fitting
 
@@ -173,8 +182,12 @@ class DenseBase:
             self.scale_ = np.where(spread > _EPS, spread, 1.0)
         return (filled - self.center_) / self.scale_
 
-    def fit(self, bank: np.ndarray, y: np.ndarray) -> np.ndarray:
-        """Fit the ridge and return the leave-one-out margins, ``(n, K)``."""
+    def fit(self, bank: np.ndarray, y: np.ndarray) -> np.ndarray | None:
+        """Fit the ridge and return leave-one-out margins, or ``None``.
+
+        ``None`` means the ridge did not beat a constant out of fold, and the
+        booster should start from its ordinary initial score instead.
+        """
         X = self._prepare(bank, fitting=True)
         Y = self._targets(y)
         self.target_center_ = Y.mean(axis=0)
@@ -228,8 +241,30 @@ class DenseBase:
         # The leave-one-out prediction, in closed form: what the model would have
         # said about row i had row i not been in the fit.
         denominator = np.clip(1.0 - leverage, 1e-3, None)[:, None]
-        loo = (fitted - leverage[:, None] * Yc) / denominator + self.target_center_
+        loo_raw = (fitted - leverage[:, None] * Yc) / denominator
+        loo = loo_raw + self.target_center_
         self.effective_dof_ = float(shrink.sum())
+
+        # Does leaving each row out beat simply predicting the mean?  If not, the
+        # ridge has found nothing, and the honest move is to boost from a
+        # constant rather than from its noise.
+        #
+        # This is not a hypothetical.  A null ridge's leave-one-out margins come
+        # back *anti*-correlated with the target — that is LOO reporting "nothing
+        # here", and it is correct.  What went wrong is what happened next:
+        # calibration fitted a slope of -398 to that anti-correlation, so the
+        # base helped on training rows and, with the same slope applied to
+        # positively-correlated full-fit margins, confidently hurt on new ones.
+        # The trees never saw the flip, so they could not undo it.  Measured on
+        # UEA SelfRegulationSCP2: 0.422 balanced accuracy on a binary task,
+        # below chance and below the same model with no base at all.
+        total = float((Yc**2).sum())
+        self.loo_r2_ = 1.0 - float(((Yc - loo_raw) ** 2).sum()) / max(total, _EPS)
+        if self.loo_r2_ <= 0.0:
+            self.degenerate_ = True
+            self.coefficients_ = None
+            self.calibration_ = []
+            return None
 
         if self.task != "regression":
             self.calibration_ = [
@@ -253,8 +288,14 @@ class DenseBase:
 
     # -------------------------------------------------------------- inference
 
-    def transform(self, bank: np.ndarray) -> np.ndarray:
-        """Full-data-fit margins for unseen rows, ``(n, K)``."""
+    def transform(self, bank: np.ndarray) -> np.ndarray | None:
+        """Full-data-fit margins for unseen rows, ``(n, K)``, or ``None``.
+
+        ``None`` whenever ``fit`` found the ridge uninformative, so that a row
+        is scored the same way at predict time as it was during fitting.
+        """
+        if self.degenerate_:
+            return None
         if self.coefficients_ is None:
             raise RuntimeError("DenseBase is not fitted")
         X = self._prepare(bank, fitting=False)
