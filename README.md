@@ -10,16 +10,17 @@ the columns beside it.
 Boosting for datasets that mix **static per-row features with raw time series** — without
 collapsing the series into aggregates first.
 
-> **Status: v0.4 — the real-data claim did not survive its own audit, and the successor
-> claim did not survive its own test.** 273 tests, a reproducible benchmark grid, and two
-> pre-registered real-data studies. **H1 fails** once the aggregate baseline handles
-> missing data the way Heartwood does ([`validation/CORRECTION.md`](validation/CORRECTION.md)).
-> The conditional restatement fails too ([`VALIDATION_V5.md`](VALIDATION_V5.md),
-> [`validation/RESULTS_V5.md`](validation/RESULTS_V5.md)) — not because Heartwood does not
-> beat aggregation, which it does, reliably, by +4 to +14 points where aggregation
-> demonstrably loses, but because MiniROCKET beats Heartwood almost everywhere it wins.
-> **This is a well-engineered research artifact without a demonstrated niche.** Do not
-> reach for it over a rocket-style classifier on evidence currently in this repository.
+> **Status: v0.5 — two failed claims, then a diagnosis that paid off.** 286 tests and three
+> pre-registered real-data studies. The v0.3 headline was a
+> [baseline bug](validation/CORRECTION.md) and **H1 fails** once corrected. The conditional
+> restatement ([V5](VALIDATION_V5.md)) fails too: Heartwood beat aggregation but MiniROCKET
+> beat Heartwood. Measuring *why* ([`validation/HEADROOM.md`](validation/HEADROOM.md))
+> showed the ceiling was greedy per-node selection, not search budget — so
+> [V6](VALIDATION_V6.md) put a ridge over a dilated-convolution bank underneath the trees.
+> That closes the MiniROCKET gap to parity across 12 cells and **wins by 2.2 points at
+> n=1000 on PTB-XL**, the one dataset here with both real static covariates and
+> shape-regime series. H-V6.2 still fails on its own terms (1 of 4 sizes, a majority was
+> required), so `dense_features="rocket"` ships **opt-in**.
 
 ## Validation on real data — the honest verdict
 
@@ -149,6 +150,48 @@ entirely by not selecting: it computes every kernel and lets a ridge shrink them
 This retires the assumption the README has carried since v0.1 — that better *targeting* is
 the open problem. The bottleneck is the selection rule, not the sampler feeding it.
 
+## V6: stop selecting where selection is the bottleneck
+
+`HEADROOM.md` found that Heartwood's deficit to MiniROCKET was not a search problem —
+×16 the candidate budget moved a 20-point gap by 1.5 points and made two of three datasets
+*worse*. The cause is structural: a node keeps the single highest-gain split from a pool of
+random draws, so a bigger pool raises the winner's expected gain whether or not anything in
+it is informative. MiniROCKET has no such ceiling because it never selects; it computes
+~10,000 fixed dilated-kernel features and lets a ridge shrink all of them jointly.
+
+So V6 stops selecting for that part of the problem. `heartwood/rocket.py` builds the
+convolution bank (pure numpy), `DenseBase` puts a leave-one-out ridge over it, and the
+trees boost from there — adding what a ridge structurally cannot: static covariates,
+static × temporal interactions, and nonlinearity.
+
+| dataset | n | default | **+rocket** | MiniROCKET | vs rocket | vs default |
+|---|---|---|---|---|---|---|
+| **PTB-XL** | 1000 | 0.490 | **0.533** | 0.511 | **+2.2** | **+4.3** |
+| PTB-XL | 500 | 0.465 | 0.489 | 0.475 | +1.5 | +2.5 |
+| PTB-XL | 250 | 0.399 | 0.438 | 0.439 | −0.1 | +3.9 |
+| PTB-XL | 100 | 0.347 | 0.408 | 0.414 | −0.6 | +6.0 |
+| HandMovementDirection | 160 | 0.429 | **0.459** | 0.387 | **+7.2** | +3.0 |
+| Handwriting | 150 | 0.316 | **0.520** | 0.514 | +0.7 | **+20.5** |
+| RacketSports | 151 | 0.892 | 0.892 | 0.866 | **+2.5** | −0.0 |
+| NATOPS | 180 | 0.890 | 0.924 | 0.944 | −2.0 | +3.4 |
+
+Against MiniROCKET across all 12 cells the median gap is **−0.1** — parity, up from a clear
+deficit (V5 mean rank 2.33 against 1.50). Against Heartwood's own previous default the gain
+is large and near-uniform: 8 of 12 cells up by ≥2.5 points, nothing down by more than 0.3.
+
+**The pre-registered verdicts.** H-V6.1 (the bank is not broken) **PASS**, within 2 points
+of `aeon` on 7 of 8 datasets. H-V6.2 (the win) **FAIL** — ≥2 points at 1 of 4 PTB-XL sizes
+where a majority was required. H-V6.3 (no regression) **FAIL** on one scenario:
+`amp_regression` loses 2.3–6.7 points, because its target is height × static coefficient,
+so a linear base predicts the marginal part well and still misleads the trees. So by
+H-V6.4 the rocket base **does not become the default**.
+
+The PTB-XL margins are −0.6, −0.1, +1.5, +2.2 as n goes 100 → 1000. That is monotone, and
+the crossing at the largest size tested is real and seed-stable (+2.1, +3.4, +1.2). It is
+still one of four sizes, and calling a trend a win would be picking the summary after
+seeing the data — the exact habit that produced the v0.3 headline. n=2000 is the obvious
+next run and has not been done.
+
 ### The lesson worth keeping
 
 The most useful finding in this study is not about Heartwood. It is that on a dataset which
@@ -190,6 +233,7 @@ on one gain scale:
 | **cross-channel area** | *which channel moved first?* — a signed area no per-channel statistic can express (multichannel only) |
 | matched filter (opt-in) | a template fitted to the node's own residuals, at several time scales |
 | dense ridge base (opt-in) | a leave-one-out-honest linear model over a wide window bank, used as a starting point |
+| **convolution base (opt-in)** | *the same, over ~10,000 dilated kernels — MiniROCKET as a starting point rather than a competitor* |
 
 The temporal candidates are **redrawn at every node of every round**, so the window that
 matters is discovered at whatever position and resolution the gradients call for, rather
@@ -404,10 +448,16 @@ chance.
   ([`validation/HEADROOM.md`](validation/HEADROOM.md)). Earlier versions of this section
   called better *targeting* the open problem; that is retired — targeting feeds the
   sampler, and the sampler is not the bottleneck.
-- **Beaten by rocket-style classifiers on real shape-regime data.** MiniROCKET has a lower
-  mean rank across every V5 cell (1.50 vs 2.33) and is roughly two orders of magnitude
-  faster. It avoids the ceiling above by not selecting at all: every kernel is computed and
-  a ridge shrinks them jointly. If your data has no static block, use it instead.
+- **The ceiling is worked around, not removed.** `dense_features="rocket"` puts a ridge
+  over a convolution bank underneath the trees, which reaches parity with MiniROCKET and
+  wins at n=1000 on PTB-XL. The greedy split search itself is unchanged and still cannot
+  buy accuracy with candidates; the base simply routes around it. If your data has no
+  static block and no interaction structure, a rocket-style classifier is simpler, roughly
+  two orders of magnitude faster, and gives up little.
+- **The convolution base is opt-in and costs fit time.** It fails H-V6.3 on
+  `amp_regression` (−2.3 to −6.7), where the target is an interaction and a linear base
+  misleads the trees. Turn it on for shape-regime data; leave it off when the signal lives
+  in interactions.
 - **Comparison splits are approximate.** Ranking two quantities against their own training
   distributions makes them comparable, but that mapping is monotone rather than exact, so
   a single comparison split does not reach the oracle rule when the two quantities have
@@ -455,20 +505,20 @@ Forest / CIF, shapelets. What is new here is the packaging — one regularised b
 a unified per-node split search over static and temporal candidates, guided by the
 gradients.
 
-**What two pre-registered studies actually support.** Heartwood beats the aggregate
-workaround reliably and substantially — +3.8 to +14.5 points — on data where a global
-summary demonstrably loses information, and ties it where one does not. Its splits stay
-readable, and on ICU it recovered the standard clinical mortality predictors unprompted.
-Those are real results and they reproduce.
+**What three pre-registered studies support.** Heartwood beats the aggregate workaround
+reliably and substantially — +3.8 to +14.5 points — where a global summary demonstrably
+loses information, and ties it where one does not. Its splits stay readable, and on ICU it
+recovered the standard clinical mortality predictors unprompted. With the convolution base
+it reaches parity with MiniROCKET across twelve cells and beats it by 2.2 points at n=1000
+on PTB-XL. All of that reproduces.
 
-**What they do not support** is the claim on the tin. Where Heartwood beats aggregation,
-MiniROCKET beats Heartwood, on 11 of 12 V5 cells, while being far simpler and far faster.
-The one thing Heartwood does that rocket-style methods have no answer for — carrying a
-static block and letting splits interact statics with temporal quantities — has not yet
-been shown to be worth the deficit it comes with. On PTB-XL, the one dataset in this
-project with both a real static block and shape-regime series, it was not.
+**What they do not support** is a general claim to beat rocket-style methods. H-V6.2 asked
+for a majority of PTB-XL sizes and got one of four; below n≈500 MiniROCKET is still ahead,
+and on datasets with no static block it wins or ties more often than it loses. The margin
+grows with training size, which is suggestive and untested past n=1000.
 
-So: interesting architecture, honest measurements, no demonstrated niche. If you need this
-dataset shape today, run a rocket-style classifier and paste its predictions next to your
-static columns. The case for this library depends on a V6 that changes the selection rule,
-and that has not been written, let alone earned.
+So the honest position is a **narrow, conditional** one. If your rows carry static
+covariates *and* series a global summary would destroy, and you have enough data, this is
+now competitive with the best available method and readable in a way it is not. Outside
+that, reach for MiniROCKET. Two of the three studies here were written to try to falsify
+that sentence and did; the third is the first one it survived, and only barely.
