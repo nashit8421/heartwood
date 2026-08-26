@@ -143,7 +143,14 @@ class DenseBase:
     the model has never seen.
     """
 
-    def __init__(self, task: str, n_outputs: int):
+    #: Permutations used to decide whether the leave-one-out fit beat chance,
+    #: and the quantile of that null it has to clear.  Both conventional; the
+    #: point is that no threshold is fitted to any result.
+    n_permutations = 32
+    null_quantile = 0.95
+
+    def __init__(self, task: str, n_outputs: int, random_state: int = 0):
+        self.random_state = int(random_state)
         self.task = task
         self.n_outputs = int(n_outputs)
         self.center_: np.ndarray | None = None
@@ -155,6 +162,7 @@ class DenseBase:
         self.calibration_: list[tuple[float, float]] = []
         self.degenerate_ = False
         self.loo_r2_: float = 0.0
+        self.null_r2_: float = 0.0
 
     # ---------------------------------------------------------------- fitting
 
@@ -260,7 +268,19 @@ class DenseBase:
         # below chance and below the same model with no base at all.
         total = float((Yc**2).sum())
         self.loo_r2_ = 1.0 - float(((Yc - loo_raw) ** 2).sum()) / max(total, _EPS)
-        if self.loo_r2_ <= 0.0:
+
+        # "Better than the mean" is not a high enough bar.  A leave-one-out R2
+        # of +0.008 is indistinguishable from luck, and accepting one cost 36
+        # points of accuracy on bump_order — an XOR task where the series has
+        # exactly zero marginal correlation with the label, so any apparent
+        # signal is noise by construction.  Rather than pick a cutoff (the
+        # harmful cases measured 0.000-0.017 and the useful ones 0.04-0.80, and
+        # choosing a number in that gap would be fitting the threshold to the
+        # answer), ask the data: permute the target, refit, and see how large an
+        # R2 chance produces here.  The SVD is already computed, so each
+        # permutation is a couple of matrix products.
+        self.null_r2_ = self._chance_r2(U, shrink, leverage, Yc)
+        if self.loo_r2_ <= max(0.0, self.null_r2_):
             self.degenerate_ = True
             self.coefficients_ = None
             self.calibration_ = []
@@ -271,6 +291,27 @@ class DenseBase:
                 _platt(loo[:, k], self._class_indicator(y, k)) for k in range(loo.shape[1])
             ]
         return self._calibrate(loo)
+
+    def _chance_r2(self, U, shrink, leverage, Yc) -> float:
+        """The leave-one-out R2 this design reaches on shuffled targets.
+
+        Reuses the fitted spectrum, so a permutation costs two matrix products
+        rather than a refit.  ``lambda`` was chosen against the real target and
+        is held fixed here, which makes the null mildly optimistic — noted
+        rather than corrected, because the alternative is 13x the work for a
+        bar that is already doing its job.
+        """
+        rng = np.random.default_rng(self.random_state)
+        denominator = np.clip(1.0 - leverage, 1e-3, None)[:, None]
+        scores = []
+        for _ in range(self.n_permutations):
+            shuffled = Yc[rng.permutation(len(Yc))]
+            shuffled = shuffled - shuffled.mean(axis=0)
+            fitted = U @ (shrink[:, None] * (U.T @ shuffled))
+            loo = (fitted - leverage[:, None] * shuffled) / denominator
+            total = float((shuffled**2).sum())
+            scores.append(1.0 - float(((shuffled - loo) ** 2).sum()) / max(total, _EPS))
+        return float(np.quantile(scores, self.null_quantile))
 
     def _class_indicator(self, y: np.ndarray, k: int) -> np.ndarray:
         """1/0 membership of class ``k`` — what Platt scaling is calibrated against."""

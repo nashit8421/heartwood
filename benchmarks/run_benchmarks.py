@@ -42,6 +42,13 @@ ABLATIONS: dict[str, dict] = {
     "hw_filters": dict(bank_enabled=True, n_comparison_candidates=4, n_filter_candidates=8),
 }
 
+#: --rocket adds the V6 convolution base, for the H-V6.3 no-regression check.
+#: The synthetic scenarios are where the existing wins live, so a base that
+#: helps on real shape-regime data still has to not break them.
+ROCKET: dict[str, dict] = {
+    "hw_rocket": dict(dense_base=True, dense_features="rocket"),
+}
+
 #: --phasec adds the opt-in Phase C extras.
 PHASE_C: dict[str, dict] = {
     "hw_levy": dict(levy_areas=True),
@@ -307,6 +314,8 @@ def main() -> int:
     parser.add_argument("--quick", action="store_true", help="tiny grid, for smoke tests")
     parser.add_argument("--ablation", action="store_true",
                         help="also run the Phase-B ablation variants")
+    parser.add_argument("--rocket", action="store_true",
+                        help="add the V6 convolution base (H-V6.3 no-regression check)")
     parser.add_argument("--phasec", action="store_true",
                         help="also run the opt-in Phase-C variants")
     args = parser.parse_args()
@@ -320,6 +329,8 @@ def main() -> int:
         variants.update(ABLATIONS)
     if args.phasec:
         variants.update(PHASE_C)
+    if args.rocket:
+        variants.update(ROCKET)
     models = list(variants) + representations
     config = {
         "test_size": args.test_size, "rounds": args.rounds, "depth": args.depth,

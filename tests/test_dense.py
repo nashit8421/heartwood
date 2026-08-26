@@ -93,12 +93,18 @@ def test_loo_margins_match_an_explicit_refit(rng):
 
 
 def test_loo_is_not_the_in_sample_fit(rng):
-    """If the two coincided, the whole exercise would be pointless."""
-    n, p = 40, 25
+    """If the two coincided, the whole exercise would be pointless.
+
+    Needs a design with real signal: on pure noise the base now declines
+    outright, which is a different (and also correct) behaviour.
+    """
+    n, p = 60, 25
     X = rng.normal(size=(n, p))
-    y = rng.normal(size=n)
+    y = X[:, :5] @ np.array([2.0, -1.5, 1.0, -0.8, 0.6]) + 0.3 * rng.normal(size=n)
     base = DenseBase("regression", 1)
-    loo = base.fit(X, y)[:, 0]
+    margins = base.fit(X, y)
+    assert margins is not None, "a design with real signal must not be declined"
+    loo = margins[:, 0]
     fitted = base.transform(X)[:, 0]
     assert not np.allclose(loo, fitted, atol=1e-6)
     # and leave-one-out must be the more pessimistic of the two on noise
@@ -407,3 +413,30 @@ def test_unknown_dense_features_fails_loudly():
         HeartwoodClassifier(dense_features="convolutions").fit(
             None, np.zeros((4, 1, 20)), np.array([0, 1, 0, 1])
         )
+
+
+def test_a_barely_positive_loo_r2_is_not_enough(rng):
+    """Beating the mean is not the bar; beating chance is.
+
+    A leave-one-out R2 of +0.008 is indistinguishable from luck, and accepting
+    one cost 36 points on bump_order -- an XOR task whose series has exactly
+    zero marginal correlation with the label, so any apparent signal is noise by
+    construction. The permutation null is what tells those apart.
+    """
+    n, p = 200, 400
+    X = rng.normal(size=(n, p))
+    y = rng.integers(0, 2, size=n).astype(np.float64)  # nothing to find
+    base = DenseBase("classification", 1)
+    assert base.fit(X, y) is None
+    assert base.degenerate_
+    assert base.loo_r2_ <= max(0.0, base.null_r2_)
+
+
+def test_real_signal_clears_the_permutation_null(rng):
+    """The guard must not be so strict that it refuses a base that works."""
+    n, p = 150, 300
+    X = rng.normal(size=(n, p))
+    y = (X[:, :8] @ rng.normal(size=8) + 0.5 * rng.normal(size=n) > 0).astype(np.float64)
+    base = DenseBase("classification", 1)
+    assert base.fit(X, y) is not None, "declined a design with genuine signal"
+    assert base.loo_r2_ > base.null_r2_
