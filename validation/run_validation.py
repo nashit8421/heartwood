@@ -235,6 +235,9 @@ def main() -> int:
     parser.add_argument("--depth", type=int, default=4)
     parser.add_argument("--learning-rate", type=float, default=0.1)
     parser.add_argument("--no-minirocket", action="store_true")
+    parser.add_argument("--drop-static", action="store_true",
+                        help="blank the static block for every model (V7 arm C): "
+                             "isolates what the static covariates are actually worth")
     parser.add_argument("--variants", nargs="+", default=[""],
                         help='Heartwood configurations to run: "" is the shipped '
                              'default, "rocket"/"stats"/"both" put a ridge over that '
@@ -278,6 +281,12 @@ def main() -> int:
             print(f"UNAVAILABLE {key}: {unavailable[key]}", flush=True)
             continue
 
+        if args.drop_static:
+            # Arm C of the H-V7.3 decomposition. Heartwood also beats MiniROCKET on
+            # datasets with no static block at all, so "we use the statics" cannot
+            # be the whole story; this measures the part that is.
+            dataset.X_static = np.empty((len(dataset.y), 0))
+            dataset.static_names = []
         print(f"\n{dataset.summary()}", flush=True)
         official = getattr(dataset, "n_official_train", None)
 

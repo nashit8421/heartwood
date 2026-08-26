@@ -10,6 +10,7 @@ Each loader returns ``(X_static, X_series, y, meta)`` where ``X_series`` is
 
 from __future__ import annotations
 
+import re
 import ssl
 import urllib.request
 import zipfile
@@ -599,9 +600,15 @@ def load_cpsc2018() -> Dataset:
     cache = DATA_DIR / "cpsc2018_series.npy"
     length = _CPSC_SECONDS * 500
 
-    parsed, short = [], 0
+    parsed, short, unreadable = [], 0, 0
     for header in headers:
-        block, age, sex, codes = _read_cpsc_record(header)
+        # A header can exist before its signal file does, or a transfer can be
+        # truncated; neither should take down a study that runs for hours.
+        try:
+            block, age, sex, codes = _read_cpsc_record(header)
+        except (OSError, ValueError, IndexError):
+            unreadable += 1
+            continue
         if block.shape[1] < length:
             short += 1
             continue
@@ -646,8 +653,181 @@ def load_cpsc2018() -> Dataset:
         static_names=["age", "sex"],
         channel_names=list(_CPSC_LEADS),
         notes=(f"stratified 70/30 per seed; dropped {short} under {_CPSC_SECONDS}s, "
-               f"{unlabelled} unlabelled, {multi} multi-label; classes="
+               f"{unreadable} unreadable, {unlabelled} unlabelled, "
+               f"{multi} multi-label; classes="
                + ",".join(_CPSC_NAMES.get(c, c) for c in classes)),
+    )
+
+
+# ------------------------------------------------ V7-M2: Sleep-EDF cassette
+
+
+#: AASM stages. 3 and 4 merge, per the modern standard; "?" and movement drop.
+_SLEEP_STAGES = {"Sleep stage W": 0, "Sleep stage 1": 1, "Sleep stage 2": 2,
+                 "Sleep stage 3": 3, "Sleep stage 4": 3, "Sleep stage R": 4}
+_SLEEP_NAMES = ("W", "N1", "N2", "N3", "REM")
+_SLEEP_HZ = 50             # from 100 Hz; keeps delta and spindles, halves the fit
+_SLEEP_EPOCH_SECONDS = 30
+_SLEEP_WAKE_MARGIN = 60    # epochs of wake kept either side of sleep (30 min)
+
+
+def _read_edf_header(path: Path) -> dict:
+    """EDF header: a fixed 256-byte block, then 256 bytes per signal."""
+    with path.open("rb") as handle:
+        fixed = handle.read(256)
+        n_signals = int(fixed[252:256])
+        rest = handle.read(256 * n_signals)
+
+    def field(offset: int, width: int, index: int) -> str:
+        start = offset * n_signals + width * index
+        return rest[start:start + width].decode("latin-1").strip()
+
+    return {
+        "patient": fixed[8:88].decode("latin-1").strip(),
+        "n_records": int(fixed[236:244]),
+        "duration": float(fixed[244:252]),
+        "header_bytes": int(fixed[184:192]),
+        "n_signals": n_signals,
+        "labels": [field(0, 16, i) for i in range(n_signals)],
+        # per-signal field offsets: label 0, transducer 16, physical dimension 96,
+        # then min/max pairs at 104/112 and 120/128, prefiltering 136, samples 216
+        "physical_min": [float(field(104, 8, i)) for i in range(n_signals)],
+        "physical_max": [float(field(112, 8, i)) for i in range(n_signals)],
+        "digital_min": [float(field(120, 8, i)) for i in range(n_signals)],
+        "digital_max": [float(field(128, 8, i)) for i in range(n_signals)],
+        "samples": [int(field(216, 8, i)) for i in range(n_signals)],
+    }
+
+
+def _read_edf_signal(path: Path, header: dict, index: int) -> np.ndarray:
+    """One signal as ``(n_records, samples_per_record)`` in physical units."""
+    per_record = header["samples"]
+    stride = sum(per_record)
+    raw = np.fromfile(path, dtype="<i2", offset=header["header_bytes"])
+    usable = (raw.size // stride) * stride
+    records = raw[:usable].reshape(-1, stride)
+    start = sum(per_record[:index])
+    block = records[:, start:start + per_record[index]].astype(np.float64)
+
+    digital_span = header["digital_max"][index] - header["digital_min"][index]
+    physical_span = header["physical_max"][index] - header["physical_min"][index]
+    scale = physical_span / digital_span if digital_span else 1.0
+    return (block - header["digital_min"][index]) * scale + header["physical_min"][index]
+
+
+def _read_hypnogram(path: Path) -> list[tuple[float, float, str]]:
+    """EDF+ annotations as ``(onset, duration, label)``.
+
+    Annotations are stored as TALs — ``+onset\x15duration\x14label\x14`` — inside
+    the data records of a signal named ``EDF Annotations``.
+    """
+    header = _read_edf_header(path)
+    blob = path.read_bytes()[header["header_bytes"]:]
+    pattern = re.compile(rb"([+-]\d+(?:\.\d+)?)\x15(\d+(?:\.\d+)?)\x14([^\x14\x00]*)\x14")
+    return [(float(a), float(b), c.decode("latin-1"))
+            for a, b, c in pattern.findall(blob)]
+
+
+def _sleep_demographics(patient: str) -> tuple[float, float]:
+    """Age and sex out of the EDF patient field, e.g. ``X F X Female_33yr``."""
+    age = re.search(r"(\d+)\s*yr", patient)
+    sex = np.nan
+    lowered = patient.lower()
+    if "female" in lowered:
+        sex = 0.0
+    elif "male" in lowered:
+        sex = 1.0
+    return (float(age.group(1)) if age else np.nan), sex
+
+
+def load_sleepedf() -> Dataset:
+    """Sleep-EDF cassette: EEG epochs plus the sleeper's age and sex.
+
+    V7-M2, and the load-bearing one. Every other dataset in this project that
+    has both real statics and shape-regime series is an ECG, so this is what
+    decides whether V6 found something about time series or about hearts.
+
+    Decisions, fixed in VALIDATION_V7.md §2 before the data was parsed:
+
+    * **Subjects** are the first 40 by record id, on size alone.
+    * **Series** is the Fpz-Cz EEG. Each 30 s EDF data record is exactly one
+      scoring epoch, which is why no windowing is needed. Kept at 50 Hz rather
+      than the native 100 -- that preserves delta and sleep spindles, the two
+      things staging actually turns on, and halves a fit that would otherwise
+      take hours per cell.
+    * **Labels** are the AASM stages, with 3 and 4 merged as is now standard;
+      ``?`` and movement epochs are dropped and counted.
+    * **Wake trimming**: at most 30 minutes of wake either side of the sleep
+      period, the usual convention for this dataset, applied before any score.
+    * **Static block** is age and sex, read from the EDF patient field.
+    * **Split** is subject-disjoint, which the harness enforces via ``groups``.
+    """
+    root = DATA_DIR / "sleepedf"
+    psgs = sorted(root.glob("*-PSG.edf"))
+    if not psgs:
+        raise FileNotFoundError(
+            f"no Sleep-EDF records under {root}; run `python validation/fetch_sleepedf.py`"
+        )
+
+    step = 100 // _SLEEP_HZ
+    width = _SLEEP_EPOCH_SECONDS * _SLEEP_HZ
+    blocks, labels, subjects, statics, dropped = [], [], [], [], 0
+
+    for psg in psgs:
+        matches = sorted(root.glob(f"{psg.name[:6]}*-Hypnogram.edf"))
+        if not matches:
+            continue
+        header = _read_edf_header(psg)
+        if "EEG Fpz-Cz" not in header["labels"]:
+            continue
+        signal = _read_edf_signal(psg, header, header["labels"].index("EEG Fpz-Cz"))
+
+        stage = np.full(len(signal), -1, dtype=np.int64)
+        for onset, duration, name in _read_hypnogram(matches[0]):
+            code = _SLEEP_STAGES.get(name)
+            if code is None:
+                continue
+            first = int(onset // _SLEEP_EPOCH_SECONDS)
+            last = min(len(stage), first + max(1, int(duration // _SLEEP_EPOCH_SECONDS)))
+            stage[first:last] = code
+
+        keep = np.nonzero(stage >= 0)[0]
+        dropped += len(stage) - len(keep)
+        if not len(keep):
+            continue
+        asleep = np.nonzero(stage[keep] > 0)[0]
+        if len(asleep):  # trim the long wake tails this dataset is known for
+            lo = max(0, asleep[0] - _SLEEP_WAKE_MARGIN)
+            hi = min(len(keep), asleep[-1] + _SLEEP_WAKE_MARGIN + 1)
+            keep = keep[lo:hi]
+
+        epochs = signal[keep]
+        usable = (epochs.shape[1] // step) * step
+        blocks.append(epochs[:, :usable].reshape(len(keep), -1, step).mean(axis=2)[:, :width])
+        labels.append(stage[keep])
+        subjects.append(np.full(len(keep), int(psg.name[2:6])))
+        statics.append(np.tile(_sleep_demographics(header["patient"]), (len(keep), 1)))
+
+    if not blocks:
+        raise RuntimeError("Sleep-EDF parsed but produced no usable epochs")
+
+    X_series = np.concatenate(blocks).astype(np.float32)[:, None, :]
+    y = np.concatenate(labels)
+    group = np.concatenate(subjects)
+    X_static = np.concatenate(statics)
+
+    return Dataset(
+        key="sleepedf",
+        X_static=X_static,
+        X_series=X_series,
+        y=y.astype(np.int64),
+        task="multiclass",
+        headline="balanced_accuracy",
+        static_names=["age", "sex"],
+        channel_names=["EEG Fpz-Cz"],
+        groups=group,
+        notes=(f"{len(psgs)} subjects, subject-disjoint split; {_SLEEP_HZ} Hz; "
+               f"dropped {dropped} unscored epochs; classes=" + ",".join(_SLEEP_NAMES)),
     )
 
 
@@ -657,4 +837,5 @@ MIXED = {
     "icu": load_physionet_icu,
     "ptbxl": load_ptbxl,
     "cpsc2018": load_cpsc2018,
+    "sleepedf": load_sleepedf,
 }

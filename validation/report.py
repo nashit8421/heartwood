@@ -23,6 +23,7 @@ HEADLINE = {
     "har": "balanced_accuracy",  # M3, multiclass
     "ptbxl": "balanced_accuracy",  # V5-A1, multiclass; VALIDATION_V5.md §3
     "cpsc2018": "balanced_accuracy",  # V7-M1, multiclass; VALIDATION_V7.md §2
+    "sleepedf": "balanced_accuracy",  # V7-M2, multiclass; VALIDATION_V7.md §2
 }
 SERIES_MATTERS_MARGIN = 2.0  # points, from VALIDATION.md §6
 WIN_MARGIN = 2.0
