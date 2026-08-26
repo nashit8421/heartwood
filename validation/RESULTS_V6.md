@@ -1,54 +1,68 @@
-# V6 results — PARTIAL, run stopped early
+# V6 results — the rocket base reaches parity with MiniROCKET
 
-**Coverage, stated first.** The grid was cut short. Complete: 6 UEA datasets at 5 seeds.
-Partial: SelfRegulationSCP2 (2 of 5 seeds), PTB-XL (seed 0 only, 3 sizes). Not started:
-Heartbeat, and PTB-XL seeds 1–4. Nothing below should be read as a final verdict, and
-H-V6.1/2/3 are **not** adjudicated — `report_v5.py`-style mechanical scoring waits for a
-complete grid.
+Complete grid, 5 seeds throughout, run after the calibration bug in
+`DenseBase` was fixed (commit "Fix a base that helped in training and
+confidently hurt at predict time"). `heartwood_rocket` is
+`dense_base=True, dense_features="rocket"`. MiniROCKET is `aeon`, credited with
+the better of 2,000 and 10,000 kernels.
 
-`heartwood_rocket` is `dense_base=True, dense_features="rocket"`. MiniROCKET is `aeon`,
-credited with the better of 2,000 and 10,000 kernels.
+| dataset | n | heartwood | +rocket | MiniROCKET | agg | vs rocket | vs default |
+|---|---|---|---|---|---|---|---|
+| ptbxl | 100 | 0.347 | 0.408 | 0.414 | 0.309 | −0.6 | **+6.0** |
+| ptbxl | 250 | 0.399 | 0.438 | 0.439 | 0.327 | −0.1 | **+3.9** |
+| ptbxl | 500 | 0.465 | 0.489 | 0.475 | 0.365 | +1.5 | **+2.5** |
+| Epilepsy | 137 | 0.997 | 0.995 | 1.000 | 0.957 | −0.5 | −0.3 |
+| HandMovementDirection | 160 | 0.429 | **0.459** | 0.387 | 0.289 | **+7.2** | +3.0 |
+| Handwriting | 150 | 0.316 | **0.520** | 0.514 | 0.171 | +0.7 | **+20.5** |
+| Heartbeat | 204 | 0.623 | 0.654 | 0.665 | 0.677 | −1.0 | +3.1 |
+| Libras | 180 | 0.889 | 0.916 | 0.917 | 0.761 | −0.1 | +2.7 |
+| NATOPS | 180 | 0.890 | 0.924 | 0.944 | 0.889 | −2.0 | +3.4 |
+| RacketSports | 151 | 0.892 | 0.892 | 0.866 | 0.833 | **+2.5** | −0.0 |
+| SelfRegulationSCP2 | 200 | 0.498 | 0.498 | 0.556 | 0.522 | −5.8 | +0.0 |
 
-| dataset | n | hw+rocket | best MiniROCKET | gap | seeds |
-|---|---|---|---|---|---|
-| ptbxl | 100 | 0.421 | 0.434 | −1.3 | 1 |
-| ptbxl | 250 | 0.427 | 0.414 | +1.3 | 1 |
-| ptbxl | 500 | 0.490 | 0.479 | +1.1 | 1 |
-| Epilepsy | 137 | 0.995 | 1.000 | −0.5 | 5 |
-| HandMovementDirection | 160 | **0.459** | 0.387 | **+7.2** | 5 |
-| Handwriting | 150 | 0.520 | 0.514 | +0.7 | 5 |
-| Libras | 180 | 0.916 | 0.917 | −0.1 | 5 |
-| NATOPS | 180 | 0.924 | 0.944 | −2.0 | 5 |
-| RacketSports | 151 | **0.892** | 0.866 | **+2.5** | 5 |
-| SelfRegulationSCP2 | 200 | 0.422 | 0.556 | −13.3 | 2 |
+## Verdicts
 
-Beat MiniROCKET by ≥2 points on 2 of 10 cells; lost by ≥2 on 1. **Median gap +0.3.**
+**H-V6.1 (parity floor) — PASS.** Within 2 points of the better MiniROCKET on
+**7 of 8** Arm B datasets; the bar was 75%. The bank is not broken.
 
-## What this does and does not show
+**H-V6.2 (the win) — FAIL.** On PTB-XL, `heartwood_rocket` beats the better
+MiniROCKET by ≥2 points at **0 of 3** training sizes (−0.6, −0.1, +1.5). A
+majority was required.
 
-**The base works.** Against the shipped default, the rocket base is a large gain wherever
-the shape regime bites: Handwriting 0.309 → 0.520 (+21), HandMovementDirection 0.398 →
-0.459 (+6), PTB-XL at n=100 0.332 → 0.421 (+9). V5 measured Heartwood at mean rank 2.33
-against MiniROCKET's 1.50; on this partial grid the two are at parity. That is the
-diagnosis in `HEADROOM.md` being right about the mechanism — selection was the ceiling, and
-not selecting removes it.
+**H-V6.3 (no regression) — not yet run.** The synthetic grid has to be checked
+before `rocket` can be considered for a default.
 
-**Parity is not a win.** H-V6.2 asks for ≥2 points at a majority of sizes, and a median of
-+0.3 does not get there. Seed 0 alone looked much better (Handwriting +3.1, RacketSports
-+4.3) and five seeds pulled it back to +0.7 and +2.5 — the same lesson as the v0.3 seed
-bug, arriving from the other direction. Single-seed reads on this project have been
-misleading three times now.
+## What actually happened
 
-**One result needs a fix, not a report.** SelfRegulationSCP2 puts `heartwood_rocket` at
-0.422 on a *binary* task — below the 0.500 chance line, and below the plain default's
-0.528. A base that lands below chance is a bug, most likely the leave-one-out ridge
-overfitting at 10,000 features against 200 rows and the trees then boosting from a base
-that is worse than useless. `DenseBase` already refuses penalties that interpolate; that
-guard is evidently not sufficient in this regime. This is the first thing to chase.
+**The diagnosis in `HEADROOM.md` was right, and acting on it worked.** V5 measured
+Heartwood at mean rank 2.33 against MiniROCKET's 1.50 — a clear deficit on
+shape-regime data. Putting a ridge over a fixed convolution bank underneath the
+trees, instead of asking a greedy per-node search to find those features, closes
+it: median gap now **−0.1**, i.e. parity. Selection really was the ceiling.
 
-## Next, in order
+**Against Heartwood's own previous default, this is a large and near-uniform
+gain**: 7 of 11 cells improve by ≥2.5 points, the largest being Handwriting at
++20.5, and nothing regresses by more than 0.3. Whatever else is true, the base
+should probably ship.
 
-1. Fix the SelfRegulationSCP2 regression — a below-chance base is a correctness bug.
-2. Finish the grid: Heartbeat, SelfRegulationSCP2 seeds 2–4, PTB-XL seeds 1–4.
-3. Run H-V6.3, the synthetic no-regression check, before `rocket` is considered for default.
-4. Only then adjudicate H-V6.1/2/3 mechanically.
+**Parity is not the target, and it is not a win.** H-V6.2 asked for ≥2 points on
+the one dataset that has both a real static block and shape-regime series, and
+it did not deliver. The margin does grow with training size (−0.6 → −0.1 → +1.5),
+which is worth testing at n=1000 before drawing any conclusion from it, but three
+points on a trend line is not evidence.
+
+**The fix is visible in the table.** SelfRegulationSCP2 now reads 0.498 for both
+`heartwood` and `heartwood_rocket` — identical, because the ridge finds nothing
+there and the base is now declined outright rather than boosting from inverted
+noise. Before the fix that cell read 0.422, below chance. The guard costs
+nothing when the ridge does have signal and prevents a below-chance model when
+it does not.
+
+## Still open
+
+* H-V6.3, the synthetic no-regression check.
+* PTB-XL at n=1000, where the trend points.
+* `dense_features="both"` — window statistics *and* convolutions in one bank —
+  is implemented and has never been run on real data.
+* Our bank is a shade behind `aeon`'s in a ridge-only comparison (median −0.7,
+  worst NATOPS −4.4). Closing that would move every row here up.

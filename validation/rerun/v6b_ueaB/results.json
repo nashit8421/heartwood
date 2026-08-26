@@ -10,7 +10,7 @@
   "no_minirocket": "False",
   "variants": "['', 'rocket']",
   "representations": "['agg']",
-  "out": "validation/rerun/v6_ueaB"
+  "out": "validation/rerun/v6b_ueaB"
  },
  "unavailable": {},
  "results": [
@@ -19,7 +19,7 @@
    "model": "heartwood",
    "n_train": 137,
    "seed": 0,
-   "fit_seconds": 24.859139375010272,
+   "fit_seconds": 24.25050216697855,
    "metrics": {
     "balanced_accuracy": 1.0,
     "accuracy": 1.0,
@@ -31,7 +31,7 @@
    "model": "heartwood_rocket",
    "n_train": 137,
    "seed": 0,
-   "fit_seconds": 0.4464037500147242,
+   "fit_seconds": 0.4399391659826506,
    "metrics": {
     "balanced_accuracy": 0.9932432432432432,
     "accuracy": 0.9927536231884058,
@@ -43,7 +43,7 @@
    "model": "agg",
    "n_train": 137,
    "seed": 0,
-   "fit_seconds": 0.05561650000163354,
+   "fit_seconds": 0.05541437500505708,
    "metrics": {
     "balanced_accuracy": 0.9566905140434552,
     "accuracy": 0.9565217391304348,
@@ -55,7 +55,7 @@
    "model": "minirocket",
    "n_train": 137,
    "seed": 0,
-   "fit_seconds": 1.1503047080186661,
+   "fit_seconds": 1.2347274580097292,
    "metrics": {
     "balanced_accuracy": 1.0,
     "accuracy": 1.0
@@ -66,7 +66,7 @@
    "model": "minirocket10k",
    "n_train": 137,
    "seed": 0,
-   "fit_seconds": 0.5809494169952814,
+   "fit_seconds": 0.5654273339896463,
    "metrics": {
     "balanced_accuracy": 1.0,
     "accuracy": 1.0
@@ -77,7 +77,7 @@
    "model": "heartwood",
    "n_train": 137,
    "seed": 1,
-   "fit_seconds": 24.940774499991676,
+   "fit_seconds": 24.478441207989817,
    "metrics": {
     "balanced_accuracy": 1.0,
     "accuracy": 1.0,
@@ -89,7 +89,7 @@
    "model": "heartwood_rocket",
    "n_train": 137,
    "seed": 1,
-   "fit_seconds": 0.44761754100909457,
+   "fit_seconds": 0.4471382080228068,
    "metrics": {
     "balanced_accuracy": 1.0,
     "accuracy": 1.0,
@@ -101,7 +101,7 @@
    "model": "agg",
    "n_train": 137,
    "seed": 1,
-   "fit_seconds": 0.054235707997577265,
+   "fit_seconds": 0.05410408298484981,
    "metrics": {
     "balanced_accuracy": 0.9566905140434552,
     "accuracy": 0.9565217391304348,
@@ -113,7 +113,7 @@
    "model": "minirocket",
    "n_train": 137,
    "seed": 1,
-   "fit_seconds": 0.38291304200538434,
+   "fit_seconds": 0.3882945829827804,
    "metrics": {
     "balanced_accuracy": 1.0,
     "accuracy": 1.0
@@ -124,7 +124,7 @@
    "model": "minirocket10k",
    "n_train": 137,
    "seed": 1,
-   "fit_seconds": 0.5801474580075592,
+   "fit_seconds": 0.5798527089937124,
    "metrics": {
     "balanced_accuracy": 1.0,
     "accuracy": 1.0
@@ -135,7 +135,7 @@
    "model": "heartwood",
    "n_train": 137,
    "seed": 2,
-   "fit_seconds": 24.090128208015813,
+   "fit_seconds": 23.7007212919998,
    "metrics": {
     "balanced_accuracy": 0.9932432432432432,
     "accuracy": 0.9927536231884058,
@@ -147,7 +147,7 @@
    "model": "heartwood_rocket",
    "n_train": 137,
    "seed": 2,
-   "fit_seconds": 0.4468510409933515,
+   "fit_seconds": 0.4439423750154674,
    "metrics": {
     "balanced_accuracy": 1.0,
     "accuracy": 1.0,
@@ -159,7 +159,7 @@
    "model": "agg",
    "n_train": 137,
    "seed": 2,
-   "fit_seconds": 0.05369795800652355,
+   "fit_seconds": 0.05396299998392351,
    "metrics": {
     "balanced_accuracy": 0.9566905140434552,
     "accuracy": 0.9565217391304348,
@@ -171,7 +171,7 @@
    "model": "minirocket",
    "n_train": 137,
    "seed": 2,
-   "fit_seconds": 0.3829899170086719,
+   "fit_seconds": 0.3805450419895351,
    "metrics": {
     "balanced_accuracy": 1.0,
     "accuracy": 1.0
@@ -182,7 +182,7 @@
    "model": "minirocket10k",
    "n_train": 137,
    "seed": 2,
-   "fit_seconds": 0.5786547079915181,
+   "fit_seconds": 0.5764205830055289,
    "metrics": {
     "balanced_accuracy": 1.0,
     "accuracy": 1.0
@@ -193,7 +193,7 @@
    "model": "heartwood",
    "n_train": 137,
    "seed": 3,
-   "fit_seconds": 25.114716500014765,
+   "fit_seconds": 24.942905499978224,
    "metrics": {
     "balanced_accuracy": 0.9926470588235294,
     "accuracy": 0.9927536231884058,
@@ -205,7 +205,7 @@
    "model": "heartwood_rocket",
    "n_train": 137,
    "seed": 3,
-   "fit_seconds": 0.44682845802162774,
+   "fit_seconds": 0.44187179100117646,
    "metrics": {
     "balanced_accuracy": 0.9864864864864865,
     "accuracy": 0.9855072463768116,
@@ -217,7 +217,7 @@
    "model": "agg",
    "n_train": 137,
    "seed": 3,
-   "fit_seconds": 0.05398029100615531,
+   "fit_seconds": 0.05364345799898729,
    "metrics": {
     "balanced_accuracy": 0.9566905140434552,
     "accuracy": 0.9565217391304348,
@@ -229,7 +229,7 @@
    "model": "minirocket",
    "n_train": 137,
    "seed": 3,
-   "fit_seconds": 0.38493274999200366,
+   "fit_seconds": 0.3875428750179708,
    "metrics": {
     "balanced_accuracy": 1.0,
     "accuracy": 1.0
@@ -240,7 +240,7 @@
    "model": "minirocket10k",
    "n_train": 137,
    "seed": 3,
-   "fit_seconds": 0.5796034579980187,
+   "fit_seconds": 0.5844634590030182,
    "metrics": {
     "balanced_accuracy": 1.0,
     "accuracy": 1.0
@@ -251,7 +251,7 @@
    "model": "heartwood",
    "n_train": 137,
    "seed": 4,
-   "fit_seconds": 25.146304958005203,
+   "fit_seconds": 24.935271833004663,
    "metrics": {
     "balanced_accuracy": 1.0,
     "accuracy": 1.0,
@@ -263,7 +263,7 @@
    "model": "heartwood_rocket",
    "n_train": 137,
    "seed": 4,
-   "fit_seconds": 0.4512267090030946,
+   "fit_seconds": 0.4374172920070123,
    "metrics": {
     "balanced_accuracy": 0.9932432432432432,
     "accuracy": 0.9927536231884058,
@@ -275,7 +275,7 @@
    "model": "agg",
    "n_train": 137,
    "seed": 4,
-   "fit_seconds": 0.05372970798634924,
+   "fit_seconds": 0.05360600000130944,
    "metrics": {
     "balanced_accuracy": 0.9566905140434552,
     "accuracy": 0.9565217391304348,
@@ -287,7 +287,7 @@
    "model": "minirocket",
    "n_train": 137,
    "seed": 4,
-   "fit_seconds": 0.38478812502580695,
+   "fit_seconds": 0.38234124999144115,
    "metrics": {
     "balanced_accuracy": 1.0,
     "accuracy": 1.0
@@ -298,7 +298,7 @@
    "model": "minirocket10k",
    "n_train": 137,
    "seed": 4,
-   "fit_seconds": 0.5792089589813258,
+   "fit_seconds": 0.5773717080010101,
    "metrics": {
     "balanced_accuracy": 1.0,
     "accuracy": 1.0
@@ -309,7 +309,7 @@
    "model": "heartwood",
    "n_train": 150,
    "seed": 0,
-   "fit_seconds": 131.7445197920024,
+   "fit_seconds": 130.5532359579811,
    "metrics": {
     "balanced_accuracy": 0.30906758320871275,
     "accuracy": 0.31058823529411766,
@@ -321,7 +321,7 @@
    "model": "heartwood_rocket",
    "n_train": 150,
    "seed": 0,
-   "fit_seconds": 133.55241937498795,
+   "fit_seconds": 131.6065718329919,
    "metrics": {
     "balanced_accuracy": 0.5452099198286333,
     "accuracy": 0.5494117647058824,
@@ -333,7 +333,7 @@
    "model": "agg",
    "n_train": 150,
    "seed": 0,
-   "fit_seconds": 0.3726454160059802,
+   "fit_seconds": 0.37133437499869615,
    "metrics": {
     "balanced_accuracy": 0.17087665933947835,
     "accuracy": 0.17176470588235293,
@@ -345,7 +345,7 @@
    "model": "minirocket",
    "n_train": 150,
    "seed": 0,
-   "fit_seconds": 1.2670180420100223,
+   "fit_seconds": 1.2850602920225356,
    "metrics": {
     "balanced_accuracy": 0.4410610853527684,
     "accuracy": 0.4423529411764706
@@ -356,7 +356,7 @@
    "model": "minirocket10k",
    "n_train": 150,
    "seed": 0,
-   "fit_seconds": 1.8191592500079423,
+   "fit_seconds": 1.8354227499803528,
    "metrics": {
     "balanced_accuracy": 0.5137396517405894,
     "accuracy": 0.5176470588235295
@@ -367,7 +367,7 @@
    "model": "heartwood",
    "n_train": 150,
    "seed": 1,
-   "fit_seconds": 131.5362735830131,
+   "fit_seconds": 129.5370302090014,
    "metrics": {
     "balanced_accuracy": 0.3306248641985707,
     "accuracy": 0.33294117647058824,
@@ -379,7 +379,7 @@
    "model": "heartwood_rocket",
    "n_train": 150,
    "seed": 1,
-   "fit_seconds": 127.98854904199834,
+   "fit_seconds": 125.98809166700812,
    "metrics": {
     "balanced_accuracy": 0.49930869605309336,
     "accuracy": 0.5047058823529412,
@@ -391,7 +391,7 @@
    "model": "agg",
    "n_train": 150,
    "seed": 1,
-   "fit_seconds": 0.37163537499145605,
+   "fit_seconds": 0.3703822919924278,
    "metrics": {
     "balanced_accuracy": 0.17087665933947835,
     "accuracy": 0.17176470588235293,
@@ -403,7 +403,7 @@
    "model": "minirocket",
    "n_train": 150,
    "seed": 1,
-   "fit_seconds": 1.2704073339991737,
+   "fit_seconds": 1.28087799999048,
    "metrics": {
     "balanced_accuracy": 0.4410610853527684,
     "accuracy": 0.4423529411764706
@@ -414,7 +414,7 @@
    "model": "minirocket10k",
    "n_train": 150,
    "seed": 1,
-   "fit_seconds": 1.8157369999971706,
+   "fit_seconds": 1.8326069580216426,
    "metrics": {
     "balanced_accuracy": 0.5137396517405894,
     "accuracy": 0.5176470588235295
@@ -425,7 +425,7 @@
    "model": "heartwood",
    "n_train": 150,
    "seed": 2,
-   "fit_seconds": 130.62187195802107,
+   "fit_seconds": 129.31050154200057,
    "metrics": {
     "balanced_accuracy": 0.3241195406038208,
     "accuracy": 0.32235294117647056,
@@ -437,7 +437,7 @@
    "model": "heartwood_rocket",
    "n_train": 150,
    "seed": 2,
-   "fit_seconds": 140.59566987500875,
+   "fit_seconds": 135.22283608399448,
    "metrics": {
     "balanced_accuracy": 0.5265040990665153,
     "accuracy": 0.528235294117647,
@@ -449,7 +449,7 @@
    "model": "agg",
    "n_train": 150,
    "seed": 2,
-   "fit_seconds": 0.37996954200207256,
+   "fit_seconds": 0.36934112501330674,
    "metrics": {
     "balanced_accuracy": 0.17087665933947835,
     "accuracy": 0.17176470588235293,
@@ -461,7 +461,7 @@
    "model": "minirocket",
    "n_train": 150,
    "seed": 2,
-   "fit_seconds": 1.2958740839967504,
+   "fit_seconds": 1.2845579580171034,
    "metrics": {
     "balanced_accuracy": 0.4410610853527684,
     "accuracy": 0.4423529411764706
@@ -472,7 +472,7 @@
    "model": "minirocket10k",
    "n_train": 150,
    "seed": 2,
-   "fit_seconds": 1.8557957919838373,
+   "fit_seconds": 1.8415707499952987,
    "metrics": {
     "balanced_accuracy": 0.5137396517405894,
     "accuracy": 0.5176470588235295
@@ -483,7 +483,7 @@
    "model": "heartwood",
    "n_train": 150,
    "seed": 3,
-   "fit_seconds": 132.59255108301295,
+   "fit_seconds": 123.52128533300129,
    "metrics": {
     "balanced_accuracy": 0.2998819927980651,
     "accuracy": 0.30117647058823527,
@@ -495,7 +495,7 @@
    "model": "heartwood_rocket",
    "n_train": 150,
    "seed": 3,
-   "fit_seconds": 133.4789692919876,
+   "fit_seconds": 126.38461604199256,
    "metrics": {
     "balanced_accuracy": 0.5248193844044631,
     "accuracy": 0.528235294117647,
@@ -507,7 +507,7 @@
    "model": "agg",
    "n_train": 150,
    "seed": 3,
-   "fit_seconds": 0.37943670799722895,
+   "fit_seconds": 0.37233370798639953,
    "metrics": {
     "balanced_accuracy": 0.17087665933947835,
     "accuracy": 0.17176470588235293,
@@ -519,7 +519,7 @@
    "model": "minirocket",
    "n_train": 150,
    "seed": 3,
-   "fit_seconds": 1.2950892499939073,
+   "fit_seconds": 1.2952012909809127,
    "metrics": {
     "balanced_accuracy": 0.4410610853527684,
     "accuracy": 0.4423529411764706
@@ -530,7 +530,7 @@
    "model": "minirocket10k",
    "n_train": 150,
    "seed": 3,
-   "fit_seconds": 1.8654682920023333,
+   "fit_seconds": 1.8506321669847239,
    "metrics": {
     "balanced_accuracy": 0.5137396517405894,
     "accuracy": 0.5176470588235295
@@ -541,7 +541,7 @@
    "model": "heartwood",
    "n_train": 150,
    "seed": 4,
-   "fit_seconds": 135.0069261250028,
+   "fit_seconds": 130.04889725000248,
    "metrics": {
     "balanced_accuracy": 0.31476536374185193,
     "accuracy": 0.31411764705882356,
@@ -553,7 +553,7 @@
    "model": "heartwood_rocket",
    "n_train": 150,
    "seed": 4,
-   "fit_seconds": 137.15546654199716,
+   "fit_seconds": 135.03621833398938,
    "metrics": {
     "balanced_accuracy": 0.5060525193578074,
     "accuracy": 0.5117647058823529,
@@ -565,7 +565,7 @@
    "model": "agg",
    "n_train": 150,
    "seed": 4,
-   "fit_seconds": 0.3782062499958556,
+   "fit_seconds": 0.3796585420204792,
    "metrics": {
     "balanced_accuracy": 0.17087665933947835,
     "accuracy": 0.17176470588235293,
@@ -577,7 +577,7 @@
    "model": "minirocket",
    "n_train": 150,
    "seed": 4,
-   "fit_seconds": 1.294416791992262,
+   "fit_seconds": 1.3105079999950249,
    "metrics": {
     "balanced_accuracy": 0.4410610853527684,
     "accuracy": 0.4423529411764706
@@ -588,7 +588,7 @@
    "model": "minirocket10k",
    "n_train": 150,
    "seed": 4,
-   "fit_seconds": 1.858713749999879,
+   "fit_seconds": 1.873858624981949,
    "metrics": {
     "balanced_accuracy": 0.5137396517405894,
     "accuracy": 0.5176470588235295
@@ -599,7 +599,7 @@
    "model": "heartwood",
    "n_train": 151,
    "seed": 0,
-   "fit_seconds": 24.14597949999734,
+   "fit_seconds": 24.054431625001598,
    "metrics": {
     "balanced_accuracy": 0.9015133378932969,
     "accuracy": 0.8947368421052632,
@@ -611,7 +611,7 @@
    "model": "heartwood_rocket",
    "n_train": 151,
    "seed": 0,
-   "fit_seconds": 13.35736429100507,
+   "fit_seconds": 13.242190416000085,
    "metrics": {
     "balanced_accuracy": 0.9093023255813953,
     "accuracy": 0.9013157894736842,
@@ -623,7 +623,7 @@
    "model": "agg",
    "n_train": 151,
    "seed": 0,
-   "fit_seconds": 0.14463150000665337,
+   "fit_seconds": 0.14399966699420474,
    "metrics": {
     "balanced_accuracy": 0.8327376880984952,
     "accuracy": 0.8223684210526315,
@@ -635,7 +635,7 @@
    "model": "minirocket",
    "n_train": 151,
    "seed": 0,
-   "fit_seconds": 0.058483791013713926,
+   "fit_seconds": 0.05923145799897611,
    "metrics": {
     "balanced_accuracy": 0.865967607973422,
     "accuracy": 0.8552631578947368
@@ -646,7 +646,7 @@
    "model": "minirocket10k",
    "n_train": 151,
    "seed": 0,
-   "fit_seconds": 0.09528562499326654,
+   "fit_seconds": 0.0962803750007879,
    "metrics": {
     "balanced_accuracy": 0.8664036544850499,
     "accuracy": 0.8552631578947368
@@ -657,7 +657,7 @@
    "model": "heartwood",
    "n_train": 151,
    "seed": 1,
-   "fit_seconds": 25.428569375013467,
+   "fit_seconds": 25.169727125001373,
    "metrics": {
     "balanced_accuracy": 0.8963455149501661,
     "accuracy": 0.8881578947368421,
@@ -669,7 +669,7 @@
    "model": "heartwood_rocket",
    "n_train": 151,
    "seed": 1,
-   "fit_seconds": 9.378398917004233,
+   "fit_seconds": 9.366386709007202,
    "metrics": {
     "balanced_accuracy": 0.8900955149501661,
     "accuracy": 0.881578947368421,
@@ -681,7 +681,7 @@
    "model": "agg",
    "n_train": 151,
    "seed": 1,
-   "fit_seconds": 0.14357612500316463,
+   "fit_seconds": 0.1435996670043096,
    "metrics": {
     "balanced_accuracy": 0.8327376880984952,
     "accuracy": 0.8223684210526315,
@@ -693,7 +693,7 @@
    "model": "minirocket",
    "n_train": 151,
    "seed": 1,
-   "fit_seconds": 0.05854029202600941,
+   "fit_seconds": 0.05898083301144652,
    "metrics": {
     "balanced_accuracy": 0.865967607973422,
     "accuracy": 0.8552631578947368
@@ -704,7 +704,7 @@
    "model": "minirocket10k",
    "n_train": 151,
    "seed": 1,
-   "fit_seconds": 0.09491274997708388,
+   "fit_seconds": 0.09662504200241528,
    "metrics": {
     "balanced_accuracy": 0.8664036544850499,
     "accuracy": 0.8552631578947368
@@ -715,7 +715,7 @@
    "model": "heartwood",
    "n_train": 151,
    "seed": 2,
-   "fit_seconds": 24.010580915986793,
+   "fit_seconds": 23.97286099998746,
    "metrics": {
     "balanced_accuracy": 0.8956993844049248,
     "accuracy": 0.8881578947368421,
@@ -727,7 +727,7 @@
    "model": "heartwood_rocket",
    "n_train": 151,
    "seed": 2,
-   "fit_seconds": 10.784395666996716,
+   "fit_seconds": 10.771425957995234,
    "metrics": {
     "balanced_accuracy": 0.8610257475083056,
     "accuracy": 0.8486842105263158,
@@ -739,7 +739,7 @@
    "model": "agg",
    "n_train": 151,
    "seed": 2,
-   "fit_seconds": 0.14388595800846815,
+   "fit_seconds": 0.14306033399770968,
    "metrics": {
     "balanced_accuracy": 0.8327376880984952,
     "accuracy": 0.8223684210526315,
@@ -751,7 +751,7 @@
    "model": "minirocket",
    "n_train": 151,
    "seed": 2,
-   "fit_seconds": 0.0577312920067925,
+   "fit_seconds": 0.059358416008763015,
    "metrics": {
     "balanced_accuracy": 0.865967607973422,
     "accuracy": 0.8552631578947368
@@ -762,7 +762,7 @@
    "model": "minirocket10k",
    "n_train": 151,
    "seed": 2,
-   "fit_seconds": 0.09463891698396765,
+   "fit_seconds": 0.09571570801199414,
    "metrics": {
     "balanced_accuracy": 0.8664036544850499,
     "accuracy": 0.8552631578947368
@@ -773,7 +773,7 @@
    "model": "heartwood",
    "n_train": 151,
    "seed": 3,
-   "fit_seconds": 25.326549874997,
+   "fit_seconds": 25.045383499993477,
    "metrics": {
     "balanced_accuracy": 0.8831993844049247,
     "accuracy": 0.875,
@@ -785,7 +785,7 @@
    "model": "heartwood_rocket",
    "n_train": 151,
    "seed": 3,
-   "fit_seconds": 11.2918269590009,
+   "fit_seconds": 11.245670125004835,
    "metrics": {
     "balanced_accuracy": 0.8963455149501661,
     "accuracy": 0.8881578947368421,
@@ -797,7 +797,7 @@
    "model": "agg",
    "n_train": 151,
    "seed": 3,
-   "fit_seconds": 0.14385983301326632,
+   "fit_seconds": 0.14320341602433473,
    "metrics": {
     "balanced_accuracy": 0.8327376880984952,
     "accuracy": 0.8223684210526315,
@@ -809,7 +809,7 @@
    "model": "minirocket",
    "n_train": 151,
    "seed": 3,
-   "fit_seconds": 0.05921345797833055,
+   "fit_seconds": 0.05980137499864213,
    "metrics": {
     "balanced_accuracy": 0.865967607973422,
     "accuracy": 0.8552631578947368
@@ -820,7 +820,7 @@
    "model": "minirocket10k",
    "n_train": 151,
    "seed": 3,
-   "fit_seconds": 0.09488308301661164,
+   "fit_seconds": 0.09629229200072587,
    "metrics": {
     "balanced_accuracy": 0.8664036544850499,
     "accuracy": 0.8552631578947368
@@ -831,7 +831,7 @@
    "model": "heartwood",
    "n_train": 151,
    "seed": 4,
-   "fit_seconds": 24.585989707993576,
+   "fit_seconds": 24.28267491600127,
    "metrics": {
     "balanced_accuracy": 0.8838455149501662,
     "accuracy": 0.875,
@@ -843,7 +843,7 @@
    "model": "heartwood_rocket",
    "n_train": 151,
    "seed": 4,
-   "fit_seconds": 7.101164124993375,
+   "fit_seconds": 6.978104832989629,
    "metrics": {
     "balanced_accuracy": 0.9021594684385382,
     "accuracy": 0.8947368421052632,
@@ -855,7 +855,7 @@
    "model": "agg",
    "n_train": 151,
    "seed": 4,
-   "fit_seconds": 0.14418879197910428,
+   "fit_seconds": 0.1435629999905359,
    "metrics": {
     "balanced_accuracy": 0.8327376880984952,
     "accuracy": 0.8223684210526315,
@@ -867,7 +867,7 @@
    "model": "minirocket",
    "n_train": 151,
    "seed": 4,
-   "fit_seconds": 0.05922516601276584,
+   "fit_seconds": 0.0589257919928059,
    "metrics": {
     "balanced_accuracy": 0.865967607973422,
     "accuracy": 0.8552631578947368
@@ -878,7 +878,7 @@
    "model": "minirocket10k",
    "n_train": 151,
    "seed": 4,
-   "fit_seconds": 0.09474966599373147,
+   "fit_seconds": 0.09602429100777954,
    "metrics": {
     "balanced_accuracy": 0.8664036544850499,
     "accuracy": 0.8552631578947368
@@ -889,7 +889,7 @@
    "model": "heartwood",
    "n_train": 160,
    "seed": 0,
-   "fit_seconds": 81.50981266601593,
+   "fit_seconds": 80.25550258299336,
    "metrics": {
     "balanced_accuracy": 0.39761904761904765,
     "accuracy": 0.40540540540540543,
@@ -901,7 +901,7 @@
    "model": "heartwood_rocket",
    "n_train": 160,
    "seed": 0,
-   "fit_seconds": 80.99472216601134,
+   "fit_seconds": 77.94052579201525,
    "metrics": {
     "balanced_accuracy": 0.4714285714285714,
     "accuracy": 0.4594594594594595,
@@ -913,7 +913,7 @@
    "model": "agg",
    "n_train": 160,
    "seed": 0,
-   "fit_seconds": 0.3945197089924477,
+   "fit_seconds": 0.39394229199388064,
    "metrics": {
     "balanced_accuracy": 0.2892857142857143,
     "accuracy": 0.28378378378378377,
@@ -925,7 +925,7 @@
    "model": "minirocket",
    "n_train": 160,
    "seed": 0,
-   "fit_seconds": 0.8844885840080678,
+   "fit_seconds": 0.8790268329903483,
    "metrics": {
     "balanced_accuracy": 0.35238095238095235,
     "accuracy": 0.3783783783783784
@@ -936,7 +936,7 @@
    "model": "minirocket10k",
    "n_train": 160,
    "seed": 0,
-   "fit_seconds": 1.3199146249971818,
+   "fit_seconds": 1.3148705839994363,
    "metrics": {
     "balanced_accuracy": 0.3869047619047619,
     "accuracy": 0.3918918918918919
@@ -947,7 +947,7 @@
    "model": "heartwood",
    "n_train": 160,
    "seed": 1,
-   "fit_seconds": 80.08599695799057,
+   "fit_seconds": 78.24851133298944,
    "metrics": {
     "balanced_accuracy": 0.488095238095238,
     "accuracy": 0.4864864864864865,
@@ -959,7 +959,7 @@
    "model": "heartwood_rocket",
    "n_train": 160,
    "seed": 1,
-   "fit_seconds": 80.51894650000031,
+   "fit_seconds": 80.4958845420042,
    "metrics": {
     "balanced_accuracy": 0.4869047619047619,
     "accuracy": 0.5135135135135135,
@@ -971,7 +971,7 @@
    "model": "agg",
    "n_train": 160,
    "seed": 1,
-   "fit_seconds": 0.39254249999066815,
+   "fit_seconds": 0.39393091600504704,
    "metrics": {
     "balanced_accuracy": 0.2892857142857143,
     "accuracy": 0.28378378378378377,
@@ -983,7 +983,7 @@
    "model": "minirocket",
    "n_train": 160,
    "seed": 1,
-   "fit_seconds": 0.8822504999989178,
+   "fit_seconds": 0.8792012080084532,
    "metrics": {
     "balanced_accuracy": 0.35238095238095235,
     "accuracy": 0.3783783783783784
@@ -994,7 +994,7 @@
    "model": "minirocket10k",
    "n_train": 160,
    "seed": 1,
-   "fit_seconds": 1.3173529580235481,
+   "fit_seconds": 1.30785433400888,
    "metrics": {
     "balanced_accuracy": 0.3869047619047619,
     "accuracy": 0.3918918918918919
@@ -1005,7 +1005,7 @@
    "model": "heartwood",
    "n_train": 160,
    "seed": 2,
-   "fit_seconds": 77.28504066698952,
+   "fit_seconds": 76.3888980000047,
    "metrics": {
     "balanced_accuracy": 0.319047619047619,
     "accuracy": 0.35135135135135137,
@@ -1017,7 +1017,7 @@
    "model": "heartwood_rocket",
    "n_train": 160,
    "seed": 2,
-   "fit_seconds": 79.33124195801793,
+   "fit_seconds": 78.350677792012,
    "metrics": {
     "balanced_accuracy": 0.46904761904761905,
     "accuracy": 0.4864864864864865,
@@ -1029,7 +1029,7 @@
    "model": "agg",
    "n_train": 160,
    "seed": 2,
-   "fit_seconds": 0.39346037499490194,
+   "fit_seconds": 0.39320833401870914,
    "metrics": {
     "balanced_accuracy": 0.2892857142857143,
     "accuracy": 0.28378378378378377,
@@ -1041,7 +1041,7 @@
    "model": "minirocket",
    "n_train": 160,
    "seed": 2,
-   "fit_seconds": 0.8809200830000918,
+   "fit_seconds": 0.8811880420253146,
    "metrics": {
     "balanced_accuracy": 0.35238095238095235,
     "accuracy": 0.3783783783783784
@@ -1052,7 +1052,7 @@
    "model": "minirocket10k",
    "n_train": 160,
    "seed": 2,
-   "fit_seconds": 1.3123012500000186,
+   "fit_seconds": 1.3101148749992717,
    "metrics": {
     "balanced_accuracy": 0.3869047619047619,
     "accuracy": 0.3918918918918919
@@ -1063,7 +1063,7 @@
    "model": "heartwood",
    "n_train": 160,
    "seed": 3,
-   "fit_seconds": 76.85627254200517,
+   "fit_seconds": 76.15973091698834,
    "metrics": {
     "balanced_accuracy": 0.4666666666666667,
     "accuracy": 0.47297297297297297,
@@ -1075,7 +1075,7 @@
    "model": "heartwood_rocket",
    "n_train": 160,
    "seed": 3,
-   "fit_seconds": 79.74340970799676,
+   "fit_seconds": 80.23200920800446,
    "metrics": {
     "balanced_accuracy": 0.42857142857142855,
     "accuracy": 0.4594594594594595,
@@ -1087,7 +1087,7 @@
    "model": "agg",
    "n_train": 160,
    "seed": 3,
-   "fit_seconds": 0.3931900830066297,
+   "fit_seconds": 0.4012843749951571,
    "metrics": {
     "balanced_accuracy": 0.2892857142857143,
     "accuracy": 0.28378378378378377,
@@ -1099,7 +1099,7 @@
    "model": "minirocket",
    "n_train": 160,
    "seed": 3,
-   "fit_seconds": 0.879097166005522,
+   "fit_seconds": 0.8805854580132291,
    "metrics": {
     "balanced_accuracy": 0.35238095238095235,
     "accuracy": 0.3783783783783784
@@ -1110,7 +1110,7 @@
    "model": "minirocket10k",
    "n_train": 160,
    "seed": 3,
-   "fit_seconds": 1.3130307500250638,
+   "fit_seconds": 1.3140962500183377,
    "metrics": {
     "balanced_accuracy": 0.3869047619047619,
     "accuracy": 0.3918918918918919
@@ -1121,7 +1121,7 @@
    "model": "heartwood",
    "n_train": 160,
    "seed": 4,
-   "fit_seconds": 77.42506183299702,
+   "fit_seconds": 77.55525624999427,
    "metrics": {
     "balanced_accuracy": 0.4714285714285714,
     "accuracy": 0.5,
@@ -1133,7 +1133,7 @@
    "model": "heartwood_rocket",
    "n_train": 160,
    "seed": 4,
-   "fit_seconds": 81.24765645799926,
+   "fit_seconds": 81.4170200000226,
    "metrics": {
     "balanced_accuracy": 0.43690476190476185,
     "accuracy": 0.43243243243243246,
@@ -1145,7 +1145,7 @@
    "model": "agg",
    "n_train": 160,
    "seed": 4,
-   "fit_seconds": 0.3925466249929741,
+   "fit_seconds": 0.39452879200689495,
    "metrics": {
     "balanced_accuracy": 0.2892857142857143,
     "accuracy": 0.28378378378378377,
@@ -1157,7 +1157,7 @@
    "model": "minirocket",
    "n_train": 160,
    "seed": 4,
-   "fit_seconds": 0.881843499984825,
+   "fit_seconds": 0.8810423329996411,
    "metrics": {
     "balanced_accuracy": 0.35238095238095235,
     "accuracy": 0.3783783783783784
@@ -1168,7 +1168,7 @@
    "model": "minirocket10k",
    "n_train": 160,
    "seed": 4,
-   "fit_seconds": 1.3130429580050986,
+   "fit_seconds": 1.3127835830091499,
    "metrics": {
     "balanced_accuracy": 0.3869047619047619,
     "accuracy": 0.3918918918918919
@@ -1179,7 +1179,7 @@
    "model": "heartwood",
    "n_train": 180,
    "seed": 0,
-   "fit_seconds": 47.427915459004,
+   "fit_seconds": 47.13974691700423,
    "metrics": {
     "balanced_accuracy": 0.8999999999999999,
     "accuracy": 0.9,
@@ -1191,7 +1191,7 @@
    "model": "heartwood_rocket",
    "n_train": 180,
    "seed": 0,
-   "fit_seconds": 28.108518541994272,
+   "fit_seconds": 27.215100333996816,
    "metrics": {
     "balanced_accuracy": 0.922222222222222,
     "accuracy": 0.9222222222222223,
@@ -1203,7 +1203,7 @@
    "model": "agg",
    "n_train": 180,
    "seed": 0,
-   "fit_seconds": 0.16998512501595542,
+   "fit_seconds": 0.1694148750102613,
    "metrics": {
     "balanced_accuracy": 0.7611111111111111,
     "accuracy": 0.7611111111111111,
@@ -1215,7 +1215,7 @@
    "model": "minirocket",
    "n_train": 180,
    "seed": 0,
-   "fit_seconds": 0.09815183299360797,
+   "fit_seconds": 0.09565274999476969,
    "metrics": {
     "balanced_accuracy": 0.9166666666666666,
     "accuracy": 0.9166666666666666
@@ -1226,7 +1226,7 @@
    "model": "minirocket10k",
    "n_train": 180,
    "seed": 0,
-   "fit_seconds": 0.15038354098214768,
+   "fit_seconds": 0.14625574997626245,
    "metrics": {
     "balanced_accuracy": 0.9166666666666666,
     "accuracy": 0.9166666666666666
@@ -1237,7 +1237,7 @@
    "model": "heartwood",
    "n_train": 180,
    "seed": 1,
-   "fit_seconds": 47.99584600000526,
+   "fit_seconds": 47.17212075000862,
    "metrics": {
     "balanced_accuracy": 0.8944444444444443,
     "accuracy": 0.8944444444444445,
@@ -1249,7 +1249,7 @@
    "model": "heartwood_rocket",
    "n_train": 180,
    "seed": 1,
-   "fit_seconds": 20.138353208021726,
+   "fit_seconds": 19.986334125016583,
    "metrics": {
     "balanced_accuracy": 0.8944444444444444,
     "accuracy": 0.8944444444444445,
@@ -1261,7 +1261,7 @@
    "model": "agg",
    "n_train": 180,
    "seed": 1,
-   "fit_seconds": 0.17459854201297276,
+   "fit_seconds": 0.1701360000006389,
    "metrics": {
     "balanced_accuracy": 0.7611111111111111,
     "accuracy": 0.7611111111111111,
@@ -1273,7 +1273,7 @@
    "model": "minirocket",
    "n_train": 180,
    "seed": 1,
-   "fit_seconds": 0.09940874998574145,
+   "fit_seconds": 0.09607150001102127,
    "metrics": {
     "balanced_accuracy": 0.9166666666666666,
     "accuracy": 0.9166666666666666
@@ -1284,7 +1284,7 @@
    "model": "minirocket10k",
    "n_train": 180,
    "seed": 1,
-   "fit_seconds": 0.151434875006089,
+   "fit_seconds": 0.14779737498611212,
    "metrics": {
     "balanced_accuracy": 0.9166666666666666,
     "accuracy": 0.9166666666666666
@@ -1295,7 +1295,7 @@
    "model": "heartwood",
    "n_train": 180,
    "seed": 2,
-   "fit_seconds": 47.7410437920189,
+   "fit_seconds": 46.98179049999453,
    "metrics": {
     "balanced_accuracy": 0.8999999999999998,
     "accuracy": 0.9,
@@ -1307,7 +1307,7 @@
    "model": "heartwood_rocket",
    "n_train": 180,
    "seed": 2,
-   "fit_seconds": 22.400980499980506,
+   "fit_seconds": 22.211661458015442,
    "metrics": {
     "balanced_accuracy": 0.9111111111111111,
     "accuracy": 0.9111111111111111,
@@ -1319,7 +1319,7 @@
    "model": "agg",
    "n_train": 180,
    "seed": 2,
-   "fit_seconds": 0.17098300001816824,
+   "fit_seconds": 0.16991999998572282,
    "metrics": {
     "balanced_accuracy": 0.7611111111111111,
     "accuracy": 0.7611111111111111,
@@ -1331,7 +1331,7 @@
    "model": "minirocket",
    "n_train": 180,
    "seed": 2,
-   "fit_seconds": 0.09757725000963546,
+   "fit_seconds": 0.09614854198298417,
    "metrics": {
     "balanced_accuracy": 0.9166666666666666,
     "accuracy": 0.9166666666666666
@@ -1342,7 +1342,7 @@
    "model": "minirocket10k",
    "n_train": 180,
    "seed": 2,
-   "fit_seconds": 0.14902862499002367,
+   "fit_seconds": 0.1483603339875117,
    "metrics": {
     "balanced_accuracy": 0.9166666666666666,
     "accuracy": 0.9166666666666666
@@ -1353,7 +1353,7 @@
    "model": "heartwood",
    "n_train": 180,
    "seed": 3,
-   "fit_seconds": 48.514218041993445,
+   "fit_seconds": 47.60842866700841,
    "metrics": {
     "balanced_accuracy": 0.8833333333333333,
     "accuracy": 0.8833333333333333,
@@ -1365,7 +1365,7 @@
    "model": "heartwood_rocket",
    "n_train": 180,
    "seed": 3,
-   "fit_seconds": 24.27184191599372,
+   "fit_seconds": 24.132582249992993,
    "metrics": {
     "balanced_accuracy": 0.9333333333333332,
     "accuracy": 0.9333333333333333,
@@ -1377,7 +1377,7 @@
    "model": "agg",
    "n_train": 180,
    "seed": 3,
-   "fit_seconds": 0.17075991598539986,
+   "fit_seconds": 0.17016508299275301,
    "metrics": {
     "balanced_accuracy": 0.7611111111111111,
     "accuracy": 0.7611111111111111,
@@ -1389,7 +1389,7 @@
    "model": "minirocket",
    "n_train": 180,
    "seed": 3,
-   "fit_seconds": 0.09800766699481755,
+   "fit_seconds": 0.09611491599935107,
    "metrics": {
     "balanced_accuracy": 0.9166666666666666,
     "accuracy": 0.9166666666666666
@@ -1400,7 +1400,7 @@
    "model": "minirocket10k",
    "n_train": 180,
    "seed": 3,
-   "fit_seconds": 0.14916762500070035,
+   "fit_seconds": 0.14729725001961924,
    "metrics": {
     "balanced_accuracy": 0.9166666666666666,
     "accuracy": 0.9166666666666666
@@ -1411,7 +1411,7 @@
    "model": "heartwood",
    "n_train": 180,
    "seed": 4,
-   "fit_seconds": 44.969169083982706,
+   "fit_seconds": 44.259480915992754,
    "metrics": {
     "balanced_accuracy": 0.8666666666666666,
     "accuracy": 0.8666666666666667,
@@ -1423,7 +1423,7 @@
    "model": "heartwood_rocket",
    "n_train": 180,
    "seed": 4,
-   "fit_seconds": 20.958829500013962,
+   "fit_seconds": 20.397104666975792,
    "metrics": {
     "balanced_accuracy": 0.9166666666666665,
     "accuracy": 0.9166666666666666,
@@ -1435,7 +1435,7 @@
    "model": "agg",
    "n_train": 180,
    "seed": 4,
-   "fit_seconds": 0.17287120799301192,
+   "fit_seconds": 0.1700295000046026,
    "metrics": {
     "balanced_accuracy": 0.7611111111111111,
     "accuracy": 0.7611111111111111,
@@ -1447,7 +1447,7 @@
    "model": "minirocket",
    "n_train": 180,
    "seed": 4,
-   "fit_seconds": 0.09731920799822547,
+   "fit_seconds": 0.09659916601958685,
    "metrics": {
     "balanced_accuracy": 0.9166666666666666,
     "accuracy": 0.9166666666666666
@@ -1458,7 +1458,7 @@
    "model": "minirocket10k",
    "n_train": 180,
    "seed": 4,
-   "fit_seconds": 0.15047091600717977,
+   "fit_seconds": 0.14689087501028553,
    "metrics": {
     "balanced_accuracy": 0.9166666666666666,
     "accuracy": 0.9166666666666666
@@ -1469,7 +1469,7 @@
    "model": "heartwood",
    "n_train": 180,
    "seed": 0,
-   "fit_seconds": 32.61735391698312,
+   "fit_seconds": 32.12182174998452,
    "metrics": {
     "balanced_accuracy": 0.8944444444444445,
     "accuracy": 0.8944444444444445,
@@ -1481,7 +1481,7 @@
    "model": "heartwood_rocket",
    "n_train": 180,
    "seed": 0,
-   "fit_seconds": 19.52792058401974,
+   "fit_seconds": 19.226856958994176,
    "metrics": {
     "balanced_accuracy": 0.9,
     "accuracy": 0.9,
@@ -1493,7 +1493,7 @@
    "model": "agg",
    "n_train": 180,
    "seed": 0,
-   "fit_seconds": 0.6336042920011096,
+   "fit_seconds": 0.6347944999870379,
    "metrics": {
     "balanced_accuracy": 0.888888888888889,
     "accuracy": 0.8888888888888888,
@@ -1505,7 +1505,7 @@
    "model": "minirocket",
    "n_train": 180,
    "seed": 0,
-   "fit_seconds": 0.1732570839812979,
+   "fit_seconds": 0.17654933399171568,
    "metrics": {
     "balanced_accuracy": 0.9388888888888888,
     "accuracy": 0.9388888888888889
@@ -1516,7 +1516,7 @@
    "model": "minirocket10k",
    "n_train": 180,
    "seed": 0,
-   "fit_seconds": 0.2266637920110952,
+   "fit_seconds": 0.23003375000553206,
    "metrics": {
     "balanced_accuracy": 0.9444444444444443,
     "accuracy": 0.9444444444444444
@@ -1527,7 +1527,7 @@
    "model": "heartwood",
    "n_train": 180,
    "seed": 1,
-   "fit_seconds": 33.356769875012105,
+   "fit_seconds": 32.7083343330014,
    "metrics": {
     "balanced_accuracy": 0.9,
     "accuracy": 0.9,
@@ -1539,7 +1539,7 @@
    "model": "heartwood_rocket",
    "n_train": 180,
    "seed": 1,
-   "fit_seconds": 22.382415375002893,
+   "fit_seconds": 22.043526584020583,
    "metrics": {
     "balanced_accuracy": 0.938888888888889,
     "accuracy": 0.9388888888888889,
@@ -1551,7 +1551,7 @@
    "model": "agg",
    "n_train": 180,
    "seed": 1,
-   "fit_seconds": 0.6342327079910319,
+   "fit_seconds": 0.634552875009831,
    "metrics": {
     "balanced_accuracy": 0.888888888888889,
     "accuracy": 0.8888888888888888,
@@ -1563,7 +1563,7 @@
    "model": "minirocket",
    "n_train": 180,
    "seed": 1,
-   "fit_seconds": 0.17264599999180064,
+   "fit_seconds": 0.17419074999634176,
    "metrics": {
     "balanced_accuracy": 0.9388888888888888,
     "accuracy": 0.9388888888888889
@@ -1574,7 +1574,7 @@
    "model": "minirocket10k",
    "n_train": 180,
    "seed": 1,
-   "fit_seconds": 0.22781924999435432,
+   "fit_seconds": 0.2304767079767771,
    "metrics": {
     "balanced_accuracy": 0.9444444444444443,
     "accuracy": 0.9444444444444444
@@ -1585,7 +1585,7 @@
    "model": "heartwood",
    "n_train": 180,
    "seed": 2,
-   "fit_seconds": 34.50825333301327,
+   "fit_seconds": 33.74931058299262,
    "metrics": {
     "balanced_accuracy": 0.8777777777777778,
     "accuracy": 0.8777777777777778,
@@ -1597,7 +1597,7 @@
    "model": "heartwood_rocket",
    "n_train": 180,
    "seed": 2,
-   "fit_seconds": 20.331613916991046,
+   "fit_seconds": 19.919717500015395,
    "metrics": {
     "balanced_accuracy": 0.9333333333333332,
     "accuracy": 0.9333333333333333,
@@ -1609,7 +1609,7 @@
    "model": "agg",
    "n_train": 180,
    "seed": 2,
-   "fit_seconds": 0.634330917004263,
+   "fit_seconds": 0.6352404170029331,
    "metrics": {
     "balanced_accuracy": 0.888888888888889,
     "accuracy": 0.8888888888888888,
@@ -1621,7 +1621,7 @@
    "model": "minirocket",
    "n_train": 180,
    "seed": 2,
-   "fit_seconds": 0.172706624987768,
+   "fit_seconds": 0.17594862502301112,
    "metrics": {
     "balanced_accuracy": 0.9388888888888888,
     "accuracy": 0.9388888888888889
@@ -1632,7 +1632,7 @@
    "model": "minirocket10k",
    "n_train": 180,
    "seed": 2,
-   "fit_seconds": 0.22788295801728964,
+   "fit_seconds": 0.22945116698974743,
    "metrics": {
     "balanced_accuracy": 0.9444444444444443,
     "accuracy": 0.9444444444444444
@@ -1643,7 +1643,7 @@
    "model": "heartwood",
    "n_train": 180,
    "seed": 3,
-   "fit_seconds": 32.39042425001389,
+   "fit_seconds": 31.318655667011626,
    "metrics": {
     "balanced_accuracy": 0.9111111111111111,
     "accuracy": 0.9111111111111111,
@@ -1655,7 +1655,7 @@
    "model": "heartwood_rocket",
    "n_train": 180,
    "seed": 3,
-   "fit_seconds": 21.318616957985796,
+   "fit_seconds": 20.879199584014714,
    "metrics": {
     "balanced_accuracy": 0.9333333333333332,
     "accuracy": 0.9333333333333333,
@@ -1667,7 +1667,7 @@
    "model": "agg",
    "n_train": 180,
    "seed": 3,
-   "fit_seconds": 0.6349738340068143,
+   "fit_seconds": 0.6346592920017429,
    "metrics": {
     "balanced_accuracy": 0.888888888888889,
     "accuracy": 0.8888888888888888,
@@ -1679,7 +1679,7 @@
    "model": "minirocket",
    "n_train": 180,
    "seed": 3,
-   "fit_seconds": 0.17168604099424556,
+   "fit_seconds": 0.17629224999109283,
    "metrics": {
     "balanced_accuracy": 0.9388888888888888,
     "accuracy": 0.9388888888888889
@@ -1690,7 +1690,7 @@
    "model": "minirocket10k",
    "n_train": 180,
    "seed": 3,
-   "fit_seconds": 0.2257403749972582,
+   "fit_seconds": 0.23016604201984592,
    "metrics": {
     "balanced_accuracy": 0.9444444444444443,
     "accuracy": 0.9444444444444444
@@ -1701,7 +1701,7 @@
    "model": "heartwood",
    "n_train": 180,
    "seed": 4,
-   "fit_seconds": 33.27307458300493,
+   "fit_seconds": 32.810014292015694,
    "metrics": {
     "balanced_accuracy": 0.8666666666666667,
     "accuracy": 0.8666666666666667,
@@ -1713,7 +1713,7 @@
    "model": "heartwood_rocket",
    "n_train": 180,
    "seed": 4,
-   "fit_seconds": 19.968140624987427,
+   "fit_seconds": 19.610697916999925,
    "metrics": {
     "balanced_accuracy": 0.9166666666666666,
     "accuracy": 0.9166666666666666,
@@ -1725,7 +1725,7 @@
    "model": "agg",
    "n_train": 180,
    "seed": 4,
-   "fit_seconds": 0.6335742080118507,
+   "fit_seconds": 0.6350407090212684,
    "metrics": {
     "balanced_accuracy": 0.888888888888889,
     "accuracy": 0.8888888888888888,
@@ -1737,7 +1737,7 @@
    "model": "minirocket",
    "n_train": 180,
    "seed": 4,
-   "fit_seconds": 0.17327187498449348,
+   "fit_seconds": 0.17516049998812377,
    "metrics": {
     "balanced_accuracy": 0.9388888888888888,
     "accuracy": 0.9388888888888889
@@ -1748,7 +1748,7 @@
    "model": "minirocket10k",
    "n_train": 180,
    "seed": 4,
-   "fit_seconds": 0.22705329197924584,
+   "fit_seconds": 0.22868100000778213,
    "metrics": {
     "balanced_accuracy": 0.9444444444444443,
     "accuracy": 0.9444444444444444
@@ -1759,7 +1759,7 @@
    "model": "heartwood",
    "n_train": 200,
    "seed": 0,
-   "fit_seconds": 91.55979529200704,
+   "fit_seconds": 91.35140583300381,
    "metrics": {
     "balanced_accuracy": 0.5277777777777778,
     "accuracy": 0.5277777777777778,
@@ -1774,14 +1774,14 @@
    "model": "heartwood_rocket",
    "n_train": 200,
    "seed": 0,
-   "fit_seconds": 82.45042795801419,
+   "fit_seconds": 94.2092644170043,
    "metrics": {
-    "balanced_accuracy": 0.40555555555555556,
-    "accuracy": 0.40555555555555556,
-    "precision": 0.3924050632911392,
-    "recall": 0.34444444444444444,
-    "f1": 0.3668639053254438,
-    "roc_auc": 0.39308641975308645
+    "balanced_accuracy": 0.5277777777777778,
+    "accuracy": 0.5277777777777778,
+    "precision": 0.5342465753424658,
+    "recall": 0.43333333333333335,
+    "f1": 0.4785276073619632,
+    "roc_auc": 0.5381481481481482
    }
   },
   {
@@ -1789,7 +1789,7 @@
    "model": "agg",
    "n_train": 200,
    "seed": 0,
-   "fit_seconds": 0.11715270800050348,
+   "fit_seconds": 0.1174270829942543,
    "metrics": {
     "balanced_accuracy": 0.5222222222222223,
     "accuracy": 0.5222222222222223,
@@ -1804,7 +1804,7 @@
    "model": "minirocket",
    "n_train": 200,
    "seed": 0,
-   "fit_seconds": 3.849725958018098,
+   "fit_seconds": 3.8908194999967236,
    "metrics": {
     "balanced_accuracy": 0.5555555555555556,
     "accuracy": 0.5555555555555556,
@@ -1819,7 +1819,7 @@
    "model": "minirocket10k",
    "n_train": 200,
    "seed": 0,
-   "fit_seconds": 5.826011917000869,
+   "fit_seconds": 5.880849834007677,
    "metrics": {
     "balanced_accuracy": 0.5444444444444444,
     "accuracy": 0.5444444444444444,
@@ -1834,7 +1834,7 @@
    "model": "heartwood",
    "n_train": 200,
    "seed": 1,
-   "fit_seconds": 91.56641041699913,
+   "fit_seconds": 91.06361862501944,
    "metrics": {
     "balanced_accuracy": 0.4722222222222222,
     "accuracy": 0.4722222222222222,
@@ -1849,14 +1849,14 @@
    "model": "heartwood_rocket",
    "n_train": 200,
    "seed": 1,
-   "fit_seconds": 96.1602486250049,
+   "fit_seconds": 94.51071141700959,
    "metrics": {
-    "balanced_accuracy": 0.4388888888888889,
-    "accuracy": 0.4388888888888889,
-    "precision": 0.42028985507246375,
-    "recall": 0.32222222222222224,
-    "f1": 0.36477987421383645,
-    "roc_auc": 0.4165432098765432
+    "balanced_accuracy": 0.4722222222222222,
+    "accuracy": 0.4722222222222222,
+    "precision": 0.47191011235955055,
+    "recall": 0.4666666666666667,
+    "f1": 0.4692737430167598,
+    "roc_auc": 0.48246913580246914
    }
   },
   {
@@ -1864,7 +1864,7 @@
    "model": "agg",
    "n_train": 200,
    "seed": 1,
-   "fit_seconds": 0.11839154199697077,
+   "fit_seconds": 0.11754304199712351,
    "metrics": {
     "balanced_accuracy": 0.5222222222222223,
     "accuracy": 0.5222222222222223,
@@ -1879,7 +1879,7 @@
    "model": "minirocket",
    "n_train": 200,
    "seed": 1,
-   "fit_seconds": 3.8700005410064477,
+   "fit_seconds": 3.8956136249471456,
    "metrics": {
     "balanced_accuracy": 0.5555555555555556,
     "accuracy": 0.5555555555555556,
@@ -1894,7 +1894,7 @@
    "model": "minirocket10k",
    "n_train": 200,
    "seed": 1,
-   "fit_seconds": 5.867318000004161,
+   "fit_seconds": 5.902477750030812,
    "metrics": {
     "balanced_accuracy": 0.5444444444444444,
     "accuracy": 0.5444444444444444,
@@ -1902,6 +1902,606 @@
     "recall": 0.5111111111111111,
     "f1": 0.5287356321839081,
     "roc_auc": 0.5638271604938272
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood",
+   "n_train": 200,
+   "seed": 2,
+   "fit_seconds": 82.97958454099717,
+   "metrics": {
+    "balanced_accuracy": 0.55,
+    "accuracy": 0.55,
+    "precision": 0.5463917525773195,
+    "recall": 0.5888888888888889,
+    "f1": 0.5668449197860962,
+    "roc_auc": 0.5318518518518518
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood_rocket",
+   "n_train": 200,
+   "seed": 2,
+   "fit_seconds": 85.9531803749851,
+   "metrics": {
+    "balanced_accuracy": 0.55,
+    "accuracy": 0.55,
+    "precision": 0.5463917525773195,
+    "recall": 0.5888888888888889,
+    "f1": 0.5668449197860962,
+    "roc_auc": 0.5318518518518518
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "agg",
+   "n_train": 200,
+   "seed": 2,
+   "fit_seconds": 0.11744987504789606,
+   "metrics": {
+    "balanced_accuracy": 0.5222222222222223,
+    "accuracy": 0.5222222222222223,
+    "precision": 0.5185185185185185,
+    "recall": 0.6222222222222222,
+    "f1": 0.5656565656565656,
+    "roc_auc": 0.5259259259259259
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "minirocket",
+   "n_train": 200,
+   "seed": 2,
+   "fit_seconds": 3.9027394159929827,
+   "metrics": {
+    "balanced_accuracy": 0.5555555555555556,
+    "accuracy": 0.5555555555555556,
+    "precision": 0.5531914893617021,
+    "recall": 0.5777777777777777,
+    "f1": 0.5652173913043478,
+    "roc_auc": 0.5460493827160494
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "minirocket10k",
+   "n_train": 200,
+   "seed": 2,
+   "fit_seconds": 5.8898165409918875,
+   "metrics": {
+    "balanced_accuracy": 0.5444444444444444,
+    "accuracy": 0.5444444444444444,
+    "precision": 0.5476190476190477,
+    "recall": 0.5111111111111111,
+    "f1": 0.5287356321839081,
+    "roc_auc": 0.5638271604938272
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood",
+   "n_train": 200,
+   "seed": 3,
+   "fit_seconds": 92.04231904202607,
+   "metrics": {
+    "balanced_accuracy": 0.45555555555555555,
+    "accuracy": 0.45555555555555555,
+    "precision": 0.45,
+    "recall": 0.4,
+    "f1": 0.4235294117647059,
+    "roc_auc": 0.49061728395061727
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood_rocket",
+   "n_train": 200,
+   "seed": 3,
+   "fit_seconds": 94.97444891696796,
+   "metrics": {
+    "balanced_accuracy": 0.45555555555555555,
+    "accuracy": 0.45555555555555555,
+    "precision": 0.45,
+    "recall": 0.4,
+    "f1": 0.4235294117647059,
+    "roc_auc": 0.49061728395061727
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "agg",
+   "n_train": 200,
+   "seed": 3,
+   "fit_seconds": 0.11724241700721905,
+   "metrics": {
+    "balanced_accuracy": 0.5222222222222223,
+    "accuracy": 0.5222222222222223,
+    "precision": 0.5185185185185185,
+    "recall": 0.6222222222222222,
+    "f1": 0.5656565656565656,
+    "roc_auc": 0.5259259259259259
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "minirocket",
+   "n_train": 200,
+   "seed": 3,
+   "fit_seconds": 3.8949808749603108,
+   "metrics": {
+    "balanced_accuracy": 0.5555555555555556,
+    "accuracy": 0.5555555555555556,
+    "precision": 0.5531914893617021,
+    "recall": 0.5777777777777777,
+    "f1": 0.5652173913043478,
+    "roc_auc": 0.5460493827160494
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "minirocket10k",
+   "n_train": 200,
+   "seed": 3,
+   "fit_seconds": 5.881477042043116,
+   "metrics": {
+    "balanced_accuracy": 0.5444444444444444,
+    "accuracy": 0.5444444444444444,
+    "precision": 0.5476190476190477,
+    "recall": 0.5111111111111111,
+    "f1": 0.5287356321839081,
+    "roc_auc": 0.5638271604938272
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood",
+   "n_train": 200,
+   "seed": 4,
+   "fit_seconds": 85.60096766694915,
+   "metrics": {
+    "balanced_accuracy": 0.48333333333333334,
+    "accuracy": 0.48333333333333334,
+    "precision": 0.48148148148148145,
+    "recall": 0.43333333333333335,
+    "f1": 0.456140350877193,
+    "roc_auc": 0.46123456790123457
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood_rocket",
+   "n_train": 200,
+   "seed": 4,
+   "fit_seconds": 88.61675812501926,
+   "metrics": {
+    "balanced_accuracy": 0.48333333333333334,
+    "accuracy": 0.48333333333333334,
+    "precision": 0.48148148148148145,
+    "recall": 0.43333333333333335,
+    "f1": 0.456140350877193,
+    "roc_auc": 0.46123456790123457
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "agg",
+   "n_train": 200,
+   "seed": 4,
+   "fit_seconds": 0.11783587496029213,
+   "metrics": {
+    "balanced_accuracy": 0.5222222222222223,
+    "accuracy": 0.5222222222222223,
+    "precision": 0.5185185185185185,
+    "recall": 0.6222222222222222,
+    "f1": 0.5656565656565656,
+    "roc_auc": 0.5259259259259259
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "minirocket",
+   "n_train": 200,
+   "seed": 4,
+   "fit_seconds": 3.884533625037875,
+   "metrics": {
+    "balanced_accuracy": 0.5555555555555556,
+    "accuracy": 0.5555555555555556,
+    "precision": 0.5531914893617021,
+    "recall": 0.5777777777777777,
+    "f1": 0.5652173913043478,
+    "roc_auc": 0.5460493827160494
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "minirocket10k",
+   "n_train": 200,
+   "seed": 4,
+   "fit_seconds": 5.892149708990473,
+   "metrics": {
+    "balanced_accuracy": 0.5444444444444444,
+    "accuracy": 0.5444444444444444,
+    "precision": 0.5476190476190477,
+    "recall": 0.5111111111111111,
+    "f1": 0.5287356321839081,
+    "roc_auc": 0.5638271604938272
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood",
+   "n_train": 204,
+   "seed": 0,
+   "fit_seconds": 26.06305204203818,
+   "metrics": {
+    "balanced_accuracy": 0.6004623044096729,
+    "accuracy": 0.7268292682926829,
+    "precision": 0.5142857142857142,
+    "recall": 0.3157894736842105,
+    "f1": 0.391304347826087,
+    "roc_auc": 0.7533191085822665
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood_rocket",
+   "n_train": 204,
+   "seed": 0,
+   "fit_seconds": 28.00764662498841,
+   "metrics": {
+    "balanced_accuracy": 0.6517306780464676,
+    "accuracy": 0.7463414634146341,
+    "precision": 0.5555555555555556,
+    "recall": 0.43859649122807015,
+    "f1": 0.4901960784313725,
+    "roc_auc": 0.7606685633001422
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "agg",
+   "n_train": 204,
+   "seed": 0,
+   "fit_seconds": 0.6206805830006488,
+   "metrics": {
+    "balanced_accuracy": 0.676683262209578,
+    "accuracy": 0.751219512195122,
+    "precision": 0.5576923076923077,
+    "recall": 0.5087719298245614,
+    "f1": 0.5321100917431193,
+    "roc_auc": 0.7406353722143196
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "minirocket",
+   "n_train": 204,
+   "seed": 0,
+   "fit_seconds": 2.9669945419882424,
+   "metrics": {
+    "balanced_accuracy": 0.6530938833570412,
+    "accuracy": 0.7560975609756098,
+    "precision": 0.5853658536585366,
+    "recall": 0.42105263157894735,
+    "f1": 0.48979591836734687,
+    "roc_auc": 0.7852062588904695
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "minirocket10k",
+   "n_train": 204,
+   "seed": 0,
+   "fit_seconds": 4.137563166033942,
+   "metrics": {
+    "balanced_accuracy": 0.6645329540066383,
+    "accuracy": 0.7414634146341463,
+    "precision": 0.5384615384615384,
+    "recall": 0.49122807017543857,
+    "f1": 0.5137614678899082,
+    "roc_auc": 0.7846135609293504
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood",
+   "n_train": 204,
+   "seed": 1,
+   "fit_seconds": 25.70368045801297,
+   "metrics": {
+    "balanced_accuracy": 0.6018255097202465,
+    "accuracy": 0.7365853658536585,
+    "precision": 0.5483870967741935,
+    "recall": 0.2982456140350877,
+    "f1": 0.38636363636363635,
+    "roc_auc": 0.7060218112849692
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood_rocket",
+   "n_train": 204,
+   "seed": 1,
+   "fit_seconds": 26.528039083001204,
+   "metrics": {
+    "balanced_accuracy": 0.6686225699383594,
+    "accuracy": 0.7707317073170732,
+    "precision": 0.625,
+    "recall": 0.43859649122807015,
+    "f1": 0.5154639175257731,
+    "roc_auc": 0.7622095779990516
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "agg",
+   "n_train": 204,
+   "seed": 1,
+   "fit_seconds": 0.6197552089579403,
+   "metrics": {
+    "balanced_accuracy": 0.676683262209578,
+    "accuracy": 0.751219512195122,
+    "precision": 0.5576923076923077,
+    "recall": 0.5087719298245614,
+    "f1": 0.5321100917431193,
+    "roc_auc": 0.7406353722143196
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "minirocket",
+   "n_train": 204,
+   "seed": 1,
+   "fit_seconds": 2.98065325000789,
+   "metrics": {
+    "balanced_accuracy": 0.6530938833570412,
+    "accuracy": 0.7560975609756098,
+    "precision": 0.5853658536585366,
+    "recall": 0.42105263157894735,
+    "f1": 0.48979591836734687,
+    "roc_auc": 0.7852062588904695
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "minirocket10k",
+   "n_train": 204,
+   "seed": 1,
+   "fit_seconds": 4.148448082967661,
+   "metrics": {
+    "balanced_accuracy": 0.6645329540066383,
+    "accuracy": 0.7414634146341463,
+    "precision": 0.5384615384615384,
+    "recall": 0.49122807017543857,
+    "f1": 0.5137614678899082,
+    "roc_auc": 0.7846135609293504
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood",
+   "n_train": 204,
+   "seed": 2,
+   "fit_seconds": 25.023030625015963,
+   "metrics": {
+    "balanced_accuracy": 0.621384542437174,
+    "accuracy": 0.7414634146341463,
+    "precision": 0.5555555555555556,
+    "recall": 0.3508771929824561,
+    "f1": 0.4301075268817204,
+    "roc_auc": 0.7497629208155524
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood_rocket",
+   "n_train": 204,
+   "seed": 2,
+   "fit_seconds": 27.258642208005767,
+   "metrics": {
+    "balanced_accuracy": 0.64900426742532,
+    "accuracy": 0.7268292682926829,
+    "precision": 0.5094339622641509,
+    "recall": 0.47368421052631576,
+    "f1": 0.49090909090909085,
+    "roc_auc": 0.7936225699383594
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "agg",
+   "n_train": 204,
+   "seed": 2,
+   "fit_seconds": 0.6210030830116011,
+   "metrics": {
+    "balanced_accuracy": 0.676683262209578,
+    "accuracy": 0.751219512195122,
+    "precision": 0.5576923076923077,
+    "recall": 0.5087719298245614,
+    "f1": 0.5321100917431193,
+    "roc_auc": 0.7406353722143196
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "minirocket",
+   "n_train": 204,
+   "seed": 2,
+   "fit_seconds": 2.973889750021044,
+   "metrics": {
+    "balanced_accuracy": 0.6530938833570412,
+    "accuracy": 0.7560975609756098,
+    "precision": 0.5853658536585366,
+    "recall": 0.42105263157894735,
+    "f1": 0.48979591836734687,
+    "roc_auc": 0.7852062588904695
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "minirocket10k",
+   "n_train": 204,
+   "seed": 2,
+   "fit_seconds": 4.145735582977068,
+   "metrics": {
+    "balanced_accuracy": 0.6645329540066383,
+    "accuracy": 0.7414634146341463,
+    "precision": 0.5384615384615384,
+    "recall": 0.49122807017543857,
+    "f1": 0.5137614678899082,
+    "roc_auc": 0.7846135609293504
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood",
+   "n_train": 204,
+   "seed": 3,
+   "fit_seconds": 25.72337179101305,
+   "metrics": {
+    "balanced_accuracy": 0.6402916073968705,
+    "accuracy": 0.7609756097560976,
+    "precision": 0.6176470588235294,
+    "recall": 0.3684210526315789,
+    "f1": 0.4615384615384615,
+    "roc_auc": 0.766239924134661
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood_rocket",
+   "n_train": 204,
+   "seed": 3,
+   "fit_seconds": 27.1814459580346,
+   "metrics": {
+    "balanced_accuracy": 0.6341868183973447,
+    "accuracy": 0.7365853658536585,
+    "precision": 0.5348837209302325,
+    "recall": 0.40350877192982454,
+    "f1": 0.4599999999999999,
+    "roc_auc": 0.7618539592223803
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "agg",
+   "n_train": 204,
+   "seed": 3,
+   "fit_seconds": 0.6197872080374509,
+   "metrics": {
+    "balanced_accuracy": 0.676683262209578,
+    "accuracy": 0.751219512195122,
+    "precision": 0.5576923076923077,
+    "recall": 0.5087719298245614,
+    "f1": 0.5321100917431193,
+    "roc_auc": 0.7406353722143196
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "minirocket",
+   "n_train": 204,
+   "seed": 3,
+   "fit_seconds": 2.97526654205285,
+   "metrics": {
+    "balanced_accuracy": 0.6530938833570412,
+    "accuracy": 0.7560975609756098,
+    "precision": 0.5853658536585366,
+    "recall": 0.42105263157894735,
+    "f1": 0.48979591836734687,
+    "roc_auc": 0.7852062588904695
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "minirocket10k",
+   "n_train": 204,
+   "seed": 3,
+   "fit_seconds": 4.15276891598478,
+   "metrics": {
+    "balanced_accuracy": 0.6645329540066383,
+    "accuracy": 0.7414634146341463,
+    "precision": 0.5384615384615384,
+    "recall": 0.49122807017543857,
+    "f1": 0.5137614678899082,
+    "roc_auc": 0.7846135609293504
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood",
+   "n_train": 204,
+   "seed": 4,
+   "fit_seconds": 24.84575766697526,
+   "metrics": {
+    "balanced_accuracy": 0.6510787102892366,
+    "accuracy": 0.7609756097560976,
+    "precision": 0.6052631578947368,
+    "recall": 0.40350877192982454,
+    "f1": 0.4842105263157894,
+    "roc_auc": 0.7392128971076339
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood_rocket",
+   "n_train": 204,
+   "seed": 4,
+   "fit_seconds": 27.60483879200183,
+   "metrics": {
+    "balanced_accuracy": 0.6686225699383594,
+    "accuracy": 0.7707317073170732,
+    "precision": 0.625,
+    "recall": 0.43859649122807015,
+    "f1": 0.5154639175257731,
+    "roc_auc": 0.7918444760550024
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "agg",
+   "n_train": 204,
+   "seed": 4,
+   "fit_seconds": 0.6203169589862227,
+   "metrics": {
+    "balanced_accuracy": 0.676683262209578,
+    "accuracy": 0.751219512195122,
+    "precision": 0.5576923076923077,
+    "recall": 0.5087719298245614,
+    "f1": 0.5321100917431193,
+    "roc_auc": 0.7406353722143196
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "minirocket",
+   "n_train": 204,
+   "seed": 4,
+   "fit_seconds": 2.9784194999956526,
+   "metrics": {
+    "balanced_accuracy": 0.6530938833570412,
+    "accuracy": 0.7560975609756098,
+    "precision": 0.5853658536585366,
+    "recall": 0.42105263157894735,
+    "f1": 0.48979591836734687,
+    "roc_auc": 0.7852062588904695
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "minirocket10k",
+   "n_train": 204,
+   "seed": 4,
+   "fit_seconds": 4.15622445900226,
+   "metrics": {
+    "balanced_accuracy": 0.6645329540066383,
+    "accuracy": 0.7414634146341463,
+    "precision": 0.5384615384615384,
+    "recall": 0.49122807017543857,
+    "f1": 0.5137614678899082,
+    "roc_auc": 0.7846135609293504
    }
   }
  ]
