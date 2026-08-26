@@ -235,6 +235,12 @@ def main() -> int:
     parser.add_argument("--depth", type=int, default=4)
     parser.add_argument("--learning-rate", type=float, default=0.1)
     parser.add_argument("--no-minirocket", action="store_true")
+    parser.add_argument("--max-test", type=int, default=0,
+                        help="cap the test split by stratified subsample. Sleep-EDF has "
+                             "43k epochs, so ~13k land in test and prediction dominates "
+                             "the cell: 2900s at n=100, where the fit itself is trivial. "
+                             "Balanced accuracy over 4000 stratified rows is precise "
+                             "enough that the extra 9k buys nothing but hours.")
     parser.add_argument("--drop-static", action="store_true",
                         help="blank the static block for every model (V7 arm C): "
                              "isolates what the static covariates are actually worth")
@@ -292,6 +298,8 @@ def main() -> int:
 
         for seed in range(args.seeds):
             train_idx, test_idx = make_split(dataset, seed)
+            if args.max_test and len(test_idx) > args.max_test:
+                test_idx = subsample(test_idx, dataset.y, args.max_test, seed)
             for size in args.sizes:
                 if size and size > len(train_idx):
                     continue

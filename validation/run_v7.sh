@@ -18,10 +18,10 @@ say "V7 orchestrator starting"
 # ---- Sleep-EDF first: its download finishes long before CPSC's ----
 waitfor "sleep-edf" fetch_sleepedf.py
 stage "sleepedf arm D (statics)"  python validation/run_validation.py \
-      --datasets sleepedf --sizes 100 1000 2000 --seeds 3 --variants rocket \
+      --datasets sleepedf --sizes 100 1000 2000 --seeds 3 --variants rocket --max-test 4000 \
       --representations agg static_only --out $R/v7_sleepedf
 stage "sleepedf arm C (no statics)" python validation/run_validation.py \
-      --datasets sleepedf --sizes 1000 --seeds 3 --variants rocket --drop-static \
+      --datasets sleepedf --sizes 1000 --seeds 3 --variants rocket --drop-static --max-test 4000 \
       --representations agg --out $R/v7_sleepedf_nostatic
 stage "sleepedf arm B (ridge only)" python validation/arm_b.py sleepedf 1000
 

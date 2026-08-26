@@ -59,6 +59,13 @@ Preprocessing, fixed here:
   yields tens of thousands of epochs, far more than the n=2000 the size grid asks for; the
   binding constraint is subject count for a disjoint split, not epochs.
 
+**Evaluation cost, fixed now.** Sleep-EDF yields ~43,000 epochs, so roughly 13,000 land in
+a held-out split and *prediction*, not fitting, dominates every cell — measured at 2900 s
+for n=100, where the fit is trivial. The test split is therefore capped at **4,000 rows by
+stratified subsample**. Balanced accuracy over 4,000 stratified rows is precise to well
+under the 2-point margins these hypotheses turn on, so the remaining 9,000 buy hours and
+nothing else. Applied to Sleep-EDF only; CPSC-2018's test split is already ~1,900.
+
 **Run scope, fixed now.** The full grid — 2 datasets x 5 sizes x 5 seeds x 4 arms — is
 over twenty hours of compute, because a single ECG-sized fit takes 450-2500 s. So the
 *hypotheses* stand as written and the *runs* are scoped: H-V7.1 is evaluated at n=1000 and
