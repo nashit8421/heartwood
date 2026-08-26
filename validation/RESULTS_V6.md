@@ -29,8 +29,32 @@ the better of 2,000 and 10,000 kernels.
 MiniROCKET by ≥2 points at **0 of 3** training sizes (−0.6, −0.1, +1.5). A
 majority was required.
 
-**H-V6.3 (no regression) — not yet run.** The synthetic grid has to be checked
-before `rocket` can be considered for a default.
+**H-V6.3 (no regression) — FAIL**, on one scenario out of six. After the base
+learned to decide itself against chance rather than against the mean, 20 of 24
+synthetic cells are identical to the default or better. All four regressions are
+`amp_regression`: −6.7, −3.5, −3.4, −2.3.
+
+| scenario | n=100 | n=250 | n=500 | n=1000 |
+|---|---|---|---|---|
+| bump_order | +0.0 | +0.0 | +0.3 | −0.1 |
+| lead_lag | +0.0 | +0.0 | +0.0 | +0.0 |
+| slope_window | +1.5 | +0.0 | −0.2 | +0.0 |
+| timing | +0.4 | −0.3 | −0.1 | −0.0 |
+| static_control | +0.0 | −0.3 | +0.0 | +0.0 |
+| **amp_regression** | **−6.7** | **−3.5** | **−3.4** | **−2.3** |
+
+No guard on base quality can fix that one, and it is worth being precise about
+why. `amp_regression`'s ridge has a leave-one-out R² of 0.47 — genuine,
+comfortably better than chance. The target is transient height *times* a static
+coefficient, a pure interaction, so the linear base predicts it well on average
+and still misleads the trees, which then have to spend capacity undoing it.
+Deciding this correctly would mean fitting the booster both ways and comparing,
+which doubles fit time. That is the same trade Phase C recorded for the
+statistics bank, arrived at independently.
+
+**H-V6.4 (earns its default) — NO.** The rule required H-V6.2 to pass and
+H-V6.3 not to fail; neither held. `dense_features="rocket"` ships **opt-in**,
+with these numbers, exactly as matched filters and the ridge base did before it.
 
 ## What actually happened
 
