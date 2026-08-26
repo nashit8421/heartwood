@@ -11,6 +11,7 @@ the better of 2,000 and 10,000 kernels.
 | ptbxl | 100 | 0.347 | 0.408 | 0.414 | 0.309 | −0.6 | **+6.0** |
 | ptbxl | 250 | 0.399 | 0.438 | 0.439 | 0.327 | −0.1 | **+3.9** |
 | ptbxl | 500 | 0.465 | 0.489 | 0.475 | 0.365 | +1.5 | **+2.5** |
+| ptbxl | 1000 | 0.490 | **0.533** | 0.511 | 0.400 | **+2.2** | **+4.3** |
 | Epilepsy | 137 | 0.997 | 0.995 | 1.000 | 0.957 | −0.5 | −0.3 |
 | HandMovementDirection | 160 | 0.429 | **0.459** | 0.387 | 0.289 | **+7.2** | +3.0 |
 | Handwriting | 150 | 0.316 | **0.520** | 0.514 | 0.171 | +0.7 | **+20.5** |
@@ -26,8 +27,21 @@ the better of 2,000 and 10,000 kernels.
 **7 of 8** Arm B datasets; the bar was 75%. The bank is not broken.
 
 **H-V6.2 (the win) — FAIL.** On PTB-XL, `heartwood_rocket` beats the better
-MiniROCKET by ≥2 points at **0 of 3** training sizes (−0.6, −0.1, +1.5). A
-majority was required.
+MiniROCKET by ≥2 points at **1 of 4** training sizes. A majority was required.
+
+The margins are −0.6, −0.1, +1.5, **+2.2** at n = 100, 250, 500, 1000. That is
+monotone in training size, and the crossing at n=1000 is the pre-registered
+target being met at the largest size tested: three seeds give +2.1, +3.4, +1.2
+against the better of MiniROCKET's two kernel budgets, on the one dataset in
+this project with both a real static block and shape-regime series.
+
+**This does not make H-V6.2 pass, and it is worth being blunt about why.** The
+hypothesis asked for a majority of sizes and got one of four. Reading a monotone
+trend as a win would be choosing the summary after seeing the data, which is the
+specific habit that produced the v0.3 headline. What can honestly be said is
+narrower: *at n=1000 on PTB-XL, Heartwood with a rocket base beats MiniROCKET by
+2.2 points, and the margin grows with training size across the four sizes tested.*
+Whether that holds at n=2000 and beyond is untested and is the obvious next run.
 
 **H-V6.3 (no regression) — FAIL**, on one scenario out of six. After the base
 learned to decide itself against chance rather than against the mean, 20 of 24
