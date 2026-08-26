@@ -512,9 +512,149 @@ def load_ptbxl() -> Dataset:
     return dataset
 
 
+# --------------------------------------------------- V7-M1: CPSC-2018 ECG
+
+
+#: The nine CPSC-2018 classes, by SNOMED code, for readable reporting only --
+#: selection uses record counts, never these names.
+_CPSC_NAMES = {
+    "426783006": "NSR", "164889003": "AF", "270492004": "IAVB",
+    "164909002": "LBBB", "59118001": "RBBB", "284470004": "PAC",
+    "164884008": "PVC", "429622005": "STD", "164931005": "STE",
+}
+_CPSC_LEADS = ("I", "II", "III", "aVR", "aVL", "aVF",
+               "V1", "V2", "V3", "V4", "V5", "V6")
+_CPSC_MIN_CLASS = 200      # a class must hold this many records to be kept
+_CPSC_SECONDS = 10         # first 10 s of each record
+_CPSC_DECIMATE = 5         # 500 Hz -> 100 Hz, matching PTB-XL
+
+
+def _read_cpsc_record(header: Path):
+    """One CPSC record -> ``(series, age, sex, dx codes)``.
+
+    The signal ships as a MATLAB v4 file whose WFDB header gives the byte offset
+    and per-lead gain, so it reads as plain interleaved int16 -- no scipy, no
+    wfdb.  Demographics live in the header's trailing comments.
+    """
+    lines = header.read_text().splitlines()
+    fields = lines[0].split()
+    n_signals, n_samples = int(fields[1]), int(fields[3])
+
+    gains, data_file, offset = [], None, 0
+    for line in lines[1:1 + n_signals]:
+        parts = line.split()
+        data_file = parts[0]
+        spec = parts[1]                       # e.g. "16x1+24"
+        if "+" in spec:
+            offset = int(spec.split("+")[1])
+        gains.append(float(parts[2].split("/")[0].split("(")[0]) or 1000.0)
+
+    raw = np.fromfile(header.parent / data_file, dtype="<i2", offset=offset)
+    usable = (raw.size // n_signals) * n_signals
+    block = raw[:usable].reshape(-1, n_signals).T.astype(np.float64)
+    block = block[:, :n_samples] / np.asarray(gains, dtype=np.float64)[:, None]
+
+    age, sex, codes = np.nan, np.nan, []
+    for line in lines[n_signals + 1:]:
+        if line.startswith("# Age:"):
+            token = line.split(":", 1)[1].strip()
+            age = float(token) if token.replace(".", "").isdigit() else np.nan
+        elif line.startswith("# Sex:"):
+            token = line.split(":", 1)[1].strip().lower()
+            sex = 1.0 if token.startswith("m") else (0.0 if token.startswith("f") else np.nan)
+        elif line.startswith("# Dx:"):
+            codes = [c.strip() for c in line.split(":", 1)[1].split(",") if c.strip()]
+    return block, age, sex, codes
+
+
+def load_cpsc2018() -> Dataset:
+    """CPSC-2018 12-lead ECG with age and sex, via PhysioNet/CinC 2020.
+
+    V7-M1.  A *different* ECG cohort from PTB-XL -- different country, label set
+    and sampling rate -- so it asks whether the V6 win replicates on data it has
+    never seen, with modality held fixed.
+
+    Decisions, fixed in VALIDATION_V7.md §2 before the data was parsed:
+
+    * **Series** is all 12 leads, the first 10 s, brought from 500 Hz to 100 Hz
+      to match PTB-XL's resolution.  The plan says "by decimation"; this averages
+      each block of 5 samples rather than taking every 5th, because plain
+      subsampling of a 500 Hz ECG aliases QRS energy straight into the band the
+      model reads.  Same rate, one fewer artefact.
+    * **Records shorter than 10 s are dropped**, and counted in ``notes``.
+    * **Label** is the SNOMED ``Dx`` code.  A record is kept only if it maps to
+      exactly one class holding at least 200 records; records with none or with
+      several are dropped and both counts reported.
+    * **Static block** is age and sex.  Unknown stays NaN -- no imputation.
+    * **Split** is the harness's stratified 70/30, redrawn per seed, since this
+      dataset ships no official split and each record is one patient.
+    """
+    root = DATA_DIR / "cpsc2018"
+    headers = sorted(root.rglob("A*.hea"))
+    if not headers:
+        raise FileNotFoundError(
+            f"no CPSC records under {root}; run `python validation/fetch_cpsc.py` first"
+        )
+
+    cache = DATA_DIR / "cpsc2018_series.npy"
+    length = _CPSC_SECONDS * 500
+
+    parsed, short = [], 0
+    for header in headers:
+        block, age, sex, codes = _read_cpsc_record(header)
+        if block.shape[1] < length:
+            short += 1
+            continue
+        parsed.append((header.stem, block[:, :length], age, sex, codes))
+
+    counts: dict[str, int] = {}
+    for _, _, _, _, codes in parsed:
+        for code in codes:
+            counts[code] = counts.get(code, 0) + 1
+    frequent = {code for code, n in counts.items() if n >= _CPSC_MIN_CLASS}
+
+    kept, unlabelled, multi = [], 0, 0
+    for record, block, age, sex, codes in parsed:
+        hits = [c for c in codes if c in frequent]
+        if not hits:
+            unlabelled += 1
+        elif len(hits) > 1:
+            multi += 1
+        else:
+            kept.append((record, block, age, sex, hits[0]))
+
+    n = len(kept)
+    if cache.exists() and len(np.load(cache, mmap_mode="r")) == n:
+        X_series = np.load(cache)
+    else:
+        X_series = np.empty((n, 12, _CPSC_SECONDS * 100), dtype=np.float32)
+        for row, (_, block, _, _, _) in enumerate(kept):
+            # average each block of 5 samples: 500 Hz -> 100 Hz without aliasing
+            X_series[row] = block.reshape(12, -1, _CPSC_DECIMATE).mean(axis=2)
+        np.save(cache, X_series)
+
+    X_static = np.array([[age, sex] for _, _, age, sex, _ in kept], dtype=np.float64)
+    classes, y = np.unique([label for *_, label in kept], return_inverse=True)
+
+    return Dataset(
+        key="cpsc2018",
+        X_static=X_static,
+        X_series=X_series,
+        y=y.astype(np.int64),
+        task="multiclass",
+        headline="balanced_accuracy",
+        static_names=["age", "sex"],
+        channel_names=list(_CPSC_LEADS),
+        notes=(f"stratified 70/30 per seed; dropped {short} under {_CPSC_SECONDS}s, "
+               f"{unlabelled} unlabelled, {multi} multi-label; classes="
+               + ",".join(_CPSC_NAMES.get(c, c) for c in classes)),
+    )
+
+
 MIXED = {
     "credit": load_credit,
     "har": load_har,
     "icu": load_physionet_icu,
     "ptbxl": load_ptbxl,
+    "cpsc2018": load_cpsc2018,
 }

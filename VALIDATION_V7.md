@@ -53,6 +53,18 @@ Preprocessing, fixed here:
   hypnogram. Wake epochs beyond 30 minutes either side of sleep are dropped, which is the
   standard convention for this dataset and is applied before any score is computed. Split
   is subject-disjoint.
+  **Subject subset, fixed now:** the full cassette set is ~7.5 GB, so the study uses the
+  **first 40 subjects by record id** — a mechanical rule chosen on size alone, recorded
+  before any Sleep-EDF number was computed, and reported as a limitation. Forty subjects
+  yields tens of thousands of epochs, far more than the n=2000 the size grid asks for; the
+  binding constraint is subject count for a disjoint split, not epochs.
+
+**Run scope, fixed now.** The full grid — 2 datasets x 5 sizes x 5 seeds x 4 arms — is
+over twenty hours of compute, because a single ECG-sized fit takes 450-2500 s. So the
+*hypotheses* stand as written and the *runs* are scoped: H-V7.1 is evaluated at n=1000 and
+n=2000 with 3 seeds; H-V7.2 additionally needs n=100; the H-V7.3 decomposition runs at
+n=1000 only. Every cell not run is reported as not run, with this reason, rather than
+being left to look like it was never asked for.
 * Both: statics stay missing where missing, no imputation.
 
 ---
