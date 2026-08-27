@@ -359,3 +359,48 @@ def test_get_params_round_trips():
     params = model.get_params()
     assert params["n_estimators"] == 33 and params["max_depth"] == 7
     assert HeartwoodClassifier(**params).get_params() == params
+
+
+# ------------------------------------------------ V8: pricing selection bias
+#
+# A node keeps the highest-gain split from a pool of random candidates, so the
+# winner's expected gain rises with pool size whether or not anything in the
+# pool is informative. V7 measured that as a five-point tax wherever the trees
+# had no static block to work with. `selection_null` permutes the gradients and
+# makes a split beat what chance reaches on the same candidates.
+
+
+def test_selection_null_is_off_by_default_and_changes_nothing(rng):
+    """The shipped model must be untouched until V8 earns its default."""
+    X_static = rng.normal(size=(80, 3))
+    X_series = rng.normal(size=(80, 1, 40))
+    y = (X_static[:, 0] > 0).astype(int)
+    kw = dict(n_estimators=15, max_depth=3, random_state=0)
+    plain = HeartwoodClassifier(**kw).fit(X_static, X_series, y)
+    explicit = HeartwoodClassifier(**kw, selection_null=0).fit(X_static, X_series, y)
+    assert np.array_equal(plain.predict(X_static, X_series),
+                          explicit.predict(X_static, X_series))
+
+
+def test_chance_floor_discards_splits_on_pure_noise(rng):
+    """With nothing to find, most of what a greedy scan finds is its own bias."""
+    X_series = rng.normal(size=(200, 1, 60))
+    y = rng.integers(0, 2, size=200)
+    kw = dict(n_estimators=20, max_depth=3, random_state=0)
+    greedy = HeartwoodClassifier(**kw).fit(None, X_series, y)
+    priced = HeartwoodClassifier(**kw, selection_null=1).fit(None, X_series, y)
+    assert len(priced.dump_splits()) < len(greedy.dump_splits()), (
+        "the chance floor kept as many noise splits as an uncorrected scan"
+    )
+
+
+def test_chance_floor_keeps_a_real_signal(rng):
+    """It must price noise, not refuse to learn."""
+    X_static = rng.normal(size=(160, 2))
+    X_series = rng.normal(size=(160, 1, 50))
+    X_series[:, 0, 15:25] += (X_static[:, 0] > 0)[:, None] * 2.0
+    y = (X_static[:, 0] > 0).astype(int)
+    model = HeartwoodClassifier(n_estimators=30, max_depth=3, random_state=0,
+                                selection_null=1).fit(X_static, X_series, y)
+    accuracy = (model.predict(X_static, X_series) == y).mean()
+    assert accuracy > 0.9, f"chance floor blocked a clear signal ({accuracy:.2f})"

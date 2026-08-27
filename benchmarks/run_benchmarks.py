@@ -47,6 +47,7 @@ ABLATIONS: dict[str, dict] = {
 #: helps on real shape-regime data still has to not break them.
 ROCKET: dict[str, dict] = {
     "hw_rocket": dict(dense_base=True, dense_features="rocket"),
+    "hw_rocket_null": dict(dense_base=True, dense_features="rocket", selection_null=1),
 }
 
 #: --phasec adds the opt-in Phase C extras.

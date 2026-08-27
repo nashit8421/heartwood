@@ -62,6 +62,8 @@ class TreeParams:
     n_filter_alt: int = 1
     n_comparison_candidates: int = 4
     bank_colsample: float = 0.25
+    #: Permutations used to price a node's own selection bias (V8). 0 disables.
+    selection_null: int = 0
 
 
 @dataclass
@@ -120,6 +122,7 @@ class TemporalTree:
             return self._add_leaf(value)
 
         best = None
+        scored: list[np.ndarray] = []
         for f, spec in self._candidates(X_static, X_series, rows, gr, hr, rng):
             found = scan_threshold(
                 f, gr, hr, p.reg_lambda, p.gamma, p.min_child_weight, p.min_samples_leaf
@@ -127,10 +130,18 @@ class TemporalTree:
             if found is None:
                 continue
             gain, threshold, missing_left = found
+            if p.selection_null:
+                scored.append(f)
             if best is None or gain > best[0]:
                 best = (gain, f, spec, threshold, missing_left)
 
         if best is None:
+            return self._add_leaf(value)
+
+        if p.selection_null and best[0] <= self._chance_gain(scored, gr, hr, rng):
+            # The winner is no better than the best this same pool reaches on
+            # shuffled gradients, so it is the winner's curse rather than a
+            # question worth asking. Stop here.
             return self._add_leaf(value)
 
         gain, f, spec, threshold, missing_left = best
@@ -310,6 +321,35 @@ class TemporalTree:
             if snippet is not None:
                 return snippet
         return None
+
+    def _chance_gain(self, scored, gr, hr, rng) -> float:
+        """The best gain this node's own candidates reach on shuffled gradients.
+
+        Permuting the (g, h) pairs across rows breaks any relationship between a
+        feature and the target while leaving both marginal distributions alone,
+        so the best gain that survives is what this pool produces from noise.
+
+        This is the instrument that fixed the ridge base in V6, one level down.
+        There it stopped a null ridge being boosted into confident nonsense;
+        here it stops a node taking a noise split seriously -- measured in
+        validation/HEADROOM.md as the ceiling on this architecture, and in V7 as
+        a five-point tax wherever the trees had no static block to work with.
+        """
+        p = self.params
+        if not scored:
+            return 0.0
+        floor = 0.0
+        for _ in range(p.selection_null):
+            order = rng.permutation(gr.size)
+            gp, hp = gr[order], hr[order]
+            for f in scored:
+                found = scan_threshold(
+                    f, gp, hp, p.reg_lambda, p.gamma,
+                    p.min_child_weight, p.min_samples_leaf,
+                )
+                if found is not None and found[0] > floor:
+                    floor = found[0]
+        return floor
 
     def _comparison_candidates(self, X_static, rows, rng):
         """"Did this happen before that" — a learned event time versus a static column.

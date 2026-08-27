@@ -50,6 +50,7 @@ class _BaseHeartwood:
         bank_colsample: float = 0.25,
         n_comparison_candidates: int = 4,
         dense_base: bool = False,
+        selection_null: int = 0,
         dense_features: str = "stats",
         n_rocket_features: int = 10000,
         levy_areas: bool = True,
@@ -84,6 +85,7 @@ class _BaseHeartwood:
         self.bank_colsample = bank_colsample
         self.n_comparison_candidates = n_comparison_candidates
         self.dense_base = dense_base
+        self.selection_null = selection_null
         self.dense_features = dense_features
         self.n_rocket_features = n_rocket_features
         self.levy_areas = levy_areas
@@ -145,6 +147,7 @@ class _BaseHeartwood:
             ridge_beta=self.ridge_beta,
             n_filter_alt=self.n_filter_alt,
             n_comparison_candidates=self.n_comparison_candidates,
+            selection_null=self.selection_null,
             bank_colsample=self.bank_colsample,
         )
 

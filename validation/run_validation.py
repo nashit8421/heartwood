@@ -164,7 +164,14 @@ def run_cell(dataset, train_idx, test_idx, size, seed, config) -> list[Row]:
     for variant in config["variants"]:
         # "" is the shipped default; the others put a ridge over a feature bank
         # underneath the trees (V6). Named so a table shows them side by side.
-        extra = {} if not variant else {"dense_base": True, "dense_features": variant}
+        # "rocket_null" is the V8 arm: the convolution base plus a chance floor
+        # on split acceptance. Named so a table shows it beside plain "rocket".
+        if not variant:
+            extra = {}
+        elif variant == "rocket_null":
+            extra = {"dense_base": True, "dense_features": "rocket", "selection_null": 1}
+        else:
+            extra = {"dense_base": True, "dense_features": variant}
         name = HEARTWOOD if not variant else f"{HEARTWOOD}_{variant}"
         started = time.perf_counter()
         model = estimator(
