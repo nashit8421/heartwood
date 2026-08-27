@@ -245,6 +245,32 @@ So the honest mechanism is narrower than the pitch: **this is a competitive time
 classifier whose edge is boosted trees over a convolution base, and the "mixed static plus
 series" premise is not currently earning its place.**
 
+### V9: the first fair test of the premise, and a defect it exposed
+
+Every dataset above fails to test the founding claim, for a reason visible in the data:
+strong static blocks only ever appeared beside series a plain average already captures, and
+rich series only ever came with statics that were weak or that the signal itself encodes
+(an ECG partly reveals your age). [V9](VALIDATION_V9.md) fixed the selection with a rule
+written first — a static column counts only if the signal cannot encode it — and landed on
+**Apnea-ECG**, where body weight and BMI predict apnea and no one-minute ECG contains them.
+
+| | ROC-AUC |
+|---|---|
+| ECG alone | 0.807 |
+| statics alone (age, sex, height, weight, BMI) | **0.835** |
+| **both together** | 0.827 |
+
+The statics finally help the model (+2.0 points over the same model without them, the first
+time in six studies). But **the combination is worse than the better half alone.** Two
+strong, largely independent sources, and putting them together loses information.
+
+That is a defect in this library, not in the dataset, and V9 is the first experiment able to
+see it. The likely cause is specific: the ridge base is fitted on the **series only** — the
+static block never reaches it — so BMI can only enter through greedy tree splits, which
+`validation/HEADROOM.md` already measured as this architecture's weakest machinery. The
+model is made to learn its single best predictor through the one mechanism it is worst at.
+Full numbers and the remedy: [`validation/RESULTS_V9.md`](validation/RESULTS_V9.md).
+
 ### The lesson worth keeping
 
 The most useful finding in this study is not about Heartwood. It is that on a dataset which
