@@ -831,6 +831,135 @@ def load_sleepedf() -> Dataset:
     )
 
 
+# ------------------------------------------------- V9-M1: Apnea-ECG minutes
+
+
+_APNEA_HZ = 50            # from 100 Hz; respiratory modulation sits near 0.2-0.3 Hz
+_APNEA_SECONDS = 60
+#: WFDB annotation codes used by the .apn files: N (non-apnea), A (apnea).
+_APNEA_CODES = {1: 0, 8: 1}
+
+
+def _read_wfdb_annotations(path: Path) -> list[tuple[int, int]]:
+    """WFDB annotation file -> ``(sample, code)`` pairs.
+
+    Each 16-bit word packs ``code = word >> 10`` and ``delta = word & 0x3FF``.
+    Code 59 escapes to a 32-bit interval in the next two words, 63 introduces an
+    auxiliary string to skip, and 60-62 are per-annotation metadata with no time
+    of their own.  Validated against the counts published in the dataset's own
+    additional-information.txt.
+    """
+    raw = np.fromfile(path, dtype="<u2")
+    out: list[tuple[int, int]] = []
+    sample, index = 0, 0
+    while index < len(raw):
+        word = int(raw[index]); index += 1
+        if word == 0:
+            break
+        code, delta = word >> 10, word & 0x3FF
+        if code == 59:
+            delta = (int(raw[index]) << 16) | int(raw[index + 1]); index += 2
+            code = int(raw[index]) >> 10; index += 1
+            sample += delta
+            out.append((sample, code))
+            continue
+        if code in (60, 61, 62):
+            continue
+        if code == 63:
+            index += (delta + 1) // 2
+            continue
+        sample += delta
+        out.append((sample, code))
+    return out
+
+
+def load_apnea() -> Dataset:
+    """PhysioNet Apnea-ECG: one-minute ECG segments plus the subject's body size.
+
+    V9-M1, and the first fair test of this library's premise.  Every earlier
+    dataset either had statics the signal itself encodes (age from an ECG) or a
+    series a plain average already captures.  Body-mass index is the primary
+    risk factor for obstructive sleep apnea, spans 19.2 to 41.7 here, and is not
+    present in a one-minute single-lead ECG at any resolution.
+
+    Decisions, fixed in VALIDATION_V9.md §3 before the data was parsed:
+
+    * **Series** is the single ECG lead, one minute per row, 100 Hz averaged down
+      to 50 Hz.  Apnea appears as respiratory modulation near 0.2-0.3 Hz and in
+      heart-rate variability; both survive comfortably.
+    * **Target** is the per-minute expert annotation, apnea against non-apnea.
+    * **Static block** is age, sex, height, weight and BMI.  BMI is included
+      deliberately: it is the established risk factor and a tree cannot form a
+      ratio of two columns by splitting on them.
+    * **Split** is subject-disjoint; statics are constant within a subject.
+    """
+    root = DATA_DIR / "apnea"
+    info = root / "additional-information.txt"
+    if not info.exists():
+        raise FileNotFoundError(
+            f"no Apnea-ECG under {root}; run `python validation/fetch_apnea.py` first"
+        )
+
+    table = re.findall(
+        r"^([abc]\d\d)\t\d+\t.*?\t(\d+)\t([MF])\t(\d+)\t(\d+)",
+        info.read_text(), re.M,
+    )
+    demographics = {
+        record: (float(age), 1.0 if sex == "M" else 0.0, float(height), float(weight))
+        for record, age, sex, height, weight in table
+    }
+
+    step = 100 // _APNEA_HZ
+    width = _APNEA_SECONDS * _APNEA_HZ
+    blocks, labels, groups, statics, skipped = [], [], [], [], 0
+
+    for record, (age, sex, height, weight) in sorted(demographics.items()):
+        header, data = root / f"{record}.hea", root / f"{record}.dat"
+        annotations = root / f"{record}.apn"
+        if not (header.exists() and data.exists() and annotations.exists()):
+            skipped += 1
+            continue
+        fields = header.read_text().splitlines()[1].split()
+        gain = float(fields[2].split("/")[0].split("(")[0]) or 200.0
+        signal = np.fromfile(data, dtype="<i2").astype(np.float64) / gain
+
+        minutes = [(s, _APNEA_CODES[c]) for s, c in _read_wfdb_annotations(annotations)
+                   if c in _APNEA_CODES]
+        per_minute = _APNEA_SECONDS * 100
+        kept = []
+        for start, label in minutes:
+            if start + per_minute <= signal.size:
+                kept.append((signal[start:start + per_minute], label))
+        if not kept:
+            skipped += 1
+            continue
+
+        raw = np.stack([segment for segment, _ in kept])
+        usable = (raw.shape[1] // step) * step
+        blocks.append(raw[:, :usable].reshape(len(kept), -1, step).mean(axis=2)[:, :width])
+        labels.append(np.array([label for _, label in kept]))
+        groups.append(np.full(len(kept), int(record[1:]) + (0 if record[0] == "a"
+                                                            else 100 if record[0] == "b" else 200)))
+        bmi = weight / (height / 100.0) ** 2
+        statics.append(np.tile([age, sex, height, weight, bmi], (len(kept), 1)))
+
+    X_series = np.concatenate(blocks).astype(np.float32)[:, None, :]
+    y = np.concatenate(labels)
+    return Dataset(
+        key="apnea",
+        X_static=np.concatenate(statics),
+        X_series=X_series,
+        y=y.astype(np.int64),
+        task="binary",
+        headline="roc_auc",
+        static_names=["age", "sex", "height", "weight", "bmi"],
+        channel_names=["ECG"],
+        groups=np.concatenate(groups),
+        notes=(f"{len(blocks)} subjects, subject-disjoint; {_APNEA_HZ} Hz; "
+               f"{skipped} records skipped; apnea rate {y.mean():.3f}"),
+    )
+
+
 MIXED = {
     "credit": load_credit,
     "har": load_har,
@@ -838,4 +967,5 @@ MIXED = {
     "ptbxl": load_ptbxl,
     "cpsc2018": load_cpsc2018,
     "sleepedf": load_sleepedf,
+    "apnea": load_apnea,
 }
