@@ -48,6 +48,8 @@ ABLATIONS: dict[str, dict] = {
 ROCKET: dict[str, dict] = {
     "hw_rocket": dict(dense_base=True, dense_features="rocket"),
     "hw_rocket_null": dict(dense_base=True, dense_features="rocket", selection_null=1),
+    "hw_rocket_static": dict(dense_base=True, dense_features="rocket",
+                             dense_include_static=True),
 }
 
 #: --phasec adds the opt-in Phase C extras.
