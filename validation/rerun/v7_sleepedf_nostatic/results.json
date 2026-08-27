@@ -1,0 +1,66 @@
+{
+ "config": {
+  "datasets": "['sleepedf']",
+  "sizes": "[1000]",
+  "seeds": "3",
+  "full_seeds": "2",
+  "rounds": "200",
+  "depth": "4",
+  "learning_rate": "0.1",
+  "no_minirocket": "False",
+  "max_test": "4000",
+  "drop_static": "True",
+  "variants": "['rocket']",
+  "representations": "['agg']",
+  "out": "validation/rerun/v7_sleepedf_nostatic"
+ },
+ "unavailable": {},
+ "results": [
+  {
+   "dataset": "sleepedf",
+   "model": "heartwood_rocket",
+   "n_train": 999,
+   "seed": 0,
+   "fit_seconds": 3273.6634412500425,
+   "metrics": {
+    "balanced_accuracy": 0.6778063415938467,
+    "accuracy": 0.78325,
+    "roc_auc": 0.9271111905176077
+   }
+  },
+  {
+   "dataset": "sleepedf",
+   "model": "agg",
+   "n_train": 999,
+   "seed": 0,
+   "fit_seconds": 0.48524283297592774,
+   "metrics": {
+    "balanced_accuracy": 0.449491638937347,
+    "accuracy": 0.54875,
+    "roc_auc": 0.7801511435346946
+   }
+  },
+  {
+   "dataset": "sleepedf",
+   "model": "minirocket",
+   "n_train": 999,
+   "seed": 0,
+   "fit_seconds": 8.527724667044822,
+   "metrics": {
+    "balanced_accuracy": 0.6415088416142761,
+    "accuracy": 0.772
+   }
+  },
+  {
+   "dataset": "sleepedf",
+   "model": "minirocket10k",
+   "n_train": 999,
+   "seed": 0,
+   "fit_seconds": 25.46311541699106,
+   "metrics": {
+    "balanced_accuracy": 0.6571043873420132,
+    "accuracy": 0.77775
+   }
+  }
+ ]
+}

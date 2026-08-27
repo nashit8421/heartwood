@@ -1,0 +1,38 @@
+{
+ "config": {
+  "arm": "B"
+ },
+ "unavailable": {},
+ "results": [
+  {
+   "dataset": "cpsc2018",
+   "model": "arm_b_ridge_our_bank",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 43.41622437501792,
+   "metrics": {
+    "balanced_accuracy": 0.6421384265074814
+   }
+  },
+  {
+   "dataset": "cpsc2018",
+   "model": "arm_b_ridge_our_bank",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 42.40989475004608,
+   "metrics": {
+    "balanced_accuracy": 0.671039540221137
+   }
+  },
+  {
+   "dataset": "cpsc2018",
+   "model": "arm_b_ridge_our_bank",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 42.41766916698543,
+   "metrics": {
+    "balanced_accuracy": 0.6497800226978432
+   }
+  }
+ ]
+}
