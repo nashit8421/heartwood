@@ -1,0 +1,38 @@
+{
+ "config": {
+  "arm": "B"
+ },
+ "unavailable": {},
+ "results": [
+  {
+   "dataset": "sleepedf",
+   "model": "arm_b_ridge_our_bank",
+   "n_train": 999,
+   "seed": 0,
+   "fit_seconds": 176.98179029097082,
+   "metrics": {
+    "balanced_accuracy": 0.6615575463923152
+   }
+  },
+  {
+   "dataset": "sleepedf",
+   "model": "arm_b_ridge_our_bank",
+   "n_train": 1001,
+   "seed": 1,
+   "fit_seconds": 165.39518562500598,
+   "metrics": {
+    "balanced_accuracy": 0.6666920870141635
+   }
+  },
+  {
+   "dataset": "sleepedf",
+   "model": "arm_b_ridge_our_bank",
+   "n_train": 1001,
+   "seed": 2,
+   "fit_seconds": 174.30685183400055,
+   "metrics": {
+    "balanced_accuracy": 0.6546794087334475
+   }
+  }
+ ]
+}

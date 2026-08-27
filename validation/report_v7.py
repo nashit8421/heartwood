@@ -121,6 +121,24 @@ def main() -> int:
     else:
         lines.append("Not enough completed cells to adjudicate; run still in progress.")
 
+    # H-V7.3: what the statics are actually worth, adjudicated rather than eyeballed
+    parts = []
+    for key in DATASETS:
+        cells = collect(key)
+        for size in sorted(cells):
+            s_ = cells[size]
+            if "armB" in s_ and "armC" in s_ and "heartwood_rocket" in s_:
+                C, D = np.mean(s_["armC"]), np.mean(s_["heartwood_rocket"])
+                parts.append((key, size, 100 * (D - C)))
+    if parts:
+        harmed = [p for p in parts if p[2] < 0]
+        h3 = ("FAIL (statics hurt)" if harmed
+              else "PASS" if all(p[2] >= STATIC_MIN for p in parts) else "MARGINAL")
+        lines.append(f"**H-V7.3 (mechanism)** — {h3}. Needs D-C >= {STATIC_MIN:.0f}pt; "
+                     f"fails if the static block *hurts*.")
+        for key, size, delta in parts:
+            lines.append(f"  {key}@{size}: statics add {delta:+.1f}pt")
+
     report = "\n".join(lines)
     print(report)
     (HERE / "RESULTS_V7.md").write_text(report + "\n")

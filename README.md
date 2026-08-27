@@ -10,7 +10,7 @@ the columns beside it.
 Boosting for datasets that mix **static per-row features with raw time series** — without
 collapsing the series into aggregates first.
 
-> **Status: v0.5 — two failed claims, then a diagnosis that paid off.** 286 tests and three
+> **Status: v0.6 — the claim replicates, and we finally know why.** 286 tests and four
 > pre-registered real-data studies. The v0.3 headline was a
 > [baseline bug](validation/CORRECTION.md) and **H1 fails** once corrected. The conditional
 > restatement ([V5](VALIDATION_V5.md)) fails too: Heartwood beat aggregation but MiniROCKET
@@ -191,6 +191,54 @@ the crossing at the largest size tested is real and seed-stable (+2.1, +3.4, +1.
 still one of four sizes, and calling a trend a win would be picking the summary after
 seeing the data — the exact habit that produced the v0.3 headline. n=2000 is the obvious
 next run and has not been done.
+
+## V7: it replicates, and the mechanism is the static block
+
+V6's win was one dataset, one size, three seeds. [V7](VALIDATION_V7.md) attacked it with
+two datasets it had never seen — **CPSC-2018** (a different ECG cohort: different country,
+label set, sampling rate) and **Sleep-EDF** (a different modality and task entirely: EEG
+sleep staging).
+
+| dataset | n=100 | n=1000 | n=2000 |
+|---|---|---|---|
+| **CPSC-2018** | +2.3 | **+3.7** | **+4.1** |
+| **Sleep-EDF** | +1.3 | +1.3 | **+2.4** |
+
+*(points over the better `aeon` MiniROCKET, 3 seeds, balanced accuracy)*
+
+**H-V7.1 PASS** — CPSC clears the bar at every size and every seed. Sleep-EDF clears it at
+n=2000 but not n=1000. **H-V7.2 FAIL** — the margin grows with training size (+1.8 and +1.1)
+but not by the 2 points required. **H-V7.3 PASS**, and it is the result worth having.
+
+### Where the win actually comes from
+
+The contribution was decomposed into four arms at n=1000. The same pattern appears on both
+datasets, despite one being a heart and the other a brain:
+
+| arm | CPSC | Sleep-EDF | |
+|---|---|---|---|
+| A — `aeon` MiniROCKET | 0.654 | 0.660 | the reference |
+| B — ridge over **our** bank | 0.654 | 0.661 | bank quality **+0.0 / +0.1** |
+| C — + trees, no statics | 0.609 | 0.604 | trees add **−4.6 / −5.7** |
+| D — + statics | **0.691** | **0.673** | statics add **+8.3 / +6.9** |
+
+Read that carefully, because it is not what the previous four milestones assumed. Our
+convolution bank is *exactly* as good as MiniROCKET's — the reimplementation is not where
+any edge lives. The trees on their own are a **liability**, costing 5 points. And the whole
+margin, twice over, is the static block.
+
+**The statics matter even where they carry no signal by themselves.** Sleep-EDF's
+`static_only` sits at 0.202 against a 0.200 chance line: age and sex do not predict a sleep
+stage. They are still worth +6.9 points — because their value is *interactional*. How a
+given EEG pattern maps to a stage depends on the sleeper's age; how an ECG morphology maps
+to a diagnosis depends on the patient's. A ridge over convolution features, however wide,
+structurally cannot express that. Trees over statics *and* temporal features can.
+
+That is the thing this library was built to do, and it is the first direct evidence that it
+is what produces the results. It also explains the shape of every earlier finding: why
+aggregation ties us where series summarise well, why MiniROCKET beat us before the
+convolution base existed, and why the wins are largest exactly where a real static block
+sits next to a series a summary would destroy.
 
 ### The lesson worth keeping
 

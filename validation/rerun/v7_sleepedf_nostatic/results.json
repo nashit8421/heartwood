@@ -61,6 +61,98 @@
     "balanced_accuracy": 0.6571043873420132,
     "accuracy": 0.77775
    }
+  },
+  {
+   "dataset": "sleepedf",
+   "model": "heartwood_rocket",
+   "n_train": 1001,
+   "seed": 1,
+   "fit_seconds": 2996.66089275002,
+   "metrics": {
+    "balanced_accuracy": 0.6751607521166824,
+    "accuracy": 0.7795,
+    "roc_auc": 0.9342345598531218
+   }
+  },
+  {
+   "dataset": "sleepedf",
+   "model": "agg",
+   "n_train": 1001,
+   "seed": 1,
+   "fit_seconds": 0.4837717079790309,
+   "metrics": {
+    "balanced_accuracy": 0.43004338820513066,
+    "accuracy": 0.532,
+    "roc_auc": 0.7643245967204002
+   }
+  },
+  {
+   "dataset": "sleepedf",
+   "model": "minirocket",
+   "n_train": 1001,
+   "seed": 1,
+   "fit_seconds": 7.331299625046086,
+   "metrics": {
+    "balanced_accuracy": 0.6475638029733042,
+    "accuracy": 0.772
+   }
+  },
+  {
+   "dataset": "sleepedf",
+   "model": "minirocket10k",
+   "n_train": 1001,
+   "seed": 1,
+   "fit_seconds": 25.549791584024206,
+   "metrics": {
+    "balanced_accuracy": 0.660549484223204,
+    "accuracy": 0.77675
+   }
+  },
+  {
+   "dataset": "sleepedf",
+   "model": "heartwood_rocket",
+   "n_train": 1001,
+   "seed": 2,
+   "fit_seconds": 3255.767404040962,
+   "metrics": {
+    "balanced_accuracy": 0.665154484480727,
+    "accuracy": 0.7865,
+    "roc_auc": 0.9226278069752588
+   }
+  },
+  {
+   "dataset": "sleepedf",
+   "model": "agg",
+   "n_train": 1001,
+   "seed": 2,
+   "fit_seconds": 0.4785670000128448,
+   "metrics": {
+    "balanced_accuracy": 0.4331302885286824,
+    "accuracy": 0.559,
+    "roc_auc": 0.7835736636587909
+   }
+  },
+  {
+   "dataset": "sleepedf",
+   "model": "minirocket",
+   "n_train": 1001,
+   "seed": 2,
+   "fit_seconds": 7.3250528749777,
+   "metrics": {
+    "balanced_accuracy": 0.644528775738819,
+    "accuracy": 0.78575
+   }
+  },
+  {
+   "dataset": "sleepedf",
+   "model": "minirocket10k",
+   "n_train": 1001,
+   "seed": 2,
+   "fit_seconds": 25.481793458980974,
+   "metrics": {
+    "balanced_accuracy": 0.6609121865548615,
+    "accuracy": 0.789
+   }
   }
  ]
 }
