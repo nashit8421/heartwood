@@ -46,10 +46,17 @@ def collect(key: str):
     for row in read(main):
         cells[nominal(row["n_train"])][row["model"]].append(
             row["metrics"]["balanced_accuracy"])
+    # Filter to the model. The no-static run also contains agg and both
+    # MiniROCKETs, and averaging all of them into "arm C" produced a fictitious
+    # five-point tax that V8 was then built to fix.
     for row in read(nostatic):
-        cells[nominal(row["n_train"])]["armC"].append(row["metrics"]["balanced_accuracy"])
+        if row["model"].startswith("heartwood"):
+            cells[nominal(row["n_train"])]["armC"].append(
+                row["metrics"]["balanced_accuracy"])
     for row in read(armb):
-        cells[nominal(row["n_train"])]["armB"].append(row["metrics"]["balanced_accuracy"])
+        if row["model"].startswith("arm_b"):
+            cells[nominal(row["n_train"])]["armB"].append(
+                row["metrics"]["balanced_accuracy"])
     return cells
 
 

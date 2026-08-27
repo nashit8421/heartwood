@@ -208,7 +208,7 @@ sleep staging).
 
 **H-V7.1 PASS** — CPSC clears the bar at every size and every seed. Sleep-EDF clears it at
 n=2000 but not n=1000. **H-V7.2 FAIL** — the margin grows with training size (+1.8 and +1.1)
-but not by the 2 points required. **H-V7.3 PASS**, and it is the result worth having.
+but not by the 2 points required. **H-V7.3 FAIL** — the static block does not help.
 
 ### Where the win actually comes from
 
@@ -219,26 +219,31 @@ datasets, despite one being a heart and the other a brain:
 |---|---|---|---|
 | A — `aeon` MiniROCKET | 0.654 | 0.660 | the reference |
 | B — ridge over **our** bank | 0.654 | 0.661 | bank quality **+0.0 / +0.1** |
-| C — + trees, no statics | 0.609 | 0.604 | trees add **−4.6 / −5.7** |
-| D — + statics | **0.691** | **0.673** | statics add **+8.3 / +6.9** |
+| C — + trees, no statics | 0.692 | 0.673 | **trees add +3.8 / +1.2** |
+| D — + statics | 0.691 | 0.673 | **statics add −0.1 / +0.0** |
 
-Read that carefully, because it is not what the previous four milestones assumed. Our
-convolution bank is *exactly* as good as MiniROCKET's — the reimplementation is not where
-any edge lives. The trees on their own are a **liability**, costing 5 points. And the whole
-margin, twice over, is the static block.
+> **These numbers were reported wrongly the first time.** An earlier version of
+> `validation/report_v7.py` averaged every model in the no-static results file — `agg` and
+> both MiniROCKETs alongside Heartwood — into "arm C", which dragged it down about five
+> points and produced a fictitious "trees cost 5 points, statics are worth 8" story. V8 was
+> then pre-registered to fix that non-existent tax. The table above is the corrected
+> version, verified per-seed and paired. See [`validation/RESULTS_V8.md`](validation/RESULTS_V8.md).
 
-**The statics matter even where they carry no signal by themselves.** Sleep-EDF's
-`static_only` sits at 0.202 against a 0.200 chance line: age and sex do not predict a sleep
-stage. They are still worth +6.9 points — because their value is *interactional*. How a
-given EEG pattern maps to a stage depends on the sleeper's age; how an ECG morphology maps
-to a diagnosis depends on the patient's. A ridge over convolution features, however wide,
-structurally cannot express that. Trees over statics *and* temporal features can.
+Our convolution bank is *exactly* as good as MiniROCKET's — the reimplementation is not
+where any edge lives. **The trees over that base are the edge**, worth +3.8 and +1.2:
+nonlinearity a ridge cannot express, on top of a base that already matches the best
+available method.
 
-That is the thing this library was built to do, and it is the first direct evidence that it
-is what produces the results. It also explains the shape of every earlier finding: why
-aggregation ties us where series summarise well, why MiniROCKET beat us before the
-convolution base existed, and why the wins are largest exactly where a real static block
-sits next to a series a summary would destroy.
+**And the static block is worth nothing measurable** — −0.1 and +0.0, with paired per-seed
+differences of `+0.0, −0.4, +0.2` and `−0.1, −0.2, +0.3`. That is this library's founding
+premise, isolated for the first time, contributing zero on both datasets where it could be
+measured. It is consistent with the rest of the record rather than surprising: Heartwood
+also beats MiniROCKET on Handwriting and HandMovementDirection, which have no static block
+at all.
+
+So the honest mechanism is narrower than the pitch: **this is a competitive time-series
+classifier whose edge is boosted trees over a convolution base, and the "mixed static plus
+series" premise is not currently earning its place.**
 
 ### The lesson worth keeping
 
