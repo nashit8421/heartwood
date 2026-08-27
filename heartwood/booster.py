@@ -23,7 +23,8 @@ class _BoosterCore:
     def __init__(self, tree_params: TreeParams, n_estimators=200, learning_rate=0.1,
                  subsample=1.0, early_stopping_rounds=None, random_state=None,
                  bank_enabled=True, bank_max=32, dense_base=False, levy_areas=False,
-                 dense_features="stats", n_rocket_features=10000):
+                 dense_features="stats", n_rocket_features=10000,
+                 dense_include_static=False):
         self.tree_params = tree_params
         self.n_estimators = int(n_estimators)
         self.learning_rate = float(learning_rate)
@@ -40,6 +41,7 @@ class _BoosterCore:
             )
         self.dense_features = dense_features
         self.n_rocket_features = int(n_rocket_features)
+        self.dense_include_static = bool(dense_include_static)
         self.rocket_: RocketBank | None = None
         self.levy_areas = bool(levy_areas)
         self.dense_: DenseBase | None = None
@@ -80,11 +82,17 @@ class _BoosterCore:
 
         if self.dense_base and X_series is not None:
             bank = self._dense_bank(X_series, fitting)
+            # V10: the static block joins the base, unpenalised. Without this the
+            # linear layer never sees it and the statics can only reach the model
+            # through greedy tree splits -- which on Apnea-ECG left a combination
+            # scoring below the static block on its own.
+            statics = X_static if self.dense_include_static else None
             if fitting:
-                self.dense_ = DenseBase(loss.task, loss.n_outputs(y))
-                base_raw = self.dense_.fit(bank, y)
+                self.dense_ = DenseBase(loss.task, loss.n_outputs(y),
+                                        use_static=self.dense_include_static)
+                base_raw = self.dense_.fit(bank, y, static=statics)
             elif self.dense_ is not None:
-                base_raw = self.dense_.transform(bank)
+                base_raw = self.dense_.transform(bank, static=statics)
             if base_raw is not None:
                 blocks.append(base_raw)
                 names += [f"dense_margin[{k}]" for k in range(base_raw.shape[1])]

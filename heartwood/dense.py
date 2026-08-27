@@ -149,7 +149,14 @@ class DenseBase:
     n_permutations = 32
     null_quantile = 0.95
 
-    def __init__(self, task: str, n_outputs: int, random_state: int = 0):
+    def __init__(self, task: str, n_outputs: int, random_state: int = 0,
+                 use_static: bool = False):
+        self.use_static = bool(use_static)
+        self.static_coef_: np.ndarray | None = None
+        self.static_impute_: np.ndarray | None = None
+        self.static_center_: np.ndarray | None = None
+        self.static_scale_: np.ndarray | None = None
+        self.static_keep_: np.ndarray | None = None
         self.random_state = int(random_state)
         self.task = task
         self.n_outputs = int(n_outputs)
@@ -190,7 +197,36 @@ class DenseBase:
             self.scale_ = np.where(spread > _EPS, spread, 1.0)
         return (filled - self.center_) / self.scale_
 
-    def fit(self, bank: np.ndarray, y: np.ndarray) -> np.ndarray | None:
+    def _static_design(self, static: np.ndarray | None, n_rows: int,
+                       fitting: bool) -> np.ndarray:
+        """``[1 | standardised statics]`` — the unpenalised block of the design.
+
+        Standardisation parameters are learned once and reused, so a row is
+        described the same way at predict time as it was during fitting.  An
+        earlier version orthonormalised this per batch and stored coefficients in
+        that basis; those coefficients mean nothing for a different set of rows,
+        which a single-row transform exposed immediately.
+        """
+        columns = [np.ones((n_rows, 1))]
+        if static is not None and static.size and static.shape[1]:
+            if fitting:
+                finite = np.isfinite(static)
+                with np.errstate(invalid="ignore"):
+                    median = np.nanmedian(np.where(finite, static, np.nan), axis=0)
+                self.static_impute_ = np.nan_to_num(median)
+                filled = np.where(finite, static, self.static_impute_)
+                spread = filled.std(axis=0)
+                self.static_keep_ = spread > _EPS
+                self.static_center_ = filled.mean(axis=0)
+                self.static_scale_ = np.where(self.static_keep_, spread, 1.0)
+            filled = np.where(np.isfinite(static), static, self.static_impute_)
+            standard = (filled - self.static_center_) / self.static_scale_
+            if self.static_keep_.any():
+                columns.append(standard[:, self.static_keep_])
+        return np.hstack(columns)
+
+    def fit(self, bank: np.ndarray, y: np.ndarray,
+            static: np.ndarray | None = None) -> np.ndarray | None:
         """Fit the ridge and return leave-one-out margins, or ``None``.
 
         ``None`` means the ridge did not beat a constant out of fold, and the
@@ -200,6 +236,27 @@ class DenseBase:
         Y = self._targets(y)
         self.target_center_ = Y.mean(axis=0)
         Yc = Y - self.target_center_
+
+        # The static block joins the base *unpenalised*. Five columns sharing a
+        # penalty tuned for ten thousand convolution responses would see BMI
+        # shrunk as hard as an arbitrary kernel and drown; V9 measured what that
+        # costs. Frisch-Waugh: residualise target and bank on the statics, ridge
+        # the residuals, add the static fit back.
+        if self.use_static:
+            design = self._static_design(static, len(X), fitting=True)
+            Q, R = np.linalg.qr(design)
+            in_basis = Q.T @ Yc
+            # keep the coefficients in the *original* static space so they mean
+            # the same thing for rows this fit never saw
+            self.static_coef_ = np.linalg.lstsq(R, in_basis, rcond=None)[0]
+            static_part = design @ self.static_coef_
+            Yc = Yc - static_part
+            X = X - Q @ (Q.T @ X)
+            static_leverage = (Q**2).sum(axis=1)
+        else:
+            self.static_coef_ = None
+            static_part = 0.0
+            static_leverage = np.zeros(len(X))
 
         U, singular, Vt = np.linalg.svd(X, full_matrices=False)
         s2 = singular**2
@@ -213,7 +270,7 @@ class DenseBase:
         best = fallback = None
         for lam in grid:
             shrink = s2 / (s2 + lam)
-            leverage = (U**2) @ shrink
+            leverage = static_leverage + (U**2) @ shrink
             fitted = U @ (shrink[:, None] * UtY)
             denominator = (1.0 - leverage)[:, None]
             candidate = (lam, shrink, leverage, fitted)
@@ -239,7 +296,7 @@ class DenseBase:
                 fallback if fallback is not None else (grid[-1], None, None, None)
             )
             shrink = s2 / (s2 + grid[-1])
-            leverage = (U**2) @ shrink
+            leverage = static_leverage + (U**2) @ shrink
             fitted = U @ (shrink[:, None] * UtY)
             best = (np.inf, grid[-1], shrink, leverage, fitted)
 
@@ -248,8 +305,12 @@ class DenseBase:
 
         # The leave-one-out prediction, in closed form: what the model would have
         # said about row i had row i not been in the fit.
+        # Put the static fit back before forming the leave-one-out margin: the
+        # hat matrix is P_Z + ridge, so both parts belong in `fitted` and the
+        # leverage already carries P_Z's diagonal.
+        whole = Yc + static_part   # Yc was residualised in place above
         denominator = np.clip(1.0 - leverage, 1e-3, None)[:, None]
-        loo_raw = (fitted - leverage[:, None] * Yc) / denominator
+        loo_raw = (fitted + static_part - leverage[:, None] * whole) / denominator
         loo = loo_raw + self.target_center_
         self.effective_dof_ = float(shrink.sum())
 
@@ -266,8 +327,8 @@ class DenseBase:
         # The trees never saw the flip, so they could not undo it.  Measured on
         # UEA SelfRegulationSCP2: 0.422 balanced accuracy on a binary task,
         # below chance and below the same model with no base at all.
-        total = float((Yc**2).sum())
-        self.loo_r2_ = 1.0 - float(((Yc - loo_raw) ** 2).sum()) / max(total, _EPS)
+        total = float((whole**2).sum())
+        self.loo_r2_ = 1.0 - float(((whole - loo_raw) ** 2).sum()) / max(total, _EPS)
 
         # "Better than the mean" is not a high enough bar.  A leave-one-out R2
         # of +0.008 is indistinguishable from luck, and accepting one cost 36
@@ -329,7 +390,8 @@ class DenseBase:
 
     # -------------------------------------------------------------- inference
 
-    def transform(self, bank: np.ndarray) -> np.ndarray | None:
+    def transform(self, bank: np.ndarray,
+                  static: np.ndarray | None = None) -> np.ndarray | None:
         """Full-data-fit margins for unseen rows, ``(n, K)``, or ``None``.
 
         ``None`` whenever ``fit`` found the ridge uninformative, so that a row
@@ -340,4 +402,8 @@ class DenseBase:
         if self.coefficients_ is None:
             raise RuntimeError("DenseBase is not fitted")
         X = self._prepare(bank, fitting=False)
-        return self._calibrate(X @ self.coefficients_ + self.target_center_)
+        margins = X @ self.coefficients_ + self.target_center_
+        if self.static_coef_ is not None:
+            design = self._static_design(static, len(X), fitting=False)
+            margins = margins + design @ self.static_coef_
+        return self._calibrate(margins)

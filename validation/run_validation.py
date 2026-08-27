@@ -168,6 +168,9 @@ def run_cell(dataset, train_idx, test_idx, size, seed, config) -> list[Row]:
         # on split acceptance. Named so a table shows it beside plain "rocket".
         if not variant:
             extra = {}
+        elif variant == "rocket_static":
+            extra = {"dense_base": True, "dense_features": "rocket",
+                     "dense_include_static": True}
         elif variant == "rocket_null":
             extra = {"dense_base": True, "dense_features": "rocket", "selection_null": 1}
         else:

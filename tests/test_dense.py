@@ -440,3 +440,81 @@ def test_real_signal_clears_the_permutation_null(rng):
     base = DenseBase("classification", 1)
     assert base.fit(X, y) is not None, "declined a design with genuine signal"
     assert base.loo_r2_ > base.null_r2_
+
+
+# ------------------------------- V10: the static block joins the base
+
+
+def test_loo_stays_exact_when_statics_are_unpenalised(rng):
+    """The hat matrix gains a projection term; the closed form must still hold.
+
+    This is where the ridge base nearly shipped broken once already, so it is
+    checked against literally refitting without each row rather than by
+    inspection. Lambda and standardisation are held fixed, since the identity is
+    a statement about one linear smoother, not about re-tuning on every subset.
+    """
+    import heartwood.dense as module
+
+    n, p, k = 50, 15, 3
+    X = rng.normal(size=(n, p))
+    Z = rng.normal(size=(n, k))
+    y = Z[:, 0] * 1.5 + X[:, :3] @ rng.normal(size=3) + 0.4 * rng.normal(size=n)
+
+    grid = module.LAMBDA_GRID
+    module.LAMBDA_GRID = np.array([1.0])
+    try:
+        base = DenseBase("regression", 1, use_static=True)
+        loo = base.fit(X, y, static=Z)
+        assert loo is not None
+
+        design = base._static_design(Z, n, fitting=False)
+        bank = base._prepare(X, fitting=False)
+        centred = y - base.target_center_[0]
+        penalty = np.zeros(design.shape[1] + bank.shape[1])
+        penalty[design.shape[1]:] = base.lambda_
+
+        expected = []
+        for i in range(n):
+            keep = np.array([j for j in range(n) if j != i])
+            A = np.hstack([design[keep], bank[keep]])
+            beta = np.linalg.solve(A.T @ A + np.diag(penalty), A.T @ centred[keep])
+            expected.append(np.hstack([design[i], bank[i]]) @ beta + base.target_center_[0])
+    finally:
+        module.LAMBDA_GRID = grid
+
+    assert np.allclose(loo[:, 0], expected, atol=1e-8), (
+        f"leave-one-out drifted from an explicit refit by "
+        f"{np.abs(loo[:, 0] - expected).max():.2e}"
+    )
+
+
+def test_static_coefficients_transfer_to_unseen_rows(rng):
+    """Scoring one row must give what scoring it inside a batch gives.
+
+    An earlier version orthonormalised the static block per batch and stored
+    coefficients in that basis, which are meaningless for any other set of rows.
+    """
+    X = rng.normal(size=(60, 10))
+    Z = rng.normal(size=(60, 3))
+    y = Z[:, 0] * 2.0 + 0.3 * rng.normal(size=60)
+    base = DenseBase("regression", 1, use_static=True)
+    base.fit(X, y, static=Z)
+    whole = base.transform(X, static=Z)
+    piecewise = np.vstack([base.transform(X[i:i + 1], static=Z[i:i + 1]) for i in range(60)])
+    assert np.allclose(whole, piecewise)
+
+
+def test_base_can_use_statics_when_the_series_is_noise(rng):
+    """The point of V10: a base that sees the statics is not a null model.
+
+    With signal only in the static block, a series-only base has nothing and
+    declines; one that sees the statics should find them.
+    """
+    X = rng.normal(size=(200, 40))          # pure noise "series" bank
+    Z = rng.normal(size=(200, 3))
+    y = (Z[:, 0] + 0.3 * rng.normal(size=200) > 0).astype(np.float64)
+
+    blind = DenseBase("classification", 1, use_static=False).fit(X, y)
+    seeing = DenseBase("classification", 1, use_static=True).fit(X, y, static=Z)
+    assert blind is None, "a series-only base found signal in noise"
+    assert seeing is not None, "a base with the statics declined a clear signal"
