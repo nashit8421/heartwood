@@ -518,3 +518,44 @@ def test_base_can_use_statics_when_the_series_is_noise(rng):
     seeing = DenseBase("classification", 1, use_static=True).fit(X, y, static=Z)
     assert blind is None, "a series-only base found signal in noise"
     assert seeing is not None, "a base with the statics declined a clear signal"
+
+
+def test_the_base_can_express_a_product_of_statics(rng):
+    """V11: a linear base cannot fit x0*x2, which is a third of static_control.
+
+    Without interaction columns the base should find little; with them it should
+    fit the same target well.
+    """
+    n = 400
+    Z = rng.normal(size=(n, 4))
+    bank = rng.normal(size=(n, 30))                       # a useless "series" bank
+    y = 1.5 * Z[:, 0] - 1.2 * Z[:, 1] + 1.0 * Z[:, 0] * Z[:, 2]
+
+    linear = DenseBase("regression", 1, use_static=True, static_interactions=False)
+    linear.fit(bank, y, static=Z)
+    expanded = DenseBase("regression", 1, use_static=True, static_interactions=True)
+    expanded.fit(bank, y, static=Z)
+
+    assert expanded.static_pairs_, "interaction columns were not added"
+    assert expanded.loo_r2_ > linear.loo_r2_ + 0.1, (
+        f"products bought nothing: {linear.loo_r2_:.3f} -> {expanded.loo_r2_:.3f}"
+    )
+
+
+def test_interaction_columns_are_dropped_when_they_would_crowd_the_rows(rng):
+    """The size guard is on shapes, so it must fire on shapes alone."""
+    wide = DenseBase("regression", 1, use_static=True)
+    wide.fit(rng.normal(size=(40, 20)), rng.normal(size=40), static=rng.normal(size=(40, 12)))
+    assert wide.static_pairs_ == [], "products were added to a block already near n"
+
+
+def test_interactions_still_transfer_to_single_rows(rng):
+    """Whatever the basis, one row scored alone must match it scored in a batch."""
+    Z = rng.normal(size=(200, 4))
+    bank = rng.normal(size=(200, 20))
+    y = Z[:, 0] * Z[:, 1] + 0.3 * rng.normal(size=200)
+    base = DenseBase("regression", 1, use_static=True)
+    base.fit(bank, y, static=Z)
+    whole = base.transform(bank, static=Z)
+    piecewise = np.vstack([base.transform(bank[i:i+1], static=Z[i:i+1]) for i in range(20)])
+    assert np.allclose(whole[:20], piecewise)

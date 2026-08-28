@@ -54,6 +54,7 @@ class _BaseHeartwood:
         dense_features: str = "stats",
         n_rocket_features: int = 10000,
         dense_include_static: bool = False,
+        dense_static_interactions: bool = True,
         levy_areas: bool = True,
         early_stopping_rounds: int | None = None,
         random_state: int | None = None,
@@ -90,6 +91,7 @@ class _BaseHeartwood:
         self.dense_features = dense_features
         self.n_rocket_features = n_rocket_features
         self.dense_include_static = dense_include_static
+        self.dense_static_interactions = dense_static_interactions
         self.levy_areas = levy_areas
         self.early_stopping_rounds = early_stopping_rounds
         self.random_state = random_state
@@ -185,6 +187,7 @@ class _BaseHeartwood:
             dense_features=self.dense_features,
             n_rocket_features=self.n_rocket_features,
             dense_include_static=self.dense_include_static,
+            dense_static_interactions=self.dense_static_interactions,
             levy_areas=self.levy_areas,
         )
         self._core.fit(Xs, Xt, y, loss, eval_set=prepared_eval, verbose=verbose)

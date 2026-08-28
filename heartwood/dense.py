@@ -150,8 +150,10 @@ class DenseBase:
     null_quantile = 0.95
 
     def __init__(self, task: str, n_outputs: int, random_state: int = 0,
-                 use_static: bool = False):
+                 use_static: bool = False, static_interactions: bool = True):
         self.use_static = bool(use_static)
+        self.static_interactions = bool(static_interactions)
+        self.static_pairs_: list[tuple[int, int]] = []
         self.static_coef_: np.ndarray | None = None
         self.static_impute_: np.ndarray | None = None
         self.static_center_: np.ndarray | None = None
@@ -197,6 +199,23 @@ class DenseBase:
             self.scale_ = np.where(spread > _EPS, spread, 1.0)
         return (filled - self.center_) / self.scale_
 
+    @staticmethod
+    def _interaction_pairs(n_columns: int, n_rows: int) -> list[tuple[int, int]]:
+        """Which pairwise products to add, decided on shapes alone.
+
+        A linear base cannot express ``x0 * x2``, which is a third of the
+        `static_control` label and the reason V10 lost 2-3 points there.  Adding
+        the products makes that term a column rather than something the trees
+        have to rediscover from a confident partial fit.
+
+        Included only while the whole unpenalised block stays under a quarter of
+        the rows, so it never approaches the row count.  No score is consulted.
+        """
+        width = 1 + n_columns + n_columns * (n_columns - 1) // 2
+        if n_columns < 2 or width > max(1, n_rows // 4):
+            return []
+        return [(i, j) for i in range(n_columns) for j in range(i + 1, n_columns)]
+
     def _static_design(self, static: np.ndarray | None, n_rows: int,
                        fitting: bool) -> np.ndarray:
         """``[1 | standardised statics]`` — the unpenalised block of the design.
@@ -222,7 +241,16 @@ class DenseBase:
             filled = np.where(np.isfinite(static), static, self.static_impute_)
             standard = (filled - self.static_center_) / self.static_scale_
             if self.static_keep_.any():
-                columns.append(standard[:, self.static_keep_])
+                kept = standard[:, self.static_keep_]
+                columns.append(kept)
+                if fitting:
+                    self.static_pairs_ = (
+                        self._interaction_pairs(kept.shape[1], n_rows)
+                        if self.static_interactions else []
+                    )
+                if self.static_pairs_:
+                    columns.append(np.column_stack(
+                        [kept[:, i] * kept[:, j] for i, j in self.static_pairs_]))
         return np.hstack(columns)
 
     def fit(self, bank: np.ndarray, y: np.ndarray,

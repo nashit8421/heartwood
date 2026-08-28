@@ -170,7 +170,10 @@ def run_cell(dataset, train_idx, test_idx, size, seed, config) -> list[Row]:
             extra = {}
         elif variant == "rocket_static":
             extra = {"dense_base": True, "dense_features": "rocket",
-                     "dense_include_static": True}
+                     "dense_include_static": True, "dense_static_interactions": False}
+        elif variant == "rocket_inter":
+            extra = {"dense_base": True, "dense_features": "rocket",
+                     "dense_include_static": True, "dense_static_interactions": True}
         elif variant == "rocket_null":
             extra = {"dense_base": True, "dense_features": "rocket", "selection_null": 1}
         else:
