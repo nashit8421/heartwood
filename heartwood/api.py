@@ -54,7 +54,7 @@ class _BaseHeartwood:
         dense_features: str = "stats",
         n_rocket_features: int = 10000,
         dense_include_static: bool = False,
-        dense_static_interactions: bool = True,
+        dense_static_interactions: bool = False,
         levy_areas: bool = True,
         early_stopping_rounds: int | None = None,
         random_state: int | None = None,

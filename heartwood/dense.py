@@ -150,7 +150,7 @@ class DenseBase:
     null_quantile = 0.95
 
     def __init__(self, task: str, n_outputs: int, random_state: int = 0,
-                 use_static: bool = False, static_interactions: bool = True):
+                 use_static: bool = False, static_interactions: bool = False):
         self.use_static = bool(use_static)
         self.static_interactions = bool(static_interactions)
         self.static_pairs_: list[tuple[int, int]] = []
@@ -203,13 +203,22 @@ class DenseBase:
     def _interaction_pairs(n_columns: int, n_rows: int) -> list[tuple[int, int]]:
         """Which pairwise products to add, decided on shapes alone.
 
-        A linear base cannot express ``x0 * x2``, which is a third of the
-        `static_control` label and the reason V10 lost 2-3 points there.  Adding
-        the products makes that term a column rather than something the trees
-        have to rediscover from a confident partial fit.
+        **Off by default: V11 measured this and it fails.**  The idea was that a
+        linear base cannot express ``x0 * x2``, a third of the `static_control`
+        label, so making the product a column would repair V10's 2-3 point loss
+        there.  It half did — that scenario went from -3.1 to -1.5 — and it was
+        ruinous everywhere else: `amp_regression` fell 13.4 points and Apnea-ECG
+        dropped from 0.856 AUC to 0.478, below chance.
 
-        Included only while the whole unpenalised block stays under a quarter of
-        the rows, so it never approaches the row count.  No score is consulted.
+        The reason is extrapolation, and it defeats the guard.  Products grow
+        quadratically, so on a held-out subject whose statics sit outside the
+        training range an unpenalised product term explodes.  Leave-one-out
+        cannot see that: it measures generalisation to *other rows of the same
+        subjects*, and Apnea's splits are subject-disjoint.  The safety argument
+        for this change was that the LOO guard would decline an overfitted base;
+        the guard was blind to the failure mode that actually occurred.
+
+        Kept, off, because the negative result is worth more than the code.
         """
         width = 1 + n_columns + n_columns * (n_columns - 1) // 2
         if n_columns < 2 or width > max(1, n_rows // 4):

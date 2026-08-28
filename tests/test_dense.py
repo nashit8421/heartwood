@@ -554,8 +554,24 @@ def test_interactions_still_transfer_to_single_rows(rng):
     Z = rng.normal(size=(200, 4))
     bank = rng.normal(size=(200, 20))
     y = Z[:, 0] * Z[:, 1] + 0.3 * rng.normal(size=200)
-    base = DenseBase("regression", 1, use_static=True)
+    base = DenseBase("regression", 1, use_static=True, static_interactions=True)
     base.fit(bank, y, static=Z)
+    assert base.static_pairs_, "this test is meaningless without the products"
     whole = base.transform(bank, static=Z)
     piecewise = np.vstack([base.transform(bank[i:i+1], static=Z[i:i+1]) for i in range(20)])
     assert np.allclose(whole[:20], piecewise)
+
+
+def test_static_interactions_are_off_by_default(rng):
+    """V11 measured them and they fail; the default must not carry them.
+
+    Products extrapolate quadratically, so a held-out subject whose statics sit
+    outside the training range gets an exploding term. Apnea-ECG fell from 0.856
+    AUC to 0.478 -- below chance -- because its splits are subject-disjoint and
+    leave-one-out, which only sees other rows of the *same* subjects, could not
+    detect it.
+    """
+    Z = rng.normal(size=(200, 4))
+    base = DenseBase("regression", 1, use_static=True)
+    base.fit(rng.normal(size=(200, 20)), Z[:, 0] * 2.0 + rng.normal(size=200), static=Z)
+    assert base.static_pairs_ == [], "interaction columns are on by default"

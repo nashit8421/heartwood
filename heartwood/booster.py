@@ -24,7 +24,7 @@ class _BoosterCore:
                  subsample=1.0, early_stopping_rounds=None, random_state=None,
                  bank_enabled=True, bank_max=32, dense_base=False, levy_areas=False,
                  dense_features="stats", n_rocket_features=10000,
-                 dense_include_static=False, dense_static_interactions=True):
+                 dense_include_static=False, dense_static_interactions=False):
         self.tree_params = tree_params
         self.n_estimators = int(n_estimators)
         self.learning_rate = float(learning_rate)
