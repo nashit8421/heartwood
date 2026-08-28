@@ -575,3 +575,78 @@ def test_static_interactions_are_off_by_default(rng):
     base = DenseBase("regression", 1, use_static=True)
     base.fit(rng.normal(size=(200, 20)), Z[:, 0] * 2.0 + rng.normal(size=200), static=Z)
     assert base.static_pairs_ == [], "interaction columns are on by default"
+
+
+def test_leave_one_group_out_matches_refitting_without_each_group(rng):
+    """The block hat matrix must equal actually holding each group out.
+
+    Third time this project has touched the out-of-fold machinery and the second
+    time a subtle error in it produced a confident wrong answer -- the first
+    version of this added only the diagonal of the static projection to each
+    block, which this check caught.
+    """
+    import heartwood.dense as module
+
+    n, p, k, n_groups = 60, 10, 2, 6
+    groups = np.repeat(np.arange(n_groups), n // n_groups)
+    Z = rng.normal(size=(n, k))
+    X = rng.normal(size=(n, p))
+    y = Z[:, 0] * 1.2 + X[:, :2] @ rng.normal(size=2) + 0.4 * rng.normal(size=n)
+
+    grid = module.LAMBDA_GRID
+    module.LAMBDA_GRID = np.array([1.0])
+    try:
+        base = DenseBase("regression", 1, use_static=True)
+        out = base.fit(X, y, static=Z, groups=groups)
+        assert out is not None
+
+        bank = base._prepare(X, fitting=False)
+        design = base._static_design(Z, n, fitting=False)
+        penalty = np.zeros(design.shape[1] + bank.shape[1])
+        penalty[design.shape[1]:] = base.lambda_
+        centred = y - base.target_center_[0]
+
+        expected = np.empty(n)
+        for key in np.unique(groups):
+            held = np.nonzero(groups == key)[0]
+            rest = np.nonzero(groups != key)[0]
+            A = np.hstack([design[rest], bank[rest]])
+            beta = np.linalg.solve(A.T @ A + np.diag(penalty), A.T @ centred[rest])
+            expected[held] = np.hstack([design[held], bank[held]]) @ beta
+            expected[held] += base.target_center_[0]
+    finally:
+        module.LAMBDA_GRID = grid
+
+    assert np.allclose(out[:, 0], expected, atol=1e-8), (
+        f"group hold-out drifted from a refit by {np.abs(out[:, 0] - expected).max():.2e}"
+    )
+
+
+def test_one_row_per_group_is_plain_leave_one_out(rng):
+    """The grouped path must not disturb the ungrouped one."""
+    X = rng.normal(size=(50, 8))
+    Z = rng.normal(size=(50, 2))
+    y = Z[:, 0] + X[:, 0] + 0.3 * rng.normal(size=50)
+    plain = DenseBase("regression", 1, use_static=True).fit(X, y, static=Z)
+    singletons = DenseBase("regression", 1, use_static=True).fit(
+        X, y, static=Z, groups=np.arange(50))
+    assert np.array_equal(plain, singletons)
+
+
+def test_rank_products_stay_bounded_far_outside_the_training_range(rng):
+    """Why V11 exploded and this should not.
+
+    A subject 20 standard deviations out must not produce an unbounded term.
+    """
+    Z = rng.normal(size=(200, 3))
+    base = DenseBase("regression", 1, use_static=True, static_interactions=True)
+    base.fit(rng.normal(size=(200, 20)), Z[:, 0] * Z[:, 1] + rng.normal(size=200), static=Z)
+    assert base.static_pairs_, "no products were built, so this proves nothing"
+    wild = np.full((1, 3), 20.0)
+    design = base._static_design(wild, 1, fitting=False)
+    products = design[:, -len(base.static_pairs_):]
+    # the linear columns are allowed to grow -- linear extrapolation is graceful,
+    # and that is exactly why V10 survived where V11's quadratic terms did not
+    assert np.abs(products).max() <= 0.25 + 1e-9, (
+        f"a far-outside row produced a product term of {np.abs(products).max():.2f}"
+    )

@@ -157,7 +157,7 @@ class _BaseHeartwood:
 
     # ------------------------------------------------------------------ fit
 
-    def _fit_core(self, X_static, X_series, y, loss, eval_set, verbose):
+    def _fit_core(self, X_static, X_series, y, loss, eval_set, verbose, groups=None):
         self._validate_params()
         Xs, Xt, n = check_inputs(X_static, X_series)
         if len(y) != n:
@@ -190,7 +190,8 @@ class _BaseHeartwood:
             dense_static_interactions=self.dense_static_interactions,
             levy_areas=self.levy_areas,
         )
-        self._core.fit(Xs, Xt, y, loss, eval_set=prepared_eval, verbose=verbose)
+        self._core.fit(Xs, Xt, y, loss, eval_set=prepared_eval, verbose=verbose,
+                       groups=groups)
         return self
 
     def _encode_eval_target(self, y_val):
@@ -263,7 +264,7 @@ class _BaseHeartwood:
 class HeartwoodClassifier(_BaseHeartwood):
     """Gradient boosting over static + temporal splits, for classification."""
 
-    def fit(self, X_static, X_series, y, eval_set=None, verbose=False):
+    def fit(self, X_static, X_series, y, eval_set=None, verbose=False, groups=None):
         y = np.asarray(y)
         self.classes_, y_enc = np.unique(y, return_inverse=True)
         self.n_classes_ = len(self.classes_)
@@ -274,7 +275,7 @@ class HeartwoodClassifier(_BaseHeartwood):
             Logistic() if self.n_classes_ == 2 else Softmax(self.n_classes_)
         )
         y_enc = y_enc.astype(np.float64)
-        return self._fit_core(X_static, X_series, y_enc, loss, eval_set, verbose)
+        return self._fit_core(X_static, X_series, y_enc, loss, eval_set, verbose, groups)
 
     def _encode_eval_target(self, y_val):
         y_val = np.asarray(y_val)
@@ -298,11 +299,12 @@ class HeartwoodClassifier(_BaseHeartwood):
 class HeartwoodRegressor(_BaseHeartwood):
     """Gradient boosting over static + temporal splits, for regression."""
 
-    def fit(self, X_static, X_series, y, eval_set=None, verbose=False):
+    def fit(self, X_static, X_series, y, eval_set=None, verbose=False, groups=None):
         y = np.asarray(y, dtype=np.float64)
         if y.ndim != 1:
             raise ValueError(f"y must be 1-D for regression, got shape {y.shape}")
-        return self._fit_core(X_static, X_series, y, SquaredError(), eval_set, verbose)
+        return self._fit_core(X_static, X_series, y, SquaredError(), eval_set, verbose,
+                              groups)
 
     def predict(self, X_static, X_series=None) -> np.ndarray:
         Xs, Xt, _ = self._check_predict_inputs(X_static, X_series)

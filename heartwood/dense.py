@@ -18,7 +18,7 @@ from __future__ import annotations
 
 import numpy as np
 
-from .features import STAT_NAMES, interval_stat
+from .features import STAT_NAMES, ecdf, interval_stat
 
 _EPS = 1e-12
 LAMBDA_GRID = np.logspace(-3, 3, 13)
@@ -154,6 +154,7 @@ class DenseBase:
         self.use_static = bool(use_static)
         self.static_interactions = bool(static_interactions)
         self.static_pairs_: list[tuple[int, int]] = []
+        self.static_grids_: list[np.ndarray] = []
         self.static_coef_: np.ndarray | None = None
         self.static_impute_: np.ndarray | None = None
         self.static_center_: np.ndarray | None = None
@@ -258,12 +259,61 @@ class DenseBase:
                         if self.static_interactions else []
                     )
                 if self.static_pairs_:
+                    # Products of *rank* positions, not of raw values. V11 used
+                    # raw ones: products grow quadratically, so a subject whose
+                    # weight sits outside the training range got an exploding
+                    # term and Apnea-ECG fell to 0.478 AUC. A rank saturates at
+                    # 0 or 1 however far outside it lands, so a product of two
+                    # of them is bounded by construction rather than by hope.
+                    if fitting:
+                        self.static_grids_ = [np.sort(kept[np.isfinite(kept[:, c]), c])
+                                              for c in range(kept.shape[1])]
+                    ranked = np.column_stack([
+                        np.nan_to_num(ecdf(kept[:, c], self.static_grids_[c]), nan=0.5) - 0.5
+                        for c in range(kept.shape[1])
+                    ])
                     columns.append(np.column_stack(
-                        [kept[:, i] * kept[:, j] for i, j in self.static_pairs_]))
+                        [ranked[:, i] * ranked[:, j] for i, j in self.static_pairs_]))
         return np.hstack(columns)
 
+    @staticmethod
+    def _leave_out_margins(U, shrink, basis, fitted, Y, groups):
+        """Out-of-fold margins, hiding a whole group at a time.
+
+        For a group ``G`` the leave-group-out prediction is
+        ``(I - H_GG)^-1 (fitted_G - H_GG Y_G)`` where ``H_GG`` is that group's
+        block of the hat matrix.  No refitting: the block is read off the same
+        spectrum the fit already produced.
+
+        With one row per group this collapses to the familiar
+        ``(fitted - h*y)/(1 - h)``, so the ungrouped path is unchanged.
+
+        It exists because leave-one-*row*-out validated the base against other
+        rows of subjects it had already seen, while every grouped benchmark here
+        splits by subject.  V11 turned a base that explodes on unfamiliar
+        subjects into a confident one, and the check could not see it.
+        """
+        out = np.empty_like(fitted)
+        for key in np.unique(groups):
+            rows = np.nonzero(groups == key)[0]
+            block = (U[rows] * shrink) @ U[rows].T
+            if basis is not None:
+                # P_Z restricted to this group is Q_G Q_G^T, a full matrix --
+                # adding only its diagonal silently gives the wrong answer, which
+                # is what the refit check caught the first time round.
+                block = block + basis[rows] @ basis[rows].T
+            residual = fitted[rows] - block @ Y[rows]
+            identity = np.eye(len(rows))
+            try:
+                out[rows] = np.linalg.solve(identity - block, residual)
+            except np.linalg.LinAlgError:
+                # a group the fit reproduces exactly leaves nothing to predict
+                out[rows] = np.nan
+        return out
+
     def fit(self, bank: np.ndarray, y: np.ndarray,
-            static: np.ndarray | None = None) -> np.ndarray | None:
+            static: np.ndarray | None = None,
+            groups: np.ndarray | None = None) -> np.ndarray | None:
         """Fit the ridge and return leave-one-out margins, or ``None``.
 
         ``None`` means the ridge did not beat a constant out of fold, and the
@@ -290,10 +340,12 @@ class DenseBase:
             Yc = Yc - static_part
             X = X - Q @ (Q.T @ X)
             static_leverage = (Q**2).sum(axis=1)
+            static_basis = Q
         else:
             self.static_coef_ = None
             static_part = 0.0
             static_leverage = np.zeros(len(X))
+            static_basis = None
 
         U, singular, Vt = np.linalg.svd(X, full_matrices=False)
         s2 = singular**2
@@ -346,8 +398,19 @@ class DenseBase:
         # hat matrix is P_Z + ridge, so both parts belong in `fitted` and the
         # leverage already carries P_Z's diagonal.
         whole = Yc + static_part   # Yc was residualised in place above
-        denominator = np.clip(1.0 - leverage, 1e-3, None)[:, None]
-        loo_raw = (fitted + static_part - leverage[:, None] * whole) / denominator
+        if groups is not None and len(np.unique(groups)) < len(X):
+            loo_raw = self._leave_out_margins(
+                U, shrink, static_basis, fitted + static_part, whole, groups)
+            usable = np.isfinite(loo_raw).all(axis=1)
+            if not usable.any():
+                self.degenerate_ = True
+                self.coefficients_ = None
+                self.calibration_ = []
+                return None
+            loo_raw = np.where(usable[:, None], loo_raw, 0.0)
+        else:
+            denominator = np.clip(1.0 - leverage, 1e-3, None)[:, None]
+            loo_raw = (fitted + static_part - leverage[:, None] * whole) / denominator
         loo = loo_raw + self.target_center_
         self.effective_dof_ = float(shrink.sum())
 

@@ -183,7 +183,8 @@ def run_cell(dataset, train_idx, test_idx, size, seed, config) -> list[Row]:
         model = estimator(
             n_estimators=config["rounds"], max_depth=config["depth"],
             learning_rate=config["learning_rate"], random_state=seed, **extra,
-        ).fit(Xs if Xs.shape[1] else None, Xt, y)
+        ).fit(Xs if Xs.shape[1] else None, Xt, y,
+              groups=dataset.groups[tr] if dataset.groups is not None else None)
         elapsed = time.perf_counter() - started
         predictions = model.predict(static_arg, Xt_te)
         scores = None

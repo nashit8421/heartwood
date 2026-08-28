@@ -62,7 +62,7 @@ class _BoosterCore:
             return None
         return Pyramid(X_series, self.tree_params.filter_len)
 
-    def _augment(self, X_static, X_series, y=None, loss=None):
+    def _augment(self, X_static, X_series, y=None, loss=None, groups=None):
         """Attach the optional dense columns, identically at fit and predict time.
 
         Returns ``(X_static_augmented, base_raw)``.  ``base_raw`` is the starting
@@ -94,7 +94,7 @@ class _BoosterCore:
                     use_static=self.dense_include_static,
                     static_interactions=self.dense_static_interactions,
                 )
-                base_raw = self.dense_.fit(bank, y, static=statics)
+                base_raw = self.dense_.fit(bank, y, static=statics, groups=groups)
             elif self.dense_ is not None:
                 base_raw = self.dense_.transform(bank, static=statics)
             if base_raw is not None:
@@ -142,10 +142,12 @@ class _BoosterCore:
 
     # ------------------------------------------------------------------ fit
 
-    def fit(self, X_static, X_series, y, loss: Loss, eval_set=None, verbose=False):
+    def fit(self, X_static, X_series, y, loss: Loss, eval_set=None, verbose=False,
+            groups=None):
         n = X_static.shape[0]
         K = loss.n_outputs(y)
-        X_static, base_raw = self._augment(X_static, X_series, y=y, loss=loss)
+        X_static, base_raw = self._augment(X_static, X_series, y=y, loss=loss,
+                                           groups=groups)
         self.n_outputs_ = K
         self.base_score_ = np.asarray(loss.init_score(y), dtype=np.float64)
         self.trees_ = []
