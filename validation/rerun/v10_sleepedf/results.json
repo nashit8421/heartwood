@@ -1,0 +1,194 @@
+{
+ "config": {
+  "datasets": "['sleepedf']",
+  "sizes": "[1000]",
+  "seeds": "3",
+  "full_seeds": "2",
+  "rounds": "200",
+  "depth": "4",
+  "learning_rate": "0.1",
+  "no_minirocket": "False",
+  "max_test": "4000",
+  "drop_static": "False",
+  "variants": "['rocket_static']",
+  "representations": "['agg', 'static_only']",
+  "out": "validation/rerun/v10_sleepedf"
+ },
+ "unavailable": {},
+ "results": [
+  {
+   "dataset": "sleepedf",
+   "model": "heartwood_rocket_static",
+   "n_train": 999,
+   "seed": 0,
+   "fit_seconds": 3398.6824090410373,
+   "metrics": {
+    "balanced_accuracy": 0.6739562690608805,
+    "accuracy": 0.78125,
+    "roc_auc": 0.9273602510903688
+   }
+  },
+  {
+   "dataset": "sleepedf",
+   "model": "agg",
+   "n_train": 999,
+   "seed": 0,
+   "fit_seconds": 0.5243007080280222,
+   "metrics": {
+    "balanced_accuracy": 0.4559019665444419,
+    "accuracy": 0.55325,
+    "roc_auc": 0.7843827406028907
+   }
+  },
+  {
+   "dataset": "sleepedf",
+   "model": "static_only",
+   "n_train": 999,
+   "seed": 0,
+   "fit_seconds": 0.08818199997767806,
+   "metrics": {
+    "balanced_accuracy": 0.2058310626702997,
+    "accuracy": 0.3735,
+    "roc_auc": 0.510579037800434
+   }
+  },
+  {
+   "dataset": "sleepedf",
+   "model": "minirocket",
+   "n_train": 999,
+   "seed": 0,
+   "fit_seconds": 8.65262129099574,
+   "metrics": {
+    "balanced_accuracy": 0.6415088416142761,
+    "accuracy": 0.772
+   }
+  },
+  {
+   "dataset": "sleepedf",
+   "model": "minirocket10k",
+   "n_train": 999,
+   "seed": 0,
+   "fit_seconds": 26.131332833028864,
+   "metrics": {
+    "balanced_accuracy": 0.6571043873420132,
+    "accuracy": 0.77775
+   }
+  },
+  {
+   "dataset": "sleepedf",
+   "model": "heartwood_rocket_static",
+   "n_train": 1001,
+   "seed": 1,
+   "fit_seconds": 3533.0237706669723,
+   "metrics": {
+    "balanced_accuracy": 0.6702972747946716,
+    "accuracy": 0.7805,
+    "roc_auc": 0.9318535032642163
+   }
+  },
+  {
+   "dataset": "sleepedf",
+   "model": "agg",
+   "n_train": 1001,
+   "seed": 1,
+   "fit_seconds": 0.5175500829936936,
+   "metrics": {
+    "balanced_accuracy": 0.4253080682646752,
+    "accuracy": 0.52375,
+    "roc_auc": 0.7617021665409627
+   }
+  },
+  {
+   "dataset": "sleepedf",
+   "model": "static_only",
+   "n_train": 1001,
+   "seed": 1,
+   "fit_seconds": 0.0878952500061132,
+   "metrics": {
+    "balanced_accuracy": 0.2,
+    "accuracy": 0.4045,
+    "roc_auc": 0.5069961114496779
+   }
+  },
+  {
+   "dataset": "sleepedf",
+   "model": "minirocket",
+   "n_train": 1001,
+   "seed": 1,
+   "fit_seconds": 7.447752790991217,
+   "metrics": {
+    "balanced_accuracy": 0.6475638029733042,
+    "accuracy": 0.772
+   }
+  },
+  {
+   "dataset": "sleepedf",
+   "model": "minirocket10k",
+   "n_train": 1001,
+   "seed": 1,
+   "fit_seconds": 25.981357000011485,
+   "metrics": {
+    "balanced_accuracy": 0.660549484223204,
+    "accuracy": 0.77675
+   }
+  },
+  {
+   "dataset": "sleepedf",
+   "model": "heartwood_rocket_static",
+   "n_train": 1001,
+   "seed": 2,
+   "fit_seconds": 3268.2878872909932,
+   "metrics": {
+    "balanced_accuracy": 0.6723097831442075,
+    "accuracy": 0.79125,
+    "roc_auc": 0.9256290847112053
+   }
+  },
+  {
+   "dataset": "sleepedf",
+   "model": "agg",
+   "n_train": 1001,
+   "seed": 2,
+   "fit_seconds": 0.5160832499968819,
+   "metrics": {
+    "balanced_accuracy": 0.4369700818417529,
+    "accuracy": 0.561,
+    "roc_auc": 0.7914331386371304
+   }
+  },
+  {
+   "dataset": "sleepedf",
+   "model": "static_only",
+   "n_train": 1001,
+   "seed": 2,
+   "fit_seconds": 0.08776441699592397,
+   "metrics": {
+    "balanced_accuracy": 0.2,
+    "accuracy": 0.46425,
+    "roc_auc": 0.5028779278987651
+   }
+  },
+  {
+   "dataset": "sleepedf",
+   "model": "minirocket",
+   "n_train": 1001,
+   "seed": 2,
+   "fit_seconds": 7.443321999977343,
+   "metrics": {
+    "balanced_accuracy": 0.644528775738819,
+    "accuracy": 0.78575
+   }
+  },
+  {
+   "dataset": "sleepedf",
+   "model": "minirocket10k",
+   "n_train": 1001,
+   "seed": 2,
+   "fit_seconds": 25.979438290989492,
+   "metrics": {
+    "balanced_accuracy": 0.6609121865548615,
+    "accuracy": 0.789
+   }
+  }
+ ]
+}

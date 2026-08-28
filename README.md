@@ -10,7 +10,7 @@ the columns beside it.
 Boosting for datasets that mix **static per-row features with raw time series** — without
 collapsing the series into aggregates first.
 
-> **Status: v0.6 — the claim replicates, and we finally know why.** 286 tests and four
+> **Status: v0.7 — the founding claim, demonstrated once.** 292 tests and seven
 > pre-registered real-data studies. The v0.3 headline was a
 > [baseline bug](validation/CORRECTION.md) and **H1 fails** once corrected. The conditional
 > restatement ([V5](VALIDATION_V5.md)) fails too: Heartwood beat aggregation but MiniROCKET
@@ -270,6 +270,45 @@ static block never reaches it — so BMI can only enter through greedy tree spli
 `validation/HEADROOM.md` already measured as this architecture's weakest machinery. The
 model is made to learn its single best predictor through the one mechanism it is worst at.
 Full numbers and the remedy: [`validation/RESULTS_V9.md`](validation/RESULTS_V9.md).
+
+## V9 and V10: the founding claim, tested and then earned
+
+Five datasets could not test the premise, for a reason visible in the data: strong static
+blocks only ever appeared beside series a plain average already captures, and rich series
+only ever came with statics that were weak or that the signal itself encodes — an ECG partly
+reveals your age. So [V9](VALIDATION_V9.md) fixed the selection with a rule written first —
+**a static column counts only if the signal cannot encode it** — and landed on Apnea-ECG,
+where body weight and BMI predict apnea and a one-minute ECG contains neither.
+
+V9 found the statics finally mattered, and that the model could not use them:
+
+| | V9 — base blind to statics | **V10 — base sees statics** |
+|---|---|---|
+| series alone | 0.807 | 0.790 |
+| statics alone | 0.835 | 0.835 |
+| **both together** | 0.827 — *worse than either* | **0.856** |
+| what the statics are worth | +2.0 | **+6.6** |
+
+The defect was specific: the ridge base was fitted on `X_series` alone, so the linear layer —
+the component worth +3.8 over MiniROCKET — never saw BMI, and the statics could only enter
+through greedy per-node tree splits, which [`HEADROOM.md`](validation/HEADROOM.md) had already
+measured as this architecture's ceiling. The model was made to learn its single best
+predictor through the one mechanism it is worst at.
+
+V10 fits the base on the statics **and** the convolution bank, with the statics unpenalised
+(Frisch–Waugh; five columns sharing a penalty tuned for ten thousand kernel responses would
+see BMI shrunk as hard as an arbitrary convolution). The leave-one-out machinery stays exact
+— verified to 1.2e-14 against literally refitting without each row, since this is where the
+ridge base nearly shipped broken once before.
+
+**Every metric moves, not just the headline** — F1 +2.1, accuracy +3.4, balanced accuracy
++2.2 over statics alone. Full table: [`validation/RESULTS_V10.md`](validation/RESULTS_V10.md).
+
+**What it does not establish.** One dataset, +2.1 points, 35 subjects, a seed spread from
+0.785 to 0.906, and one of five seeds at exactly +0.0. It cannot be replicated on CPSC or
+Sleep-EDF, whose statics the signal already encodes. A second dataset with genuinely
+exogenous statics is the next requirement, and until one exists the claim stays exactly
+where the evidence puts it: **demonstrated once.**
 
 ### The lesson worth keeping
 
