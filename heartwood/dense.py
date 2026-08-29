@@ -347,6 +347,7 @@ class DenseBase:
             static_leverage = np.zeros(len(X))
             static_basis = None
 
+        whole = Yc + static_part          # the original centred target
         U, singular, Vt = np.linalg.svd(X, full_matrices=False)
         s2 = singular**2
         UtY = U.T @ Yc
@@ -356,6 +357,12 @@ class DenseBase:
         # thing whatever the features happen to be measured in.
         grid = LAMBDA_GRID * max(float(s2.mean()), _EPS)
 
+        # The penalty must be chosen by the same question the base is judged on.
+        # V12 made the judgement group-aware and left this loop row-wise, so the
+        # base was tuned for predicting an unseen *row* and then graded on an
+        # unseen *subject* -- it picked lambda=232 at 441 effective degrees of
+        # freedom, and its honest R2 came out negative on two seeds of three.
+        grouped = groups is not None and len(np.unique(groups)) < len(X)
         best = fallback = None
         for lam in grid:
             shrink = s2 / (s2 + lam)
@@ -376,7 +383,14 @@ class DenseBase:
                     fallback = candidate
                 continue
 
-            error = float(np.mean(((Yc - fitted) / denominator) ** 2))
+            if grouped:
+                held = self._leave_out_margins(
+                    U, shrink, static_basis, fitted + static_part, whole, groups)
+                usable = np.isfinite(held).all(axis=1)
+                error = (float(np.mean((whole[usable] - held[usable]) ** 2))
+                         if usable.any() else np.inf)
+            else:
+                error = float(np.mean(((Yc - fitted) / denominator) ** 2))
             if best is None or error < best[0]:
                 best = (error, *candidate)
 
@@ -397,7 +411,6 @@ class DenseBase:
         # Put the static fit back before forming the leave-one-out margin: the
         # hat matrix is P_Z + ridge, so both parts belong in `fitted` and the
         # leverage already carries P_Z's diagonal.
-        whole = Yc + static_part   # Yc was residualised in place above
         if groups is not None and len(np.unique(groups)) < len(X):
             loo_raw = self._leave_out_margins(
                 U, shrink, static_basis, fitted + static_part, whole, groups)
