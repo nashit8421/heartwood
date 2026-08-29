@@ -10,7 +10,7 @@ the columns beside it.
 Boosting for datasets that mix **static per-row features with raw time series** — without
 collapsing the series into aggregates first.
 
-> **Status: v0.7 — the founding claim, demonstrated once.** 292 tests and seven
+> **Status: v0.8 — a strong time-series classifier; the static half remains unproven.** 299 tests and nine
 > pre-registered real-data studies. The v0.3 headline was a
 > [baseline bug](validation/CORRECTION.md) and **H1 fails** once corrected. The conditional
 > restatement ([V5](VALIDATION_V5.md)) fails too: Heartwood beat aggregation but MiniROCKET
@@ -304,11 +304,30 @@ ridge base nearly shipped broken once before.
 **Every metric moves, not just the headline** — F1 +2.1, accuracy +3.4, balanced accuracy
 +2.2 over statics alone. Full table: [`validation/RESULTS_V10.md`](validation/RESULTS_V10.md).
 
-**What it does not establish.** One dataset, +2.1 points, 35 subjects, a seed spread from
-0.785 to 0.906, and one of five seeds at exactly +0.0. It cannot be replicated on CPSC or
-Sleep-EDF, whose statics the signal already encodes. A second dataset with genuinely
-exogenous statics is the next requirement, and until one exists the claim stays exactly
-where the evidence puts it: **demonstrated once.**
+**This result was withdrawn by V12.** The +2.1 depended on how the ridge base checked its
+own work. It used leave-one-*row*-out — hiding one minute of a patient while ~900 other
+minutes from that same patient, carrying their age and BMI, stayed in the fit. Every
+benchmark here splits Apnea by *subject*, so the base was tuning itself against a far
+easier question than the one it is graded on, choosing too weak a penalty and handing the
+trees an overconfident fit.
+
+With the base leaving out whole subjects — a closed-form block hold-out, verified exact to
+4.9e-15 against literally refitting without each group — the same model scores:
+
+| | AUC |
+|---|---|
+| statics alone | **0.835** |
+| full model, honest check | 0.826 |
+| full model, row-wise check (V10) | 0.856 |
+
+**The combination does not beat its best half.** Three attempts now: V7 measured the static
+block at −0.1 and +0.0, V9 found +2.0 with the combination still losing to statics alone,
+and V10 appeared to fix it and did not. Details in
+[`validation/RESULTS_V12.md`](validation/RESULTS_V12.md).
+
+The group-aware check ships on regardless. It costs three points on the number this project
+was leading with, and a check that matches the benchmark is not optional because its answer
+is unwelcome.
 
 ### The lesson worth keeping
 
@@ -590,7 +609,7 @@ chance.
 
 ```bash
 pip install -e '.[test]'
-python -m pytest tests/ -q          # 273 tests, ~60 s
+python -m pytest tests/ -q          # 299 tests, ~60 s
 ```
 
 The suite is built around slow, obviously-correct references that share no code with the
@@ -609,7 +628,7 @@ result measure the wrong thing — so those properties are now regression-tested
 
 ```
 heartwood/       losses, features, splits, filters, bank, dense, tree, booster, api, datasets
-tests/           273 tests: the library, the scenarios, and the benchmark harness
+tests/           299 tests: the library, the scenarios, and the benchmark harness
 benchmarks/      baselines, scenario registry, the runner, and results.md
 examples/        quickstart.py
 PLAN.md          the full phased implementation plan
@@ -623,7 +642,7 @@ Forest / CIF, shapelets. What is new here is the packaging — one regularised b
 a unified per-node split search over static and temporal candidates, guided by the
 gradients.
 
-**What three pre-registered studies support.** Heartwood beats the aggregate workaround
+**What nine pre-registered studies support.** Heartwood beats the aggregate workaround
 reliably and substantially — +3.8 to +14.5 points — where a global summary demonstrably
 loses information, and ties it where one does not. Its splits stay readable, and on ICU it
 recovered the standard clinical mortality predictors unprompted. With the convolution base
@@ -635,8 +654,12 @@ for a majority of PTB-XL sizes and got one of four; below n≈500 MiniROCKET is 
 and on datasets with no static block it wins or ties more often than it loses. The margin
 grows with training size, which is suggestive and untested past n=1000.
 
-So the honest position is a **narrow, conditional** one. If your rows carry static
-covariates *and* series a global summary would destroy, and you have enough data, this is
-now competitive with the best available method and readable in a way it is not. Outside
-that, reach for MiniROCKET. Two of the three studies here were written to try to falsify
-that sentence and did; the third is the first one it survived, and only barely.
+So the honest position: **this is a strong time-series classifier, and the "static plus
+series" premise on the tin is still unproven.** The series half is solid and replicated —
++3.7 and +4.1 over MiniROCKET on a cohort it had never seen. The static half has been
+attempted three times and has never been shown to earn its place; the one result that
+appeared to demonstrate it did not survive a validation check that matches the benchmark.
+
+Nine studies, three of them written specifically to try to falsify the project's own
+headline. All three succeeded. That is the record, and it is the reason to trust what
+remains.
