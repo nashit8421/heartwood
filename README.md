@@ -351,6 +351,17 @@ dataset in the project where the time-series half loses.** On 12-lead CPSC the s
 +3.7. Everything distinguishing this bank from MiniROCKET's is cross-channel, and Apnea is
 single-lead. That is a hypothesis, and the next thing to pre-register.
 
+**And the paragraph below already contradicts it.** Sleep-EDF is single-channel (EEG Fpz-Cz)
+and the series half wins there by +1.2. A counterexample sitting two paragraphs away was
+overlooked when this was written, so "cross-channel" cannot be the whole story whatever else
+is true. `VALIDATION_V14.md` holds the ablation that varies lead count and nothing else, and
+its §5 names *this* hypothesis surviving as the outcome it would least like.
+
+The dataset screen has since offered a competing explanation with no channels in it at all:
+Apnea's regime gap is **−0.010** — a global summary of that one-minute ECG loses nothing a
+finer representation recovers (`RESULTS_SCREEN.md`). If the series half has little temporal
+structure to find on Apnea, it would lose to a large fixed bank there regardless of width.
+
 The Sleep-EDF result re-run group-aware survives: **0.672 vs 0.660** for MiniROCKET-10k and
 0.645 for 2k, winning on all three seeds. `static_only` there is 0.202 against a chance
 floor of 0.200 — a pure series win, which is why it is the cleanest evidence in the project
