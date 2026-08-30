@@ -49,6 +49,8 @@ class _BaseHeartwood:
         bank_enabled: bool = True,
         bank_max: int = 32,
         bank_colsample: float = 0.25,
+        screen_fraction: float = 0.0,
+        screen_top_k: int = 8,
         candidate_colsample: float = 1.0,
         n_comparison_candidates: int = 4,
         dense_base: bool = False,
@@ -89,6 +91,8 @@ class _BaseHeartwood:
         self.bank_enabled = bank_enabled
         self.bank_max = bank_max
         self.bank_colsample = bank_colsample
+        self.screen_fraction = screen_fraction
+        self.screen_top_k = screen_top_k
         self.candidate_colsample = candidate_colsample
         self.n_comparison_candidates = n_comparison_candidates
         self.dense_base = dense_base
@@ -147,6 +151,10 @@ class _BaseHeartwood:
             raise ValueError("n_comparison_candidates must be >= 0")
         if self.mc_penalty < 0:
             raise ValueError("mc_penalty must be >= 0")
+        if not 0 <= self.screen_fraction < 1:
+            raise ValueError("screen_fraction must be in [0, 1)")
+        if self.screen_top_k < 1:
+            raise ValueError("screen_top_k must be >= 1")
 
     def _tree_params(self) -> TreeParams:
         return TreeParams(
@@ -205,6 +213,8 @@ class _BaseHeartwood:
             random_state=self.random_state,
             bank_enabled=self.bank_enabled,
             bank_max=self.bank_max,
+            screen_fraction=self.screen_fraction,
+            screen_top_k=self.screen_top_k,
             dense_base=self.dense_base,
             dense_features=self.dense_features,
             n_rocket_features=self.n_rocket_features,

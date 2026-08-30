@@ -104,6 +104,23 @@ for _mc in _MC_PENALTIES:
 MC_ARMS = {f"mc{int(m * 100):03d}": m for m in _MC_PENALTIES}
 MC_BASELINE = "rocket_static"
 
+#: V18 (roadmap item 2c): the out-of-fold bank pre-screen.  The knob swept is
+#: the shortlist length, at a fixed 25% screening fold -- sweeping both would be
+#: a two-dimensional search dressed as a study, and the fold size is the part
+#: with a principled default (enough rows to rank on, few enough to spare).
+_SCREEN_TOP_K = (4, 8, 16)
+for _k in _SCREEN_TOP_K:
+    VARIANTS[f"screen{_k:02d}"] = {
+        **VARIANTS["rocket_static"], "screen_fraction": 0.25, "screen_top_k": _k,
+    }
+
+#: H-V18.2's control: the same fraction of rows per tree, no screening.  A
+#: screening win this arm reproduces is not a screening win.
+VARIANTS["sub075"] = {**VARIANTS["rocket_static"], "subsample": 0.75}
+
+SCREEN_ARMS = {f"screen{k:02d}": k for k in _SCREEN_TOP_K}
+SCREEN_BASELINE = "rocket_static"
+
 #: The four extras under test, and the arm that switches each one on.  Written
 #: here rather than in the report so the reporting script cannot quietly change
 #: what "the +virtual-channels arm" means after a score has been seen.

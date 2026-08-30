@@ -25,7 +25,8 @@ class _BoosterCore:
                  bank_enabled=True, bank_max=32, dense_base=False, levy_areas=False,
                  dense_features="stats", n_rocket_features=10000,
                  rocket_channel_groups="subsets",
-                 dense_include_static=False, dense_static_interactions=False):
+                 dense_include_static=False, dense_static_interactions=False,
+                 screen_fraction=0.0, screen_top_k=8):
         self.tree_params = tree_params
         self.n_estimators = int(n_estimators)
         self.learning_rate = float(learning_rate)
@@ -48,6 +49,8 @@ class _BoosterCore:
         self.rocket_: RocketBank | None = None
         self.levy_areas = bool(levy_areas)
         self.dense_: DenseBase | None = None
+        self.screen_fraction = float(screen_fraction)
+        self.screen_top_k = int(screen_top_k)
         self.static_names_: list[str] = []
 
         self.trees_: list[list[TemporalTree]] = []
@@ -135,6 +138,41 @@ class _BoosterCore:
             parts.append(self.rocket_.transform(X_series))
         return parts[0] if len(parts) == 1 else np.hstack(parts)
 
+    def _screen_bank(self, rows, g, h, master):
+        """Rank the bank out of fold, and return the rows the tree may fit on.
+
+        Roadmap item 2c.  The fold rotates every round and every output, so the
+        screen is always out of sample for the tree that uses it and no row is
+        permanently spent -- the cost is that any single tree sees a fraction
+        fewer rows, not that the model does.
+
+        Returns ``rows`` unchanged, and leaves the bank unscreened, whenever
+        screening is off or the bank has nothing in it yet.
+        """
+        bank = self.bank
+        if bank is None:
+            return rows
+        if self.screen_fraction <= 0.0 or not len(bank):
+            bank.clear_screen()
+            return rows
+
+        n_screen = int(round(self.screen_fraction * rows.size))
+        # Leave enough rows to grow a tree on; a screen that starves the fit is
+        # measuring the smaller training set, not the shortlist.
+        if n_screen < 1 or rows.size - n_screen < 2 * self.tree_params.min_samples_leaf:
+            bank.clear_screen()
+            return rows
+
+        order = master.permutation(rows.size)
+        screen_rows = rows[order[:n_screen]]
+        fit_rows = np.sort(rows[order[n_screen:]]).astype(np.intp)
+
+        # Newton residuals: what this round still gets wrong, which is what the
+        # tree is about to fit -- not y, which it is not.
+        residual = -g[screen_rows] / (h[screen_rows] + self.tree_params.reg_lambda)
+        bank.screen(screen_rows, residual, self.screen_top_k)
+        return fit_rows
+
     @staticmethod
     def _static_grids(X_static):
         """Frozen sorted training columns, so a rank means the same thing later."""
@@ -194,9 +232,11 @@ class _BoosterCore:
 
             round_trees = []
             for k in range(K):
+                fit_rows = self._screen_bank(rows, g[:, k], h[:, k], master)
                 tree = TemporalTree(self.tree_params)
                 tree.fit(
-                    X_static, X_series, g[:, k], h[:, k], rows, spawn_rng(master), context
+                    X_static, X_series, g[:, k], h[:, k], fit_rows,
+                    spawn_rng(master), context,
                 )
                 raw[:, k] += self.learning_rate * tree.predict(X_static, X_series, pyramid)
                 if has_eval:

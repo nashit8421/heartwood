@@ -65,6 +65,10 @@ class FeatureBank:
         self.n_promoted = 0
         self.n_evicted = 0
         self.n_rejected_duplicate = 0
+        #: Top-k survivors of the most recent out-of-fold screen (V18), or None
+        #: when no screen is in force.  Never persisted: a screen is a per-round
+        #: view of the bank, not a change to what the bank stores.
+        self.screened: list[BankEntry] | None = None
 
     def __len__(self) -> int:
         return len(self.entries)
@@ -80,6 +84,13 @@ class FeatureBank:
         """
         if not self.entries:
             return
+        if self.screened is not None:
+            # A screen replaces the random subsample rather than composing with
+            # it: the point of ranking the bank is to stop offering it blind, and
+            # thinning the ranked list at random again would undo exactly that.
+            for entry in self.screened:
+                yield entry.column[rows], entry.fresh_spec()
+            return
         chosen = self.entries
         if rng is not None and 0.0 < fraction < 1.0:
             k = max(1, int(round(fraction * len(self.entries))))
@@ -88,6 +99,34 @@ class FeatureBank:
                 chosen = [self.entries[i] for i in picks]
         for entry in chosen:
             yield entry.column[rows], entry.fresh_spec()
+
+    def screen(self, rows: np.ndarray, target: np.ndarray, top_k: int) -> None:
+        """Keep only the ``top_k`` entries most associated with ``target``.
+
+        Roadmap item 2c.  A node currently chooses among banked features by
+        maximum gain on its *own* rows, which is the winner's curse in its purest
+        form: the bank is offered blind and the luckiest column wins.  Ranking it
+        first, on rows the trees of this round will not see, replaces that
+        lottery with a shortlist.
+
+        ``rows`` must be held out from the fit that follows, and enforcing that
+        is the caller's job (``_BoosterCore.fit`` rotates the fold every round so
+        no data is permanently spent).  Screening on the fitting rows would rank
+        the bank by the same signal the split then exploits, which is the
+        selection step this is meant to remove, wearing a shortlist's clothes.
+        """
+        if not self.entries:
+            self.screened = None
+            return
+        ranked = sorted(
+            self.entries,
+            key=lambda e: _abs_correlation(e.column[rows], target),
+            reverse=True,
+        )
+        self.screened = ranked[: max(1, int(top_k))]
+
+    def clear_screen(self) -> None:
+        self.screened = None
 
     def position_entries(self) -> list[BankEntry]:
         """Entries measuring *when* something happened — comparison-split material."""
