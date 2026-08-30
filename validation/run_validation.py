@@ -142,6 +142,22 @@ VARIANTS["null_v8"] = {**VARIANTS["rocket_static"],
 NULL_ARMS = {f"null_q{int(q * 100):02d}": q for q in _NULL_QUANTILES}
 NULL_BASELINE = "rocket_static"
 
+#: V20 (roadmap item 3): the no-regret guarantee, and the two components it
+#: promises never to be much worse than.  ``comp_base`` is the ridge alone
+#: (no trees); ``comp_trees`` is the trees alone (no ridge under them).
+VARIANTS["comp_base"] = {**VARIANTS["rocket_static"], "n_estimators": 0}
+VARIANTS["comp_trees"] = {**VARIANTS["rocket_static"], "dense_base": False}
+VARIANTS["noregret"] = {**VARIANTS["rocket_static"], "no_regret": True}
+
+#: Arm names the V20 report reads.  ``guarded`` is the model under test,
+#: ``unguarded`` is the same architecture without the guarantee, and the
+#: components are what the bar is measured against.
+NO_REGRET_ARMS = {
+    "guarded": "noregret",
+    "unguarded": "rocket_static",
+    "components": ("comp_base", "comp_trees"),
+}
+
 #: The four extras under test, and the arm that switches each one on.  Written
 #: here rather than in the report so the reporting script cannot quietly change
 #: what "the +virtual-channels arm" means after a score has been seen.
@@ -298,10 +314,13 @@ def run_cell(dataset, train_idx, test_idx, size, seed, config) -> list[Row]:
         extra = variant_kwargs(variant)
         name = HEARTWOOD if not variant else f"{HEARTWOOD}_{variant}"
         started = time.perf_counter()
-        model = estimator(
-            n_estimators=config["rounds"], max_depth=config["depth"],
-            learning_rate=config["learning_rate"], random_state=seed, **extra,
-        ).fit(Xs if Xs.shape[1] else None, Xt, y,
+        # Merged rather than splatted: an arm is allowed to override the grid's
+        # own settings (V20's base-only arm sets n_estimators=0), and ``**extra``
+        # beside an explicit keyword would raise instead.
+        settings = {"n_estimators": config["rounds"], "max_depth": config["depth"],
+                    "learning_rate": config["learning_rate"], "random_state": seed}
+        settings.update(extra)
+        model = estimator(**settings).fit(Xs if Xs.shape[1] else None, Xt, y,
               groups=dataset.groups[tr] if dataset.groups is not None else None)
         elapsed = time.perf_counter() - started
         predictions = model.predict(static_arg, Xt_te)
