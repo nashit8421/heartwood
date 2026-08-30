@@ -14,8 +14,15 @@ Each metric is the mean of 3 splits.
 |---|---|---|---|---|
 | Sleep-EDF | **−0.001** | +0.000 | −0.008 | **REJECT** — statics at chance |
 | Apnea-ECG | +0.149 | **+0.252** | **−0.010** | **REJECT** — statics partly recoverable; tabular regime |
+| PhysioNet ICU | **+0.011** | **+0.759** | **−0.022** | **REJECT** — all three |
 | credit | **+0.003** | **+0.398** | **+0.005** | **REJECT** — all three |
 | HAR | **−0.001** | **+0.281** | **−0.015** | **REJECT** — all three |
+| **PAMAP2** (new, item 7) | **+0.005** | **+0.000** | **−0.078** | **REJECT** — statics irrelevant to the target |
+
+Every dataset this project has ever run a study on is rejected by the screen, and so is the
+first new candidate. That is the finding, not a bug in the tool: it is the same fact the
+roadmap states — *the founding claim is still unproven after four attempts* — arriving in
+minutes instead of weeks.
 
 ## What this confirms
 
@@ -55,6 +62,37 @@ shape — and the first version of the tool built to prevent bad studies contain
 `_split` now splits by group wherever a dataset has them, and
 `tests/test_screen_dataset.py` pins the failure: a static drawn independently of the series but
 constant within a subject must not be called endogenous.
+
+## Item 7: the first candidate screened, and what it cost
+
+**PAMAP2** was chosen because the roadmap names its shape exactly — wearable accelerometry
+where "body weight is genuinely exogenous to a step signal". Nine subjects, three IMUs, twelve
+activities, and a subject table of sex, age, height, weight, resting and maximum heart rate.
+Fetcher and loader written, 6,691 windows parsed, screened. **About an hour, against the days
+a study would have cost.**
+
+The verdict splits in a way worth reading carefully:
+
+* **Exogeneity 0.000 — the roadmap's premise is confirmed.** Body measurements are *not*
+  recoverable from an accelerometer trace, unlike age and sex from an ECG. These are the first
+  genuinely exogenous statics this project has had.
+* **Static lift +0.005 — and the target is wrong.** Knowing someone's height and weight tells
+  you almost nothing about *which activity they are performing*. The covariates are right and
+  the label is not.
+* **Regime gap −0.078.** A global summary beats every finer representation. Mean and standard
+  deviation of acceleration separate lying from running; there is no temporal structure here
+  for the architecture to find.
+
+The obvious next move is to keep PAMAP2 and change the target to something body size predicts.
+**That is a search, and it is named as one here before it is run.** The dataset was chosen for
+its covariates; picking a target afterwards because it makes those covariates look useful is
+how a study gets built to confirm itself. Any such target must be named in a pre-registration
+before it is scored, and the regime gap of −0.078 is a separate obstacle it would not fix.
+
+The heart-rate channel was excluded from the series before screening, deliberately: two of the
+six statics are resting and maximum heart rate, and a series carrying heart rate would make
+them endogenous by construction. That decision is in the loader docstring, made before any
+number existed.
 
 ## Honest limitations
 

@@ -960,6 +960,118 @@ def load_apnea() -> Dataset:
     )
 
 
+
+
+
+# ------------------------------------------------- item-7 candidate: PAMAP2
+
+#: From ``PAMAP2_Dataset/subjectInformation.pdf``: sex, age, height (cm),
+#: weight (kg), resting HR and max HR, per subject.
+_PAMAP2_SUBJECTS = {
+    101: (1.0, 27.0, 182.0, 83.0, 75.0, 193.0),
+    102: (0.0, 25.0, 169.0, 78.0, 74.0, 195.0),
+    103: (1.0, 31.0, 187.0, 92.0, 68.0, 189.0),
+    104: (1.0, 24.0, 194.0, 95.0, 58.0, 196.0),
+    105: (1.0, 26.0, 180.0, 73.0, 70.0, 194.0),
+    106: (1.0, 26.0, 183.0, 69.0, 60.0, 194.0),
+    107: (1.0, 23.0, 173.0, 86.0, 60.0, 197.0),
+    108: (1.0, 32.0, 179.0, 87.0, 66.0, 188.0),
+    109: (1.0, 31.0, 168.0, 65.0, 54.0, 189.0),
+}
+#: The +/-16g accelerometer triads of the hand, chest and ankle IMUs.  The +/-6g
+#: triads saturate during the running and rope-jumping activities, which is why
+#: the dataset ships both and why only these are used.
+_PAMAP2_ACCEL = (4, 5, 6, 21, 22, 23, 38, 39, 40)
+_PAMAP2_STEP = 3          # 100 Hz -> ~33 Hz
+_PAMAP2_WINDOW = 96       # ~2.9 s
+_PAMAP2_ACTIVITIES = (1, 2, 3, 4, 5, 6, 7, 12, 13, 16, 17, 24)
+
+
+def load_pamap2() -> Dataset:
+    """PAMAP2 wearable accelerometry plus each subject's body measurements.
+
+    A roadmap item-7 candidate, chosen because the roadmap names its shape:
+    wearable accelerometry where "body weight is genuinely exogenous to a step
+    signal".  Four previous attempts failed on exactly this -- Sleep-EDF's
+    statics were at chance, CPSC's were age and sex on an ECG, which an ECG
+    encodes.
+
+    Decisions, made before the data was screened:
+
+    * **Series** is the three +/-16g accelerometer triads (hand, chest, ankle),
+      downsampled to ~33 Hz in non-overlapping ~2.9 s windows.  **The heart-rate
+      channel is deliberately excluded.**  Two of the six statics are resting and
+      maximum heart rate, so a series carrying heart rate would make them
+      endogenous by construction and the screen would be answering a question
+      nobody asked.  The claim under test is about body size and a *step signal*,
+      so the series is the step signal.
+    * **Target** is the activity, restricted to the twelve protocol activities;
+      the transient label 0 marks the gaps between them and is dropped.
+    * **Static block** is sex, age, height, weight, resting HR and max HR.
+    * **Groups** are subjects, so a split can be subject-disjoint.  Statics are
+      constant within a subject, which is exactly the configuration that made a
+      row-wise screen read Apnea's exogeneity as 0.82 -- see RESULTS_SCREEN.md.
+
+    Nothing here says the dataset passes.  ``validation/screen_dataset.py``
+    decides that, and it is the whole point of item 6 that it decides it before
+    a study is committed to.
+    """
+    root = DATA_DIR / "pamap2"
+    files = sorted(root.rglob("Protocol/subject*.dat"))
+    if not files:
+        raise FileNotFoundError(
+            f"no PAMAP2 under {root}; run `python validation/fetch_pamap2.py` first"
+        )
+
+    blocks, labels, groups, statics = [], [], [], []
+    for path in files:
+        subject = int(path.stem.replace("subject", ""))
+        if subject not in _PAMAP2_SUBJECTS:
+            continue
+        table = np.loadtxt(path, dtype=np.float64)
+        activity = table[:, 1].astype(int)
+        series = table[:, _PAMAP2_ACCEL][::_PAMAP2_STEP]
+        activity = activity[::_PAMAP2_STEP]
+
+        for code in _PAMAP2_ACTIVITIES:
+            rows = np.flatnonzero(activity == code)
+            if rows.size < _PAMAP2_WINDOW:
+                continue
+            # Split on discontinuities so a window never straddles two bouts.
+            breaks = np.flatnonzero(np.diff(rows) > 1) + 1
+            for run in np.split(rows, breaks):
+                n_windows = len(run) // _PAMAP2_WINDOW
+                for w in range(n_windows):
+                    take = run[w * _PAMAP2_WINDOW:(w + 1) * _PAMAP2_WINDOW]
+                    blocks.append(series[take].T)      # (channels, time)
+                    labels.append(code)
+                    groups.append(subject)
+                    statics.append(_PAMAP2_SUBJECTS[subject])
+
+    if not blocks:
+        raise RuntimeError("PAMAP2 parsed to zero windows")
+
+    # Encoded to 0..K-1: the protocol activity codes are 1..24 with gaps, and
+    # every consumer here (and XGBoost) expects contiguous class indices.
+    codes, encoded = np.unique(np.asarray(labels), return_inverse=True)
+
+    return Dataset(
+        key="pamap2",
+        X_static=np.asarray(statics, dtype=np.float64),
+        X_series=np.stack(blocks).astype(np.float64),
+        y=encoded,
+        task="multiclass",
+        headline="balanced_accuracy",
+        static_names=["sex", "age", "height_cm", "weight_kg", "resting_hr", "max_hr"],
+        channel_names=["hand_x", "hand_y", "hand_z", "chest_x", "chest_y", "chest_z",
+                       "ankle_x", "ankle_y", "ankle_z"],
+        groups=np.asarray(groups),
+        notes=("PAMAP2 protocol activities; accelerometry only, heart rate excluded "
+               "so the heart-rate statics are not endogenous by construction; "
+               f"class order {codes.tolist()}"),
+    )
+
+
 MIXED = {
     "credit": load_credit,
     "har": load_har,
@@ -968,4 +1080,5 @@ MIXED = {
     "cpsc2018": load_cpsc2018,
     "sleepedf": load_sleepedf,
     "apnea": load_apnea,
+    "pamap2": load_pamap2,
 }

@@ -3,3 +3,4 @@
 cpsc2018: n=6391, static=0, series=1x1000, task=multiclass, missing=0.0%
 OMP: Info #276: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
   seed 0 n=1000: heartwood_rocket_static=0.570  agg=0.263  minirocket=0.524  minirocket10k=0.546  (3969s)
+  seed 1 n=1000: heartwood_rocket_static=0.603  agg=0.284  minirocket=0.549  minirocket10k=0.577  (4312s)
