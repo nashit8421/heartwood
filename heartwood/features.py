@@ -34,6 +34,9 @@ STAT_NAMES = (
 _EPS_SD = 1e-12
 
 
+_EPS_STD = 1e-12
+
+
 def interval_stat(sub: np.ndarray, stat: str) -> np.ndarray:
     """Summary statistic of each row of ``sub`` ``(m, L)``; returns ``(m,)``.
 
@@ -250,6 +253,23 @@ def ecdf(values: np.ndarray, grid: np.ndarray) -> np.ndarray:
     return out
 
 
+def _bounded(values, center: float, scale: float, bounds) -> np.ndarray:
+    """Standardise, then clip to the training range seen at fit time.
+
+    A product of two magnitudes is the point of a product split (V22), so
+    neither side may be replaced by a rank -- that is precisely the information
+    ``amp_regression`` needs and ranks discard.  Clipping is what keeps the
+    magnitude bounded instead: a value outside the training range contributes
+    the edge of that range rather than an unbounded term, so the product cannot
+    grow without limit on an unfamiliar row.
+    """
+    values = np.asarray(values, dtype=np.float64)
+    standard = (values - center) / (scale if scale > _EPS_STD else 1.0)
+    if bounds is not None:
+        standard = np.clip(standard, bounds[0], bounds[1])
+    return standard
+
+
 def eval_split_feature(spec, X_static, X_series, rows: np.ndarray, pyramid=None) -> np.ndarray:
     """Compute a split's scalar feature for ``rows`` — shared by fit and predict.
 
@@ -279,6 +299,13 @@ def eval_split_feature(spec, X_static, X_series, rows: np.ndarray, pyramid=None)
             pyramid.block(spec.scale, spec.channel, rows), spec.template
         )
         return response if kind == "filter_resp" else position
+
+    if kind == "product":
+        inner = eval_split_feature(spec.inner_spec, X_static, X_series, rows, pyramid)
+        left = _bounded(inner, spec.inner_center, spec.inner_scale, spec.inner_bounds)
+        right = _bounded(X_static[rows, spec.col], spec.static_center,
+                         spec.static_scale, spec.static_bounds)
+        return left * right
 
     if kind == "comparison":
         inner = eval_split_feature(spec.position_spec, X_static, X_series, rows, pyramid)

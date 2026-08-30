@@ -42,6 +42,7 @@ MC_THRESHOLD_LOG = 0.4
 
 TEMPORAL_KINDS = (
     "interval", "shapelet_dist", "shapelet_pos", "filter_resp", "filter_pos", "comparison",
+    "product",
 )
 
 
@@ -71,6 +72,9 @@ class TreeParams:
     ridge_beta: float = 1.0
     n_filter_alt: int = 1
     n_comparison_candidates: int = 4
+    #: Magnitude products of a banked temporal feature with a static column
+    #: (V22, roadmap item 5).  0 disables.
+    n_product_candidates: int = 0
     bank_colsample: float = 0.25
     #: Per-node bagging over the temporal draws (V16, roadmap item 2a).  1.0 is
     #: the shipped behaviour.  See :meth:`TemporalTree._draw_count`.
@@ -95,6 +99,11 @@ class FitContext:
     static_grids: list[np.ndarray] | None = None
     static_names: list[str] | None = None
     round_index: int = 0
+    #: ``(center, scale, low, high)`` per static column, from the training rows.
+    #: Product splits need magnitudes on a common scale and a training range to
+    #: clip to; ``static_grids`` carries ranks, which is the currency a product
+    #: split must not use.
+    static_stats: tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray] | None = None
 
 
 class TemporalTree:
@@ -257,6 +266,7 @@ class TemporalTree:
         if bank is not None:
             yield from bank.candidates(rows, rng, p.bank_colsample)
             yield from self._comparison_candidates(X_static, rows, rng)
+            yield from self._product_candidates(X_static, rows, rng)
 
         if X_series is None:
             return
@@ -461,6 +471,78 @@ class TemporalTree:
         if not maxima:
             return 0.0
         return float(np.quantile(maxima, p.selection_null_quantile))
+
+    def _product_candidates(self, X_static, rows, rng):
+        """A banked temporal feature times a static column, both as magnitudes.
+
+        Roadmap item 5.  ``amp_regression`` is ``transient_height *
+        static_coefficient`` and V12 measured this model 11.3 points behind on
+        it.  The diagnosis was exact: the only products available were products
+        of *ranks*, which throw away the magnitudes the target is built from --
+        and they were static-by-static, so the cross the target actually needs,
+        series by static, had no representation at all.
+
+        A comparison split answers "did this happen before that" and a rank is
+        the right currency for it.  A product split answers "how big was this,
+        scaled by that", and a rank is exactly the wrong currency.  The two are
+        deliberately separate candidate sources rather than one parameterised
+        one, because they are not variants of a question -- they are different
+        questions that happen to share a shape.
+
+        The bound that keeps this from being V11 again is clipping, not ranking:
+        each side is standardised on its training distribution and clipped to
+        the range seen there, so an unfamiliar row contributes the edge of the
+        training range instead of an unbounded term.  V11's Apnea collapse to
+        0.478 came from an *unpenalised linear* product extrapolating; this
+        product is a tree split, and a tree returns a leaf value however large
+        its input.
+        """
+        p = self.params
+        bank = self._context.bank
+        if p.n_product_candidates <= 0 or bank is None or not X_static.shape[1]:
+            return
+        entries = bank.entries
+        if not entries:
+            return
+        stats = self._context.static_stats
+        if stats is None:
+            return
+        center, scale, low, high = stats
+
+        # Entries are drawn uniformly.  Drawing them in proportion to
+        # cumulative gain -- the bank's own ordering, the quantity it evicts by
+        # -- was tried and did not help on ``amp_regression`` (+2.0% against
+        # +1.8% at four candidates, and worse at sixteen), so the complication
+        # is not carried on the strength of one scenario and one seed.
+        for _ in range(self._draw_count(p.n_product_candidates)):
+            entry = entries[int(rng.integers(len(entries)))]
+            col = int(rng.integers(X_static.shape[1]))
+            if not (scale[col] > _EPS):
+                continue
+            finite = entry.column[np.isfinite(entry.column)]
+            if finite.size < 2:
+                continue
+            inner_center = float(finite.mean())
+            inner_scale = float(finite.std())
+            if inner_scale <= _EPS:
+                continue
+            standard = (finite - inner_center) / inner_scale
+            spec = SplitSpec(
+                kind="product",
+                col=col,
+                name_hint=(self._context.static_names[col]
+                           if self._context.static_names else ""),
+                inner_spec=replace(entry.spec),
+                inner_center=inner_center,
+                inner_scale=inner_scale,
+                inner_bounds=(float(standard.min()), float(standard.max())),
+                static_center=float(center[col]),
+                static_scale=float(scale[col]),
+                static_bounds=(float(low[col]), float(high[col])),
+            )
+            values = eval_split_feature(spec, X_static, self._X_series, rows,
+                                        self._context.pyramid)
+            yield values, spec
 
     def _comparison_candidates(self, X_static, rows, rng):
         """"Did this happen before that" — a learned event time versus a static column.

@@ -27,7 +27,8 @@ class _BoosterCore:
                  rocket_channel_groups="subsets",
                  dense_include_static=False, dense_static_interactions=False,
                  screen_fraction=0.0, screen_top_k=8,
-                 nonlinear_features=0, nonlinear_gamma=1.0):
+                 nonlinear_features=0, nonlinear_gamma=1.0,
+                 base_static_products=False):
         self.tree_params = tree_params
         self.n_estimators = int(n_estimators)
         self.learning_rate = float(learning_rate)
@@ -54,6 +55,11 @@ class _BoosterCore:
         self.screen_top_k = int(screen_top_k)
         self.nonlinear_features = int(nonlinear_features)
         self.nonlinear_gamma = float(nonlinear_gamma)
+        self.base_static_products = bool(base_static_products)
+        self.product_impute_: np.ndarray | None = None
+        self.product_bounds_: tuple[np.ndarray, np.ndarray] | None = None
+        self.product_center_: np.ndarray | None = None
+        self.product_scale_: np.ndarray | None = None
         self.static_names_: list[str] = []
 
         self.trees_: list[list[TemporalTree]] = []
@@ -111,9 +117,63 @@ class _BoosterCore:
                 blocks.append(base_raw)
                 names += [f"dense_margin[{k}]" for k in range(base_raw.shape[1])]
 
+                if self.base_static_products and X_static.shape[1]:
+                    products = self._base_static_products(X_static, base_raw, fitting)
+                    if products.shape[1]:
+                        blocks.append(products)
+                        names += [
+                            f"margin[{k}]*static[{j}]"
+                            for k in range(base_raw.shape[1])
+                            for j in range(X_static.shape[1])
+                        ]
+
         if fitting:
             self.static_names_ = names
         return (np.hstack(blocks) if len(blocks) > 1 else X_static), base_raw
+
+    def _base_static_products(self, X_static, base_raw, fitting: bool) -> np.ndarray:
+        """``base margin x static``, in magnitudes, offered to the trees.
+
+        Roadmap item 5.  V12 diagnosed ``amp_regression`` (-11.3) exactly: the
+        target is ``transient_height * static_coefficient``, a product of
+        *magnitudes*, and the only products the model could see were products of
+        *ranks*, which discard the magnitudes the target is made of.  Worse, the
+        rank products were static-by-static, so the cross the target is built
+        from -- series by static -- had no representation anywhere.
+
+        **Why this does not reinstate the V11 blow-up.** V11's failure was
+        specific to the *linear* layer: an unpenalised product column grows
+        quadratically, so a held-out subject outside the training range produced
+        an exploding term and Apnea-ECG fell to 0.478 AUC, below chance.  These
+        products are features for the *trees*, and a tree cannot extrapolate --
+        its output is a leaf value however large the input gets.  The failure
+        mode needs a linear extrapolation to exist and there is not one here.
+
+        Belt as well as braces: the statics are clipped to their training range
+        before multiplying, so the feature is bounded by construction too and
+        does not rely on that argument being right.
+
+        The margins used while fitting are the base's *out-of-fold* ones -- the
+        same values the trees are already boosted from -- so a product column is
+        no more able to see its own row's label than the margin it is built from.
+        """
+        if fitting:
+            finite = np.isfinite(X_static)
+            with np.errstate(invalid="ignore"):
+                median = np.nanmedian(np.where(finite, X_static, np.nan), axis=0)
+            self.product_impute_ = np.nan_to_num(median)
+            filled = np.where(finite, X_static, self.product_impute_)
+            self.product_bounds_ = (filled.min(axis=0), filled.max(axis=0))
+            self.product_center_ = filled.mean(axis=0)
+            spread = filled.std(axis=0)
+            self.product_scale_ = np.where(spread > 1e-12, spread, 1.0)
+        if self.product_bounds_ is None:
+            raise RuntimeError("base-static products are not fitted")
+
+        filled = np.where(np.isfinite(X_static), X_static, self.product_impute_)
+        bounded = np.clip(filled, *self.product_bounds_)
+        standard = (bounded - self.product_center_) / self.product_scale_
+        return (base_raw[:, :, None] * standard[:, None, :]).reshape(len(X_static), -1)
 
     def _dense_bank(self, X_series, fitting: bool) -> np.ndarray:
         """The feature bank the ridge base sees.
@@ -179,6 +239,26 @@ class _BoosterCore:
         return fit_rows
 
     @staticmethod
+    def _static_stats(X_static):
+        """Per-column centre, spread and observed range, for product splits."""
+        if not X_static.shape[1]:
+            return None
+        finite = np.isfinite(X_static)
+        with np.errstate(invalid="ignore"):
+            filled = np.where(finite, X_static, 0.0)
+        center = np.where(finite.any(axis=0), filled.sum(axis=0)
+                          / np.maximum(finite.sum(axis=0), 1), 0.0)
+        deviation = np.where(finite, X_static - center, 0.0)
+        scale = np.sqrt(deviation.__pow__(2).sum(axis=0)
+                        / np.maximum(finite.sum(axis=0), 1))
+        safe = np.where(scale > 1e-12, scale, 1.0)
+        standard = np.where(finite, (X_static - center) / safe, np.nan)
+        with np.errstate(invalid="ignore"):
+            low = np.nanmin(np.where(finite, standard, np.nan), axis=0)
+            high = np.nanmax(np.where(finite, standard, np.nan), axis=0)
+        return center, scale, np.nan_to_num(low), np.nan_to_num(high)
+
+    @staticmethod
     def _static_grids(X_static):
         """Frozen sorted training columns, so a rank means the same thing later."""
         return [
@@ -210,6 +290,7 @@ class _BoosterCore:
             pyramid=pyramid, bank=self.bank,
             static_grids=self._static_grids(X_static),
             static_names=self.static_names_,
+            static_stats=self._static_stats(X_static),
         )
 
         has_eval = eval_set is not None

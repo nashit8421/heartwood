@@ -171,6 +171,18 @@ for _w in _NONLINEAR_WIDTHS:
 NONLINEAR_ARMS = {f"rff{w:04d}": w for w in _NONLINEAR_WIDTHS}
 NONLINEAR_BASELINE = "rocket_static"
 
+#: V22 (roadmap item 5): magnitude products, by the two routes that can carry
+#: them.  ``prod_split`` gives the trees a banked temporal feature crossed with
+#: a static; ``prod_margin`` gives them the base's out-of-fold margin crossed
+#: with a static; ``prod_both`` is the union.
+VARIANTS["prod_split"] = {**VARIANTS["rocket_static"], "n_product_candidates": 4}
+VARIANTS["prod_margin"] = {**VARIANTS["rocket_static"], "base_static_products": True}
+VARIANTS["prod_both"] = {**VARIANTS["rocket_static"],
+                         "n_product_candidates": 4, "base_static_products": True}
+
+PRODUCT_ARMS = ("prod_split", "prod_margin", "prod_both")
+PRODUCT_BASELINE = "rocket_static"
+
 #: The four extras under test, and the arm that switches each one on.  Written
 #: here rather than in the report so the reporting script cannot quietly change
 #: what "the +virtual-channels arm" means after a score has been seen.

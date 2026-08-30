@@ -53,6 +53,7 @@ class _BaseHeartwood:
         screen_top_k: int = 8,
         candidate_colsample: float = 1.0,
         n_comparison_candidates: int = 4,
+        n_product_candidates: int = 0,
         dense_base: bool = False,
         selection_null: int = 0,
         selection_null_quantile: float = 1.0,
@@ -65,6 +66,7 @@ class _BaseHeartwood:
         levy_areas: bool = True,
         nonlinear_features: int = 0,
         nonlinear_gamma: float = 1.0,
+        base_static_products: bool = False,
         no_regret: bool = False,
         no_regret_fraction: float = 0.25,
         no_regret_margin: float = 0.0,
@@ -101,6 +103,7 @@ class _BaseHeartwood:
         self.screen_top_k = screen_top_k
         self.candidate_colsample = candidate_colsample
         self.n_comparison_candidates = n_comparison_candidates
+        self.n_product_candidates = n_product_candidates
         self.dense_base = dense_base
         self.selection_null = selection_null
         self.selection_null_quantile = selection_null_quantile
@@ -113,6 +116,7 @@ class _BaseHeartwood:
         self.levy_areas = levy_areas
         self.nonlinear_features = nonlinear_features
         self.nonlinear_gamma = nonlinear_gamma
+        self.base_static_products = base_static_products
         self.no_regret = no_regret
         self.no_regret_fraction = no_regret_fraction
         self.no_regret_margin = no_regret_margin
@@ -171,6 +175,8 @@ class _BaseHeartwood:
             )
         if self.n_comparison_candidates < 0:
             raise ValueError("n_comparison_candidates must be >= 0")
+        if self.n_product_candidates < 0:
+            raise ValueError("n_product_candidates must be >= 0")
         if self.mc_penalty < 0:
             raise ValueError("mc_penalty must be >= 0")
         if not 0 < self.selection_null_quantile <= 1:
@@ -211,6 +217,7 @@ class _BaseHeartwood:
             ridge_beta=self.ridge_beta,
             n_filter_alt=self.n_filter_alt,
             n_comparison_candidates=self.n_comparison_candidates,
+            n_product_candidates=self.n_product_candidates,
             selection_null=self.selection_null,
             selection_null_quantile=self.selection_null_quantile,
             mc_penalty=self.mc_penalty,
@@ -279,6 +286,7 @@ class _BaseHeartwood:
             levy_areas=self.levy_areas,
             nonlinear_features=self.nonlinear_features,
             nonlinear_gamma=self.nonlinear_gamma,
+            base_static_products=self.base_static_products,
         )
         settings.update(overrides)
         return _BoosterCore(**settings)

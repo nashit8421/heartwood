@@ -54,6 +54,19 @@ ROCKET: dict[str, dict] = {
                             dense_include_static=True, dense_static_interactions=True),
 }
 
+#: --products adds the V22 magnitude-product arms (roadmap item 5).  They sit on
+#: top of the rocket base, because the base is what supplies the series side of
+#: the cross the target is built from.
+PRODUCTS: dict[str, dict] = {
+    "hw_prod_split": dict(dense_base=True, dense_features="rocket",
+                          dense_include_static=True, n_product_candidates=4),
+    "hw_prod_margin": dict(dense_base=True, dense_features="rocket",
+                           dense_include_static=True, base_static_products=True),
+    "hw_prod_both": dict(dense_base=True, dense_features="rocket",
+                         dense_include_static=True, n_product_candidates=4,
+                         base_static_products=True),
+}
+
 #: --phasec adds the opt-in Phase C extras.
 PHASE_C: dict[str, dict] = {
     "hw_levy": dict(levy_areas=True),
@@ -323,6 +336,8 @@ def main() -> int:
                         help="add the V6 convolution base (H-V6.3 no-regression check)")
     parser.add_argument("--phasec", action="store_true",
                         help="also run the opt-in Phase-C variants")
+    parser.add_argument("--products", action="store_true",
+                        help="also run the V22 magnitude-product variants")
     args = parser.parse_args()
 
     if args.quick:
@@ -336,6 +351,8 @@ def main() -> int:
         variants.update(PHASE_C)
     if args.rocket:
         variants.update(ROCKET)
+    if args.products:
+        variants.update({"hw_rocket_static": ROCKET["hw_rocket_static"], **PRODUCTS})
     models = list(variants) + representations
     config = {
         "test_size": args.test_size, "rounds": args.rounds, "depth": args.depth,

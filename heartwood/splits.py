@@ -19,7 +19,7 @@ class SplitSpec:
     fitted tree never depends on the training arrays staying alive or unchanged.
     """
 
-    kind: str  # 'static' | 'interval' | 'shapelet_*' | 'filter_*' | 'comparison'
+    kind: str  # 'static'|'interval'|'shapelet_*'|'filter_*'|'comparison'|'product'
     threshold: float = np.nan
     missing_left: bool = True
     gain: float = -np.inf
@@ -41,6 +41,17 @@ class SplitSpec:
     position_spec: "SplitSpec | None" = field(default=None, repr=False)
     position_grid: np.ndarray | None = field(default=None, repr=False)
     static_grid: np.ndarray | None = field(default=None, repr=False)
+    # product split (V22): a banked temporal spec times a static column, both in
+    # magnitudes.  The normalisation is carried on the spec rather than looked up
+    # at predict time, for the same reason the shapelet is: a fitted tree must
+    # not depend on the training arrays still existing.
+    inner_spec: "SplitSpec | None" = field(default=None, repr=False)
+    inner_center: float = 0.0
+    inner_scale: float = 1.0
+    inner_bounds: tuple[float, float] | None = None
+    static_center: float = 0.0
+    static_scale: float = 1.0
+    static_bounds: tuple[float, float] | None = None
 
     def identity(self) -> tuple:
         """What makes two specs the *same feature*, ignoring the threshold."""
