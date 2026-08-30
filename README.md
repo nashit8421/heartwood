@@ -10,7 +10,7 @@ the columns beside it.
 Boosting for datasets that mix **static per-row features with raw time series** — without
 collapsing the series into aggregates first.
 
-> **Status: v0.8 — a strong time-series classifier; the static half remains unproven.** 299 tests and nine
+> **Status: v0.8 — a strong time-series classifier; the static half remains unproven.** 299 tests and ten
 > pre-registered real-data studies. The v0.3 headline was a
 > [baseline bug](validation/CORRECTION.md) and **H1 fails** once corrected. The conditional
 > restatement ([V5](VALIDATION_V5.md)) fails too: Heartwood beat aggregation but MiniROCKET
@@ -317,17 +317,49 @@ With the base leaving out whole subjects — a closed-form block hold-out, verif
 | | AUC |
 |---|---|
 | statics alone | **0.835** |
-| full model, honest check | 0.826 |
+| **full model, honest check (V13)** | **0.842** |
+| full model, honest check (V12, mistuned) | 0.826 |
 | full model, row-wise check (V10) | 0.856 |
 
-**The combination does not beat its best half.** Three attempts now: V7 measured the static
-block at −0.1 and +0.0, V9 found +2.0 with the combination still losing to statics alone,
-and V10 appeared to fix it and did not. Details in
-[`validation/RESULTS_V12.md`](validation/RESULTS_V12.md).
+**The combination does not beat its best half.** +0.7 against a pre-registered bar of +2,
+negative on two of five seeds. Four attempts now: V7 measured the static block at −0.1 and
++0.0, V9 found +2.0 with the combination still losing to statics alone, V10 appeared to fix
+it and did not, and V13 recovers half the loss without clearing the bar.
 
-The group-aware check ships on regardless. It costs three points on the number this project
-was leading with, and a check that matches the benchmark is not optional because its answer
-is unwelcome.
+**V12's own number was partly a second bug of mine.** V12 made the base *validate* by
+subject but left its *penalty search* row-wise, so it tuned for one question and was graded
+on another — effective dof 441 of 1000 rows, and the base declined to exist on two of three
+seeds. [V13](validation/RESULTS_V13.md) makes the search use the same criterion as the
+judgement. **V10's inflation was ~1.4 points, not the 3.0 recorded in V12.**
+
+The group-aware check ships on regardless. A check that matches the benchmark is not
+optional because its answer is unwelcome.
+
+### V13: what the statics are actually worth, and where the series half loses
+
+Against the identical model with the static block dropped (paired, same seeds):
+
+| Apnea, n=1000 | AUC |
+|---|---|
+| with statics | **0.842** |
+| series only | 0.750 |
+| **the statics are worth** | **+9.2** — positive on all 5 seeds |
+
+The fusion mechanism *works*. The headline is still +0.7 because **the series half is weak
+on this dataset**: series-only scores 0.750 against MiniROCKET's 0.790 — **−3.6, the first
+dataset in the project where the time-series half loses.** On 12-lead CPSC the same code is
++3.7. Everything distinguishing this bank from MiniROCKET's is cross-channel, and Apnea is
+single-lead. That is a hypothesis, and the next thing to pre-register.
+
+The Sleep-EDF result re-run group-aware survives: **0.672 vs 0.660** for MiniROCKET-10k and
+0.645 for 2k, winning on all three seeds. `static_only` there is 0.202 against a chance
+floor of 0.200 — a pure series win, which is why it is the cleanest evidence in the project
+that the time-series half is real.
+
+**Where four attempts leave the founding claim: unproven, for a reason about data.** Beating
+either half alone needs both halves strong on one dataset. Apnea has exogenous statics and a
+weak series; Sleep-EDF has the series and statics at chance. No dataset yet has given us
+both.
 
 ### The lesson worth keeping
 
