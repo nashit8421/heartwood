@@ -4,3 +4,17 @@ cpsc2018: n=6391, static=0, series=1x1000, task=multiclass, missing=0.0%
 OMP: Info #276: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
   seed 0 n=1000: heartwood_rocket_static=0.570  agg=0.263  minirocket=0.524  minirocket10k=0.546  (3969s)
   seed 1 n=1000: heartwood_rocket_static=0.603  agg=0.284  minirocket=0.549  minirocket10k=0.577  (4312s)
+  seed 2 n=1000: heartwood_rocket_static=0.587  agg=0.244  minirocket=0.497  minirocket10k=0.546  (4003s)
+  seed 3 n=1000: heartwood_rocket_static=0.580  agg=0.279  minirocket=0.528  minirocket10k=0.548  (4121s)
+  seed 4 n=1000: heartwood_rocket_static=0.587  agg=0.269  minirocket=0.515  minirocket10k=0.558  (3853s)
+
+wrote validation/rerun/v14_cpsc_ch1/results.json (20 rows)
+[2026-08-30 15:42:06] OK C 1-lead
+[2026-08-30 15:42:06] BEGIN B 3-lead
+
+cpsc2018: n=6391, static=0, series=3x1000, task=multiclass, missing=0.0%
+OMP: Info #276: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+  seed 0 n=1000: heartwood_rocket_static=0.655  agg=0.390  minirocket=0.617  minirocket10k=0.650  (1437s)
+  seed 1 n=1000: heartwood_rocket_static=0.677  agg=0.402  minirocket=0.630  minirocket10k=0.639  (1429s)
+  seed 2 n=1000: heartwood_rocket_static=0.674  agg=0.395  minirocket=0.615  minirocket10k=0.633  (1464s)
+  seed 3 n=1000: heartwood_rocket_static=0.661  agg=0.413  minirocket=0.609  minirocket10k=0.659  (1470s)

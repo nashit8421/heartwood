@@ -108,6 +108,144 @@
     "balanced_accuracy": 0.5767468280581418,
     "accuracy": 0.6708398539384455
    }
+  },
+  {
+   "dataset": "cpsc2018",
+   "model": "heartwood_rocket_static",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 3090.9570085830055,
+   "metrics": {
+    "balanced_accuracy": 0.5866769506204493,
+    "accuracy": 0.6708398539384455,
+    "roc_auc": 0.906516293743581
+   }
+  },
+  {
+   "dataset": "cpsc2018",
+   "model": "agg",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 0.8860352499177679,
+   "metrics": {
+    "balanced_accuracy": 0.2441683987018708,
+    "accuracy": 0.32759520083463745,
+    "roc_auc": 0.682408434510283
+   }
+  },
+  {
+   "dataset": "cpsc2018",
+   "model": "minirocket",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 2.684507792000659,
+   "metrics": {
+    "balanced_accuracy": 0.4972690610918792,
+    "accuracy": 0.6098069900886802
+   }
+  },
+  {
+   "dataset": "cpsc2018",
+   "model": "minirocket10k",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 9.26465204206761,
+   "metrics": {
+    "balanced_accuracy": 0.5462882416766122,
+    "accuracy": 0.6416275430359938
+   }
+  },
+  {
+   "dataset": "cpsc2018",
+   "model": "heartwood_rocket_static",
+   "n_train": 1000,
+   "seed": 3,
+   "fit_seconds": 3141.16991579195,
+   "metrics": {
+    "balanced_accuracy": 0.5801337519960349,
+    "accuracy": 0.6770996348461137,
+    "roc_auc": 0.9062840438009852
+   }
+  },
+  {
+   "dataset": "cpsc2018",
+   "model": "agg",
+   "n_train": 1000,
+   "seed": 3,
+   "fit_seconds": 0.87812833301723,
+   "metrics": {
+    "balanced_accuracy": 0.27941643587970677,
+    "accuracy": 0.3635889410537298,
+    "roc_auc": 0.7066758480094985
+   }
+  },
+  {
+   "dataset": "cpsc2018",
+   "model": "minirocket",
+   "n_train": 1000,
+   "seed": 3,
+   "fit_seconds": 2.678223875002004,
+   "metrics": {
+    "balanced_accuracy": 0.5275038080093603,
+    "accuracy": 0.6411058946270214
+   }
+  },
+  {
+   "dataset": "cpsc2018",
+   "model": "minirocket10k",
+   "n_train": 1000,
+   "seed": 3,
+   "fit_seconds": 9.260280958027579,
+   "metrics": {
+    "balanced_accuracy": 0.5482772605954745,
+    "accuracy": 0.6551904016692749
+   }
+  },
+  {
+   "dataset": "cpsc2018",
+   "model": "heartwood_rocket_static",
+   "n_train": 1000,
+   "seed": 4,
+   "fit_seconds": 2998.901854458032,
+   "metrics": {
+    "balanced_accuracy": 0.5866103364377042,
+    "accuracy": 0.6739697443922796,
+    "roc_auc": 0.9079155109241537
+   }
+  },
+  {
+   "dataset": "cpsc2018",
+   "model": "agg",
+   "n_train": 1000,
+   "seed": 4,
+   "fit_seconds": 0.8779487500432879,
+   "metrics": {
+    "balanced_accuracy": 0.26857475032314815,
+    "accuracy": 0.3479394887845592,
+    "roc_auc": 0.6950428790972526
+   }
+  },
+  {
+   "dataset": "cpsc2018",
+   "model": "minirocket",
+   "n_train": 1000,
+   "seed": 4,
+   "fit_seconds": 2.677173165953718,
+   "metrics": {
+    "balanced_accuracy": 0.5150404910696623,
+    "accuracy": 0.631716223265519
+   }
+  },
+  {
+   "dataset": "cpsc2018",
+   "model": "minirocket10k",
+   "n_train": 1000,
+   "seed": 4,
+   "fit_seconds": 9.229848416987807,
+   "metrics": {
+    "balanced_accuracy": 0.5583114130546821,
+    "accuracy": 0.6572769953051644
+   }
   }
  ]
 }

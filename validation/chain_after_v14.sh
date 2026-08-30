@@ -44,6 +44,12 @@ else
 fi
 grep -E "^\[|FAILED|OK " validation/v14.log | tail -8
 
+# Grade V14 mechanically the moment it lands, before V15's numbers arrive and
+# compete for attention. The report refuses to judge on incomplete arms.
+say "BEGIN V14 report"
+python validation/report_v14.py --out RESULTS_V14.md \
+  && say "OK V14 report" || say "FAILED V14 report"
+
 say "starting V15"
 bash validation/run_v15.sh
 say "CHAIN_COMPLETE"
