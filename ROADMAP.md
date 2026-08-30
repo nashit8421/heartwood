@@ -155,6 +155,56 @@ specifications. Screen several cheaply, commit to whichever passes.
 
 ---
 
+---
+
+## Status — 2026-08-30, everything below is built and pre-registered
+
+Every item has code, tests and a pre-registration committed **before any of its cells were
+run**. What remains is compute, and the ordering constraints are in the run scripts.
+
+| item | study | code | pre-registered | run |
+|---|---|---|---|---|
+| 1. bank extras | V15 | `rocket_channel_groups`, `VARIANTS` | `VALIDATION_V15.md` | pending |
+| 2a. per-node bagging | V16 | `candidate_colsample` | `VALIDATION_V16.md` | pending |
+| 2b. gain penalty | V17 | `mc_penalty` | `VALIDATION_V17.md` | pending |
+| 2c. pre-screen | V18 | `screen_fraction`, `screen_top_k` | `VALIDATION_V18.md` | pending |
+| 2d. recalibrated null | V19 | `selection_null_quantile` | `VALIDATION_V19.md` | pending |
+| 3. no-regret | V20 | `no_regret` | `VALIDATION_V20.md` | pending |
+| 4. nonlinear base | V21 | `nonlinear_features` | `VALIDATION_V21.md` | pending |
+| 5. `amp_regression` | V22 | `product` splits, `base_static_products` | `VALIDATION_V22.md` | pending |
+| 6. dataset screen | — | `validation/screen_dataset.py` | thresholds fixed in-module | **done** |
+| 7. screen candidates | — | PAMAP2 fetcher + loader | — | **first candidate done** |
+| 8. README correction | — | — | — | blocked on V14 |
+| 9. speed | — | FFT sliding dot | — | **done, 1.66x** |
+
+**Run order matters in two places.** V21 must follow V15: measuring curvature on a bank we may
+be about to shrink answers a question about a model that no longer exists. And nothing may run
+concurrently with anything else — the arms are compared to one another, and CPU contention
+would land unevenly across them.
+
+### What items 6 and 7 already changed
+
+The screen rejects **every dataset this project has ever run a study on**, and the first new
+candidate too (`RESULTS_SCREEN.md`). It reproduced Sleep-EDF's known verdict in about a minute.
+It also found that Apnea's static block is recoverable from its own ECG at R² 0.252 against a
+0.25 ceiling — `VALIDATION_V9.md` called that dataset the first fair test of the premise on the
+grounds that BMI is not present in a one-minute ECG, and that turns out to have been assumed
+rather than measured.
+
+And building the screen surfaced the row-wise/group-wise confusion **for the third time** in
+this project. V12 and V13 were both that defect; the first version of the tool built to prevent
+bad studies contained it too, reading Apnea's exogeneity as 0.82 instead of 0.25.
+
+### The bars that now exist to be failed
+
+Four of the eight pending studies attack the same premise — that greedy per-node selection is
+the ceiling, as `HEADROOM.md` argued. `VALIDATION_V19.md` §4 pre-commits to what happens if all
+four come in below bar: **the next commit corrects `HEADROOM.md` rather than attempting a fifth
+attack.** That is written down in advance because the alternative — one more idea, and one more
+after that — is how a project spends a year on a premise nobody re-examined.
+
+---
+
 ## Recommended starting point
 
 Items **1** and **2a** together — both cheap, both aimed at things already measured,
