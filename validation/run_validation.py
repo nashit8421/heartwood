@@ -91,6 +91,19 @@ for _fraction in _BAGGING_FRACTIONS:
 BAGGING_ARMS = {f"bag{int(f * 1000):03d}": f for f in _BAGGING_FRACTIONS}
 BAGGING_BASELINE = "rocket_static"
 
+#: V17 (roadmap item 2b): the analytic multiple-comparisons charge, swept over
+#: three multipliers named in advance.  1.0 is the value the derivation implies;
+#: the other two bracket it, because the additive term of the fit was not stable
+#: across gradient regimes and this multiplier is where that slack lives.
+_MC_PENALTIES = (0.5, 1.0, 2.0)
+for _mc in _MC_PENALTIES:
+    VARIANTS[f"mc{int(_mc * 100):03d}"] = {
+        **VARIANTS["rocket_static"], "mc_penalty": _mc,
+    }
+
+MC_ARMS = {f"mc{int(m * 100):03d}": m for m in _MC_PENALTIES}
+MC_BASELINE = "rocket_static"
+
 #: The four extras under test, and the arm that switches each one on.  Written
 #: here rather than in the report so the reporting script cannot quietly change
 #: what "the +virtual-channels arm" means after a score has been seen.

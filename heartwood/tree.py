@@ -30,6 +30,16 @@ from .filters import (
 from .splits import SplitSpec, sample_interval, sample_shapelet, scan_threshold
 
 _EPS = 1e-12
+
+#: How much of the null maximum gain the within-candidate threshold search adds,
+#: as a coefficient on ``log(n_rows)``.  ``scan_threshold`` maximises over every
+#: cut point as well as over candidates, so a node's pool is effectively larger
+#: than its candidate count; the coefficient is well under 1 because adjacent
+#: cut points are highly correlated.  Measured against the real
+#: ``scan_threshold`` in ``tests/test_gain_penalty.py``, which fails if either
+#: this constant or that function drifts away from the other.
+MC_THRESHOLD_LOG = 0.4
+
 TEMPORAL_KINDS = (
     "interval", "shapelet_dist", "shapelet_pos", "filter_resp", "filter_pos", "comparison",
 )
@@ -67,6 +77,9 @@ class TreeParams:
     candidate_colsample: float = 1.0
     #: Permutations used to price a node's own selection bias (V8). 0 disables.
     selection_null: int = 0
+    #: Analytic multiple-comparisons charge on the winning gain (V17, item 2b).
+    #: 0 disables.  See :meth:`TemporalTree._selection_charge`.
+    mc_penalty: float = 0.0
 
 
 @dataclass
@@ -126,12 +139,14 @@ class TemporalTree:
 
         best = None
         scored: list[np.ndarray] = []
+        n_scanned = 0
         for f, spec in self._candidates(X_static, X_series, rows, gr, hr, rng):
             found = scan_threshold(
                 f, gr, hr, p.reg_lambda, p.gamma, p.min_child_weight, p.min_samples_leaf
             )
             if found is None:
                 continue
+            n_scanned += 1
             gain, threshold, missing_left = found
             if p.selection_null:
                 scored.append(f)
@@ -139,6 +154,11 @@ class TemporalTree:
                 best = (gain, f, spec, threshold, missing_left)
 
         if best is None:
+            return self._add_leaf(value)
+
+        if p.mc_penalty and best[0] <= self._selection_charge(n_scanned, gr, hr, H):
+            # The winner is no larger than what a pool this size reaches on
+            # noise, so it is priced as noise. Stop here.
             return self._add_leaf(value)
 
         if p.selection_null and best[0] <= self._chance_gain(scored, gr, hr, rng):
@@ -355,6 +375,39 @@ class TemporalTree:
             if snippet is not None:
                 return snippet
         return None
+
+    def _selection_charge(self, n_scanned: int, gr, hr, H: float) -> float:
+        """What a pool of ``n_scanned`` candidates reaches on noise alone.
+
+        Roadmap item 2b: a multiple-comparisons correction applied to the
+        maximum, rather than the permutation null of ``selection_null``.  It
+        costs one dot product per node instead of ``selection_null`` full
+        rescans of the pool, which is the entire reason to prefer it.
+
+        The derivation.  With the parent term subtracted and the node's
+        gradients centred against its own hessians, the gain of a split against
+        an *uninformative* feature is asymptotically ``scale * chi2_1 / 2``,
+        where ``scale`` is this node's hessian-weighted gradient variance.  The
+        maximum of ``m`` independent chi-squares grows like ``2 log m``, so the
+        expected best gain from noise grows like ``scale * log m``.  Every
+        candidate at a node shares the same ``m``, so this charge cannot change
+        *which* candidate wins -- only whether the node splits at all.
+
+        Measured, not assumed: against the real ``scan_threshold`` the
+        ``log m`` coefficient comes out at 1.00-1.10 across centred, shifted and
+        heteroscedastic gradients, and ``tests/test_gain_penalty.py`` fails if
+        that stops being true.  The additive constant from the same fit ranged
+        from -2.5 to -0.1 depending on the regime, so it is deliberately **not**
+        baked in here: an unstable constant dressed as theory is worse than a
+        multiplier the study has to sweep, which is what ``mc_penalty`` is.
+        """
+        if n_scanned < 1:
+            return 0.0
+        G = float(gr.sum())
+        centred = gr - hr * (G / H) if H > _EPS else gr
+        scale = float(centred @ centred) / max(H + self.params.reg_lambda, _EPS)
+        pool = np.log(max(n_scanned, 1)) + MC_THRESHOLD_LOG * np.log(max(gr.size, 2))
+        return float(self.params.mc_penalty * scale * pool)
 
     def _chance_gain(self, scored, gr, hr, rng) -> float:
         """The best gain this node's own candidates reach on shuffled gradients.

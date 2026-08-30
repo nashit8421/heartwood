@@ -53,6 +53,7 @@ class _BaseHeartwood:
         n_comparison_candidates: int = 4,
         dense_base: bool = False,
         selection_null: int = 0,
+        mc_penalty: float = 0.0,
         dense_features: str = "stats",
         n_rocket_features: int = 10000,
         rocket_channel_groups: str = "subsets",
@@ -92,6 +93,7 @@ class _BaseHeartwood:
         self.n_comparison_candidates = n_comparison_candidates
         self.dense_base = dense_base
         self.selection_null = selection_null
+        self.mc_penalty = mc_penalty
         self.dense_features = dense_features
         self.n_rocket_features = n_rocket_features
         self.rocket_channel_groups = rocket_channel_groups
@@ -143,6 +145,8 @@ class _BaseHeartwood:
             )
         if self.n_comparison_candidates < 0:
             raise ValueError("n_comparison_candidates must be >= 0")
+        if self.mc_penalty < 0:
+            raise ValueError("mc_penalty must be >= 0")
 
     def _tree_params(self) -> TreeParams:
         return TreeParams(
@@ -168,6 +172,7 @@ class _BaseHeartwood:
             n_filter_alt=self.n_filter_alt,
             n_comparison_candidates=self.n_comparison_candidates,
             selection_null=self.selection_null,
+            mc_penalty=self.mc_penalty,
             bank_colsample=self.bank_colsample,
             candidate_colsample=self.candidate_colsample,
         )

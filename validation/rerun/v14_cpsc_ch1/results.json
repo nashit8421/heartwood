@@ -1,0 +1,67 @@
+{
+ "config": {
+  "datasets": "['cpsc2018']",
+  "sizes": "[1000]",
+  "seeds": "5",
+  "full_seeds": "2",
+  "rounds": "200",
+  "depth": "4",
+  "learning_rate": "0.1",
+  "no_minirocket": "False",
+  "max_test": "0",
+  "channels": "['II']",
+  "drop_static": "True",
+  "variants": "['rocket_static']",
+  "representations": "['agg']",
+  "out": "validation/rerun/v14_cpsc_ch1"
+ },
+ "unavailable": {},
+ "results": [
+  {
+   "dataset": "cpsc2018",
+   "model": "heartwood_rocket_static",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 3044.4473246249836,
+   "metrics": {
+    "balanced_accuracy": 0.5698070411367764,
+    "accuracy": 0.6640584246218049,
+    "roc_auc": 0.8935975995147238
+   }
+  },
+  {
+   "dataset": "cpsc2018",
+   "model": "agg",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 0.9510118749458343,
+   "metrics": {
+    "balanced_accuracy": 0.263088198936762,
+    "accuracy": 0.3369848721961398,
+    "roc_auc": 0.6709774606537761
+   }
+  },
+  {
+   "dataset": "cpsc2018",
+   "model": "minirocket",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 4.099477709038183,
+   "metrics": {
+    "balanced_accuracy": 0.5241508257861809,
+    "accuracy": 0.6369327073552425
+   }
+  },
+  {
+   "dataset": "cpsc2018",
+   "model": "minirocket10k",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 9.372015083092265,
+   "metrics": {
+    "balanced_accuracy": 0.545623769367405,
+    "accuracy": 0.647887323943662
+   }
+  }
+ ]
+}
