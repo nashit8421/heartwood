@@ -150,7 +150,8 @@ class DenseBase:
     null_quantile = 0.95
 
     def __init__(self, task: str, n_outputs: int, random_state: int = 0,
-                 use_static: bool = False, static_interactions: bool = False):
+                 use_static: bool = False, static_interactions: bool = False,
+                 nonlinear_features: int = 0, nonlinear_gamma: float = 1.0):
         self.use_static = bool(use_static)
         self.static_interactions = bool(static_interactions)
         self.static_pairs_: list[tuple[int, int]] = []
@@ -173,6 +174,10 @@ class DenseBase:
         self.degenerate_ = False
         self.loo_r2_: float = 0.0
         self.null_r2_: float = 0.0
+        self.nonlinear_features = int(nonlinear_features)
+        self.nonlinear_gamma = float(nonlinear_gamma)
+        self.rff_weights_: np.ndarray | None = None
+        self.rff_offset_: np.ndarray | None = None
 
     # ---------------------------------------------------------------- fitting
 
@@ -198,7 +203,49 @@ class DenseBase:
             self.center_ = filled.mean(axis=0)
             spread = filled.std(axis=0)
             self.scale_ = np.where(spread > _EPS, spread, 1.0)
-        return (filled - self.center_) / self.scale_
+        standard = (filled - self.center_) / self.scale_
+        if not self.nonlinear_features:
+            return standard
+        return np.hstack([standard, self._random_features(standard, fitting)])
+
+    def _random_features(self, standard: np.ndarray, fitting: bool) -> np.ndarray:
+        """Random Fourier features: a nonlinear base that is still a linear fit.
+
+        Roadmap item 4.  ``sqrt(2/D) cos(Wx + b)`` with ``W`` drawn Gaussian and
+        ``b`` uniform approximates an RBF kernel (Rahimi & Recht, 2007), so the
+        ridge on top of it is nonlinear in the bank while remaining linear in
+        what it fits.
+
+        **That last clause is the entire point of doing it this way.**  Exact
+        closed-form leave-one-group-out is what caught the V12 and V13 defects
+        and what lets a block hold-out be checked against literal refits to
+        1e-14.  A tree base would have cost that.  Because this map is applied
+        *inside* ``_prepare``, everything downstream -- the SVD, the lambda
+        search, ``_leave_out_margins`` -- sees an ordinary design matrix and the
+        exactness is preserved by construction rather than by care.
+
+        The linear block is kept alongside the random features so the nonlinear
+        base contains the linear one: the ridge can shrink the random block away
+        and recover it, rather than trading it for curvature.
+
+        The bandwidth is set from the design's own width.  Columns are already
+        standardised, so ``E||x - x'||^2`` is about ``2d`` and a gamma of
+        ``1/(2d)`` puts the kernel argument near 1 whatever the bank happens to
+        contain.  ``nonlinear_gamma`` scales that, and it is the knob V21 sweeps
+        rather than a number chosen here.
+        """
+        n_columns = standard.shape[1]
+        if fitting:
+            rng = np.random.default_rng(self.random_state + 1)
+            gamma = self.nonlinear_gamma / max(2.0 * n_columns, _EPS)
+            self.rff_weights_ = rng.normal(
+                scale=np.sqrt(2.0 * gamma), size=(n_columns, self.nonlinear_features)
+            )
+            self.rff_offset_ = rng.uniform(0.0, 2.0 * np.pi, size=self.nonlinear_features)
+        if self.rff_weights_ is None:
+            raise RuntimeError("random features are not fitted")
+        projected = standard @ self.rff_weights_ + self.rff_offset_
+        return np.sqrt(2.0 / self.nonlinear_features) * np.cos(projected)
 
     @staticmethod
     def _interaction_pairs(n_columns: int, n_rows: int) -> list[tuple[int, int]]:

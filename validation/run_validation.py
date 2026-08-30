@@ -158,6 +158,19 @@ NO_REGRET_ARMS = {
     "components": ("comp_base", "comp_trees"),
 }
 
+#: V21 (roadmap item 4): the nonlinear base.  The knob swept is the width of the
+#: random-feature block at the default bandwidth; sweeping width and bandwidth
+#: together would be a two-dimensional search dressed as a study, and the
+#: bandwidth is the one with a principled default (the design's own width).
+_NONLINEAR_WIDTHS = (256, 1024, 4096)
+for _w in _NONLINEAR_WIDTHS:
+    VARIANTS[f"rff{_w:04d}"] = {
+        **VARIANTS["rocket_static"], "nonlinear_features": _w,
+    }
+
+NONLINEAR_ARMS = {f"rff{w:04d}": w for w in _NONLINEAR_WIDTHS}
+NONLINEAR_BASELINE = "rocket_static"
+
 #: The four extras under test, and the arm that switches each one on.  Written
 #: here rather than in the report so the reporting script cannot quietly change
 #: what "the +virtual-channels arm" means after a score has been seen.

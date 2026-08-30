@@ -63,6 +63,8 @@ class _BaseHeartwood:
         dense_include_static: bool = False,
         dense_static_interactions: bool = False,
         levy_areas: bool = True,
+        nonlinear_features: int = 0,
+        nonlinear_gamma: float = 1.0,
         no_regret: bool = False,
         no_regret_fraction: float = 0.25,
         no_regret_margin: float = 0.0,
@@ -109,6 +111,8 @@ class _BaseHeartwood:
         self.dense_include_static = dense_include_static
         self.dense_static_interactions = dense_static_interactions
         self.levy_areas = levy_areas
+        self.nonlinear_features = nonlinear_features
+        self.nonlinear_gamma = nonlinear_gamma
         self.no_regret = no_regret
         self.no_regret_fraction = no_regret_fraction
         self.no_regret_margin = no_regret_margin
@@ -175,6 +179,10 @@ class _BaseHeartwood:
             raise ValueError("no_regret_fraction must be in (0, 1)")
         if self.no_regret_margin < 0:
             raise ValueError("no_regret_margin must be >= 0")
+        if self.nonlinear_features < 0:
+            raise ValueError("nonlinear_features must be >= 0")
+        if self.nonlinear_gamma <= 0:
+            raise ValueError("nonlinear_gamma must be > 0")
         if not 0 <= self.screen_fraction < 1:
             raise ValueError("screen_fraction must be in [0, 1)")
         if self.screen_top_k < 1:
@@ -269,6 +277,8 @@ class _BaseHeartwood:
             dense_include_static=self.dense_include_static,
             dense_static_interactions=self.dense_static_interactions,
             levy_areas=self.levy_areas,
+            nonlinear_features=self.nonlinear_features,
+            nonlinear_gamma=self.nonlinear_gamma,
         )
         settings.update(overrides)
         return _BoosterCore(**settings)

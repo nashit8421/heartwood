@@ -26,7 +26,8 @@ class _BoosterCore:
                  dense_features="stats", n_rocket_features=10000,
                  rocket_channel_groups="subsets",
                  dense_include_static=False, dense_static_interactions=False,
-                 screen_fraction=0.0, screen_top_k=8):
+                 screen_fraction=0.0, screen_top_k=8,
+                 nonlinear_features=0, nonlinear_gamma=1.0):
         self.tree_params = tree_params
         self.n_estimators = int(n_estimators)
         self.learning_rate = float(learning_rate)
@@ -51,6 +52,8 @@ class _BoosterCore:
         self.dense_: DenseBase | None = None
         self.screen_fraction = float(screen_fraction)
         self.screen_top_k = int(screen_top_k)
+        self.nonlinear_features = int(nonlinear_features)
+        self.nonlinear_gamma = float(nonlinear_gamma)
         self.static_names_: list[str] = []
 
         self.trees_: list[list[TemporalTree]] = []
@@ -98,6 +101,8 @@ class _BoosterCore:
                     loss.task, loss.n_outputs(y),
                     use_static=self.dense_include_static,
                     static_interactions=self.dense_static_interactions,
+                    nonlinear_features=self.nonlinear_features,
+                    nonlinear_gamma=self.nonlinear_gamma,
                 )
                 base_raw = self.dense_.fit(bank, y, static=statics, groups=groups)
             elif self.dense_ is not None:
