@@ -77,6 +77,10 @@ class TreeParams:
     candidate_colsample: float = 1.0
     #: Permutations used to price a node's own selection bias (V8). 0 disables.
     selection_null: int = 0
+    #: Which quantile of the per-permutation null maxima a split must clear
+    #: (V19, item 2d).  1.0 is V8's behaviour and is kept as the default so that
+    #: arm reproduces exactly.  See :meth:`TemporalTree._chance_gain`.
+    selection_null_quantile: float = 1.0
     #: Analytic multiple-comparisons charge on the winning gain (V17, item 2b).
     #: 0 disables.  See :meth:`TemporalTree._selection_charge`.
     mc_penalty: float = 0.0
@@ -421,22 +425,42 @@ class TemporalTree:
         here it stops a node taking a noise split seriously -- measured in
         validation/HEADROOM.md as the ceiling on this architecture, and in V7 as
         a five-point tax wherever the trees had no static block to work with.
+
+        **What V8 got wrong** (roadmap item 2d).  It took the maximum gain over
+        every permutation *and* every candidate, so the bar tightened as
+        ``selection_null`` grew: asking for a more precise null also asked for a
+        harsher one, and the knob could not be turned up without changing the
+        test.  A single permutation, meanwhile, is not a test at all -- comparing
+        an observed maximum against one draw of the null maximum accepts roughly
+        half of pure noise.
+
+        The fix is the pattern this library already uses one level down, in
+        ``DenseBase._chance_r2``: take the maximum *within* each permutation,
+        then a fixed quantile *across* them.  More permutations now estimate the
+        same bar more precisely instead of moving it.
+        ``selection_null_quantile`` defaults to 1.0, which reproduces V8 exactly
+        at ``selection_null=1``, so the old arm is still available to compare
+        against rather than being quietly redefined.
         """
         p = self.params
         if not scored:
             return 0.0
-        floor = 0.0
+        maxima = []
         for _ in range(p.selection_null):
             order = rng.permutation(gr.size)
             gp, hp = gr[order], hr[order]
+            best = 0.0
             for f in scored:
                 found = scan_threshold(
                     f, gp, hp, p.reg_lambda, p.gamma,
                     p.min_child_weight, p.min_samples_leaf,
                 )
-                if found is not None and found[0] > floor:
-                    floor = found[0]
-        return floor
+                if found is not None and found[0] > best:
+                    best = found[0]
+            maxima.append(best)
+        if not maxima:
+            return 0.0
+        return float(np.quantile(maxima, p.selection_null_quantile))
 
     def _comparison_candidates(self, X_static, rows, rng):
         """"Did this happen before that" — a learned event time versus a static column.

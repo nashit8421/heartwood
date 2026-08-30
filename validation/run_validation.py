@@ -121,6 +121,27 @@ VARIANTS["sub075"] = {**VARIANTS["rocket_static"], "subsample": 0.75}
 SCREEN_ARMS = {f"screen{k:02d}": k for k in _SCREEN_TOP_K}
 SCREEN_BASELINE = "rocket_static"
 
+#: V19 (roadmap item 2d): the recalibrated permutation null.  The knob swept is
+#: the quantile; the permutation count is fixed at 16 because a 0.95 tail
+#: estimated from 4 draws is biased low, which was measured before these arms
+#: were written (see VALIDATION_V19.md §2).
+_NULL_PERMUTATIONS = 16
+_NULL_QUANTILES = (0.5, 0.9, 0.95)
+for _q in _NULL_QUANTILES:
+    VARIANTS[f"null_q{int(_q * 100):02d}"] = {
+        **VARIANTS["rocket_static"],
+        "selection_null": _NULL_PERMUTATIONS, "selection_null_quantile": _q,
+    }
+
+#: V8's arm exactly -- one permutation, the global maximum as the floor.  Kept
+#: so V19 is a comparison against what actually failed rather than against a
+#: reconstruction of it.
+VARIANTS["null_v8"] = {**VARIANTS["rocket_static"],
+                       "selection_null": 1, "selection_null_quantile": 1.0}
+
+NULL_ARMS = {f"null_q{int(q * 100):02d}": q for q in _NULL_QUANTILES}
+NULL_BASELINE = "rocket_static"
+
 #: The four extras under test, and the arm that switches each one on.  Written
 #: here rather than in the report so the reporting script cannot quietly change
 #: what "the +virtual-channels arm" means after a score has been seen.
