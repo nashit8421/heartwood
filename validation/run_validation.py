@@ -236,6 +236,34 @@ def run_cell(dataset, train_idx, test_idx, size, seed, config) -> list[Row]:
 # -------------------------------------------------------------------- main
 
 
+def restrict_channels(dataset, channels: list[str]):
+    """Keep only the named channels, in the order named. H-V14.1.
+
+    Channel count is confounded with dataset in every result so far -- the two
+    12-lead sets beat MiniROCKET, the two single-channel sets split.  Holding the
+    dataset, task, split and seed fixed and varying only the width is the one way
+    to ask whether the width causes the margin.
+
+    Selection is by *name*, never by position, so a subset is reproducible from
+    the results file alone and a renamed or reordered loader fails loudly instead
+    of silently ablating a different lead.
+    """
+    names = list(dataset.channel_names)
+    if len(names) != dataset.X_series.shape[1]:
+        raise SystemExit(
+            f"{dataset.key}: {len(names)} channel names for "
+            f"{dataset.X_series.shape[1]} channels; cannot select by name")
+    missing = [c for c in channels if c not in names]
+    if missing:
+        raise SystemExit(
+            f"{dataset.key}: no such channel {missing}; available {names}")
+    take = [names.index(c) for c in channels]
+    dataset.X_series = dataset.X_series[:, take, :]
+    dataset.channel_names = list(channels)
+    dataset.notes += f" | channels restricted to {list(channels)}"
+    return dataset
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--datasets", nargs="+", default=["credit"])
@@ -255,6 +283,9 @@ def main() -> int:
                              "the cell: 2900s at n=100, where the fit itself is trivial. "
                              "Balanced accuracy over 4000 stratified rows is precise "
                              "enough that the extra 9k buys nothing but hours.")
+    parser.add_argument("--channels", nargs="+", default=None,
+                        help="restrict the series to these named channels "
+                             "(H-V14.1 channel ablation)")
     parser.add_argument("--drop-static", action="store_true",
                         help="blank the static block for every model (V7 arm C): "
                              "isolates what the static covariates are actually worth")
@@ -300,6 +331,9 @@ def main() -> int:
             checkpoint()
             print(f"UNAVAILABLE {key}: {unavailable[key]}", flush=True)
             continue
+
+        if args.channels:
+            restrict_channels(dataset, args.channels)
 
         if args.drop_static:
             # Arm C of the H-V7.3 decomposition. Heartwood also beats MiniROCKET on
