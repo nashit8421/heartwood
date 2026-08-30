@@ -24,6 +24,7 @@ class _BoosterCore:
                  subsample=1.0, early_stopping_rounds=None, random_state=None,
                  bank_enabled=True, bank_max=32, dense_base=False, levy_areas=False,
                  dense_features="stats", n_rocket_features=10000,
+                 rocket_channel_groups="subsets",
                  dense_include_static=False, dense_static_interactions=False):
         self.tree_params = tree_params
         self.n_estimators = int(n_estimators)
@@ -41,6 +42,7 @@ class _BoosterCore:
             )
         self.dense_features = dense_features
         self.n_rocket_features = int(n_rocket_features)
+        self.rocket_channel_groups = str(rocket_channel_groups)
         self.dense_include_static = bool(dense_include_static)
         self.dense_static_interactions = bool(dense_static_interactions)
         self.rocket_: RocketBank | None = None
@@ -126,6 +128,7 @@ class _BoosterCore:
                 self.rocket_ = RocketBank(
                     n_features=self.n_rocket_features,
                     random_state=0 if self.random_state is None else self.random_state,
+                    channel_groups=self.rocket_channel_groups,
                 ).fit(X_series)
             if self.rocket_ is None:
                 raise RuntimeError("rocket bank is not fitted")

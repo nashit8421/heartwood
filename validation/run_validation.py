@@ -39,6 +39,75 @@ REPRESENTATIONS = ["static_only", "agg", "wagg4", "wagg8", "raw_flat",
                    "agg_naive", "wagg8_naive"]
 
 
+# ------------------------------------------------- Heartwood arm definitions
+
+#: ``""`` is the shipped default.  Everything else puts a ridge over a feature
+#: bank underneath the trees (V6); the name is what a results table shows.
+#:
+#: The ``abl_*`` family is the V15 bank ablation.  ``abl_min`` is MiniROCKET's
+#: bank and nothing else -- singleton channel groups, no comparison splits, no
+#: window-statistic block, no Levy areas -- and each other ``abl_*`` arm adds
+#: exactly one of those four extras back.  Every arm shares
+#: ``dense_include_static``, so the *only* thing that differs between two arms
+#: is the extra named in the arm.  See ``VALIDATION_V15.md``.
+_ABL_MIN = {
+    "dense_base": True,
+    "dense_features": "rocket",
+    "dense_include_static": True,
+    "dense_static_interactions": False,
+    "rocket_channel_groups": "singletons",
+    "n_comparison_candidates": 0,
+    "levy_areas": False,
+}
+
+VARIANTS: dict[str, dict] = {
+    "": {},
+    "rocket_static": {"dense_base": True, "dense_features": "rocket",
+                      "dense_include_static": True, "dense_static_interactions": False},
+    "rocket_inter": {"dense_base": True, "dense_features": "rocket",
+                     "dense_include_static": True, "dense_static_interactions": True},
+    # V8: the convolution base plus a chance floor on split acceptance.
+    "rocket_null": {"dense_base": True, "dense_features": "rocket", "selection_null": 1},
+    "abl_min": dict(_ABL_MIN),
+    "abl_vchan": {**_ABL_MIN, "rocket_channel_groups": "subsets"},
+    "abl_cmp": {**_ABL_MIN, "n_comparison_candidates": 4},
+    "abl_stats": {**_ABL_MIN, "dense_features": "both"},
+    "abl_levy": {**_ABL_MIN, "levy_areas": True},
+    "abl_all": {**_ABL_MIN, "rocket_channel_groups": "subsets",
+                "n_comparison_candidates": 4, "dense_features": "both",
+                "levy_areas": True},
+}
+
+#: The four extras under test, and the arm that switches each one on.  Written
+#: here rather than in the report so the reporting script cannot quietly change
+#: what "the +virtual-channels arm" means after a score has been seen.
+ABLATION_EXTRAS = {
+    "virtual_channels": "abl_vchan",
+    "comparison_splits": "abl_cmp",
+    "interval_stats": "abl_stats",
+    "levy_areas": "abl_levy",
+}
+
+#: Extras that are vacuous on one channel: ``_channel_groups`` returns the
+#: singleton and ``levy_area_columns`` returns an empty block, so those arms are
+#: *identical* to ``abl_min`` there.  V15 counts an extra's majority only over
+#: the datasets where it is live -- pre-committed, because discovering this
+#: after the fact would be an invitation to pick the favourable denominator.
+MULTICHANNEL_ONLY_EXTRAS = ("virtual_channels", "levy_areas")
+
+
+def variant_kwargs(variant: str) -> dict:
+    """Estimator keyword arguments for a named arm.
+
+    Unknown names fall through to ``dense_features=<name>``, which is how
+    ``stats``/``rocket``/``both`` were addressed before this table existed; an
+    invalid one still fails loudly inside the estimator rather than here.
+    """
+    if variant in VARIANTS:
+        return dict(VARIANTS[variant])
+    return {"dense_base": True, "dense_features": variant}
+
+
 # ------------------------------------------------------------------ metrics
 
 
@@ -162,22 +231,7 @@ def run_cell(dataset, train_idx, test_idx, size, seed, config) -> list[Row]:
     estimator = HeartwoodRegressor if dataset.task == "regression" else HeartwoodClassifier
     static_arg = Xs_te if Xs.shape[1] else None
     for variant in config["variants"]:
-        # "" is the shipped default; the others put a ridge over a feature bank
-        # underneath the trees (V6). Named so a table shows them side by side.
-        # "rocket_null" is the V8 arm: the convolution base plus a chance floor
-        # on split acceptance. Named so a table shows it beside plain "rocket".
-        if not variant:
-            extra = {}
-        elif variant == "rocket_static":
-            extra = {"dense_base": True, "dense_features": "rocket",
-                     "dense_include_static": True, "dense_static_interactions": False}
-        elif variant == "rocket_inter":
-            extra = {"dense_base": True, "dense_features": "rocket",
-                     "dense_include_static": True, "dense_static_interactions": True}
-        elif variant == "rocket_null":
-            extra = {"dense_base": True, "dense_features": "rocket", "selection_null": 1}
-        else:
-            extra = {"dense_base": True, "dense_features": variant}
+        extra = variant_kwargs(variant)
         name = HEARTWOOD if not variant else f"{HEARTWOOD}_{variant}"
         started = time.perf_counter()
         model = estimator(
@@ -292,7 +346,8 @@ def main() -> int:
     parser.add_argument("--variants", nargs="+", default=[""],
                         help='Heartwood configurations to run: "" is the shipped '
                              'default, "rocket"/"stats"/"both" put a ridge over that '
-                             "feature bank underneath the trees")
+                             "feature bank underneath the trees, and the abl_* family "
+                             "is the V15 bank ablation. Names come from VARIANTS.")
     parser.add_argument("--representations", nargs="+", default=REPRESENTATIONS,
                         help="baselines to run; a wide one (raw_flat on 12k columns) can "
                              "be split into its own pass so it cannot stall the grid")

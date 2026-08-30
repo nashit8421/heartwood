@@ -84,16 +84,31 @@ def _dilations(length: int, n_features_per_kernel: int, max_dilations: int = 32)
     return dilations, per_dilation
 
 
-def _channel_groups(n_channels: int, rng: np.random.Generator) -> list[np.ndarray]:
-    """Singletons, plus random subsets of size 2, 4, ... summed together.
+CHANNEL_GROUP_MODES = ("subsets", "singletons")
+
+
+def _channel_groups(n_channels: int, rng: np.random.Generator,
+                    mode: str = "subsets") -> list[np.ndarray]:
+    """Singletons, plus — under ``mode="subsets"`` — random unions of them.
 
     Singletons are always present so no per-channel structure is lost; the
     subsets exist because some signals live only in the joint trajectory.  Sizes
     are powers of two, following MiniROCKET's channel-combination scheme.
+
+    ``mode="singletons"`` drops the unions and is the V15 ablation arm: it is
+    what MiniROCKET's own multivariate handling would give us, so the difference
+    between the two modes *is* the virtual-channel extra, measured rather than
+    assumed.  On single-channel data the two modes are identical by
+    construction, which is why V15 counts this extra only where it is live.
     """
-    if n_channels == 1:
-        return [np.array([0], dtype=np.intp)]
-    groups = [np.array([c], dtype=np.intp) for c in range(n_channels)]
+    if mode not in CHANNEL_GROUP_MODES:
+        raise ValueError(
+            f"channel_groups must be one of {CHANNEL_GROUP_MODES}, got {mode!r}"
+        )
+    singletons = [np.array([c], dtype=np.intp) for c in range(n_channels)]
+    if n_channels == 1 or mode == "singletons":
+        return singletons
+    groups = list(singletons)
     max_exponent = int(np.log2(min(n_channels, 9)))
     for _ in range(n_channels):
         size = int(2 ** rng.integers(1, max_exponent + 1)) if max_exponent >= 1 else 1
@@ -155,10 +170,16 @@ class RocketBank:
     """
 
     def __init__(self, n_features: int = DEFAULT_FEATURES, random_state: int = 0,
-                 max_dilations: int = 32):
+                 max_dilations: int = 32, channel_groups: str = "subsets"):
         self.n_features = int(n_features)
         self.random_state = int(random_state)
         self.max_dilations = int(max_dilations)
+        if channel_groups not in CHANNEL_GROUP_MODES:
+            raise ValueError(
+                f"channel_groups must be one of {CHANNEL_GROUP_MODES}, "
+                f"got {channel_groups!r}"
+            )
+        self.channel_groups = channel_groups
         self.plan_: list[tuple[int, int, np.ndarray]] | None = None  # group, dilation, biases
         self.groups_: list[np.ndarray] | None = None
         self.n_channels_: int | None = None
@@ -178,7 +199,7 @@ class RocketBank:
         rng = np.random.default_rng(self.random_state)
         n, n_channels, length = X_series.shape
         self.n_channels_, self.length_ = n_channels, length
-        self.groups_ = _channel_groups(n_channels, rng)
+        self.groups_ = _channel_groups(n_channels, rng, self.channel_groups)
         virtual = _virtual_channels(X_series, self.groups_)
         per_kernel = self._budget()
         dilations, per_dilation = _dilations(length, per_kernel, self.max_dilations)
