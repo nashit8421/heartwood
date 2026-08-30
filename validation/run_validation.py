@@ -78,6 +78,19 @@ VARIANTS: dict[str, dict] = {
                 "levy_areas": True},
 }
 
+#: V16 (roadmap item 2a): per-node bagging over the temporal draws, on top of
+#: the shipped rocket base so the arm differs from ``rocket_static`` in exactly
+#: one setting.  Fractions are named in advance and none is added later.
+_BAGGING_FRACTIONS = (0.5, 0.25, 0.125)
+for _fraction in _BAGGING_FRACTIONS:
+    VARIANTS[f"bag{int(_fraction * 1000):03d}"] = {
+        **VARIANTS["rocket_static"], "candidate_colsample": _fraction,
+    }
+
+#: Bagging arm -> its fraction.  The report reads this rather than parsing names.
+BAGGING_ARMS = {f"bag{int(f * 1000):03d}": f for f in _BAGGING_FRACTIONS}
+BAGGING_BASELINE = "rocket_static"
+
 #: The four extras under test, and the arm that switches each one on.  Written
 #: here rather than in the report so the reporting script cannot quietly change
 #: what "the +virtual-channels arm" means after a score has been seen.

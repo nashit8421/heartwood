@@ -62,6 +62,9 @@ class TreeParams:
     n_filter_alt: int = 1
     n_comparison_candidates: int = 4
     bank_colsample: float = 0.25
+    #: Per-node bagging over the temporal draws (V16, roadmap item 2a).  1.0 is
+    #: the shipped behaviour.  See :meth:`TemporalTree._draw_count`.
+    candidate_colsample: float = 1.0
     #: Permutations used to price a node's own selection bias (V8). 0 disables.
     selection_null: int = 0
 
@@ -180,6 +183,33 @@ class TemporalTree:
 
     # ---------------------------------------------------------- candidates
 
+    def _draw_count(self, requested: int) -> int:
+        """How many temporal candidates this node actually draws.
+
+        ``candidate_colsample`` is per-node feature bagging aimed at the winner's
+        curse, which ``validation/HEADROOM.md`` measured as this model's ceiling:
+        a node takes the maximum gain over its pool, so a larger pool raises the
+        winner's expected gain *whether or not anything in it is informative*,
+        and every subtree below inherits the over-fitted split.  HEADROOM pushed
+        this knob upwards -- x4 and x16 -- and found the default already past the
+        optimum on two datasets of three.  Downwards is the untested direction
+        and the one the argument actually predicts.
+
+        Scope is deliberate.  This thins the *temporal draws* only, because the
+        static block and the bank already have ``colsample`` and
+        ``bank_colsample``; a third knob silently multiplying those two would
+        make any measured effect impossible to attribute.
+
+        The floor of one keeps a node's pool non-empty at any fraction, so a
+        small ``candidate_colsample`` degrades the search rather than switching
+        a whole candidate source off.
+        """
+        if requested <= 0:
+            return 0
+        if not 0.0 < self.params.candidate_colsample < 1.0:
+            return requested
+        return max(1, int(np.ceil(self.params.candidate_colsample * requested)))
+
     def _candidates(self, X_static, X_series, rows, gr, hr, rng):
         """Yield ``(feature_values_over_rows, partial_spec)`` pairs."""
         p = self.params
@@ -215,7 +245,7 @@ class TemporalTree:
         p = self.params
         _, n_channels, T = X_series.shape
         stats = p.interval_stats
-        for _ in range(p.n_interval_candidates):
+        for _ in range(self._draw_count(p.n_interval_candidates)):
             channel = int(rng.integers(n_channels))
             start, end = sample_interval(T, rng, p.min_interval_len, p.full_interval_prob)
             stat = str(stats[int(rng.integers(len(stats)))])
@@ -226,7 +256,7 @@ class TemporalTree:
 
     def _shapelet_candidates(self, X_series, rows, rng):
         p = self.params
-        for _ in range(p.n_shapelet_candidates):
+        for _ in range(self._draw_count(p.n_shapelet_candidates)):
             drawn = sample_shapelet(
                 X_series, rows, rng, p.shapelet_min_len, p.shapelet_max_frac
             )
@@ -268,8 +298,12 @@ class TemporalTree:
         basis = dct_basis(p.filter_len, p.dct_components)
         n_channels = X_series.shape[1]
 
-        for index in range(p.n_filter_candidates):
-            is_fitted = index < p.n_fitted_filters
+        # Both counts are thinned, so bagging changes how many templates a node
+        # tries without changing the fitted/seeded mix it tries them in.
+        n_filters = self._draw_count(p.n_filter_candidates)
+        n_fitted = min(n_filters, self._draw_count(p.n_fitted_filters))
+        for index in range(n_filters):
+            is_fitted = index < n_fitted
             channel = int(rng.integers(n_channels))
             scale = int(rng.integers(pyramid.n_scales))
             block = pyramid.block(scale, channel, rows)
@@ -367,7 +401,7 @@ class TemporalTree:
         if not positions:
             return
 
-        for _ in range(p.n_comparison_candidates):
+        for _ in range(self._draw_count(p.n_comparison_candidates)):
             entry = positions[int(rng.integers(len(positions)))]
             if entry.grid is None:
                 continue

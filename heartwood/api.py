@@ -49,6 +49,7 @@ class _BaseHeartwood:
         bank_enabled: bool = True,
         bank_max: int = 32,
         bank_colsample: float = 0.25,
+        candidate_colsample: float = 1.0,
         n_comparison_candidates: int = 4,
         dense_base: bool = False,
         selection_null: int = 0,
@@ -87,6 +88,7 @@ class _BaseHeartwood:
         self.bank_enabled = bank_enabled
         self.bank_max = bank_max
         self.bank_colsample = bank_colsample
+        self.candidate_colsample = candidate_colsample
         self.n_comparison_candidates = n_comparison_candidates
         self.dense_base = dense_base
         self.selection_null = selection_null
@@ -122,6 +124,10 @@ class _BaseHeartwood:
             raise ValueError("subsample must be in (0, 1]")
         if not 0 < self.colsample <= 1:
             raise ValueError("colsample must be in (0, 1]")
+        if not 0 < self.candidate_colsample <= 1:
+            raise ValueError("candidate_colsample must be in (0, 1]")
+        if not 0 < self.bank_colsample <= 1:
+            raise ValueError("bank_colsample must be in (0, 1]")
         if self.n_estimators < 1:
             raise ValueError("n_estimators must be >= 1")
         if self.learning_rate <= 0:
@@ -163,6 +169,7 @@ class _BaseHeartwood:
             n_comparison_candidates=self.n_comparison_candidates,
             selection_null=self.selection_null,
             bank_colsample=self.bank_colsample,
+            candidate_colsample=self.candidate_colsample,
         )
 
     # ------------------------------------------------------------------ fit

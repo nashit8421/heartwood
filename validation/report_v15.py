@@ -24,6 +24,9 @@ from pathlib import Path
 import numpy as np
 
 HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE.parent))
+
+from validation import margins as margins_lib
 
 _spec = importlib.util.spec_from_file_location("run_validation", HERE / "run_validation.py")
 run_validation = importlib.util.module_from_spec(_spec)
@@ -33,45 +36,21 @@ _spec.loader.exec_module(run_validation)
 ABLATION_EXTRAS = run_validation.ABLATION_EXTRAS
 MULTICHANNEL_ONLY_EXTRAS = run_validation.MULTICHANNEL_ONLY_EXTRAS
 
-METRIC = "balanced_accuracy"   # VALIDATION_V5.md headline
 BAR = 0.5                      # H-V15.1..4, points
 MAJORITY = 0.5                 # "a majority of datasets"
 ADDITIVITY_SLACK = 1.0         # H-V15.5, points
 BASELINE = "heartwood_abl_min"
 
-
-def load(run: str) -> list[dict]:
-    """Results for a run name under ``validation/rerun``, or an explicit path."""
-    candidate = Path(run)
-    path = candidate if candidate.is_dir() else HERE / "rerun" / run
-    path = path / "results.json"
-    if not path.exists():
-        raise SystemExit(f"no results at {path} -- has the run finished?")
-    return json.loads(path.read_text())["results"]
+METRIC = margins_lib.METRIC
+load = margins_lib.load
 
 
 def by_seed(results, dataset: str, model: str) -> dict[int, float]:
-    """Seed -> score, and a loud failure if a cell was somehow run twice."""
-    out: dict[int, float] = {}
-    for r in results:
-        if r["dataset"] != dataset or r["model"] != model:
-            continue
-        if METRIC not in r["metrics"]:
-            continue
-        if r["seed"] in out:
-            raise SystemExit(f"duplicate cell: {dataset} {model} seed {r['seed']}")
-        out[r["seed"]] = r["metrics"][METRIC]
-    return out
+    return margins_lib.by_seed(results, dataset, model)
 
 
 def paired_margin(results, dataset: str, arm: str) -> tuple[list[float], str]:
-    """Per-seed ``arm - baseline`` in points, plus a note on what is missing."""
-    base = by_seed(results, dataset, BASELINE)
-    test = by_seed(results, dataset, f"heartwood_{arm}")
-    shared = sorted(set(base) & set(test))
-    dropped = sorted((set(base) | set(test)) - set(shared))
-    note = "" if not dropped else f"unpaired seeds {dropped}"
-    return [100.0 * (test[s] - base[s]) for s in shared], note
+    return margins_lib.paired_margin(results, dataset, f"heartwood_{arm}", BASELINE)
 
 
 def main() -> int:
