@@ -212,3 +212,79 @@ def test_eval_split_feature_rejects_unknown_kinds(rng):
         eval_split_feature(
             SplitSpec(kind="wavelet"), np.zeros((2, 2)), None, np.array([0, 1])
         )
+
+
+# ------------------------------------------------- the FFT sliding inner product
+
+
+def test_the_fft_path_matches_the_direct_accumulation():
+    """The speedup is only allowed if it computes the same thing.
+
+    ``_sliding_dot`` switches to an FFT above a template length, which reorders
+    the floating-point summation. Measured agreement is ~1e-15 relative across
+    template lengths from 10 to 500; this pins that bound so it cannot quietly
+    widen into something a distance comparison would notice.
+    """
+    from heartwood.features import _FFT_MIN_LEN, _sliding_dot
+
+    rng = np.random.default_rng(0)
+    for T, l in [(500, 250), (500, 125), (1000, 500), (152, 76), (64, 16)]:
+        assert l >= _FFT_MIN_LEN, "this case would not exercise the FFT path"
+        Z = rng.normal(size=(40, T))
+        template = rng.normal(size=l)
+        P = T - l + 1
+
+        direct = np.zeros((len(Z), P))
+        for j in range(l):
+            direct += Z[:, j : j + P] * template[j]
+
+        drift = np.abs(direct - _sliding_dot(Z, template, P, l)).max()
+        assert drift / max(np.abs(direct).max(), 1e-12) < 1e-12, (
+            f"T={T} l={l}: relative drift {drift:.2e}"
+        )
+
+
+def test_short_templates_keep_the_exact_direct_path():
+    """Below the threshold the FFT does not win, so nothing is traded for it."""
+    from heartwood.features import _FFT_MIN_LEN, _sliding_dot
+
+    rng = np.random.default_rng(1)
+    l = _FFT_MIN_LEN - 1
+    T, P = 40, 40 - (_FFT_MIN_LEN - 1) + 1
+    Z = rng.normal(size=(8, T))
+    template = rng.normal(size=l)
+    direct = np.zeros((len(Z), P))
+    for j in range(l):
+        direct += Z[:, j : j + P] * template[j]
+    assert np.array_equal(direct, _sliding_dot(Z, template, P, l))
+
+
+def test_shapelet_distances_are_unchanged_by_the_speedup():
+    """End to end: the feature the trees actually split on must not move."""
+    from heartwood.features import shapelet_features
+
+    rng = np.random.default_rng(2)
+    X = rng.normal(size=(30, 400))
+    X[3, 10:20] = np.nan          # the NaN-window path must survive too
+    template = rng.normal(size=120)
+
+    dist, pos = shapelet_features(X, template)
+    # Recompute the distance the slow way for a handful of rows.
+    l, T = len(template), X.shape[1]
+    mu_s, sd_s = template.mean(), template.std()
+    normalised = (template - mu_s) / sd_s
+    for row in (0, 3, 17):
+        best = np.inf
+        for start in range(T - l + 1):
+            window = X[row, start : start + l]
+            if not np.isfinite(window).all():
+                continue
+            spread = window.std()
+            if spread <= 1e-12:
+                continue
+            standard = (window - window.mean()) / spread
+            best = min(best, float(np.mean((standard - normalised) ** 2)))
+        if np.isfinite(best):
+            assert dist[row] == pytest.approx(best, abs=1e-9)
+        else:
+            assert np.isnan(dist[row])

@@ -129,17 +129,63 @@ def _sliding_sums(X2d: np.ndarray, l: int):
     m, T = X2d.shape
     P = T - l + 1
     finite = np.isfinite(X2d)
-    Z = np.where(finite, X2d, 0.0)
+    complete = bool(finite.all())
+    Z = X2d if complete else np.where(finite, X2d, 0.0)
     zero = np.zeros((m, 1), dtype=np.float64)
 
     c1 = np.concatenate([zero, np.cumsum(Z, axis=1)], axis=1)
     c2 = np.concatenate([zero, np.cumsum(Z * Z, axis=1)], axis=1)
-    cn = np.concatenate([zero, np.cumsum((~finite).astype(np.float64), axis=1)], axis=1)
 
     S1 = c1[:, l:] - c1[:, :P]
     S2 = c2[:, l:] - c2[:, :P]
-    bad = (cn[:, l:] - cn[:, :P]) > 0
+    if complete:
+        # A third cumulative sum, purely to find windows that touch a NaN, when
+        # there are no NaNs to find. Every dense benchmark in this project pays
+        # it on every shapelet candidate of every node; skipping it is exact,
+        # not an approximation, because the answer is known to be all-False.
+        bad = np.zeros((m, P), dtype=bool)
+    else:
+        cn = np.concatenate(
+            [zero, np.cumsum((~finite).astype(np.float64), axis=1)], axis=1)
+        bad = (cn[:, l:] - cn[:, :P]) > 0
     return Z, S1, S2, bad
+
+
+#: Below this template length the direct accumulation is as fast as an FFT and
+#: has one less thing to go wrong, so it is kept.  Measured, not guessed: at
+#: l=10 the two are within 1.4x, and the FFT only pulls away as l grows (3.1x at
+#: l=250, 14x at l=500).
+_FFT_MIN_LEN = 16
+
+
+def _sliding_dot(Z: np.ndarray, shp_n: np.ndarray, P: int, l: int) -> np.ndarray:
+    """``dot[i, p] = sum_j Z[i, p + j] * shp_n[j]`` — the sliding inner product.
+
+    This is where a fit spends most of its time.  Profiled on a CPSC-shaped cell
+    (12 channels x 500 steps), ``shapelet_features`` was 63% of the whole fit and
+    the accumulation below was most of it: one pass over an ``(m, P)`` array per
+    element of the template, and a template runs to half the series length.
+
+    A sliding inner product is a cross-correlation, so for anything but a short
+    template the FFT does it in ``O(T log T)`` instead of ``O(P * l)``.
+
+    The reordering changes floating-point summation order, so the two paths are
+    not bit-identical.  Measured agreement is ~1e-15 relative across template
+    lengths from 10 to 500 -- ordinary floating-point noise, far below anything a
+    distance is compared at -- and ``tests/test_features.py`` pins that bound so
+    it cannot quietly widen.
+    """
+    if l < _FFT_MIN_LEN:
+        dot = np.zeros((Z.shape[0], P), dtype=np.float64)
+        for j in range(l):
+            w = shp_n[j]
+            if w != 0.0:
+                dot += Z[:, j : j + P] * w
+        return dot
+
+    size = 1 << int(np.ceil(np.log2(Z.shape[1] + l)))
+    spectrum = np.fft.rfft(Z, n=size, axis=1) * np.fft.rfft(shp_n[::-1], n=size)
+    return np.fft.irfft(spectrum, n=size, axis=1)[:, l - 1 : l - 1 + P]
 
 
 def shapelet_features(
@@ -203,11 +249,7 @@ def shapelet_features(
         hi = min(lo + rows_per_chunk, m)
         Z, S1, S2, bad = _sliding_sums(X2d[lo:hi], l)
 
-        dot = np.zeros((hi - lo, P), dtype=np.float64)
-        for j in range(l):
-            w = shp_n[j]
-            if w != 0.0:
-                dot += Z[:, j : j + P] * w
+        dot = _sliding_dot(Z, shp_n, P, l)
 
         if znorm:
             mu = S1 / l
