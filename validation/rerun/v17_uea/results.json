@@ -1,0 +1,3081 @@
+{
+ "config": {
+  "datasets": "['uea:Epilepsy', 'uea:RacketSports', 'uea:NATOPS', 'uea:Libras', 'uea:Heartbeat', 'uea:HandMovementDirection', 'uea:SelfRegulationSCP2', 'uea:Handwriting']",
+  "sizes": "[0]",
+  "seeds": "5",
+  "full_seeds": "5",
+  "rounds": "200",
+  "depth": "4",
+  "learning_rate": "0.1",
+  "no_minirocket": "True",
+  "max_test": "0",
+  "channels": "None",
+  "drop_static": "False",
+  "variants": "['rocket_static', 'mc050', 'mc100', 'mc200', 'rocket_null']",
+  "representations": "['agg']",
+  "out": "validation/rerun/v17_uea"
+ },
+ "unavailable": {},
+ "results": [
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood_rocket_static",
+   "n_train": 137,
+   "seed": 0,
+   "fit_seconds": 0.4610661669867113,
+   "metrics": {
+    "balanced_accuracy": 0.9932432432432432,
+    "accuracy": 0.9927536231884058,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood_mc050",
+   "n_train": 137,
+   "seed": 0,
+   "fit_seconds": 0.43741150002460927,
+   "metrics": {
+    "balanced_accuracy": 0.9932432432432432,
+    "accuracy": 0.9927536231884058,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood_mc100",
+   "n_train": 137,
+   "seed": 0,
+   "fit_seconds": 0.440612250007689,
+   "metrics": {
+    "balanced_accuracy": 0.9932432432432432,
+    "accuracy": 0.9927536231884058,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood_mc200",
+   "n_train": 137,
+   "seed": 0,
+   "fit_seconds": 0.44054791692178696,
+   "metrics": {
+    "balanced_accuracy": 0.9932432432432432,
+    "accuracy": 0.9927536231884058,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood_rocket_null",
+   "n_train": 137,
+   "seed": 0,
+   "fit_seconds": 0.43800575006753206,
+   "metrics": {
+    "balanced_accuracy": 0.9932432432432432,
+    "accuracy": 0.9927536231884058,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "agg",
+   "n_train": 137,
+   "seed": 0,
+   "fit_seconds": 0.05734983296133578,
+   "metrics": {
+    "balanced_accuracy": 0.9566905140434552,
+    "accuracy": 0.9565217391304348,
+    "roc_auc": 0.9979952939420762
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood_rocket_static",
+   "n_train": 137,
+   "seed": 1,
+   "fit_seconds": 0.44669750006869435,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood_mc050",
+   "n_train": 137,
+   "seed": 1,
+   "fit_seconds": 0.4411714159650728,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood_mc100",
+   "n_train": 137,
+   "seed": 1,
+   "fit_seconds": 0.44286508299410343,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood_mc200",
+   "n_train": 137,
+   "seed": 1,
+   "fit_seconds": 0.4417987499618903,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood_rocket_null",
+   "n_train": 137,
+   "seed": 1,
+   "fit_seconds": 0.4407750000245869,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "agg",
+   "n_train": 137,
+   "seed": 1,
+   "fit_seconds": 0.054715832928195596,
+   "metrics": {
+    "balanced_accuracy": 0.9566905140434552,
+    "accuracy": 0.9565217391304348,
+    "roc_auc": 0.9979952939420762
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood_rocket_static",
+   "n_train": 137,
+   "seed": 2,
+   "fit_seconds": 0.4429470419418067,
+   "metrics": {
+    "balanced_accuracy": 0.9932432432432432,
+    "accuracy": 0.9927536231884058,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood_mc050",
+   "n_train": 137,
+   "seed": 2,
+   "fit_seconds": 0.4416871250141412,
+   "metrics": {
+    "balanced_accuracy": 0.9932432432432432,
+    "accuracy": 0.9927536231884058,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood_mc100",
+   "n_train": 137,
+   "seed": 2,
+   "fit_seconds": 0.44197283301036805,
+   "metrics": {
+    "balanced_accuracy": 0.9932432432432432,
+    "accuracy": 0.9927536231884058,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood_mc200",
+   "n_train": 137,
+   "seed": 2,
+   "fit_seconds": 0.4406852079555392,
+   "metrics": {
+    "balanced_accuracy": 0.9932432432432432,
+    "accuracy": 0.9927536231884058,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood_rocket_null",
+   "n_train": 137,
+   "seed": 2,
+   "fit_seconds": 0.4344213749282062,
+   "metrics": {
+    "balanced_accuracy": 1.0,
+    "accuracy": 1.0,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "agg",
+   "n_train": 137,
+   "seed": 2,
+   "fit_seconds": 0.054599625058472157,
+   "metrics": {
+    "balanced_accuracy": 0.9566905140434552,
+    "accuracy": 0.9565217391304348,
+    "roc_auc": 0.9979952939420762
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood_rocket_static",
+   "n_train": 137,
+   "seed": 3,
+   "fit_seconds": 0.4419977499637753,
+   "metrics": {
+    "balanced_accuracy": 0.9864864864864865,
+    "accuracy": 0.9855072463768116,
+    "roc_auc": 0.9886317438916449
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood_mc050",
+   "n_train": 137,
+   "seed": 3,
+   "fit_seconds": 0.4397996250772849,
+   "metrics": {
+    "balanced_accuracy": 0.9864864864864865,
+    "accuracy": 0.9855072463768116,
+    "roc_auc": 0.9886317438916449
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood_mc100",
+   "n_train": 137,
+   "seed": 3,
+   "fit_seconds": 0.440952958073467,
+   "metrics": {
+    "balanced_accuracy": 0.9864864864864865,
+    "accuracy": 0.9855072463768116,
+    "roc_auc": 0.9886317438916449
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood_mc200",
+   "n_train": 137,
+   "seed": 3,
+   "fit_seconds": 0.43991499999538064,
+   "metrics": {
+    "balanced_accuracy": 0.9864864864864865,
+    "accuracy": 0.9855072463768116,
+    "roc_auc": 0.9886317438916449
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood_rocket_null",
+   "n_train": 137,
+   "seed": 3,
+   "fit_seconds": 0.440126416971907,
+   "metrics": {
+    "balanced_accuracy": 0.9864864864864865,
+    "accuracy": 0.9855072463768116,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "agg",
+   "n_train": 137,
+   "seed": 3,
+   "fit_seconds": 0.05443620798178017,
+   "metrics": {
+    "balanced_accuracy": 0.9566905140434552,
+    "accuracy": 0.9565217391304348,
+    "roc_auc": 0.9979952939420762
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood_rocket_static",
+   "n_train": 137,
+   "seed": 4,
+   "fit_seconds": 0.4398822080111131,
+   "metrics": {
+    "balanced_accuracy": 0.9932432432432432,
+    "accuracy": 0.9927536231884058,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood_mc050",
+   "n_train": 137,
+   "seed": 4,
+   "fit_seconds": 0.4426009589806199,
+   "metrics": {
+    "balanced_accuracy": 0.9932432432432432,
+    "accuracy": 0.9927536231884058,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood_mc100",
+   "n_train": 137,
+   "seed": 4,
+   "fit_seconds": 0.44194049993529916,
+   "metrics": {
+    "balanced_accuracy": 0.9932432432432432,
+    "accuracy": 0.9927536231884058,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood_mc200",
+   "n_train": 137,
+   "seed": 4,
+   "fit_seconds": 0.4402255000313744,
+   "metrics": {
+    "balanced_accuracy": 0.9932432432432432,
+    "accuracy": 0.9927536231884058,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "heartwood_rocket_null",
+   "n_train": 137,
+   "seed": 4,
+   "fit_seconds": 0.4436158329481259,
+   "metrics": {
+    "balanced_accuracy": 0.9932432432432432,
+    "accuracy": 0.9927536231884058,
+    "roc_auc": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "agg",
+   "n_train": 137,
+   "seed": 4,
+   "fit_seconds": 0.054617999936454,
+   "metrics": {
+    "balanced_accuracy": 0.9566905140434552,
+    "accuracy": 0.9565217391304348,
+    "roc_auc": 0.9979952939420762
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood_rocket_static",
+   "n_train": 151,
+   "seed": 0,
+   "fit_seconds": 13.625566457980312,
+   "metrics": {
+    "balanced_accuracy": 0.8838662790697674,
+    "accuracy": 0.875,
+    "roc_auc": 0.9717296035386631
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood_mc050",
+   "n_train": 151,
+   "seed": 0,
+   "fit_seconds": 2.093392250011675,
+   "metrics": {
+    "balanced_accuracy": 0.9093023255813953,
+    "accuracy": 0.9013157894736842,
+    "roc_auc": 0.9745673109893627
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood_mc100",
+   "n_train": 151,
+   "seed": 0,
+   "fit_seconds": 1.7343084579333663,
+   "metrics": {
+    "balanced_accuracy": 0.9151162790697674,
+    "accuracy": 0.9078947368421053,
+    "roc_auc": 0.9739657944466458
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood_mc200",
+   "n_train": 151,
+   "seed": 0,
+   "fit_seconds": 1.7386393329361454,
+   "metrics": {
+    "balanced_accuracy": 0.9151162790697674,
+    "accuracy": 0.9078947368421053,
+    "roc_auc": 0.9739657944466458
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood_rocket_null",
+   "n_train": 151,
+   "seed": 0,
+   "fit_seconds": 9.00133416603785,
+   "metrics": {
+    "balanced_accuracy": 0.8909883720930233,
+    "accuracy": 0.881578947368421,
+    "roc_auc": 0.9693842700364229
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "agg",
+   "n_train": 151,
+   "seed": 0,
+   "fit_seconds": 0.14251212496310472,
+   "metrics": {
+    "balanced_accuracy": 0.8327376880984952,
+    "accuracy": 0.8223684210526315,
+    "roc_auc": 0.934704591697346
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood_rocket_static",
+   "n_train": 151,
+   "seed": 1,
+   "fit_seconds": 10.196600082912482,
+   "metrics": {
+    "balanced_accuracy": 0.8900955149501661,
+    "accuracy": 0.881578947368421,
+    "roc_auc": 0.9739518882014081
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood_mc050",
+   "n_train": 151,
+   "seed": 1,
+   "fit_seconds": 1.8631147909909487,
+   "metrics": {
+    "balanced_accuracy": 0.884281561461794,
+    "accuracy": 0.875,
+    "roc_auc": 0.9729720694016886
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood_mc100",
+   "n_train": 151,
+   "seed": 1,
+   "fit_seconds": 1.7363399579189718,
+   "metrics": {
+    "balanced_accuracy": 0.884281561461794,
+    "accuracy": 0.875,
+    "roc_auc": 0.9734086397787193
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood_mc200",
+   "n_train": 151,
+   "seed": 1,
+   "fit_seconds": 1.7356127919629216,
+   "metrics": {
+    "balanced_accuracy": 0.884281561461794,
+    "accuracy": 0.875,
+    "roc_auc": 0.9734086397787193
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood_rocket_null",
+   "n_train": 151,
+   "seed": 1,
+   "fit_seconds": 7.845475250040181,
+   "metrics": {
+    "balanced_accuracy": 0.8838455149501662,
+    "accuracy": 0.875,
+    "roc_auc": 0.9738476747043494
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "agg",
+   "n_train": 151,
+   "seed": 1,
+   "fit_seconds": 0.14202574989758432,
+   "metrics": {
+    "balanced_accuracy": 0.8327376880984952,
+    "accuracy": 0.8223684210526315,
+    "roc_auc": 0.934704591697346
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood_rocket_static",
+   "n_train": 151,
+   "seed": 2,
+   "fit_seconds": 11.589487666962668,
+   "metrics": {
+    "balanced_accuracy": 0.8789036544850499,
+    "accuracy": 0.868421052631579,
+    "roc_auc": 0.9718717339821091
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood_mc050",
+   "n_train": 151,
+   "seed": 2,
+   "fit_seconds": 1.8903091659303755,
+   "metrics": {
+    "balanced_accuracy": 0.8489617940199335,
+    "accuracy": 0.8355263157894737,
+    "roc_auc": 0.9718668048849102
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood_mc100",
+   "n_train": 151,
+   "seed": 2,
+   "fit_seconds": 1.724406166933477,
+   "metrics": {
+    "balanced_accuracy": 0.8610257475083056,
+    "accuracy": 0.8486842105263158,
+    "roc_auc": 0.9729073563532573
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood_mc200",
+   "n_train": 151,
+   "seed": 2,
+   "fit_seconds": 1.7320121669908985,
+   "metrics": {
+    "balanced_accuracy": 0.8610257475083056,
+    "accuracy": 0.8486842105263158,
+    "roc_auc": 0.9729073563532573
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood_rocket_null",
+   "n_train": 151,
+   "seed": 2,
+   "fit_seconds": 7.4757388749858364,
+   "metrics": {
+    "balanced_accuracy": 0.8726536544850498,
+    "accuracy": 0.8618421052631579,
+    "roc_auc": 0.9688789385601212
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "agg",
+   "n_train": 151,
+   "seed": 2,
+   "fit_seconds": 0.14171083294786513,
+   "metrics": {
+    "balanced_accuracy": 0.8327376880984952,
+    "accuracy": 0.8223684210526315,
+    "roc_auc": 0.934704591697346
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood_rocket_static",
+   "n_train": 151,
+   "seed": 3,
+   "fit_seconds": 12.798725290922448,
+   "metrics": {
+    "balanced_accuracy": 0.8775955149501662,
+    "accuracy": 0.868421052631579,
+    "roc_auc": 0.9739219962257919
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood_mc050",
+   "n_train": 151,
+   "seed": 3,
+   "fit_seconds": 1.8952513750409707,
+   "metrics": {
+    "balanced_accuracy": 0.8954734219269103,
+    "accuracy": 0.8881578947368421,
+    "roc_auc": 0.9754499925453994
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood_mc100",
+   "n_train": 151,
+   "seed": 3,
+   "fit_seconds": 1.7283411249518394,
+   "metrics": {
+    "balanced_accuracy": 0.8954734219269103,
+    "accuracy": 0.8881578947368421,
+    "roc_auc": 0.9751250293112258
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood_mc200",
+   "n_train": 151,
+   "seed": 3,
+   "fit_seconds": 1.7323839999735355,
+   "metrics": {
+    "balanced_accuracy": 0.8954734219269103,
+    "accuracy": 0.8881578947368421,
+    "roc_auc": 0.9751250293112258
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood_rocket_null",
+   "n_train": 151,
+   "seed": 3,
+   "fit_seconds": 8.023094416013919,
+   "metrics": {
+    "balanced_accuracy": 0.8834094684385383,
+    "accuracy": 0.875,
+    "roc_auc": 0.9732088725402179
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "agg",
+   "n_train": 151,
+   "seed": 3,
+   "fit_seconds": 0.14249441598076373,
+   "metrics": {
+    "balanced_accuracy": 0.8327376880984952,
+    "accuracy": 0.8223684210526315,
+    "roc_auc": 0.934704591697346
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood_rocket_static",
+   "n_train": 151,
+   "seed": 4,
+   "fit_seconds": 10.9050630829297,
+   "metrics": {
+    "balanced_accuracy": 0.9075373754152825,
+    "accuracy": 0.9013157894736842,
+    "roc_auc": 0.9761240008458045
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood_mc050",
+   "n_train": 151,
+   "seed": 4,
+   "fit_seconds": 2.501935915905051,
+   "metrics": {
+    "balanced_accuracy": 0.890531561461794,
+    "accuracy": 0.881578947368421,
+    "roc_auc": 0.975794108514432
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood_mc100",
+   "n_train": 151,
+   "seed": 4,
+   "fit_seconds": 2.4973330409266055,
+   "metrics": {
+    "balanced_accuracy": 0.890531561461794,
+    "accuracy": 0.881578947368421,
+    "roc_auc": 0.9758474475372612
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood_mc200",
+   "n_train": 151,
+   "seed": 4,
+   "fit_seconds": 2.4927508330438286,
+   "metrics": {
+    "balanced_accuracy": 0.890531561461794,
+    "accuracy": 0.881578947368421,
+    "roc_auc": 0.9758474475372612
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "heartwood_rocket_null",
+   "n_train": 151,
+   "seed": 4,
+   "fit_seconds": 6.772194500081241,
+   "metrics": {
+    "balanced_accuracy": 0.9137873754152824,
+    "accuracy": 0.9078947368421053,
+    "roc_auc": 0.9769487316742357
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "agg",
+   "n_train": 151,
+   "seed": 4,
+   "fit_seconds": 0.14217008301056921,
+   "metrics": {
+    "balanced_accuracy": 0.8327376880984952,
+    "accuracy": 0.8223684210526315,
+    "roc_auc": 0.934704591697346
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood_rocket_static",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 19.59441745793447,
+   "metrics": {
+    "balanced_accuracy": 0.9166666666666666,
+    "accuracy": 0.9166666666666666,
+    "roc_auc": 0.9893703703703703
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood_mc050",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 4.032003166968934,
+   "metrics": {
+    "balanced_accuracy": 0.9277777777777779,
+    "accuracy": 0.9277777777777778,
+    "roc_auc": 0.9915555555555556
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood_mc100",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 2.8959052079590037,
+   "metrics": {
+    "balanced_accuracy": 0.9166666666666666,
+    "accuracy": 0.9166666666666666,
+    "roc_auc": 0.9898148148148148
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood_mc200",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 2.8992009590147063,
+   "metrics": {
+    "balanced_accuracy": 0.9166666666666666,
+    "accuracy": 0.9166666666666666,
+    "roc_auc": 0.9898148148148148
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood_rocket_null",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 11.151993875042535,
+   "metrics": {
+    "balanced_accuracy": 0.9333333333333332,
+    "accuracy": 0.9333333333333333,
+    "roc_auc": 0.992074074074074
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "agg",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 0.625553333084099,
+   "metrics": {
+    "balanced_accuracy": 0.888888888888889,
+    "accuracy": 0.8888888888888888,
+    "roc_auc": 0.9836296296296295
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood_rocket_static",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 21.059244707925245,
+   "metrics": {
+    "balanced_accuracy": 0.9333333333333332,
+    "accuracy": 0.9333333333333333,
+    "roc_auc": 0.9904814814814814
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood_mc050",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 5.196004249970429,
+   "metrics": {
+    "balanced_accuracy": 0.9111111111111111,
+    "accuracy": 0.9111111111111111,
+    "roc_auc": 0.990074074074074
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood_mc100",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 2.913413165952079,
+   "metrics": {
+    "balanced_accuracy": 0.9277777777777777,
+    "accuracy": 0.9277777777777778,
+    "roc_auc": 0.9906666666666667
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood_mc200",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 2.9027550000464544,
+   "metrics": {
+    "balanced_accuracy": 0.9277777777777777,
+    "accuracy": 0.9277777777777778,
+    "roc_auc": 0.9910370370370369
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood_rocket_null",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 11.603690874995664,
+   "metrics": {
+    "balanced_accuracy": 0.9,
+    "accuracy": 0.9,
+    "roc_auc": 0.989
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "agg",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 0.625204291078262,
+   "metrics": {
+    "balanced_accuracy": 0.888888888888889,
+    "accuracy": 0.8888888888888888,
+    "roc_auc": 0.9836296296296295
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood_rocket_static",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 20.180001250002533,
+   "metrics": {
+    "balanced_accuracy": 0.9055555555555556,
+    "accuracy": 0.9055555555555556,
+    "roc_auc": 0.9901481481481481
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood_mc050",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 4.9396551250247285,
+   "metrics": {
+    "balanced_accuracy": 0.9277777777777777,
+    "accuracy": 0.9277777777777778,
+    "roc_auc": 0.9945555555555555
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood_mc100",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 2.9739664170192555,
+   "metrics": {
+    "balanced_accuracy": 0.9500000000000001,
+    "accuracy": 0.95,
+    "roc_auc": 0.9947777777777778
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood_mc200",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 2.8929910000879318,
+   "metrics": {
+    "balanced_accuracy": 0.9388888888888888,
+    "accuracy": 0.9388888888888889,
+    "roc_auc": 0.9959629629629628
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood_rocket_null",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 11.509109665988944,
+   "metrics": {
+    "balanced_accuracy": 0.938888888888889,
+    "accuracy": 0.9388888888888889,
+    "roc_auc": 0.9953703703703703
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "agg",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 0.62638983305078,
+   "metrics": {
+    "balanced_accuracy": 0.888888888888889,
+    "accuracy": 0.8888888888888888,
+    "roc_auc": 0.9836296296296295
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood_rocket_static",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 20.728430000017397,
+   "metrics": {
+    "balanced_accuracy": 0.9333333333333332,
+    "accuracy": 0.9333333333333333,
+    "roc_auc": 0.9916666666666667
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood_mc050",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 5.0174894579686224,
+   "metrics": {
+    "balanced_accuracy": 0.9222222222222222,
+    "accuracy": 0.9222222222222223,
+    "roc_auc": 0.9896666666666666
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood_mc100",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 2.96343604195863,
+   "metrics": {
+    "balanced_accuracy": 0.9166666666666666,
+    "accuracy": 0.9166666666666666,
+    "roc_auc": 0.9916666666666667
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood_mc200",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 2.9010048750787973,
+   "metrics": {
+    "balanced_accuracy": 0.9222222222222222,
+    "accuracy": 0.9222222222222223,
+    "roc_auc": 0.9915185185185186
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood_rocket_null",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 11.751535458024591,
+   "metrics": {
+    "balanced_accuracy": 0.9222222222222222,
+    "accuracy": 0.9222222222222223,
+    "roc_auc": 0.9923703703703705
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "agg",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 0.6257957920897752,
+   "metrics": {
+    "balanced_accuracy": 0.888888888888889,
+    "accuracy": 0.8888888888888888,
+    "roc_auc": 0.9836296296296295
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood_rocket_static",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 19.629058791906573,
+   "metrics": {
+    "balanced_accuracy": 0.9111111111111111,
+    "accuracy": 0.9111111111111111,
+    "roc_auc": 0.9908518518518519
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood_mc050",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 4.525294291088358,
+   "metrics": {
+    "balanced_accuracy": 0.9166666666666666,
+    "accuracy": 0.9166666666666666,
+    "roc_auc": 0.9922962962962963
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood_mc100",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 2.929593790904619,
+   "metrics": {
+    "balanced_accuracy": 0.9277777777777777,
+    "accuracy": 0.9277777777777778,
+    "roc_auc": 0.9935555555555555
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood_mc200",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 2.900576459011063,
+   "metrics": {
+    "balanced_accuracy": 0.9166666666666666,
+    "accuracy": 0.9166666666666666,
+    "roc_auc": 0.9934444444444445
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "heartwood_rocket_null",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 11.656744708074257,
+   "metrics": {
+    "balanced_accuracy": 0.9,
+    "accuracy": 0.9,
+    "roc_auc": 0.9904814814814814
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "agg",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 0.6272229999303818,
+   "metrics": {
+    "balanced_accuracy": 0.888888888888889,
+    "accuracy": 0.8888888888888888,
+    "roc_auc": 0.9836296296296295
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood_rocket_static",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 29.453334458055906,
+   "metrics": {
+    "balanced_accuracy": 0.9166666666666665,
+    "accuracy": 0.9166666666666666,
+    "roc_auc": 0.9916005291005291
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood_mc050",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 7.8195150420069695,
+   "metrics": {
+    "balanced_accuracy": 0.9166666666666665,
+    "accuracy": 0.9166666666666666,
+    "roc_auc": 0.9918981481481481
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood_mc100",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 7.833748874953017,
+   "metrics": {
+    "balanced_accuracy": 0.9166666666666665,
+    "accuracy": 0.9166666666666666,
+    "roc_auc": 0.9918981481481481
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood_mc200",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 7.81405145896133,
+   "metrics": {
+    "balanced_accuracy": 0.9166666666666665,
+    "accuracy": 0.9166666666666666,
+    "roc_auc": 0.9918981481481481
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood_rocket_null",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 22.038982167025097,
+   "metrics": {
+    "balanced_accuracy": 0.8999999999999999,
+    "accuracy": 0.9,
+    "roc_auc": 0.9823743386243388
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "agg",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 0.16905595792923123,
+   "metrics": {
+    "balanced_accuracy": 0.7611111111111111,
+    "accuracy": 0.7611111111111111,
+    "roc_auc": 0.9853505291005291
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood_rocket_static",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 25.975147958029993,
+   "metrics": {
+    "balanced_accuracy": 0.8944444444444443,
+    "accuracy": 0.8944444444444445,
+    "roc_auc": 0.9771164021164022
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood_mc050",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 7.243278666050173,
+   "metrics": {
+    "balanced_accuracy": 0.911111111111111,
+    "accuracy": 0.9111111111111111,
+    "roc_auc": 0.9767857142857143
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood_mc100",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 7.253808208042756,
+   "metrics": {
+    "balanced_accuracy": 0.911111111111111,
+    "accuracy": 0.9111111111111111,
+    "roc_auc": 0.9767857142857143
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood_mc200",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 7.233744333032519,
+   "metrics": {
+    "balanced_accuracy": 0.911111111111111,
+    "accuracy": 0.9111111111111111,
+    "roc_auc": 0.9767857142857143
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood_rocket_null",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 17.08857158292085,
+   "metrics": {
+    "balanced_accuracy": 0.9,
+    "accuracy": 0.9,
+    "roc_auc": 0.9811838624338625
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "agg",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 0.16926145798061043,
+   "metrics": {
+    "balanced_accuracy": 0.7611111111111111,
+    "accuracy": 0.7611111111111111,
+    "roc_auc": 0.9853505291005291
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood_rocket_static",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 25.846058874973096,
+   "metrics": {
+    "balanced_accuracy": 0.9111111111111111,
+    "accuracy": 0.9111111111111111,
+    "roc_auc": 0.9919312169312171
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood_mc050",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 7.233517333981581,
+   "metrics": {
+    "balanced_accuracy": 0.9277777777777777,
+    "accuracy": 0.9277777777777778,
+    "roc_auc": 0.9919642857142857
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood_mc100",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 7.238479083054699,
+   "metrics": {
+    "balanced_accuracy": 0.9277777777777777,
+    "accuracy": 0.9277777777777778,
+    "roc_auc": 0.9919642857142857
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood_mc200",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 7.2292739999247715,
+   "metrics": {
+    "balanced_accuracy": 0.9277777777777777,
+    "accuracy": 0.9277777777777778,
+    "roc_auc": 0.9919642857142857
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood_rocket_null",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 17.894788249977864,
+   "metrics": {
+    "balanced_accuracy": 0.9222222222222222,
+    "accuracy": 0.9222222222222223,
+    "roc_auc": 0.9882936507936507
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "agg",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 0.16852033301256597,
+   "metrics": {
+    "balanced_accuracy": 0.7611111111111111,
+    "accuracy": 0.7611111111111111,
+    "roc_auc": 0.9853505291005291
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood_rocket_static",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 29.59129083401058,
+   "metrics": {
+    "balanced_accuracy": 0.9055555555555554,
+    "accuracy": 0.9055555555555556,
+    "roc_auc": 0.9901455026455027
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood_mc050",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 7.818625250016339,
+   "metrics": {
+    "balanced_accuracy": 0.9222222222222222,
+    "accuracy": 0.9222222222222223,
+    "roc_auc": 0.9892857142857142
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood_mc100",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 7.810432165977545,
+   "metrics": {
+    "balanced_accuracy": 0.9222222222222222,
+    "accuracy": 0.9222222222222223,
+    "roc_auc": 0.9892857142857142
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood_mc200",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 7.804466208908707,
+   "metrics": {
+    "balanced_accuracy": 0.9222222222222222,
+    "accuracy": 0.9222222222222223,
+    "roc_auc": 0.9892857142857142
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood_rocket_null",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 19.614188709063455,
+   "metrics": {
+    "balanced_accuracy": 0.9222222222222222,
+    "accuracy": 0.9222222222222223,
+    "roc_auc": 0.9821593915343917
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "agg",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 0.16823654202744365,
+   "metrics": {
+    "balanced_accuracy": 0.7611111111111111,
+    "accuracy": 0.7611111111111111,
+    "roc_auc": 0.9853505291005291
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood_rocket_static",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 26.911137416027486,
+   "metrics": {
+    "balanced_accuracy": 0.9222222222222222,
+    "accuracy": 0.9222222222222223,
+    "roc_auc": 0.9841435185185186
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood_mc050",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 7.232161666965112,
+   "metrics": {
+    "balanced_accuracy": 0.922222222222222,
+    "accuracy": 0.9222222222222223,
+    "roc_auc": 0.9839451058201057
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood_mc100",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 7.405050958041102,
+   "metrics": {
+    "balanced_accuracy": 0.922222222222222,
+    "accuracy": 0.9222222222222223,
+    "roc_auc": 0.9839451058201057
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood_mc200",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 7.361249541980214,
+   "metrics": {
+    "balanced_accuracy": 0.922222222222222,
+    "accuracy": 0.9222222222222223,
+    "roc_auc": 0.9839451058201057
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "heartwood_rocket_null",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 18.278783999965526,
+   "metrics": {
+    "balanced_accuracy": 0.9,
+    "accuracy": 0.9,
+    "roc_auc": 0.9792989417989416
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "agg",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 0.17368099989835173,
+   "metrics": {
+    "balanced_accuracy": 0.7611111111111111,
+    "accuracy": 0.7611111111111111,
+    "roc_auc": 0.9853505291005291
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood_rocket_static",
+   "n_train": 204,
+   "seed": 0,
+   "fit_seconds": 18.710458958055824,
+   "metrics": {
+    "balanced_accuracy": 0.6227477477477478,
+    "accuracy": 0.751219512195122,
+    "precision": 0.59375,
+    "recall": 0.3333333333333333,
+    "f1": 0.42696629213483145,
+    "roc_auc": 0.7392128971076339
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood_mc050",
+   "n_train": 204,
+   "seed": 0,
+   "fit_seconds": 11.047100749914534,
+   "metrics": {
+    "balanced_accuracy": 0.6287932669511617,
+    "accuracy": 0.7365853658536585,
+    "precision": 0.5365853658536586,
+    "recall": 0.38596491228070173,
+    "f1": 0.4489795918367347,
+    "roc_auc": 0.7553342816500711
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood_mc100",
+   "n_train": 204,
+   "seed": 0,
+   "fit_seconds": 4.290257624932565,
+   "metrics": {
+    "balanced_accuracy": 0.6740161213845424,
+    "accuracy": 0.7707317073170732,
+    "precision": 0.6190476190476191,
+    "recall": 0.45614035087719296,
+    "f1": 0.5252525252525252,
+    "roc_auc": 0.7849691797060218
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood_mc200",
+   "n_train": 204,
+   "seed": 0,
+   "fit_seconds": 3.981452958076261,
+   "metrics": {
+    "balanced_accuracy": 0.6638809862494073,
+    "accuracy": 0.7560975609756098,
+    "precision": 0.5777777777777777,
+    "recall": 0.45614035087719296,
+    "f1": 0.5098039215686275,
+    "roc_auc": 0.7849691797060218
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood_rocket_null",
+   "n_train": 204,
+   "seed": 0,
+   "fit_seconds": 7.640099041978829,
+   "metrics": {
+    "balanced_accuracy": 0.665244191559981,
+    "accuracy": 0.7658536585365854,
+    "precision": 0.6097560975609756,
+    "recall": 0.43859649122807015,
+    "f1": 0.5102040816326531,
+    "roc_auc": 0.7495258416311048
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "agg",
+   "n_train": 204,
+   "seed": 0,
+   "fit_seconds": 0.6195469169178978,
+   "metrics": {
+    "balanced_accuracy": 0.676683262209578,
+    "accuracy": 0.751219512195122,
+    "precision": 0.5576923076923077,
+    "recall": 0.5087719298245614,
+    "f1": 0.5321100917431193,
+    "roc_auc": 0.7406353722143196
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood_rocket_static",
+   "n_train": 204,
+   "seed": 1,
+   "fit_seconds": 18.39950195804704,
+   "metrics": {
+    "balanced_accuracy": 0.6915599810336652,
+    "accuracy": 0.7804878048780488,
+    "precision": 0.6363636363636364,
+    "recall": 0.49122807017543857,
+    "f1": 0.5544554455445544,
+    "roc_auc": 0.7432432432432432
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood_mc050",
+   "n_train": 204,
+   "seed": 1,
+   "fit_seconds": 12.015091875102371,
+   "metrics": {
+    "balanced_accuracy": 0.6443219535324798,
+    "accuracy": 0.751219512195122,
+    "precision": 0.575,
+    "recall": 0.40350877192982454,
+    "f1": 0.4742268041237113,
+    "roc_auc": 0.7675438596491229
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood_mc100",
+   "n_train": 204,
+   "seed": 1,
+   "fit_seconds": 4.478048332966864,
+   "metrics": {
+    "balanced_accuracy": 0.6848032242769084,
+    "accuracy": 0.7707317073170732,
+    "precision": 0.6086956521739131,
+    "recall": 0.49122807017543857,
+    "f1": 0.5436893203883495,
+    "roc_auc": 0.7821242294926506
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood_mc200",
+   "n_train": 204,
+   "seed": 1,
+   "fit_seconds": 4.045152000035159,
+   "metrics": {
+    "balanced_accuracy": 0.6726529160739687,
+    "accuracy": 0.7609756097560976,
+    "precision": 0.5869565217391305,
+    "recall": 0.47368421052631576,
+    "f1": 0.5242718446601942,
+    "roc_auc": 0.7988383119962067
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood_rocket_null",
+   "n_train": 204,
+   "seed": 1,
+   "fit_seconds": 7.334023540955968,
+   "metrics": {
+    "balanced_accuracy": 0.6969535324798483,
+    "accuracy": 0.7804878048780488,
+    "precision": 0.6304347826086957,
+    "recall": 0.5087719298245614,
+    "f1": 0.5631067961165049,
+    "roc_auc": 0.8026315789473685
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "agg",
+   "n_train": 204,
+   "seed": 1,
+   "fit_seconds": 0.6145721659995615,
+   "metrics": {
+    "balanced_accuracy": 0.676683262209578,
+    "accuracy": 0.751219512195122,
+    "precision": 0.5576923076923077,
+    "recall": 0.5087719298245614,
+    "f1": 0.5321100917431193,
+    "roc_auc": 0.7406353722143196
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood_rocket_static",
+   "n_train": 204,
+   "seed": 2,
+   "fit_seconds": 18.372008082922548,
+   "metrics": {
+    "balanced_accuracy": 0.6274300616405879,
+    "accuracy": 0.7268292682926829,
+    "precision": 0.5111111111111111,
+    "recall": 0.40350877192982454,
+    "f1": 0.45098039215686275,
+    "roc_auc": 0.7522522522522522
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood_mc050",
+   "n_train": 204,
+   "seed": 2,
+   "fit_seconds": 10.451777415932156,
+   "metrics": {
+    "balanced_accuracy": 0.6517306780464676,
+    "accuracy": 0.7463414634146341,
+    "precision": 0.5555555555555556,
+    "recall": 0.43859649122807015,
+    "f1": 0.4901960784313725,
+    "roc_auc": 0.7734708392603129
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood_mc100",
+   "n_train": 204,
+   "seed": 2,
+   "fit_seconds": 4.332078667008318,
+   "metrics": {
+    "balanced_accuracy": 0.6625177809388335,
+    "accuracy": 0.7463414634146341,
+    "precision": 0.5510204081632653,
+    "recall": 0.47368421052631576,
+    "f1": 0.5094339622641509,
+    "roc_auc": 0.7900663821716454
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood_mc200",
+   "n_train": 204,
+   "seed": 2,
+   "fit_seconds": 4.002283124951646,
+   "metrics": {
+    "balanced_accuracy": 0.6861664295874822,
+    "accuracy": 0.7804878048780488,
+    "precision": 0.6428571428571429,
+    "recall": 0.47368421052631576,
+    "f1": 0.5454545454545454,
+    "roc_auc": 0.7908961593172119
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood_rocket_null",
+   "n_train": 204,
+   "seed": 2,
+   "fit_seconds": 7.819854084053077,
+   "metrics": {
+    "balanced_accuracy": 0.6497155049786629,
+    "accuracy": 0.751219512195122,
+    "precision": 0.5714285714285714,
+    "recall": 0.42105263157894735,
+    "f1": 0.48484848484848486,
+    "roc_auc": 0.7721669037458511
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "agg",
+   "n_train": 204,
+   "seed": 2,
+   "fit_seconds": 0.615734166931361,
+   "metrics": {
+    "balanced_accuracy": 0.676683262209578,
+    "accuracy": 0.751219512195122,
+    "precision": 0.5576923076923077,
+    "recall": 0.5087719298245614,
+    "f1": 0.5321100917431193,
+    "roc_auc": 0.7406353722143196
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood_rocket_static",
+   "n_train": 204,
+   "seed": 3,
+   "fit_seconds": 18.634783082990907,
+   "metrics": {
+    "balanced_accuracy": 0.6530938833570412,
+    "accuracy": 0.7560975609756098,
+    "precision": 0.5853658536585366,
+    "recall": 0.42105263157894735,
+    "f1": 0.48979591836734687,
+    "roc_auc": 0.7543859649122807
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood_mc050",
+   "n_train": 204,
+   "seed": 3,
+   "fit_seconds": 11.651627041050233,
+   "metrics": {
+    "balanced_accuracy": 0.6389284020862969,
+    "accuracy": 0.751219512195122,
+    "precision": 0.5789473684210527,
+    "recall": 0.38596491228070173,
+    "f1": 0.4631578947368421,
+    "roc_auc": 0.7478662873399715
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood_mc100",
+   "n_train": 204,
+   "seed": 3,
+   "fit_seconds": 4.246552458032966,
+   "metrics": {
+    "balanced_accuracy": 0.6868183973447132,
+    "accuracy": 0.7658536585365854,
+    "precision": 0.5918367346938775,
+    "recall": 0.5087719298245614,
+    "f1": 0.5471698113207547,
+    "roc_auc": 0.7962304409672831
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood_mc200",
+   "n_train": 204,
+   "seed": 3,
+   "fit_seconds": 4.044034959049895,
+   "metrics": {
+    "balanced_accuracy": 0.6760312944523471,
+    "accuracy": 0.7658536585365854,
+    "precision": 0.6,
+    "recall": 0.47368421052631576,
+    "f1": 0.5294117647058824,
+    "roc_auc": 0.7856804172593647
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood_rocket_null",
+   "n_train": 204,
+   "seed": 3,
+   "fit_seconds": 7.653946041013114,
+   "metrics": {
+    "balanced_accuracy": 0.6402323376007586,
+    "accuracy": 0.7219512195121951,
+    "precision": 0.5,
+    "recall": 0.45614035087719296,
+    "f1": 0.4770642201834862,
+    "roc_auc": 0.7273589378852536
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "agg",
+   "n_train": 204,
+   "seed": 3,
+   "fit_seconds": 0.6159338329453021,
+   "metrics": {
+    "balanced_accuracy": 0.676683262209578,
+    "accuracy": 0.751219512195122,
+    "precision": 0.5576923076923077,
+    "recall": 0.5087719298245614,
+    "f1": 0.5321100917431193,
+    "roc_auc": 0.7406353722143196
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood_rocket_static",
+   "n_train": 204,
+   "seed": 4,
+   "fit_seconds": 18.863894208916463,
+   "metrics": {
+    "balanced_accuracy": 0.6429587482219061,
+    "accuracy": 0.7414634146341463,
+    "precision": 0.5454545454545454,
+    "recall": 0.42105263157894735,
+    "f1": 0.4752475247524752,
+    "roc_auc": 0.7886439070649597
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood_mc050",
+   "n_train": 204,
+   "seed": 4,
+   "fit_seconds": 11.525373167009093,
+   "metrics": {
+    "balanced_accuracy": 0.6375651967757231,
+    "accuracy": 0.7414634146341463,
+    "precision": 0.5476190476190477,
+    "recall": 0.40350877192982454,
+    "f1": 0.4646464646464647,
+    "roc_auc": 0.7765528686581318
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood_mc100",
+   "n_train": 204,
+   "seed": 4,
+   "fit_seconds": 4.55610400007572,
+   "metrics": {
+    "balanced_accuracy": 0.6618658131816026,
+    "accuracy": 0.7609756097560976,
+    "precision": 0.5952380952380952,
+    "recall": 0.43859649122807015,
+    "f1": 0.505050505050505,
+    "roc_auc": 0.7839023233760076
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood_mc200",
+   "n_train": 204,
+   "seed": 4,
+   "fit_seconds": 4.043835499905981,
+   "metrics": {
+    "balanced_accuracy": 0.6969535324798483,
+    "accuracy": 0.7804878048780488,
+    "precision": 0.6304347826086957,
+    "recall": 0.5087719298245614,
+    "f1": 0.5631067961165049,
+    "roc_auc": 0.8072546230440967
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "heartwood_rocket_null",
+   "n_train": 204,
+   "seed": 4,
+   "fit_seconds": 7.891003250028007,
+   "metrics": {
+    "balanced_accuracy": 0.6632290184921763,
+    "accuracy": 0.7707317073170732,
+    "precision": 0.631578947368421,
+    "recall": 0.42105263157894735,
+    "f1": 0.5052631578947367,
+    "roc_auc": 0.7886439070649597
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "agg",
+   "n_train": 204,
+   "seed": 4,
+   "fit_seconds": 0.6150480419164523,
+   "metrics": {
+    "balanced_accuracy": 0.676683262209578,
+    "accuracy": 0.751219512195122,
+    "precision": 0.5576923076923077,
+    "recall": 0.5087719298245614,
+    "f1": 0.5321100917431193,
+    "roc_auc": 0.7406353722143196
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood_rocket_static",
+   "n_train": 160,
+   "seed": 0,
+   "fit_seconds": 55.221448666998185,
+   "metrics": {
+    "balanced_accuracy": 0.38809523809523805,
+    "accuracy": 0.40540540540540543,
+    "roc_auc": 0.6415157935285054
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood_mc050",
+   "n_train": 160,
+   "seed": 0,
+   "fit_seconds": 25.237671124981716,
+   "metrics": {
+    "balanced_accuracy": 0.3857142857142857,
+    "accuracy": 0.40540540540540543,
+    "roc_auc": 0.6896750495267445
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood_mc100",
+   "n_train": 160,
+   "seed": 0,
+   "fit_seconds": 11.294449125067331,
+   "metrics": {
+    "balanced_accuracy": 0.34404761904761905,
+    "accuracy": 0.3783783783783784,
+    "roc_auc": 0.6480822143957736
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood_mc200",
+   "n_train": 160,
+   "seed": 0,
+   "fit_seconds": 8.987131292000413,
+   "metrics": {
+    "balanced_accuracy": 0.40476190476190477,
+    "accuracy": 0.43243243243243246,
+    "roc_auc": 0.641554314329738
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood_rocket_null",
+   "n_train": 160,
+   "seed": 0,
+   "fit_seconds": 18.351871166960336,
+   "metrics": {
+    "balanced_accuracy": 0.4214285714285714,
+    "accuracy": 0.4189189189189189,
+    "roc_auc": 0.6753365984298187
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "agg",
+   "n_train": 160,
+   "seed": 0,
+   "fit_seconds": 0.38901995797641575,
+   "metrics": {
+    "balanced_accuracy": 0.2892857142857143,
+    "accuracy": 0.28378378378378377,
+    "roc_auc": 0.6001279440898084
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood_rocket_static",
+   "n_train": 160,
+   "seed": 1,
+   "fit_seconds": 54.61421966704074,
+   "metrics": {
+    "balanced_accuracy": 0.35357142857142854,
+    "accuracy": 0.3783783783783784,
+    "roc_auc": 0.6707750935505173
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood_mc050",
+   "n_train": 160,
+   "seed": 1,
+   "fit_seconds": 25.405703417025506,
+   "metrics": {
+    "balanced_accuracy": 0.4107142857142857,
+    "accuracy": 0.4594594594594595,
+    "roc_auc": 0.6774804644508035
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood_mc100",
+   "n_train": 160,
+   "seed": 1,
+   "fit_seconds": 11.064544833032414,
+   "metrics": {
+    "balanced_accuracy": 0.463095238095238,
+    "accuracy": 0.4864864864864865,
+    "roc_auc": 0.7023914997431947
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood_mc200",
+   "n_train": 160,
+   "seed": 1,
+   "fit_seconds": 9.022462084074505,
+   "metrics": {
+    "balanced_accuracy": 0.39761904761904765,
+    "accuracy": 0.43243243243243246,
+    "roc_auc": 0.6139573703133024
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood_rocket_null",
+   "n_train": 160,
+   "seed": 1,
+   "fit_seconds": 19.13288037502207,
+   "metrics": {
+    "balanced_accuracy": 0.48214285714285715,
+    "accuracy": 0.4864864864864865,
+    "roc_auc": 0.6873839790153349
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "agg",
+   "n_train": 160,
+   "seed": 1,
+   "fit_seconds": 0.388853375101462,
+   "metrics": {
+    "balanced_accuracy": 0.2892857142857143,
+    "accuracy": 0.28378378378378377,
+    "roc_auc": 0.6001279440898084
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood_rocket_static",
+   "n_train": 160,
+   "seed": 2,
+   "fit_seconds": 54.35817791707814,
+   "metrics": {
+    "balanced_accuracy": 0.5035714285714286,
+    "accuracy": 0.5135135135135135,
+    "roc_auc": 0.7397965734830141
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood_mc050",
+   "n_train": 160,
+   "seed": 2,
+   "fit_seconds": 25.49221141601447,
+   "metrics": {
+    "balanced_accuracy": 0.4547619047619047,
+    "accuracy": 0.4864864864864865,
+    "roc_auc": 0.7442640692640692
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood_mc100",
+   "n_train": 160,
+   "seed": 2,
+   "fit_seconds": 10.82608899998013,
+   "metrics": {
+    "balanced_accuracy": 0.4726190476190476,
+    "accuracy": 0.47297297297297297,
+    "roc_auc": 0.7018356996111234
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood_mc200",
+   "n_train": 160,
+   "seed": 2,
+   "fit_seconds": 8.873751499922946,
+   "metrics": {
+    "balanced_accuracy": 0.363095238095238,
+    "accuracy": 0.40540540540540543,
+    "roc_auc": 0.584478410008071
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood_rocket_null",
+   "n_train": 160,
+   "seed": 2,
+   "fit_seconds": 20.043711874983273,
+   "metrics": {
+    "balanced_accuracy": 0.363095238095238,
+    "accuracy": 0.3783783783783784,
+    "roc_auc": 0.6809757685817008
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "agg",
+   "n_train": 160,
+   "seed": 2,
+   "fit_seconds": 0.38863237493205816,
+   "metrics": {
+    "balanced_accuracy": 0.2892857142857143,
+    "accuracy": 0.28378378378378377,
+    "roc_auc": 0.6001279440898084
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood_rocket_static",
+   "n_train": 160,
+   "seed": 3,
+   "fit_seconds": 55.126065833028406,
+   "metrics": {
+    "balanced_accuracy": 0.5071428571428571,
+    "accuracy": 0.5135135135135135,
+    "roc_auc": 0.7205641463056717
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood_mc050",
+   "n_train": 160,
+   "seed": 3,
+   "fit_seconds": 25.888273417018354,
+   "metrics": {
+    "balanced_accuracy": 0.4273809523809523,
+    "accuracy": 0.4594594594594595,
+    "roc_auc": 0.673687541272287
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood_mc100",
+   "n_train": 160,
+   "seed": 3,
+   "fit_seconds": 11.164956041960977,
+   "metrics": {
+    "balanced_accuracy": 0.35238095238095235,
+    "accuracy": 0.36486486486486486,
+    "roc_auc": 0.6675187101034559
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood_mc200",
+   "n_train": 160,
+   "seed": 3,
+   "fit_seconds": 8.90591787500307,
+   "metrics": {
+    "balanced_accuracy": 0.363095238095238,
+    "accuracy": 0.40540540540540543,
+    "roc_auc": 0.629309743928388
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood_rocket_null",
+   "n_train": 160,
+   "seed": 3,
+   "fit_seconds": 18.6731690421002,
+   "metrics": {
+    "balanced_accuracy": 0.5059523809523809,
+    "accuracy": 0.5135135135135135,
+    "roc_auc": 0.7222219165015775
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "agg",
+   "n_train": 160,
+   "seed": 3,
+   "fit_seconds": 0.3891775419469923,
+   "metrics": {
+    "balanced_accuracy": 0.2892857142857143,
+    "accuracy": 0.28378378378378377,
+    "roc_auc": 0.6001279440898084
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood_rocket_static",
+   "n_train": 160,
+   "seed": 4,
+   "fit_seconds": 54.252344041946344,
+   "metrics": {
+    "balanced_accuracy": 0.4797619047619047,
+    "accuracy": 0.5,
+    "roc_auc": 0.7431460488663879
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood_mc050",
+   "n_train": 160,
+   "seed": 4,
+   "fit_seconds": 25.57784762501251,
+   "metrics": {
+    "balanced_accuracy": 0.3702380952380952,
+    "accuracy": 0.40540540540540543,
+    "roc_auc": 0.6579820603125688
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood_mc100",
+   "n_train": 160,
+   "seed": 4,
+   "fit_seconds": 10.975071041029878,
+   "metrics": {
+    "balanced_accuracy": 0.3952380952380952,
+    "accuracy": 0.43243243243243246,
+    "roc_auc": 0.6868240516545602
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood_mc200",
+   "n_train": 160,
+   "seed": 4,
+   "fit_seconds": 8.929536374984309,
+   "metrics": {
+    "balanced_accuracy": 0.3702380952380952,
+    "accuracy": 0.4189189189189189,
+    "roc_auc": 0.6050223787511922
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "heartwood_rocket_null",
+   "n_train": 160,
+   "seed": 4,
+   "fit_seconds": 20.705006500007585,
+   "metrics": {
+    "balanced_accuracy": 0.3892857142857143,
+    "accuracy": 0.3783783783783784,
+    "roc_auc": 0.6523589404945337
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "agg",
+   "n_train": 160,
+   "seed": 4,
+   "fit_seconds": 0.3887783749960363,
+   "metrics": {
+    "balanced_accuracy": 0.2892857142857143,
+    "accuracy": 0.28378378378378377,
+    "roc_auc": 0.6001279440898084
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood_rocket_static",
+   "n_train": 200,
+   "seed": 0,
+   "fit_seconds": 34.712581250001676,
+   "metrics": {
+    "balanced_accuracy": 0.5277777777777778,
+    "accuracy": 0.5277777777777778,
+    "precision": 0.5342465753424658,
+    "recall": 0.43333333333333335,
+    "f1": 0.4785276073619632,
+    "roc_auc": 0.5381481481481482
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood_mc050",
+   "n_train": 200,
+   "seed": 0,
+   "fit_seconds": 20.929066666984,
+   "metrics": {
+    "balanced_accuracy": 0.4944444444444444,
+    "accuracy": 0.49444444444444446,
+    "precision": 0.494949494949495,
+    "recall": 0.5444444444444444,
+    "f1": 0.5185185185185185,
+    "roc_auc": 0.4883950617283951
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood_mc100",
+   "n_train": 200,
+   "seed": 0,
+   "fit_seconds": 8.271361125051044,
+   "metrics": {
+    "balanced_accuracy": 0.5333333333333333,
+    "accuracy": 0.5333333333333333,
+    "precision": 0.53125,
+    "recall": 0.5666666666666667,
+    "f1": 0.5483870967741935,
+    "roc_auc": 0.5480864197530865
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood_mc200",
+   "n_train": 200,
+   "seed": 0,
+   "fit_seconds": 8.037370624952018,
+   "metrics": {
+    "balanced_accuracy": 0.5,
+    "accuracy": 0.5,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "roc_auc": 0.5
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood_rocket_null",
+   "n_train": 200,
+   "seed": 0,
+   "fit_seconds": 11.708985166973434,
+   "metrics": {
+    "balanced_accuracy": 0.47777777777777775,
+    "accuracy": 0.4777777777777778,
+    "precision": 0.4782608695652174,
+    "recall": 0.4888888888888889,
+    "f1": 0.4835164835164835,
+    "roc_auc": 0.497283950617284
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "agg",
+   "n_train": 200,
+   "seed": 0,
+   "fit_seconds": 0.11561587499454618,
+   "metrics": {
+    "balanced_accuracy": 0.5222222222222223,
+    "accuracy": 0.5222222222222223,
+    "precision": 0.5185185185185185,
+    "recall": 0.6222222222222222,
+    "f1": 0.5656565656565656,
+    "roc_auc": 0.5259259259259259
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood_rocket_static",
+   "n_train": 200,
+   "seed": 1,
+   "fit_seconds": 34.60813516692724,
+   "metrics": {
+    "balanced_accuracy": 0.4722222222222222,
+    "accuracy": 0.4722222222222222,
+    "precision": 0.47191011235955055,
+    "recall": 0.4666666666666667,
+    "f1": 0.4692737430167598,
+    "roc_auc": 0.48246913580246914
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood_mc050",
+   "n_train": 200,
+   "seed": 1,
+   "fit_seconds": 22.326627957983874,
+   "metrics": {
+    "balanced_accuracy": 0.42777777777777776,
+    "accuracy": 0.42777777777777776,
+    "precision": 0.42528735632183906,
+    "recall": 0.4111111111111111,
+    "f1": 0.4180790960451978,
+    "roc_auc": 0.44814814814814813
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood_mc100",
+   "n_train": 200,
+   "seed": 1,
+   "fit_seconds": 8.753741541993804,
+   "metrics": {
+    "balanced_accuracy": 0.4722222222222222,
+    "accuracy": 0.4722222222222222,
+    "precision": 0.4731182795698925,
+    "recall": 0.4888888888888889,
+    "f1": 0.4808743169398907,
+    "roc_auc": 0.4808024691358025
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood_mc200",
+   "n_train": 200,
+   "seed": 1,
+   "fit_seconds": 8.158308583078906,
+   "metrics": {
+    "balanced_accuracy": 0.5,
+    "accuracy": 0.5,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "roc_auc": 0.5
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood_rocket_null",
+   "n_train": 200,
+   "seed": 1,
+   "fit_seconds": 11.460066707921214,
+   "metrics": {
+    "balanced_accuracy": 0.5,
+    "accuracy": 0.5,
+    "precision": 0.5,
+    "recall": 0.4,
+    "f1": 0.4444444444444445,
+    "roc_auc": 0.49246913580246915
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "agg",
+   "n_train": 200,
+   "seed": 1,
+   "fit_seconds": 0.11571062495931983,
+   "metrics": {
+    "balanced_accuracy": 0.5222222222222223,
+    "accuracy": 0.5222222222222223,
+    "precision": 0.5185185185185185,
+    "recall": 0.6222222222222222,
+    "f1": 0.5656565656565656,
+    "roc_auc": 0.5259259259259259
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood_rocket_static",
+   "n_train": 200,
+   "seed": 2,
+   "fit_seconds": 33.949175584013574,
+   "metrics": {
+    "balanced_accuracy": 0.55,
+    "accuracy": 0.55,
+    "precision": 0.5463917525773195,
+    "recall": 0.5888888888888889,
+    "f1": 0.5668449197860962,
+    "roc_auc": 0.5318518518518518
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood_mc050",
+   "n_train": 200,
+   "seed": 2,
+   "fit_seconds": 21.760879334062338,
+   "metrics": {
+    "balanced_accuracy": 0.4888888888888889,
+    "accuracy": 0.4888888888888889,
+    "precision": 0.4857142857142857,
+    "recall": 0.37777777777777777,
+    "f1": 0.425,
+    "roc_auc": 0.47
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood_mc100",
+   "n_train": 200,
+   "seed": 2,
+   "fit_seconds": 9.321119542000815,
+   "metrics": {
+    "balanced_accuracy": 0.5222222222222221,
+    "accuracy": 0.5222222222222223,
+    "precision": 0.5227272727272727,
+    "recall": 0.5111111111111111,
+    "f1": 0.5168539325842696,
+    "roc_auc": 0.5697530864197531
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood_mc200",
+   "n_train": 200,
+   "seed": 2,
+   "fit_seconds": 8.11723895801697,
+   "metrics": {
+    "balanced_accuracy": 0.5,
+    "accuracy": 0.5,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "roc_auc": 0.5
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood_rocket_null",
+   "n_train": 200,
+   "seed": 2,
+   "fit_seconds": 12.20977374992799,
+   "metrics": {
+    "balanced_accuracy": 0.5,
+    "accuracy": 0.5,
+    "precision": 0.5,
+    "recall": 0.43333333333333335,
+    "f1": 0.4642857142857143,
+    "roc_auc": 0.4822222222222222
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "agg",
+   "n_train": 200,
+   "seed": 2,
+   "fit_seconds": 0.12430933397263288,
+   "metrics": {
+    "balanced_accuracy": 0.5222222222222223,
+    "accuracy": 0.5222222222222223,
+    "precision": 0.5185185185185185,
+    "recall": 0.6222222222222222,
+    "f1": 0.5656565656565656,
+    "roc_auc": 0.5259259259259259
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood_rocket_static",
+   "n_train": 200,
+   "seed": 3,
+   "fit_seconds": 34.34924116707407,
+   "metrics": {
+    "balanced_accuracy": 0.45555555555555555,
+    "accuracy": 0.45555555555555555,
+    "precision": 0.45,
+    "recall": 0.4,
+    "f1": 0.4235294117647059,
+    "roc_auc": 0.49061728395061727
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood_mc050",
+   "n_train": 200,
+   "seed": 3,
+   "fit_seconds": 22.467825875035487,
+   "metrics": {
+    "balanced_accuracy": 0.5222222222222223,
+    "accuracy": 0.5222222222222223,
+    "precision": 0.5256410256410257,
+    "recall": 0.45555555555555555,
+    "f1": 0.488095238095238,
+    "roc_auc": 0.5302469135802469
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood_mc100",
+   "n_train": 200,
+   "seed": 3,
+   "fit_seconds": 8.866489458014257,
+   "metrics": {
+    "balanced_accuracy": 0.46111111111111114,
+    "accuracy": 0.46111111111111114,
+    "precision": 0.45569620253164556,
+    "recall": 0.4,
+    "f1": 0.4260355029585799,
+    "roc_auc": 0.47617283950617284
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood_mc200",
+   "n_train": 200,
+   "seed": 3,
+   "fit_seconds": 8.14884674991481,
+   "metrics": {
+    "balanced_accuracy": 0.5,
+    "accuracy": 0.5,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "roc_auc": 0.5
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood_rocket_null",
+   "n_train": 200,
+   "seed": 3,
+   "fit_seconds": 12.18182566598989,
+   "metrics": {
+    "balanced_accuracy": 0.5333333333333333,
+    "accuracy": 0.5333333333333333,
+    "precision": 0.5340909090909091,
+    "recall": 0.5222222222222223,
+    "f1": 0.5280898876404494,
+    "roc_auc": 0.5403703703703704
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "agg",
+   "n_train": 200,
+   "seed": 3,
+   "fit_seconds": 0.11570170801132917,
+   "metrics": {
+    "balanced_accuracy": 0.5222222222222223,
+    "accuracy": 0.5222222222222223,
+    "precision": 0.5185185185185185,
+    "recall": 0.6222222222222222,
+    "f1": 0.5656565656565656,
+    "roc_auc": 0.5259259259259259
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood_rocket_static",
+   "n_train": 200,
+   "seed": 4,
+   "fit_seconds": 33.57961495802738,
+   "metrics": {
+    "balanced_accuracy": 0.48333333333333334,
+    "accuracy": 0.48333333333333334,
+    "precision": 0.48148148148148145,
+    "recall": 0.43333333333333335,
+    "f1": 0.456140350877193,
+    "roc_auc": 0.46123456790123457
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood_mc050",
+   "n_train": 200,
+   "seed": 4,
+   "fit_seconds": 23.33964341704268,
+   "metrics": {
+    "balanced_accuracy": 0.5,
+    "accuracy": 0.5,
+    "precision": 0.5,
+    "recall": 0.5,
+    "f1": 0.5,
+    "roc_auc": 0.47617283950617284
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood_mc100",
+   "n_train": 200,
+   "seed": 4,
+   "fit_seconds": 8.353649041964673,
+   "metrics": {
+    "balanced_accuracy": 0.5055555555555555,
+    "accuracy": 0.5055555555555555,
+    "precision": 0.5054945054945055,
+    "recall": 0.5111111111111111,
+    "f1": 0.5082872928176795,
+    "roc_auc": 0.5188271604938272
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood_mc200",
+   "n_train": 200,
+   "seed": 4,
+   "fit_seconds": 8.229083666927181,
+   "metrics": {
+    "balanced_accuracy": 0.5,
+    "accuracy": 0.5,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "roc_auc": 0.5
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "heartwood_rocket_null",
+   "n_train": 200,
+   "seed": 4,
+   "fit_seconds": 13.710532582947053,
+   "metrics": {
+    "balanced_accuracy": 0.45,
+    "accuracy": 0.45,
+    "precision": 0.4482758620689655,
+    "recall": 0.43333333333333335,
+    "f1": 0.44067796610169496,
+    "roc_auc": 0.47074074074074074
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "agg",
+   "n_train": 200,
+   "seed": 4,
+   "fit_seconds": 0.12180179101414979,
+   "metrics": {
+    "balanced_accuracy": 0.5222222222222223,
+    "accuracy": 0.5222222222222223,
+    "precision": 0.5185185185185185,
+    "recall": 0.6222222222222222,
+    "f1": 0.5656565656565656,
+    "roc_auc": 0.5259259259259259
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood_rocket_static",
+   "n_train": 150,
+   "seed": 0,
+   "fit_seconds": 124.28776995895896,
+   "metrics": {
+    "balanced_accuracy": 0.5021833525398636,
+    "accuracy": 0.508235294117647,
+    "roc_auc": 0.8835906150662627
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood_mc050",
+   "n_train": 150,
+   "seed": 0,
+   "fit_seconds": 34.91357491596136,
+   "metrics": {
+    "balanced_accuracy": 0.47649463113930085,
+    "accuracy": 0.4835294117647059,
+    "roc_auc": 0.8800780174534069
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood_mc100",
+   "n_train": 150,
+   "seed": 0,
+   "fit_seconds": 27.259616749943234,
+   "metrics": {
+    "balanced_accuracy": 0.4684679663625419,
+    "accuracy": 0.4764705882352941,
+    "roc_auc": 0.8733394076504613
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood_mc200",
+   "n_train": 150,
+   "seed": 0,
+   "fit_seconds": 26.78237437491771,
+   "metrics": {
+    "balanced_accuracy": 0.4812410116694172,
+    "accuracy": 0.4894117647058824,
+    "roc_auc": 0.873546536440389
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood_rocket_null",
+   "n_train": 150,
+   "seed": 0,
+   "fit_seconds": 64.88487579091452,
+   "metrics": {
+    "balanced_accuracy": 0.511704324905941,
+    "accuracy": 0.5152941176470588,
+    "roc_auc": 0.896059372946084
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "agg",
+   "n_train": 150,
+   "seed": 0,
+   "fit_seconds": 0.3734718339983374,
+   "metrics": {
+    "balanced_accuracy": 0.17087665933947835,
+    "accuracy": 0.17176470588235293,
+    "roc_auc": 0.7018764686923392
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood_rocket_static",
+   "n_train": 150,
+   "seed": 1,
+   "fit_seconds": 119.45290045894217,
+   "metrics": {
+    "balanced_accuracy": 0.47450486807793657,
+    "accuracy": 0.4788235294117647,
+    "roc_auc": 0.8776188871638243
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood_mc050",
+   "n_train": 150,
+   "seed": 1,
+   "fit_seconds": 35.18375675007701,
+   "metrics": {
+    "balanced_accuracy": 0.45379805965823744,
+    "accuracy": 0.4576470588235294,
+    "roc_auc": 0.8686080975506196
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood_mc100",
+   "n_train": 150,
+   "seed": 1,
+   "fit_seconds": 26.856752582942136,
+   "metrics": {
+    "balanced_accuracy": 0.46701666488123883,
+    "accuracy": 0.4717647058823529,
+    "roc_auc": 0.8610844431537357
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood_mc200",
+   "n_train": 150,
+   "seed": 1,
+   "fit_seconds": 26.063266624929383,
+   "metrics": {
+    "balanced_accuracy": 0.4669908603466539,
+    "accuracy": 0.4717647058823529,
+    "roc_auc": 0.8629541970281048
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood_rocket_null",
+   "n_train": 150,
+   "seed": 1,
+   "fit_seconds": 64.35106283298228,
+   "metrics": {
+    "balanced_accuracy": 0.4852154907606503,
+    "accuracy": 0.48823529411764705,
+    "roc_auc": 0.8812364576521711
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "agg",
+   "n_train": 150,
+   "seed": 1,
+   "fit_seconds": 0.37645525007974356,
+   "metrics": {
+    "balanced_accuracy": 0.17087665933947835,
+    "accuracy": 0.17176470588235293,
+    "roc_auc": 0.7018764686923392
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood_rocket_static",
+   "n_train": 150,
+   "seed": 2,
+   "fit_seconds": 121.30523366702255,
+   "metrics": {
+    "balanced_accuracy": 0.44725812163964157,
+    "accuracy": 0.4505882352941176,
+    "roc_auc": 0.8711265079142928
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood_mc050",
+   "n_train": 150,
+   "seed": 2,
+   "fit_seconds": 34.899913375033066,
+   "metrics": {
+    "balanced_accuracy": 0.4615102689426249,
+    "accuracy": 0.46705882352941175,
+    "roc_auc": 0.870690405105986
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood_mc100",
+   "n_train": 150,
+   "seed": 2,
+   "fit_seconds": 26.13440687500406,
+   "metrics": {
+    "balanced_accuracy": 0.4608681830306215,
+    "accuracy": 0.46588235294117647,
+    "roc_auc": 0.8695706877423623
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood_mc200",
+   "n_train": 150,
+   "seed": 2,
+   "fit_seconds": 25.405576542019844,
+   "metrics": {
+    "balanced_accuracy": 0.46100071847933893,
+    "accuracy": 0.46588235294117647,
+    "roc_auc": 0.8693670841312117
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood_rocket_null",
+   "n_train": 150,
+   "seed": 2,
+   "fit_seconds": 65.8404481660109,
+   "metrics": {
+    "balanced_accuracy": 0.5169030276210991,
+    "accuracy": 0.52,
+    "roc_auc": 0.9015132900256053
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "agg",
+   "n_train": 150,
+   "seed": 2,
+   "fit_seconds": 0.3716697080526501,
+   "metrics": {
+    "balanced_accuracy": 0.17087665933947835,
+    "accuracy": 0.17176470588235293,
+    "roc_auc": 0.7018764686923392
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood_rocket_static",
+   "n_train": 150,
+   "seed": 3,
+   "fit_seconds": 121.00265483302064,
+   "metrics": {
+    "balanced_accuracy": 0.5034478250866811,
+    "accuracy": 0.5070588235294118,
+    "roc_auc": 0.8892842822321758
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood_mc050",
+   "n_train": 150,
+   "seed": 3,
+   "fit_seconds": 33.529305916978046,
+   "metrics": {
+    "balanced_accuracy": 0.4555373430682408,
+    "accuracy": 0.46,
+    "roc_auc": 0.8766191400097755
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood_mc100",
+   "n_train": 150,
+   "seed": 3,
+   "fit_seconds": 27.00512745801825,
+   "metrics": {
+    "balanced_accuracy": 0.4668306782988851,
+    "accuracy": 0.46941176470588236,
+    "roc_auc": 0.8742713535171872
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood_mc200",
+   "n_train": 150,
+   "seed": 3,
+   "fit_seconds": 25.631470415974036,
+   "metrics": {
+    "balanced_accuracy": 0.4668028499444438,
+    "accuracy": 0.46941176470588236,
+    "roc_auc": 0.8754919389648766
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood_rocket_null",
+   "n_train": 150,
+   "seed": 3,
+   "fit_seconds": 61.501134958001785,
+   "metrics": {
+    "balanced_accuracy": 0.5246440178385557,
+    "accuracy": 0.528235294117647,
+    "roc_auc": 0.8937495100351456
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "agg",
+   "n_train": 150,
+   "seed": 3,
+   "fit_seconds": 0.37187012506183237,
+   "metrics": {
+    "balanced_accuracy": 0.17087665933947835,
+    "accuracy": 0.17176470588235293,
+    "roc_auc": 0.7018764686923392
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood_rocket_static",
+   "n_train": 150,
+   "seed": 4,
+   "fit_seconds": 119.2115345839411,
+   "metrics": {
+    "balanced_accuracy": 0.44206218047302037,
+    "accuracy": 0.44823529411764707,
+    "roc_auc": 0.8652880579889198
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood_mc050",
+   "n_train": 150,
+   "seed": 4,
+   "fit_seconds": 34.015682250028476,
+   "metrics": {
+    "balanced_accuracy": 0.4426118096867265,
+    "accuracy": 0.4505882352941176,
+    "roc_auc": 0.8714843521586434
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood_mc100",
+   "n_train": 150,
+   "seed": 4,
+   "fit_seconds": 26.292873332975432,
+   "metrics": {
+    "balanced_accuracy": 0.4414993272281943,
+    "accuracy": 0.44941176470588234,
+    "roc_auc": 0.8590383232897387
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood_mc200",
+   "n_train": 150,
+   "seed": 4,
+   "fit_seconds": 25.670998458983377,
+   "metrics": {
+    "balanced_accuracy": 0.4414230231034975,
+    "accuracy": 0.44941176470588234,
+    "roc_auc": 0.8612901017139123
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "heartwood_rocket_null",
+   "n_train": 150,
+   "seed": 4,
+   "fit_seconds": 63.001193208037876,
+   "metrics": {
+    "balanced_accuracy": 0.5043112666095092,
+    "accuracy": 0.5094117647058823,
+    "roc_auc": 0.8824162629446206
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "agg",
+   "n_train": 150,
+   "seed": 4,
+   "fit_seconds": 0.372505999985151,
+   "metrics": {
+    "balanced_accuracy": 0.17087665933947835,
+    "accuracy": 0.17176470588235293,
+    "roc_auc": 0.7018764686923392
+   }
+  }
+ ]
+}
