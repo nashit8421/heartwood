@@ -122,16 +122,7 @@ VARIANTS["null_v8"] = {**VARIANTS["rocket_static"],
 NULL_ARMS = {f"null_q{int(q * 100):02d}": q for q in _NULL_QUANTILES}
 NULL_BASELINE = "rocket_static"
 
-#: V20 (roadmap item 3): the no-regret guarantee, and the two components it
-#: promises never to be much worse than.  ``comp_base`` is the ridge alone
-#: (no trees); ``comp_trees`` is the trees alone (no ridge under them).
-VARIANTS["comp_base"] = {**VARIANTS["rocket_static"], "n_estimators": 0}
-VARIANTS["comp_trees"] = {**VARIANTS["rocket_static"], "dense_base": False}
-VARIANTS["noregret"] = {**VARIANTS["rocket_static"], "no_regret": True}
 
-#: Arm names the V20 report reads.  ``guarded`` is the model under test,
-#: ``unguarded`` is the same architecture without the guarantee, and the
-#: components are what the bar is measured against.
 NO_REGRET_ARMS = {
     "guarded": "noregret",
     "unguarded": "rocket_static",

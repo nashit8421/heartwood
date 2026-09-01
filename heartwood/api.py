@@ -62,9 +62,6 @@ class _BaseHeartwood:
         nonlinear_features: int = 0,
         nonlinear_gamma: float = 1.0,
         base_static_products: bool = False,
-        no_regret: bool = False,
-        no_regret_fraction: float = 0.25,
-        no_regret_margin: float = 0.0,
         early_stopping_rounds: int | None = None,
         random_state: int | None = None,
     ):
@@ -108,18 +105,11 @@ class _BaseHeartwood:
         self.nonlinear_features = nonlinear_features
         self.nonlinear_gamma = nonlinear_gamma
         self.base_static_products = base_static_products
-        self.no_regret = no_regret
-        self.no_regret_fraction = no_regret_fraction
-        self.no_regret_margin = no_regret_margin
         self.early_stopping_rounds = early_stopping_rounds
         self.random_state = random_state
 
         self._core: _BoosterCore | None = None
         self.n_static_features_ = 0
-        #: Which component the no-regret guarantee kept.  Always "combined"
-        #: when the guarantee is off, so downstream code can read it either way.
-        self.fallback_ = "combined"
-        self.component_scores_: dict[str, float] = {}
         self.series_shape_: tuple[int, int] | None = None
 
     # --------------------------------------------------------------- params
@@ -148,10 +138,9 @@ class _BaseHeartwood:
         if self.n_estimators < 0:
             raise ValueError("n_estimators must be >= 0")
         if self.n_estimators == 0 and not self.dense_base:
-            # Zero trees over no base is a constant predictor, which is a
-            # configuration error rather than a model. Zero trees *over* a base
-            # is the base on its own -- the component the no-regret guarantee
-            # falls back to -- so that combination is allowed.
+            # Zero trees over no base is a constant predictor: a configuration
+            # error, not a model. Zero trees *over* a base is the ridge on its
+            # own, which is a legitimate thing to ask for.
             raise ValueError("n_estimators=0 needs dense_base=True to predict anything")
         if self.learning_rate <= 0:
             raise ValueError("learning_rate must be > 0")
@@ -165,10 +154,6 @@ class _BaseHeartwood:
             raise ValueError("mc_penalty must be >= 0")
         if not 0 < self.selection_null_quantile <= 1:
             raise ValueError("selection_null_quantile must be in (0, 1]")
-        if not 0 < self.no_regret_fraction < 1:
-            raise ValueError("no_regret_fraction must be in (0, 1)")
-        if self.no_regret_margin < 0:
-            raise ValueError("no_regret_margin must be >= 0")
         if self.nonlinear_features < 0:
             raise ValueError("nonlinear_features must be >= 0")
         if self.nonlinear_gamma <= 0:
@@ -227,26 +212,23 @@ class _BaseHeartwood:
             Xs_v, Xt_v, _ = self._align_inputs(Xs_v, Xt_v)
             prepared_eval = (Xs_v, Xt_v, self._encode_eval_target(y_v))
 
-        if self.no_regret:
-            self.fallback_ = self._choose_component(Xs, Xt, y, loss, groups)
-        self._core = self._make_core(**self._component_overrides(self.fallback_))
+        self._core = self._make_core()
         self._core.fit(Xs, Xt, y, loss, eval_set=prepared_eval, verbose=verbose,
                        groups=groups)
         return self
 
-    # ------------------------------------------------------- no-regret (V20)
-
-    #: The candidates the no-regret guarantee chooses between, and what each
-    #: one turns off.  ``combined`` is the shipped architecture and is the
-    #: default: a component has to *earn* the fallback on held-out data.
-    _COMPONENTS = {
-        "combined": {},
-        "base_only": {"n_estimators": 0},
-        "trees_only": {"dense_base": False},
-    }
-
-    def _component_overrides(self, component: str) -> dict:
-        return dict(self._COMPONENTS[component])
+    #: ``no_regret`` lived here (V20): fit the ridge alone, the trees alone and
+    #: the combination, judge them on a held-out fold, and fall back to whichever
+    #: component beat the combination.  The idea was to make a
+    #: ``static_control``-style regression impossible by construction.
+    #:
+    #: It was measured and removed.  On eight UEA datasets the fallback changed
+    #: the model in 31 cells and landed on the better component in 15 of them --
+    #: 48%, a coin flip -- and cost 1.6 points against simply not having it.
+    #: ``VALIDATION_V20.md`` §4 pre-committed to one re-run at a larger margin,
+    #: but a margin only makes the selector fire less often; applied to a
+    #: decision with no skill its ceiling is "does nothing", so the re-run could
+    #: not have informed anything and was not run.  See ``RESULTS_V20.md``.
 
     def _make_core(self, **overrides):
         settings = dict(
@@ -271,71 +253,7 @@ class _BaseHeartwood:
         settings.update(overrides)
         return _BoosterCore(**settings)
 
-    def _holdout_split(self, y, n):
-        """Rows to fit the candidates on, and rows to judge them on.
 
-        Stratified for classification, because a fold that happens to miss a
-        class would score every candidate on a different problem than the one
-        being solved.
-        """
-        rng = np.random.default_rng(
-            0 if self.random_state is None else self.random_state
-        )
-        held = np.zeros(n, dtype=bool)
-        strata = ([np.arange(n)] if self.__class__.__name__.endswith("Regressor")
-                  else [np.flatnonzero(y == value) for value in np.unique(y)])
-        for group in strata:
-            take = int(round(self.no_regret_fraction * group.size))
-            # Never empty a class out of the fitting half to fill the hold-out.
-            take = min(max(take, 1), max(group.size - 1, 0))
-            if take:
-                held[rng.choice(group, size=take, replace=False)] = True
-        if held.all() or not held.any():
-            return None
-        return np.flatnonzero(~held), np.flatnonzero(held)
-
-    def _choose_component(self, Xs, Xt, y, loss, groups) -> str:
-        """Pick the model that a held-out fold actually prefers.
-
-        Roadmap item 3.  "Never meaningfully worse than its best component" is a
-        stronger thing to be able to say than any single benchmark win, and it
-        is the property that makes a ``static_control``-style regression
-        impossible by construction rather than something re-measured every
-        study.
-
-        The asymmetry is the design.  ``combined`` wins ties and wins by
-        default; a component has to beat it by more than ``no_regret_margin`` on
-        data neither of them was fitted on.  This selection is itself a
-        selection step and can over-fit like any other, so requiring evidence to
-        *deviate* is what keeps its worst case small: at ``margin=0`` it is a
-        plain argmin, and above that it is an argmin that must clear a bar.
-        """
-        split = self._holdout_split(y, len(y))
-        if split is None:
-            return "combined"
-        fit_rows, held_rows = split
-
-        def score(component: str) -> float:
-            if component == "base_only" and not self.dense_base:
-                return np.inf   # there is no base to fall back to
-            core = self._make_core(**self._component_overrides(component))
-            core.fit(
-                Xs[fit_rows], None if Xt is None else Xt[fit_rows], y[fit_rows], loss,
-                groups=None if groups is None else np.asarray(groups)[fit_rows],
-            )
-            raw = core.predict_raw(Xs[held_rows],
-                                   None if Xt is None else Xt[held_rows])
-            return float(loss.eval_metric(y[held_rows], raw))
-
-        self.component_scores_ = {name: score(name) for name in self._COMPONENTS}
-        combined = self.component_scores_["combined"]
-        best = min(
-            (name for name in self._COMPONENTS if name != "combined"),
-            key=lambda name: self.component_scores_[name],
-        )
-        if self.component_scores_[best] < combined - self.no_regret_margin:
-            return best
-        return "combined"
 
     def _encode_eval_target(self, y_val):
         return np.asarray(y_val, dtype=np.float64)
