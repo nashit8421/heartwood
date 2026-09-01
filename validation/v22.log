@@ -1,10 +1,32 @@
-# Benchmark results
+[2026-08-31 23:49:12] BEGIN synthetic
+grid: 5 scenarios × 1 sizes × 5 seeds = 25 cells; 12 models each
+budget: 200 rounds, depth 4, lr 0.1; 8 worker processes
 
-Grid: scenarios × n_train [500] × 5 seeds, test n=2000. Every model gets 200 rounds, depth 4, learning rate 0.1; Heartwood runs on library defaults with no per-scenario tuning.
-
-Cells are mean±sd over seeds. A `*` marks Heartwood beating every baseline at that size.
-
-Two comparisons are reported because they answer different questions. **agg** is the global-aggregate workaround teams actually ship — beating it is the claim this library makes. **best-of-all baselines** is an oracle: it picks, per task and per training size, whichever of the five representations turned out best, which nobody can do in advance. Losing to that oracle on some task is expected; losing to `agg` would mean the premise is wrong.
+  [1/25] amp_regression n=500 seed=0
+  [2/25] amp_regression n=500 seed=1
+  [3/25] amp_regression n=500 seed=2
+  [4/25] amp_regression n=500 seed=3
+  [5/25] amp_regression n=500 seed=4
+  [6/25] bump_order n=500 seed=0
+  [7/25] bump_order n=500 seed=1
+  [8/25] bump_order n=500 seed=2
+  [9/25] bump_order n=500 seed=3
+  [10/25] bump_order n=500 seed=4
+  [11/25] timing n=500 seed=0
+  [12/25] timing n=500 seed=1
+  [13/25] timing n=500 seed=2
+  [14/25] timing n=500 seed=3
+  [15/25] timing n=500 seed=4
+  [16/25] slope_window n=500 seed=0
+  [17/25] slope_window n=500 seed=1
+  [18/25] slope_window n=500 seed=2
+  [19/25] slope_window n=500 seed=3
+  [20/25] slope_window n=500 seed=4
+  [21/25] lead_lag n=500 seed=0
+  [22/25] lead_lag n=500 seed=1
+  [23/25] lead_lag n=500 seed=2
+  [24/25] lead_lag n=500 seed=3
+  [25/25] lead_lag n=500 seed=4
 
 ### bump_order — accuracy (higher is better)
 _which of two transients happened first, XOR a static flag_
@@ -126,4 +148,19 @@ vs best-of-all baselines (oracle choice) — n=500: +10.7pt
   agg             0.12   (max 0.17)
   agg_naive       0.11   (max 0.14)
 
-_macOS-26.5.2-arm64-arm-64bit, python 3.10.17, 9.9 min._
+total wall clock: 9.9 min
+wrote validation/rerun/v22_synth/results.json and validation/rerun/v22_synth/results.md
+[2026-08-31 23:59:09] OK synthetic
+[2026-08-31 23:59:09] BEGIN apnea veto
+
+apnea: n=17023, static=5, series=1x3000, task=binary, missing=0.0%
+OMP: Info #276: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+  seed 0 n=1000: heartwood_rocket_static=0.733  heartwood_prod_split=0.691  heartwood_prod_margin=0.705  heartwood_prod_both=0.749  agg=0.737  minirocket=0.659  minirocket10k=0.709  (4014s)
+  seed 1 n=1000: heartwood_rocket_static=0.900  heartwood_prod_split=0.915  heartwood_prod_margin=0.901  heartwood_prod_both=0.892  agg=0.830  minirocket=0.887  minirocket10k=0.857  (3833s)
+  seed 2 n=1000: heartwood_rocket_static=0.937  heartwood_prod_split=0.945  heartwood_prod_margin=0.926  heartwood_prod_both=0.929  agg=0.870  minirocket=0.840  minirocket10k=0.826  (3941s)
+  seed 3 n=1000: heartwood_rocket_static=0.884  heartwood_prod_split=0.849  heartwood_prod_margin=0.876  heartwood_prod_both=0.890  agg=0.889  minirocket=0.779  minirocket10k=0.777  (4028s)
+  seed 4 n=1000: heartwood_rocket_static=0.751  heartwood_prod_split=0.756  heartwood_prod_margin=0.765  heartwood_prod_both=0.764  agg=0.744  minirocket=0.772  minirocket10k=0.755  (4094s)
+
+wrote validation/rerun/v22_apnea/results.json (35 rows)
+[2026-09-01 05:31:01] OK apnea veto
+[2026-09-01 05:31:01] V22_COMPLETE -- H-V22.2 is a veto; check the apnea cell before reading the rest

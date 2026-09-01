@@ -1,0 +1,546 @@
+{
+ "config": {
+  "datasets": "['apnea']",
+  "sizes": "[1000]",
+  "seeds": "5",
+  "full_seeds": "2",
+  "rounds": "200",
+  "depth": "4",
+  "learning_rate": "0.1",
+  "no_minirocket": "False",
+  "max_test": "0",
+  "channels": "None",
+  "drop_static": "False",
+  "variants": "['rocket_static', 'prod_split', 'prod_margin', 'prod_both']",
+  "representations": "['agg']",
+  "out": "validation/rerun/v22_apnea"
+ },
+ "unavailable": {},
+ "results": [
+  {
+   "dataset": "apnea",
+   "model": "heartwood_rocket_static",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 373.20211175002623,
+   "metrics": {
+    "balanced_accuracy": 0.6821930269146763,
+    "accuracy": 0.7147992810065907,
+    "precision": 0.7134948096885814,
+    "recall": 0.5041564792176039,
+    "f1": 0.5908309455587393,
+    "roc_auc": 0.7329404733800099
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "heartwood_prod_split",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 509.7720353329787,
+   "metrics": {
+    "balanced_accuracy": 0.6639266074432626,
+    "accuracy": 0.69542640303575,
+    "precision": 0.6742627345844504,
+    "recall": 0.4919315403422983,
+    "f1": 0.5688436528131185,
+    "roc_auc": 0.6911171497484849
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "heartwood_prod_margin",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 366.59068108396605,
+   "metrics": {
+    "balanced_accuracy": 0.6539490432189973,
+    "accuracy": 0.6860395446375075,
+    "precision": 0.6592592592592592,
+    "recall": 0.47872860635696823,
+    "f1": 0.5546742209631728,
+    "roc_auc": 0.7045335455294365
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "heartwood_prod_both",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 516.182033375022,
+   "metrics": {
+    "balanced_accuracy": 0.6149377857094509,
+    "accuracy": 0.6622728180547234,
+    "precision": 0.6603260869565217,
+    "recall": 0.356479217603912,
+    "f1": 0.4630041282946968,
+    "roc_auc": 0.7487838620901426
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "agg",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 0.1098771250108257,
+   "metrics": {
+    "balanced_accuracy": 0.6148178475853063,
+    "accuracy": 0.6530856800479329,
+    "precision": 0.613905325443787,
+    "recall": 0.4058679706601467,
+    "f1": 0.4886664704150721,
+    "roc_auc": 0.7367651210359748
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "minirocket",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 19.22227070806548,
+   "metrics": {
+    "balanced_accuracy": 0.6099216811478401,
+    "accuracy": 0.6047533453165568,
+    "precision": 0.5129716981132075,
+    "recall": 0.6381418092909535,
+    "f1": 0.5687513619524952,
+    "roc_auc": 0.6593585580350289
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "minirocket10k",
+   "n_train": 1000,
+   "seed": 0,
+   "fit_seconds": 62.39831000007689,
+   "metrics": {
+    "balanced_accuracy": 0.6768393126299055,
+    "accuracy": 0.6568803674855203,
+    "precision": 0.5566331832351923,
+    "recall": 0.7858190709046454,
+    "f1": 0.6516626115166261,
+    "roc_auc": 0.7091167832479541
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "heartwood_rocket_static",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 357.60195899999235,
+   "metrics": {
+    "balanced_accuracy": 0.829147393428524,
+    "accuracy": 0.8312603648424544,
+    "precision": 0.8128491620111732,
+    "recall": 0.809082483781279,
+    "f1": 0.8109614491407339,
+    "roc_auc": 0.9002573859405537
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "heartwood_prod_split",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 476.19163449993357,
+   "metrics": {
+    "balanced_accuracy": 0.8586709930494671,
+    "accuracy": 0.8602819237147595,
+    "precision": 0.8441558441558441,
+    "recall": 0.8433734939759037,
+    "f1": 0.8437644877144181,
+    "roc_auc": 0.9145995952185452
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "heartwood_prod_margin",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 363.66230683296453,
+   "metrics": {
+    "balanced_accuracy": 0.8056122580228005,
+    "accuracy": 0.8136401326699834,
+    "precision": 0.8332451032292219,
+    "recall": 0.7293790546802595,
+    "f1": 0.7778601433160366,
+    "roc_auc": 0.9012211926939103
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "heartwood_prod_both",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 538.1161404999439,
+   "metrics": {
+    "balanced_accuracy": 0.8114847873228733,
+    "accuracy": 0.8119817578772802,
+    "precision": 0.7803675481846706,
+    "recall": 0.8067655236329935,
+    "f1": 0.7933470038733197,
+    "roc_auc": 0.8917604169346321
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "agg",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 0.10804591700434685,
+   "metrics": {
+    "balanced_accuracy": 0.6889158573239231,
+    "accuracy": 0.7064676616915423,
+    "precision": 0.7453703703703703,
+    "recall": 0.5222428174235403,
+    "f1": 0.6141689373297002,
+    "roc_auc": 0.830132927115004
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "minirocket",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 17.339638166013174,
+   "metrics": {
+    "balanced_accuracy": 0.8366065102930043,
+    "accuracy": 0.8362354892205639,
+    "precision": 0.8029229406554473,
+    "recall": 0.840129749768304,
+    "f1": 0.8211050724637681,
+    "roc_auc": 0.8874332809337645
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "minirocket10k",
+   "n_train": 1000,
+   "seed": 1,
+   "fit_seconds": 60.362448333064094,
+   "metrics": {
+    "balanced_accuracy": 0.8216595970123208,
+    "accuracy": 0.8157131011608624,
+    "precision": 0.7516858389527965,
+    "recall": 0.8781278962001854,
+    "f1": 0.8100021372088052,
+    "roc_auc": 0.8568301134597829
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "heartwood_rocket_static",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 375.11474016704597,
+   "metrics": {
+    "balanced_accuracy": 0.857709610358358,
+    "accuracy": 0.836462244472257,
+    "precision": 0.6628982528263104,
+    "recall": 0.9097320169252469,
+    "f1": 0.7669441141498217,
+    "roc_auc": 0.9372871392856904
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "heartwood_prod_split",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 536.5501960000256,
+   "metrics": {
+    "balanced_accuracy": 0.8681608834283652,
+    "accuracy": 0.8416770963704631,
+    "precision": 0.6658278812279819,
+    "recall": 0.9330042313117066,
+    "f1": 0.7770925110132159,
+    "roc_auc": 0.9452613737391292
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "heartwood_prod_margin",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 374.5012502500322,
+   "metrics": {
+    "balanced_accuracy": 0.8558763761789852,
+    "accuracy": 0.8402169378389653,
+    "precision": 0.673036093418259,
+    "recall": 0.8942172073342737,
+    "f1": 0.7680193821926106,
+    "roc_auc": 0.9261912262114051
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "heartwood_prod_both",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 520.1317338750232,
+   "metrics": {
+    "balanced_accuracy": 0.8555379715105047,
+    "accuracy": 0.8414685022945348,
+    "precision": 0.6763129689174705,
+    "recall": 0.8899858956276445,
+    "f1": 0.7685749086479902,
+    "roc_auc": 0.9291140398665767
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "agg",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 0.10773954202886671,
+   "metrics": {
+    "balanced_accuracy": 0.8083869210355684,
+    "accuracy": 0.811639549436796,
+    "precision": 0.6467236467236467,
+    "recall": 0.8004231311706629,
+    "f1": 0.7154112826977623,
+    "roc_auc": 0.8702589923729437
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "minirocket",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 18.08947804197669,
+   "metrics": {
+    "balanced_accuracy": 0.7560871061972338,
+    "accuracy": 0.7690863579474343,
+    "precision": 0.5892139988525531,
+    "recall": 0.7242595204513399,
+    "f1": 0.6497943688706106,
+    "roc_auc": 0.8401898575525237
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "minirocket10k",
+   "n_train": 1000,
+   "seed": 2,
+   "fit_seconds": 61.124579292023554,
+   "metrics": {
+    "balanced_accuracy": 0.7475474017205997,
+    "accuracy": 0.7711722987067168,
+    "precision": 0.5981651376146789,
+    "recall": 0.689703808180536,
+    "f1": 0.6406812970848346,
+    "roc_auc": 0.8258049435490878
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "heartwood_rocket_static",
+   "n_train": 1000,
+   "seed": 3,
+   "fit_seconds": 375.3374159579398,
+   "metrics": {
+    "balanced_accuracy": 0.7610929997240364,
+    "accuracy": 0.8169275123558485,
+    "precision": 0.8902991840435177,
+    "recall": 0.5611428571428572,
+    "f1": 0.6883981773571679,
+    "roc_auc": 0.884050961273112
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "heartwood_prod_split",
+   "n_train": 1000,
+   "seed": 3,
+   "fit_seconds": 521.171331666992,
+   "metrics": {
+    "balanced_accuracy": 0.7864735534909392,
+    "accuracy": 0.8371087314662273,
+    "precision": 0.913718723037101,
+    "recall": 0.6051428571428571,
+    "f1": 0.7280852526641457,
+    "roc_auc": 0.8491388096771226
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "heartwood_prod_margin",
+   "n_train": 1000,
+   "seed": 3,
+   "fit_seconds": 373.4839215420652,
+   "metrics": {
+    "balanced_accuracy": 0.7719586054640788,
+    "accuracy": 0.8276359143327842,
+    "precision": 0.918423464711274,
+    "recall": 0.5725714285714286,
+    "f1": 0.7053854276663146,
+    "roc_auc": 0.8756016925765799
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "heartwood_prod_both",
+   "n_train": 1000,
+   "seed": 3,
+   "fit_seconds": 535.5665807499317,
+   "metrics": {
+    "balanced_accuracy": 0.7709000091987858,
+    "accuracy": 0.825164744645799,
+    "precision": 0.9033124440465533,
+    "recall": 0.5765714285714286,
+    "f1": 0.7038716428322289,
+    "roc_auc": 0.8904052985005979
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "agg",
+   "n_train": 1000,
+   "seed": 3,
+   "fit_seconds": 0.1072175829904154,
+   "metrics": {
+    "balanced_accuracy": 0.8203151504001471,
+    "accuracy": 0.7955107084019769,
+    "precision": 0.6560824742268041,
+    "recall": 0.9091428571428571,
+    "f1": 0.7621556886227544,
+    "roc_auc": 0.8890689908932021
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "minirocket",
+   "n_train": 1000,
+   "seed": 3,
+   "fit_seconds": 17.45664474996738,
+   "metrics": {
+    "balanced_accuracy": 0.7099100358752645,
+    "accuracy": 0.6692751235584844,
+    "precision": 0.5252631578947369,
+    "recall": 0.8554285714285714,
+    "f1": 0.6508695652173914,
+    "roc_auc": 0.7789730475577223
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "minirocket10k",
+   "n_train": 1000,
+   "seed": 3,
+   "fit_seconds": 60.722197333932854,
+   "metrics": {
+    "balanced_accuracy": 0.7002498390212493,
+    "accuracy": 0.6746293245469522,
+    "precision": 0.5326671790930054,
+    "recall": 0.792,
+    "f1": 0.6369485294117647,
+    "roc_auc": 0.7766967160334836
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "heartwood_rocket_static",
+   "n_train": 1000,
+   "seed": 4,
+   "fit_seconds": 378.5505213330034,
+   "metrics": {
+    "balanced_accuracy": 0.6595118339187834,
+    "accuracy": 0.6736800317586343,
+    "precision": 0.7352342158859471,
+    "recall": 0.4634146341463415,
+    "f1": 0.568503937007874,
+    "roc_auc": 0.7510947386798056
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "heartwood_prod_split",
+   "n_train": 1000,
+   "seed": 4,
+   "fit_seconds": 531.6621297079837,
+   "metrics": {
+    "balanced_accuracy": 0.6409512982481488,
+    "accuracy": 0.6568082572449385,
+    "precision": 0.7232011747430249,
+    "recall": 0.42148053059477963,
+    "f1": 0.5325763719924305,
+    "roc_auc": 0.7558604025799411
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "heartwood_prod_margin",
+   "n_train": 1000,
+   "seed": 4,
+   "fit_seconds": 367.2699372910429,
+   "metrics": {
+    "balanced_accuracy": 0.6519826489404628,
+    "accuracy": 0.666534339023422,
+    "precision": 0.7267080745341615,
+    "recall": 0.45057766367137353,
+    "f1": 0.5562599049128367,
+    "roc_auc": 0.7651908507237608
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "heartwood_prod_both",
+   "n_train": 1000,
+   "seed": 4,
+   "fit_seconds": 510.1616512920009,
+   "metrics": {
+    "balanced_accuracy": 0.6600107853998511,
+    "accuracy": 0.6766574037316395,
+    "precision": 0.7723076923076924,
+    "recall": 0.42961061189559263,
+    "f1": 0.5521033819081661,
+    "roc_auc": 0.7640774578014102
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "agg",
+   "n_train": 1000,
+   "seed": 4,
+   "fit_seconds": 0.10967337503097951,
+   "metrics": {
+    "balanced_accuracy": 0.642831693423425,
+    "accuracy": 0.6550218340611353,
+    "precision": 0.6852195423623995,
+    "recall": 0.47411210954214805,
+    "f1": 0.5604451188669701,
+    "roc_auc": 0.7441928273605697
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "minirocket",
+   "n_train": 1000,
+   "seed": 4,
+   "fit_seconds": 18.036996291950345,
+   "metrics": {
+    "balanced_accuracy": 0.649162016571938,
+    "accuracy": 0.6623660182612148,
+    "precision": 0.7059585492227979,
+    "recall": 0.4664099272571673,
+    "f1": 0.5617108992527698,
+    "roc_auc": 0.7716625659017556
+   }
+  },
+  {
+   "dataset": "apnea",
+   "model": "minirocket10k",
+   "n_train": 1000,
+   "seed": 4,
+   "fit_seconds": 62.781274625100195,
+   "metrics": {
+    "balanced_accuracy": 0.6696668708731944,
+    "accuracy": 0.6756649464073045,
+    "precision": 0.672388425698872,
+    "recall": 0.5866495507060334,
+    "f1": 0.626599634369287,
+    "roc_auc": 0.7553529754982267
+   }
+  }
+ ]
+}
