@@ -1,0 +1,34 @@
+[2026-09-01 20:37:58] BEGIN uea
+
+uea:Epilepsy: n=275, static=0, series=3x206, task=multiclass, missing=0.0%
+OMP: Info #276: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+  seed 0 n=137: heartwood_rocket_static=0.993  agg=0.957  minirocket=1.000  minirocket10k=1.000  (3s)
+  seed 1 n=137: heartwood_rocket_static=0.993  agg=0.957  minirocket=1.000  minirocket10k=1.000  (2s)
+  seed 2 n=137: heartwood_rocket_static=0.986  agg=0.957  minirocket=1.000  minirocket10k=1.000  (2s)
+  seed 3 n=137: heartwood_rocket_static=0.986  agg=0.957  minirocket=1.000  minirocket10k=1.000  (2s)
+  seed 4 n=137: heartwood_rocket_static=0.993  agg=0.957  minirocket=1.000  minirocket10k=1.000  (7s)
+
+uea:BasicMotions: n=80, static=0, series=6x100, task=multiclass, missing=0.0%
+  seed 0 n=40: heartwood_rocket_static=1.000  agg=0.975  minirocket=1.000  minirocket10k=1.000  (0s)
+  seed 1 n=40: heartwood_rocket_static=1.000  agg=0.975  minirocket=1.000  minirocket10k=1.000  (0s)
+  seed 2 n=40: heartwood_rocket_static=1.000  agg=0.975  minirocket=1.000  minirocket10k=1.000  (0s)
+  seed 3 n=40: heartwood_rocket_static=1.000  agg=0.975  minirocket=1.000  minirocket10k=1.000  (0s)
+  seed 4 n=40: heartwood_rocket_static=1.000  agg=0.975  minirocket=1.000  minirocket10k=1.000  (0s)
+
+uea:ERing: n=300, static=0, series=4x65, task=multiclass, missing=0.0%
+  seed 0 n=30: heartwood_rocket_static=0.948  agg=0.811  minirocket=0.981  minirocket10k=0.978  (1s)
+  seed 1 n=30: heartwood_rocket_static=0.967  agg=0.811  minirocket=0.981  minirocket10k=0.978  (1s)
+  seed 2 n=30: heartwood_rocket_static=0.963  agg=0.811  minirocket=0.981  minirocket10k=0.978  (1s)
+  seed 3 n=30: heartwood_rocket_static=0.959  agg=0.811  minirocket=0.981  minirocket10k=0.978  (1s)
+  seed 4 n=30: heartwood_rocket_static=0.967  agg=0.811  minirocket=0.981  minirocket10k=0.978  (1s)
+
+uea:RacketSports: n=303, static=0, series=6x30, task=multiclass, missing=0.0%
+  seed 0 n=151: heartwood_rocket_static=0.896  agg=0.833  minirocket=0.866  minirocket10k=0.866  (7s)
+  seed 1 n=151: heartwood_rocket_static=0.940  agg=0.833  minirocket=0.866  minirocket10k=0.866  (6s)
+  seed 2 n=151: heartwood_rocket_static=0.891  agg=0.833  minirocket=0.866  minirocket10k=0.866  (8s)
+  seed 3 n=151: heartwood_rocket_static=0.910  agg=0.833  minirocket=0.866  minirocket10k=0.866  (8s)
+  seed 4 n=151: heartwood_rocket_static=0.872  agg=0.833  minirocket=0.866  minirocket10k=0.866  (7s)
+
+uea:Libras: n=360, static=0, series=2x45, task=multiclass, missing=0.0%
+  seed 0 n=180: heartwood_rocket_static=0.883  agg=0.761  minirocket=0.917  minirocket10k=0.917  (24s)
+  seed 1 n=180: heartwood_rocket_static=0.894  agg=0.761  minirocket=0.917  minirocket10k=0.917  (25s)
