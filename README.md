@@ -349,18 +349,39 @@ The fusion mechanism *works*. The headline is still +0.7 because **the series ha
 on this dataset**: series-only scores 0.750 against MiniROCKET's 0.790 — **−3.6, the first
 dataset in the project where the time-series half loses.** On 12-lead CPSC the same code is
 +3.7. Everything distinguishing this bank from MiniROCKET's is cross-channel, and Apnea is
-single-lead. That is a hypothesis, and the next thing to pre-register.
+single-lead.
 
-**And the paragraph below already contradicts it.** Sleep-EDF is single-channel (EEG Fpz-Cz)
-and the series half wins there by +1.2. A counterexample sitting two paragraphs away was
-overlooked when this was written, so "cross-channel" cannot be the whole story whatever else
-is true. `VALIDATION_V14.md` holds the ablation that varies lead count and nothing else, and
-its §5 names *this* hypothesis surviving as the outcome it would least like.
-
-The dataset screen has since offered a competing explanation with no channels in it at all:
-Apnea's regime gap is **−0.010** — a global summary of that one-minute ECG loses nothing a
-finer representation recovers (`RESULTS_SCREEN.md`). If the series half has little temporal
-structure to find on Apnea, it would lose to a large fixed bank there regardless of width.
+> ### Correction (2026-09-01): that explanation is wrong, and it was tested
+>
+> The paragraph above was published as a hypothesis and V14 tested it, holding the dataset,
+> task, split, seed and label fixed and varying only the number of ECG leads on CPSC-2018.
+>
+> | arm | leads | margin over MiniROCKET-10k |
+> |---|---|---|
+> | A | 12 | +2.8 |
+> | B | 3 | +2.6 |
+> | C | **1** | **+3.0** |
+>
+> **Twelve leads score worse than one.** The gap is −0.3 points against a +3.0 bar, the
+> ordering is not even monotone, and the margin survives intact at a single lead. Channel
+> width is not the mechanism. Full result in `RESULTS_V14.md`; pre-registration, including
+> §5 naming this as the outcome it would least like, in `VALIDATION_V14.md`.
+>
+> The counterexample was already on this page: **Sleep-EDF is single-channel** (EEG Fpz-Cz)
+> and the series half wins there by +1.2, two paragraphs below. It was overlooked when the
+> cross-channel story was written.
+>
+> Two later results say the same thing from other directions. **V15** found that none of the
+> four things this bank adds to MiniROCKET's — virtual channels, comparison splits, window
+> statistics, Lévy areas — clears a +0.5 bar on the UEA suite, and that MiniROCKET's plain
+> bank beats the full configuration on 3 of 8 datasets. So there was less cross-channel
+> machinery doing work than this paragraph assumed. And the **dataset screen** offers a
+> replacement explanation with no channels in it at all: Apnea's regime gap is **−0.010**, so
+> a global summary of that one-minute ECG loses nothing a finer representation recovers
+> (`RESULTS_SCREEN.md`). A series half with little temporal structure to find would lose to a
+> large fixed bank there at any width.
+>
+> **The honest description of this library is now "MiniROCKET's bank under our trees."**
 
 The Sleep-EDF result re-run group-aware survives: **0.672 vs 0.660** for MiniROCKET-10k and
 0.645 for 2k, winning on all three seeds. `static_only` there is 0.202 against a chance

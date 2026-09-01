@@ -1,3 +1,10 @@
+> **Superseded in part, 2026-09-01.** This document's channel-width explanation for
+> the Apnea loss was pre-registered as V14 and **failed**: on CPSC-2018, holding
+> everything but lead count fixed, twelve leads score +2.8 against a single lead's
+> **+3.0**. Width is not the mechanism, and the margin survives at one channel. See
+> `RESULTS_V14.md` and `VALIDATION_V14.md` §5, which named this as the outcome it
+> would least like. Everything else here stands; only the mechanism is withdrawn.
+
 # V13 results — the verdict holds, the number that produced it was partly my own bug
 
 ## What V13 was
