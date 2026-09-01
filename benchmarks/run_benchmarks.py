@@ -95,6 +95,21 @@ V15_CHECK: dict[str, dict] = {
                        n_comparison_candidates=0),
 }
 
+#: --v23 is V23's positive control: the same four arms as the real suite, on the
+#: scenarios each extra was built for.  Not evidence for the extras -- those
+#: scenarios were written to require these operators -- but evidence about
+#: whether a null on the real suite is interpretable.
+V23: dict[str, dict] = {
+    "hw_v23_base": dict(dense_base=True, dense_include_static=True,
+                        n_comparison_candidates=0, levy_areas=False),
+    "hw_v23_cmp": dict(dense_base=True, dense_include_static=True,
+                       n_comparison_candidates=4, levy_areas=False),
+    "hw_v23_levy": dict(dense_base=True, dense_include_static=True,
+                        n_comparison_candidates=0, levy_areas=True),
+    "hw_v23_both": dict(dense_base=True, dense_include_static=True,
+                        n_comparison_candidates=4, levy_areas=True),
+}
+
 #: --phasec adds the opt-in Phase C extras.
 PHASE_C: dict[str, dict] = {
     "hw_levy": dict(levy_areas=True),
@@ -366,6 +381,8 @@ def main() -> int:
                         help="also run the opt-in Phase-C variants")
     parser.add_argument("--products", action="store_true",
                         help="also run the V22 magnitude-product variants")
+    parser.add_argument("--v23", action="store_true",
+                        help="V23's positive control on the synthetic scenarios")
     parser.add_argument("--v15check", action="store_true",
                         help="re-test V15's four bank extras on the synthetic "
                              "scenarios before deleting them")
@@ -382,6 +399,8 @@ def main() -> int:
         variants.update(PHASE_C)
     if args.rocket:
         variants.update(ROCKET)
+    if args.v23:
+        variants.update(V23)
     if args.v15check:
         variants.update(V15_CHECK)
     if args.products:

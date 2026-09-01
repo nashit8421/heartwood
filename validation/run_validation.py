@@ -72,6 +72,19 @@ VARIANTS: dict[str, dict] = {
     "abl_all": {**_ABL_MIN, "n_comparison_candidates": 4, "levy_areas": True},
 }
 
+#: V23: comparison splits and Levy areas, on a suite that was not used to
+#: condemn them.  V15 failed both on eight UEA datasets; a follow-up measured
+#: them at -9.9 and -10.6 points when removed from the synthetic scenarios they
+#: were built for.  Both facts are real and the arms below are the same in each
+#: case, so the question is which suite generalises.
+VARIANTS["v23_base"] = dict(_ABL_MIN)
+VARIANTS["v23_cmp"] = {**_ABL_MIN, "n_comparison_candidates": 4}
+VARIANTS["v23_levy"] = {**_ABL_MIN, "levy_areas": True}
+VARIANTS["v23_both"] = {**_ABL_MIN, "n_comparison_candidates": 4, "levy_areas": True}
+
+V23_EXTRAS = {"comparison_splits": "v23_cmp", "levy_areas": "v23_levy"}
+V23_BASELINE = "v23_base"
+
 #: V16 (roadmap item 2a): per-node bagging over the temporal draws, on top of
 #: the shipped rocket base so the arm differs from ``rocket_static`` in exactly
 #: one setting.  Fractions are named in advance and none is added later.
