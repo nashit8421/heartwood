@@ -6,7 +6,7 @@ import numpy as np
 
 from ._util import spawn_rng
 from .bank import FeatureBank
-from .dense import DenseBase, dense_bank, levy_area_columns
+from .dense import DenseBase, levy_area_columns
 from .rocket import RocketBank
 from .filters import Pyramid
 from .losses import Loss
@@ -23,7 +23,7 @@ class _BoosterCore:
     def __init__(self, tree_params: TreeParams, n_estimators=200, learning_rate=0.1,
                  subsample=1.0, early_stopping_rounds=None, random_state=None,
                  bank_enabled=True, bank_max=32, dense_base=False, levy_areas=False,
-                 dense_features="stats", n_rocket_features=10000,
+                 n_rocket_features=10000,
                  dense_include_static=False, dense_static_interactions=False,
                  screen_fraction=0.0, screen_top_k=8,
                  nonlinear_features=0, nonlinear_gamma=1.0,
@@ -38,11 +38,6 @@ class _BoosterCore:
         self.bank_max = int(bank_max)
         self.bank: FeatureBank | None = None
         self.dense_base = bool(dense_base)
-        if dense_features not in ("stats", "rocket", "both"):
-            raise ValueError(
-                f"dense_features must be 'stats', 'rocket' or 'both', got {dense_features!r}"
-            )
-        self.dense_features = dense_features
         self.n_rocket_features = int(n_rocket_features)
         self.dense_include_static = bool(dense_include_static)
         self.dense_static_interactions = bool(dense_static_interactions)
@@ -174,31 +169,29 @@ class _BoosterCore:
         return (base_raw[:, :, None] * standard[:, None, :]).reshape(len(X_static), -1)
 
     def _dense_bank(self, X_series, fitting: bool) -> np.ndarray:
-        """The feature bank the ridge base sees.
+        """The feature bank the ridge base sees: the dilated convolutions.
 
-        ``stats`` is the original dyadic window-statistic bank.  ``rocket`` is the
-        dilated-convolution bank, which exists because greedy per-node selection
-        is the measured ceiling on shape-regime data and a ridge over a large
-        fixed bank does not select at all (``validation/HEADROOM.md``).  ``both``
-        concatenates them and lets the ridge decide.
+        It exists because greedy per-node selection is the measured ceiling on
+        shape-regime data and a ridge over a large fixed bank does not select at
+        all (``validation/HEADROOM.md``, and read its 2026-09-01 correction --
+        four attempts to fix the selection rule directly all came in below bar).
 
-        The rocket bank is stateful — its biases are quantiles of the *training*
-        convolutions — so it is fitted once and reused unchanged afterwards, the
+        A window-statistic bank used to be offered here too, alone or
+        concatenated.  V15 measured it at +0.4 points over eight UEA datasets
+        and 0.015% of RMSE over five synthetic scenarios, and it was deleted.
+
+        The bank is stateful -- its biases are quantiles of the *training*
+        convolutions -- so it is fitted once and reused unchanged afterwards, the
         same discipline as the frozen rank grids in ``features.ecdf``.
         """
-        parts = []
-        if self.dense_features in ("stats", "both"):
-            parts.append(dense_bank(X_series))
-        if self.dense_features in ("rocket", "both"):
-            if fitting:
-                self.rocket_ = RocketBank(
-                    n_features=self.n_rocket_features,
-                    random_state=0 if self.random_state is None else self.random_state,
-                ).fit(X_series)
-            if self.rocket_ is None:
-                raise RuntimeError("rocket bank is not fitted")
-            parts.append(self.rocket_.transform(X_series))
-        return parts[0] if len(parts) == 1 else np.hstack(parts)
+        if fitting:
+            self.rocket_ = RocketBank(
+                n_features=self.n_rocket_features,
+                random_state=0 if self.random_state is None else self.random_state,
+            ).fit(X_series)
+        if self.rocket_ is None:
+            raise RuntimeError("rocket bank is not fitted")
+        return self.rocket_.transform(X_series)
 
     def _screen_bank(self, rows, g, h, master):
         """Rank the bank out of fold, and return the rows the tree may fit on.

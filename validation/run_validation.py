@@ -52,7 +52,6 @@ REPRESENTATIONS = ["static_only", "agg", "wagg4", "wagg8", "raw_flat",
 #: is the extra named in the arm.  See ``VALIDATION_V15.md``.
 _ABL_MIN = {
     "dense_base": True,
-    "dense_features": "rocket",
     "dense_include_static": True,
     "dense_static_interactions": False,
     "n_comparison_candidates": 0,
@@ -61,18 +60,16 @@ _ABL_MIN = {
 
 VARIANTS: dict[str, dict] = {
     "": {},
-    "rocket_static": {"dense_base": True, "dense_features": "rocket",
+    "rocket_static": {"dense_base": True,
                       "dense_include_static": True, "dense_static_interactions": False},
-    "rocket_inter": {"dense_base": True, "dense_features": "rocket",
+    "rocket_inter": {"dense_base": True,
                      "dense_include_static": True, "dense_static_interactions": True},
     # V8: the convolution base plus a chance floor on split acceptance.
-    "rocket_null": {"dense_base": True, "dense_features": "rocket", "selection_null": 1},
+    "rocket_null": {"dense_base": True, "selection_null": 1},
     "abl_min": dict(_ABL_MIN),
     "abl_cmp": {**_ABL_MIN, "n_comparison_candidates": 4},
-    "abl_stats": {**_ABL_MIN, "dense_features": "both"},
     "abl_levy": {**_ABL_MIN, "levy_areas": True},
-    "abl_all": {**_ABL_MIN, "n_comparison_candidates": 4,
-                "dense_features": "both", "levy_areas": True},
+    "abl_all": {**_ABL_MIN, "n_comparison_candidates": 4, "levy_areas": True},
 }
 
 #: V16 (roadmap item 2a): per-node bagging over the temporal draws, on top of
@@ -185,7 +182,6 @@ PRODUCT_BASELINE = "rocket_static"
 #: what "the +virtual-channels arm" means after a score has been seen.
 ABLATION_EXTRAS = {
     "comparison_splits": "abl_cmp",
-    "interval_stats": "abl_stats",
     "levy_areas": "abl_levy",
 }
 
@@ -198,13 +194,15 @@ MULTICHANNEL_ONLY_EXTRAS = ("levy_areas",)
 def variant_kwargs(variant: str) -> dict:
     """Estimator keyword arguments for a named arm.
 
-    Unknown names fall through to ``dense_features=<name>``, which is how
-    ``stats``/``rocket``/``both`` were addressed before this table existed; an
-    invalid one still fails loudly inside the estimator rather than here.
+    An unknown name is an error rather than a silent fallback.  It used to mean
+    ``dense_features=<name>``, which addressed the window-statistic bank; that
+    bank was deleted after V15 and a typo would otherwise now produce a default
+    model wearing the wrong label in a results table.
     """
-    if variant in VARIANTS:
-        return dict(VARIANTS[variant])
-    return {"dense_base": True, "dense_features": variant}
+    if variant not in VARIANTS:
+        raise SystemExit(
+            f"unknown variant {variant!r}; known arms: {sorted(VARIANTS)}")
+    return dict(VARIANTS[variant])
 
 
 # ------------------------------------------------------------------ metrics

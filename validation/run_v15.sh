@@ -24,7 +24,7 @@ if python validation/run_validation.py \
                  uea:Heartbeat uea:HandMovementDirection \
                  uea:SelfRegulationSCP2 uea:Handwriting \
       --sizes 0 --seeds 5 --full-seeds 5 \
-      --variants abl_min abl_cmp abl_stats abl_levy abl_all \
+      --variants abl_min abl_cmp abl_levy abl_all \
       --representations agg \
       --out validation/rerun/v15_uea; then
   say "OK V15 grid"

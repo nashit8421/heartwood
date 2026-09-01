@@ -46,11 +46,11 @@ ABLATIONS: dict[str, dict] = {
 #: The synthetic scenarios are where the existing wins live, so a base that
 #: helps on real shape-regime data still has to not break them.
 ROCKET: dict[str, dict] = {
-    "hw_rocket": dict(dense_base=True, dense_features="rocket"),
-    "hw_rocket_null": dict(dense_base=True, dense_features="rocket", selection_null=1),
-    "hw_rocket_static": dict(dense_base=True, dense_features="rocket",
+    "hw_rocket": dict(dense_base=True),
+    "hw_rocket_null": dict(dense_base=True, selection_null=1),
+    "hw_rocket_static": dict(dense_base=True,
                              dense_include_static=True, dense_static_interactions=False),
-    "hw_rocket_inter": dict(dense_base=True, dense_features="rocket",
+    "hw_rocket_inter": dict(dense_base=True,
                             dense_include_static=True, dense_static_interactions=True),
 }
 
@@ -58,11 +58,11 @@ ROCKET: dict[str, dict] = {
 #: top of the rocket base, because the base is what supplies the series side of
 #: the cross the target is built from.
 PRODUCTS: dict[str, dict] = {
-    "hw_prod_split": dict(dense_base=True, dense_features="rocket",
+    "hw_prod_split": dict(dense_base=True,
                           dense_include_static=True, n_product_candidates=4),
-    "hw_prod_margin": dict(dense_base=True, dense_features="rocket",
+    "hw_prod_margin": dict(dense_base=True,
                            dense_include_static=True, base_static_products=True),
-    "hw_prod_both": dict(dense_base=True, dense_features="rocket",
+    "hw_prod_both": dict(dense_base=True,
                          dense_include_static=True, n_product_candidates=4,
                          base_static_products=True),
 }
@@ -75,22 +75,22 @@ PRODUCTS: dict[str, dict] = {
 #: built for would be exactly the incomplete-evidence mistake this project keeps
 #: writing documents about.
 V15_CHECK: dict[str, dict] = {
-    "hw_v15_all": dict(dense_base=True, dense_features="rocket",
+    "hw_v15_all": dict(dense_base=True,
                        dense_include_static=True, levy_areas=True,
                        n_comparison_candidates=4),
-    "hw_v15_no_levy": dict(dense_base=True, dense_features="rocket",
+    "hw_v15_no_levy": dict(dense_base=True,
                            dense_include_static=True, levy_areas=False,
                            n_comparison_candidates=4),
-    "hw_v15_no_cmp": dict(dense_base=True, dense_features="rocket",
+    "hw_v15_no_cmp": dict(dense_base=True,
                           dense_include_static=True, levy_areas=True,
                           n_comparison_candidates=0),
-    "hw_v15_no_stats": dict(dense_base=True, dense_features="rocket",
+    "hw_v15_no_stats": dict(dense_base=True,
                             dense_include_static=True, levy_areas=True,
                             n_comparison_candidates=4),
-    "hw_v15_with_stats": dict(dense_base=True, dense_features="both",
+    "hw_v15_with_stats": dict(dense_base=True,
                               dense_include_static=True, levy_areas=True,
                               n_comparison_candidates=4),
-    "hw_v15_min": dict(dense_base=True, dense_features="rocket",
+    "hw_v15_min": dict(dense_base=True,
                        dense_include_static=True, levy_areas=False,
                        n_comparison_candidates=0),
 }

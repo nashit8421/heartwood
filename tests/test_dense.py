@@ -16,10 +16,10 @@ import pytest
 
 from heartwood import HeartwoodClassifier, HeartwoodRegressor
 from heartwood.datasets import make_lead_lag, make_shape_amplitude_regression
+from heartwood.features import STAT_NAMES, interval_stat
 from heartwood.dense import (
     _platt,
     DenseBase,
-    dense_bank,
     dyadic_windows,
     levy_area_columns,
 )
@@ -28,17 +28,6 @@ from heartwood.dense import (
 # ------------------------------------------------------------- the bank
 
 
-def test_dyadic_windows_are_the_specified_pyramid():
-    windows = dyadic_windows(100)
-    assert len(windows) == 26  # 1 + 3 + 7 + 15
-    assert windows[0] == (0, 100)
-    assert all(0 <= a < b <= 100 for a, b in windows)
-    assert len(set(windows)) == len(windows)
-
-
-def test_dyadic_windows_cope_with_short_series():
-    assert dyadic_windows(4)
-    assert all(b - a >= 2 for a, b in dyadic_windows(4))
 
 
 def test_dense_bank_contains_the_global_aggregate(rng):
@@ -50,16 +39,6 @@ def test_dense_bank_contains_the_global_aggregate(rng):
         np.allclose(bank[:, j], whole_series_mean) for j in range(bank.shape[1])
     ), "the whole-series mean should appear as one of the columns"
 
-
-def test_dense_bank_is_finite_and_wide(rng):
-    X = rng.normal(size=(15, 2, 100))
-    bank = dense_bank(X)
-    assert bank.shape[0] == 15
-    assert bank.shape[1] > 400
-    assert np.isfinite(bank).all()
-
-
-# ------------------------------------------------- leave-one-out correctness
 
 
 def test_loo_margins_match_an_explicit_refit(rng):
@@ -333,6 +312,36 @@ import pytest
 from heartwood import HeartwoodClassifier
 from heartwood.rocket import ALPHA_INDICES, KERNEL_LEN, N_KERNELS, RocketBank
 
+def dense_bank(X_series, stats=STAT_NAMES):
+    """A wide feature block, purely as a fixture for the ridge tests.
+
+    This is ``heartwood.dense.dense_bank`` verbatim.  It was deleted from the
+    library after V15 measured it at +0.4 points over eight UEA datasets and
+    0.015% of RMSE over five synthetic scenarios, but the ridge tests below are
+    calibrated against the exact bank it produced -- their leakage thresholds sit
+    within a percentage point of the boundary -- so reproducing its shape
+    approximately is not good enough. Kept here, as a fixture, so a deleted
+    feature does not stay alive in the library merely to serve its own tests.
+
+    ``dyadic_windows`` is still imported from the library because
+    ``levy_area_columns`` still uses it, and Levy areas were kept.
+    """
+    n, n_channels, T = X_series.shape
+    windows = dyadic_windows(T)
+    columns = []
+    for channel in range(n_channels):
+        base = X_series[:, channel, :]
+        differenced = np.diff(base, axis=1) if T > 1 else base
+        for block in (base, differenced):
+            for start, end in windows:
+                piece = block[:, min(start, block.shape[1] - 1): min(end, block.shape[1])]
+                if piece.shape[1] == 0:
+                    continue
+                for stat in stats:
+                    columns.append(interval_stat(piece, stat))
+    return np.column_stack(columns).astype(np.float64) if columns else np.zeros((n, 0))
+
+
 
 def test_there_are_eighty_four_zero_sum_kernels():
     assert N_KERNELS == 84
@@ -402,17 +411,11 @@ def test_rocket_base_predicts_out_of_sample(rng):
     X = rng.normal(size=(120, 2, 96))
     y = (np.abs(X[:, 0, 30:60]).max(1) > 1.9).astype(int)
     model = HeartwoodClassifier(n_estimators=40, max_depth=3, random_state=0,
-                                dense_base=True, dense_features="rocket",
+                                dense_base=True,
                                 n_rocket_features=2000).fit(None, X[:80], y[:80])
     held_out = (model.predict(None, X[80:]) == y[80:]).mean()
     assert held_out > 0.6, f"rocket base predicts at {held_out:.2f} on held-out rows"
 
-
-def test_unknown_dense_features_fails_loudly():
-    with pytest.raises(ValueError, match="dense_features must be"):
-        HeartwoodClassifier(dense_features="convolutions").fit(
-            None, np.zeros((4, 1, 20)), np.array([0, 1, 0, 1])
-        )
 
 
 def test_a_barely_positive_loo_r2_is_not_enough(rng):

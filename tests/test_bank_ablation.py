@@ -63,14 +63,16 @@ def test_all_arm_switches_on_every_extra():
 
 def test_baseline_is_minirocket_only():
     base = variant_kwargs("abl_min")
-    assert base["dense_features"] == "rocket"
     assert base["n_comparison_candidates"] == 0
     assert base["levy_areas"] is False
 
 
-def test_unknown_variant_still_addresses_a_dense_bank():
-    """Back-compat: ``--variants both`` worked before the table and must still."""
-    assert variant_kwargs("both") == {"dense_base": True, "dense_features": "both"}
+def test_an_unknown_variant_is_an_error_not_a_silent_default():
+    """It used to mean ``dense_features=<name>``, addressing the window-statistic
+    bank. That bank was deleted after V15, so a typo would otherwise now produce
+    a plain default model wearing the wrong label in a results table."""
+    with pytest.raises(SystemExit, match="unknown variant"):
+        variant_kwargs("both")
 
 
 # ------------------------------------------------------- the deleted extra

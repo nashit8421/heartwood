@@ -19,7 +19,7 @@ import pytest
 
 from heartwood import HeartwoodClassifier, HeartwoodRegressor
 
-ROCKET = dict(dense_base=True, dense_features="rocket", n_rocket_features=300)
+ROCKET = dict(dense_base=True, n_rocket_features=300)
 
 
 def series_signal(n=200, seed=0):

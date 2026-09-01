@@ -47,26 +47,19 @@ def dyadic_windows(T: int, levels: int = 4) -> list[tuple[int, int]]:
     return list(seen)
 
 
-def dense_bank(X_series: np.ndarray, stats: tuple[str, ...] = STAT_NAMES) -> np.ndarray:
-    """Every statistic over every dyadic window, for each channel and its first difference.
-
-    Wide on purpose — this is the input the linear layer is meant to aggregate.
-    It deterministically contains the global-aggregate baseline as a subset.
-    """
-    n, n_channels, T = X_series.shape
-    windows = dyadic_windows(T)
-    columns: list[np.ndarray] = []
-    for channel in range(n_channels):
-        base = X_series[:, channel, :]
-        differenced = np.diff(base, axis=1) if T > 1 else base
-        for block in (base, differenced):
-            for start, end in windows:
-                piece = block[:, min(start, block.shape[1] - 1) : min(end, block.shape[1])]
-                if piece.shape[1] == 0:
-                    continue
-                for stat in stats:
-                    columns.append(interval_stat(piece, stat))
-    return np.column_stack(columns).astype(np.float64) if columns else np.zeros((n, 0))
+#: ``dense_bank`` lived here: every statistic in ``dyadic_windows`` above, for
+#: each channel and its first difference, offered to the ridge alongside or
+#: instead of the convolution bank.  V15 measured it at +0.4 points across eight
+#: UEA datasets -- clearing its +0.5 bar on 2 of 8 -- and a follow-up on the five
+#: synthetic scenarios put it at 0.015% of RMSE, which is nothing.  Deleted per
+#: VALIDATION_V15.md §4.  ``RocketBank`` is now the only bank the ridge sees,
+#: which is what makes the honest description of this library "MiniROCKET's bank
+#: under our trees".
+#:
+#: ``dyadic_windows`` itself stays: ``levy_area_columns`` below still uses it,
+#: and Levy areas were *kept* -- V15 failed them on the UEA suite, but a
+#: follow-up measured them at -10.6 points on ``lead_lag`` when removed, which is
+#: the scenario they were built for and which that suite cannot see.
 
 
 def levy_area_columns(X_series: np.ndarray, max_pairs: int = 6) -> np.ndarray:

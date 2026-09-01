@@ -57,7 +57,6 @@ class _BaseHeartwood:
         selection_null: int = 0,
         selection_null_quantile: float = 1.0,
         mc_penalty: float = 0.0,
-        dense_features: str = "stats",
         n_rocket_features: int = 10000,
         dense_include_static: bool = False,
         dense_static_interactions: bool = False,
@@ -106,7 +105,6 @@ class _BaseHeartwood:
         self.selection_null = selection_null
         self.selection_null_quantile = selection_null_quantile
         self.mc_penalty = mc_penalty
-        self.dense_features = dense_features
         self.n_rocket_features = n_rocket_features
         self.dense_include_static = dense_include_static
         self.dense_static_interactions = dense_static_interactions
@@ -270,7 +268,6 @@ class _BaseHeartwood:
             screen_fraction=self.screen_fraction,
             screen_top_k=self.screen_top_k,
             dense_base=self.dense_base,
-            dense_features=self.dense_features,
             n_rocket_features=self.n_rocket_features,
             dense_include_static=self.dense_include_static,
             dense_static_interactions=self.dense_static_interactions,

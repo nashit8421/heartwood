@@ -157,7 +157,7 @@ def test_the_model_fits_and_predicts_at_any_width(width, rng):
     X = rng.normal(size=(120, 2, 40))
     y = (X[:, 0, 5:15].mean(axis=1) > 0).astype(int)
     model = HeartwoodClassifier(
-        n_estimators=8, max_depth=3, dense_base=True, dense_features="rocket",
+        n_estimators=8, max_depth=3, dense_base=True,
         n_rocket_features=200, nonlinear_features=width, random_state=0,
     ).fit(None, X, y)
     assert model.predict(None, X).shape == (len(y),)
