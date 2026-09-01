@@ -81,3 +81,62 @@ That is a hypothesis, not a result. It would need pre-registering as V6, with th
 thresholds and the same rule that a change earns its default or does not ship. It is
 recorded here because it is what the evidence points at, and because the direction the
 README has assumed for three milestones is now measurably wrong.
+
+---
+
+## Correction, 2026-09-01: the selection rule is not the bottleneck either
+
+**This document's central claim did not survive being tested, and V19 §4 pre-committed to
+saying so here rather than attempting a fifth remedy.**
+
+The claim was: *"The bottleneck is the selection rule, not the sampler feeding it."* It
+followed from a real and correctly measured observation — ×16 candidates bought +1.5 points
+on a 20-point deficit and made two datasets of three worse — and from a correct account of
+why more candidates can hurt. The winner's curse is real, and nothing below disputes it.
+
+What does not follow, and what this document asserted anyway, is that *fixing* the selection
+rule would recover the deficit. Four remedies were pre-registered and run against a +1.5-point
+bar on the same eight UEA datasets, 5 seeds each:
+
+| study | remedy | best arm | mean margin |
+|---|---|---|---|
+| V16 | per-node feature bagging (`colsample_bynode`) | 1 / 8 | +0.4 |
+| V17 | analytic multiple-comparisons charge on the maximum | 1 / 8 | −0.1 |
+| V18 | out-of-fold pre-screen of the bank, top-*k* only | 1 / 8 | −0.1 |
+| V19 | recalibrated permutation null (fixed quantile, 16 permutations) | 1 / 8 | −0.3 |
+
+**Four independent attacks, none clearing the bar, three of them negative on average.** These
+are not four variations on one idea: bagging shrinks the pool, the charge prices it, the
+pre-screen reorders it, the null tests the winner against its own noise floor. If greedy
+selection were the ceiling, at least one of them should have moved something.
+
+Two of them were built on diagnoses that were themselves correct. V17's charge was derived
+from the extreme-value behaviour of the maximum and then *measured* against the real
+`scan_threshold` — the `log m` coefficient came out at 1.00–1.10, exactly as theory predicts.
+V19 found and fixed a genuine calibration defect in V8's null, where the bar tightened as the
+permutation count rose (false-split rate 0.53 → 0.21 → 0.06 for the same test). Both fixes
+worked as designed. Neither bought accuracy.
+
+### What this changes
+
+* **The line above — "the bottleneck is the selection rule" — should not be cited.** It was a
+  hypothesis stated with the confidence of a result, in a document whose own header says it
+  is exploratory and can never become a headline number.
+* **What this document did establish stands:** bigger budgets do not help and past a point
+  hurt, and better *targeting* of the same greedy draw is not the open problem. Both were
+  measured. Only the inference about what to fix instead was wrong.
+* **The V6 hypothesis in the closing paragraph was right**, and is the one thing here that
+  paid off: a bank of dilated convolutions under the trees is now the shipped architecture and
+  the source of the +3.0 on single-lead CPSC.
+* **Where the deficit lives is now genuinely open.** It is not budget, not targeting, and not
+  the selection rule. V15 narrows it further from the other side: none of the four things this
+  library adds to MiniROCKET's bank earns its place on that suite either.
+
+### The methodological point
+
+Four studies were built on a premise from an exploratory document that was never itself
+tested. The premise was plausible, the reasoning was sound, and it cost four grids and roughly
+a day of compute to find out. **A hypothesis stated confidently in an exploratory write-up is
+still a hypothesis**, and the discipline that caught this — pre-registering a bar, then
+pre-committing in V19 §4 to correcting the premise rather than trying a fifth remedy — is the
+only reason it took four attempts rather than a year.
