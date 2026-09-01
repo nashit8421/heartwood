@@ -1,3 +1,10 @@
+> **Closed 2026-09-01.** Every item below was built, pre-registered and run. All ten
+> studies failed their bars; five features were deleted as a result. The library shipped as
+> v1.0.0 with a narrower claim than this roadmap assumed it would have — strong on ECG,
+> behind MiniROCKET on most general benchmarks (`RESULTS_V24.md`).
+>
+> What is still open is at the bottom of this file, under "What is left".
+
 # Roadmap — what to do next, and why
 
 Written 2026-08-30, after V13 and while V14 is still running. Ordered by
@@ -210,3 +217,36 @@ after that — is how a project spends a year on a premise nobody re-examined.
 Items **1** and **2a** together — both cheap, both aimed at things already measured,
 and item 1 may let us delete a third of the bank. Item **6** in parallel, since it is
 mostly a script and it unblocks the only question that finally matters.
+
+
+---
+
+## What is left, 2026-09-01
+
+The roadmap above is finished. These are the questions it did not answer, ordered by how
+much they matter rather than by how tractable they are.
+
+**1. The founding claim is still unproven, after five attempts.** That a model seeing raw
+series *and* static covariates beats one seeing either alone has never had a fair test, for
+want of a dataset where the statics are strong, exogenous, and the regime is temporal.
+`validation/screen_dataset.py` now makes a candidate cheap to reject — PAMAP2 took an hour —
+so attempt six costs a fraction of attempts one through five. Not disproven. Untested.
+
+**2. Where the deficit against MiniROCKET lives is genuinely open.** It is not search budget,
+not candidate targeting, not the selection rule (V16–V19, four independent attacks, all
+below bar), and not the bank's extras (V15, V23). `validation/HEADROOM.md` carries a
+correction saying its own answer to this was wrong. Nobody currently knows.
+
+**3. Why the library wins on ECG and loses on UEA.** V24 measured both halves and neither is
+explained. The channel-width explanation was tested and failed (V14). The regime gap in
+`RESULTS_SCREEN.md` is a lead worth following: Apnea's is −0.010, and Apnea is the one
+physiological dataset where MiniROCKET wins.
+
+**4. Apnea's premise deserves re-examining.** `VALIDATION_V9.md` called it the first fair
+test of the founding claim because BMI is "not present in a one-minute single-lead ECG at
+any resolution". The screen puts the static block at R² 0.252 from that ECG, against a 0.25
+ceiling. That premise was asserted, never measured, and it is now borderline.
+
+**5. Speed.** Still 20–100× slower than XGBoost on aggregates. The FFT work took a
+CPSC-shaped fit from 74 s to 44 s with bit-identical output; the remaining hotspots are
+`scan_threshold` and the cumulative sums in `_sliding_sums`.
