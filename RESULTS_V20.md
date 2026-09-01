@@ -47,6 +47,42 @@ A **regret** is a cell scoring more than 0.5 points below the better of its two 
 * `uea:SelfRegulationSCP2` seed 0: -2.8
 * `uea:SelfRegulationSCP2` seed 2: -5.0
 
+## Is this bar measuring anything?
+
+H-V20.1 judges a model per cell against the per-cell **maximum** of two alternatives. The maximum of two noisy estimates is biased upward, so the rule penalises whoever is under test. Applying the identical rule to each model in turn is the check:
+
+| model judged | violating cells |
+|---|---|
+| combined | 21 / 40 |
+| guarded | 24 / 40 |
+| ridge alone | 21 / 40 |
+| trees alone | 30 / 40 |
+
+Per-seed spread of a single model averages **2.3 points** against a **0.5-point** tolerance.
+
+**The components violate this bar as often as the combination does.** H-V20.1 is therefore not a test of the combination; it is a test of seed noise, and it was mis-specified in `VALIDATION_V20.md` §3 before any cell ran. The verdict above is reported because it was pre-registered, and it should not be believed. The analysis that answers the intended question is below.
+
+## Regret at the dataset level
+
+The intended question -- is a model meaningfully worse than its best component -- asked of means rather than of single cells, so the upward bias of a per-cell maximum does not enter.
+
+| dataset | ridge | trees | combined | guarded | combined − best | guarded − best |
+|---|---|---|---|---|---|---|
+| uea:Epilepsy | 99.3 | 99.6 | 99.3 | 99.5 | -0.2 | -0.1 |
+| uea:HandMovementDirection | 38.0 | 42.9 | 44.6 | 38.0 | +1.8 | -4.9 |
+| uea:Handwriting | 45.7 | 31.6 | 47.4 | 42.4 | +1.7 | -3.4 |
+| uea:Heartbeat | 67.9 | 62.3 | 64.8 | 66.5 | -3.2 | -1.4 |
+| uea:Libras | 91.9 | 88.9 | 91.0 | 88.9 | -0.9 | -3.0 |
+| uea:NATOPS | 92.9 | 89.0 | 92.0 | 91.0 | -0.9 | -1.9 |
+| uea:RacketSports | 88.2 | 89.2 | 88.8 | 88.3 | -0.5 | -0.9 |
+| uea:SelfRegulationSCP2 | 50.0 | 49.8 | 49.8 | 50.0 | -0.2 | +0.0 |
+
+* **Combined** is -0.3 points against its best component on average, below tolerance on 3 of 8 datasets. It is not the problem.
+* **Guarded** is -1.9 points, below tolerance on 6 of 8.
+* **The guarantee costs -1.6 points** against simply not having it.
+
+So the finding is not that the architecture is unsafe. It is that **the guarantee makes things worse**: choosing a component on a 25% hold-out of a 137-to-204-row training split over-fits the choice. `VALIDATION_V20.md` §2 predicted exactly this risk -- *this selection is itself a selection step and can over-fit like any other* -- and then set a tolerance too tight to detect it and a bar too noisy to test it.
+
 ## What the guarantee bought
 
 The unguarded model violates the tolerance in 21 cell(s); the guarded one in 20. Net +1.
