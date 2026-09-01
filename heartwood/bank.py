@@ -128,9 +128,6 @@ class FeatureBank:
     def clear_screen(self) -> None:
         self.screened = None
 
-    def position_entries(self) -> list[BankEntry]:
-        """Entries measuring *when* something happened — comparison-split material."""
-        return [e for e in self.entries if e.spec.is_position()]
 
     def promote(self, spec: SplitSpec, column: np.ndarray, gain: float, round_index: int) -> bool:
         """Offer a winning feature to the bank; True if it was newly stored."""

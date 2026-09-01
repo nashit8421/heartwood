@@ -90,22 +90,6 @@ def test_candidates_hand_out_copies_not_the_stored_spec(rng):
     assert handed_out is not bank.entries[0].spec
 
 
-def test_position_entries_are_identified_for_comparison_splits(rng):
-    bank = FeatureBank()
-    bank.promote(SplitSpec(kind="filter_resp", channel=0, scale=0,
-                           template=np.arange(9.0)), rng.normal(size=40), 1.0, 0)
-    bank.promote(SplitSpec(kind="filter_pos", channel=0, scale=0,
-                           template=np.arange(9.0)), rng.random(40), 1.0, 0)
-
-    positions = bank.position_entries()
-    assert [e.spec.kind for e in positions] == ["filter_pos"]
-    assert positions[0].grid is not None, "a position entry needs its frozen rank grid"
-    assert np.all(np.diff(positions[0].grid) >= 0)
-
-
-# -------------------------------------------------------------- integration
-
-
 def test_bank_fills_up_during_fitting():
     model, *_ = fitted_model()
     bank = model._core.bank
@@ -165,17 +149,6 @@ def test_bank_summary_is_readable():
 # ------------------------------------------------------ comparison splits
 
 
-def test_comparison_feature_is_a_difference_of_frozen_ranks(rng):
-    values = rng.normal(size=200)
-    grid = np.sort(values)
-    ranks = ecdf(values, grid)
-    assert np.all((ranks > 0) & (ranks <= 1.0))
-    assert np.isnan(ecdf(np.array([np.nan]), grid))[0]
-    # a value beyond everything seen in training saturates rather than extrapolates
-    assert ecdf(np.array([values.max() + 10]), grid)[0] == 1.0
-    assert ecdf(np.array([values.min() - 10]), grid)[0] == 0.0
-
-
 def best_single_threshold(feature: np.ndarray, y: np.ndarray) -> float:
     """Accuracy of the best possible single threshold on one feature."""
     finite = feature[np.isfinite(feature)]
@@ -186,69 +159,6 @@ def best_single_threshold(feature: np.ndarray, y: np.ndarray) -> float:
         max(((feature <= t).astype(int) == y).mean(), ((feature > t).astype(int) == y).mean())
         for t in grid
     )
-
-
-def test_one_comparison_split_beats_any_split_on_position_alone():
-    """Position-versus-deadline, in one threshold instead of a staircase.
-
-    The rank difference is an *approximation* of "did it happen before the
-    deadline": ranking puts two differently-distributed quantities on a common
-    scale, but that mapping is monotone rather than exact, so a single split
-    does not reach the oracle rule.  What it must do is beat what any single
-    axis-aligned split can manage, since that is the work it exists to save.
-    """
-    X_static, X_series, y = make_timing_task(n=600, seed=0)
-
-    template = X_series[0, 0, 8:24].copy()
-    from heartwood.features import shapelet_features
-
-    _, position = shapelet_features(X_series[:, 0, :], template)
-
-    spec = SplitSpec(
-        kind="comparison",
-        col=0,
-        position_spec=SplitSpec(kind="shapelet_pos", channel=0, shapelet=template),
-        position_grid=np.sort(position[np.isfinite(position)]),
-        static_grid=np.sort(X_static[:, 0]),
-    )
-    feature = eval_split_feature(spec, X_static, X_series, np.arange(len(y)))
-
-    comparison = best_single_threshold(feature, y)
-    position_only = best_single_threshold(position, y)
-    deadline_only = best_single_threshold(X_static[:, 0], y)
-
-    assert comparison > 0.75, f"comparison split only reached {comparison:.3f}"
-    assert comparison > max(position_only, deadline_only) + 0.05, (
-        f"comparison {comparison:.3f} vs position alone {position_only:.3f} "
-        f"and deadline alone {deadline_only:.3f}"
-    )
-
-
-def test_comparison_splits_get_used_on_the_timing_task():
-    model, X_static, X_series, y = fitted_model(make_timing_task, n=400, rounds=40)
-    kinds = {spec.kind for spec in model._core.iter_splits()}
-    assert "comparison" in kinds, sorted(kinds)
-
-    described = [d for d, _ in model.dump_splits() if "rank(" in d]
-    assert described and "static[" in described[0]
-
-
-def test_comparison_ranks_are_frozen_at_fit_time():
-    """Ranks recomputed on the batch at hand would mean something different."""
-    model, X_static, X_series, y = fitted_model(make_timing_task, n=300, rounds=30)
-    specs = [s for s in model._core.iter_splits() if s.kind == "comparison"]
-    if not specs:
-        pytest.skip("no comparison split was selected in this draw")
-
-    grids = [(s.position_grid.copy(), s.static_grid.copy()) for s in specs]
-    # predicting on a wildly different batch must not touch the stored grids
-    model.predict(X_static[:10] * 100.0, X_series[:10])
-    for spec, (position_grid, static_grid) in zip(specs, grids):
-        assert np.array_equal(spec.position_grid, position_grid)
-        assert np.array_equal(spec.static_grid, static_grid)
-
-
-# ------------------------------------------------- fit / predict agreement
 
 
 def test_leaf_values_still_match_under_predict_time_routing(rng):
@@ -264,7 +174,7 @@ def test_leaf_values_still_match_under_predict_time_routing(rng):
         bank=bank,
         static_grids=[np.sort(X_static[:, j]) for j in range(X_static.shape[1])],
     )
-    params = TreeParams(max_depth=4, n_filter_candidates=8, n_comparison_candidates=8)
+    params = TreeParams(max_depth=4, n_filter_candidates=8, )
 
     # a first tree fills the bank so the second sees banked and comparison candidates
     TemporalTree(params).fit(X_static, X_series, g, h, np.arange(len(y)), rng, context)

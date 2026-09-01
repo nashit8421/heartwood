@@ -1,4 +1,4 @@
-"""Dense precomputed columns: a regularised linear base, and cross-channel areas.
+"""Dense precomputed columns: a regularised linear base over the kernel bank.
 
 Trees are good at carving out interactions and hopeless at adding up a thousand
 individually weak signals — each split has to justify itself alone.  A ridge over
@@ -24,79 +24,19 @@ _EPS = 1e-12
 LAMBDA_GRID = np.logspace(-3, 3, 13)
 
 
-def dyadic_windows(T: int, levels: int = 4) -> list[tuple[int, int]]:
-    """Whole series, halves, quarters, eighths — each at 50% overlap.
-
-    Deterministic and label-free by design: this bank must not be chosen using
-    the labels, or the ridge inherits a selection bias that leave-one-out cannot
-    undo.
-    """
-    windows: list[tuple[int, int]] = []
-    for level in range(levels):
-        length = T // (2**level)
-        if length < 2:
-            break
-        stride = max(1, length // 2)
-        start = 0
-        while start + length <= T:
-            windows.append((start, start + length))
-            start += stride
-    seen: dict[tuple[int, int], None] = {}
-    for window in windows:
-        seen.setdefault(window, None)
-    return list(seen)
-
-
-#: ``dense_bank`` lived here: every statistic in ``dyadic_windows`` above, for
-#: each channel and its first difference, offered to the ridge alongside or
-#: instead of the convolution bank.  V15 measured it at +0.4 points across eight
-#: UEA datasets -- clearing its +0.5 bar on 2 of 8 -- and a follow-up on the five
-#: synthetic scenarios put it at 0.015% of RMSE, which is nothing.  Deleted per
-#: VALIDATION_V15.md §4.  ``RocketBank`` is now the only bank the ridge sees,
-#: which is what makes the honest description of this library "MiniROCKET's bank
-#: under our trees".
+#: ``dyadic_windows``, ``dense_bank`` and ``levy_area_columns`` lived here.
 #:
-#: ``dyadic_windows`` itself stays: ``levy_area_columns`` below still uses it,
-#: and Levy areas were *kept* -- V15 failed them on the UEA suite, but a
-#: follow-up measured them at -10.6 points on ``lead_lag`` when removed, which is
-#: the scenario they were built for and which that suite cannot see.
-
-
-def levy_area_columns(X_series: np.ndarray, max_pairs: int = 6) -> np.ndarray:
-    """Signed areas between channel pairs — who moves first.
-
-    The Lévy area ``½ Σ (xΔy − yΔx)`` of a two-channel path is positive when the
-    first channel leads the second and negative when it lags.  No per-channel
-    statistic can express that, however many windows you give it, because the
-    information is in the *joint* trajectory.
-
-    Returns an empty block for single-channel data, where the notion is vacuous.
-    """
-    n, n_channels, T = X_series.shape
-    if n_channels < 2 or T < 2:
-        return np.zeros((n, 0))
-
-    pairs = [(a, b) for a in range(n_channels) for b in range(a + 1, n_channels)][:max_pairs]
-    windows = dyadic_windows(T, levels=3)
-    columns: list[np.ndarray] = []
-
-    for a, b in pairs:
-        for start, end in windows:
-            x = X_series[:, a, start:end]
-            y = X_series[:, b, start:end]
-            if x.shape[1] < 2:
-                continue
-            # Observed points only; a step touching a gap contributes nothing.
-            dx = np.diff(x, axis=1)
-            dy = np.diff(y, axis=1)
-            x0 = x[:, :-1] - x[:, :1]
-            y0 = y[:, :-1] - y[:, :1]
-            term = 0.5 * (x0 * dy - y0 * dx)
-            valid = np.isfinite(term)
-            counts = valid.sum(axis=1)
-            area = np.where(counts > 0, np.where(valid, term, 0.0).sum(axis=1), np.nan)
-            columns.append(area)
-    return np.column_stack(columns) if columns else np.zeros((n, 0))
+#: The window-statistic bank went after V15 measured it at +0.4 points over
+#: eight UEA datasets and 0.015% of RMSE over five synthetic scenarios.
+#:
+#: Levy areas -- the signed area between a channel pair, positive when the first
+#: leads the second -- went after V23.  They were kept once, against V15's
+#: verdict, because removing them cost 10.6 points on ``lead_lag``.  V23 ran the
+#: same arms on eight further UEA datasets and on ``lead_lag`` itself: +7.2
+#: points on the scenario, 0 of 8 and a mean of -0.4 on the real suite.  A
+#: feature that only works on the task written to require it is not a feature.
+#:
+#: ``dyadic_windows`` had no other caller once the areas went.
 
 
 def _platt(margins: np.ndarray, y: np.ndarray, iterations: int = 50) -> tuple[float, float]:

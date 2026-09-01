@@ -51,7 +51,6 @@ class _BaseHeartwood:
         screen_fraction: float = 0.0,
         screen_top_k: int = 8,
         candidate_colsample: float = 1.0,
-        n_comparison_candidates: int = 4,
         n_product_candidates: int = 0,
         dense_base: bool = False,
         selection_null: int = 0,
@@ -60,7 +59,6 @@ class _BaseHeartwood:
         n_rocket_features: int = 10000,
         dense_include_static: bool = False,
         dense_static_interactions: bool = False,
-        levy_areas: bool = True,
         nonlinear_features: int = 0,
         nonlinear_gamma: float = 1.0,
         base_static_products: bool = False,
@@ -99,7 +97,6 @@ class _BaseHeartwood:
         self.screen_fraction = screen_fraction
         self.screen_top_k = screen_top_k
         self.candidate_colsample = candidate_colsample
-        self.n_comparison_candidates = n_comparison_candidates
         self.n_product_candidates = n_product_candidates
         self.dense_base = dense_base
         self.selection_null = selection_null
@@ -108,7 +105,6 @@ class _BaseHeartwood:
         self.n_rocket_features = n_rocket_features
         self.dense_include_static = dense_include_static
         self.dense_static_interactions = dense_static_interactions
-        self.levy_areas = levy_areas
         self.nonlinear_features = nonlinear_features
         self.nonlinear_gamma = nonlinear_gamma
         self.base_static_products = base_static_products
@@ -163,8 +159,6 @@ class _BaseHeartwood:
             raise ValueError("max_depth must be >= 0")
         if self.min_samples_leaf < 1:
             raise ValueError("min_samples_leaf must be >= 1")
-        if self.n_comparison_candidates < 0:
-            raise ValueError("n_comparison_candidates must be >= 0")
         if self.n_product_candidates < 0:
             raise ValueError("n_product_candidates must be >= 0")
         if self.mc_penalty < 0:
@@ -206,7 +200,6 @@ class _BaseHeartwood:
             dct_components=self.dct_components,
             ridge_beta=self.ridge_beta,
             n_filter_alt=self.n_filter_alt,
-            n_comparison_candidates=self.n_comparison_candidates,
             n_product_candidates=self.n_product_candidates,
             selection_null=self.selection_null,
             selection_null_quantile=self.selection_null_quantile,
@@ -271,7 +264,6 @@ class _BaseHeartwood:
             n_rocket_features=self.n_rocket_features,
             dense_include_static=self.dense_include_static,
             dense_static_interactions=self.dense_static_interactions,
-            levy_areas=self.levy_areas,
             nonlinear_features=self.nonlinear_features,
             nonlinear_gamma=self.nonlinear_gamma,
             base_static_products=self.base_static_products,

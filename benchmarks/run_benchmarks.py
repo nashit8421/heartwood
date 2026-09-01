@@ -37,9 +37,9 @@ LOWER_IS_BETTER = {"rmse", "mae"}
 
 #: --ablation adds these, to show what each Phase-B piece is worth.
 ABLATIONS: dict[str, dict] = {
-    "hw_phaseA": dict(bank_enabled=False, n_comparison_candidates=0, n_filter_candidates=0),
-    "hw_bank": dict(bank_enabled=True, n_comparison_candidates=0, n_filter_candidates=0),
-    "hw_filters": dict(bank_enabled=True, n_comparison_candidates=4, n_filter_candidates=8),
+    "hw_phaseA": dict(bank_enabled=False, n_filter_candidates=0),
+    "hw_bank": dict(bank_enabled=True, n_filter_candidates=0),
+    "hw_filters": dict(bank_enabled=True, n_filter_candidates=8),
 }
 
 #: --rocket adds the V6 convolution base, for the H-V6.3 no-regression check.
@@ -67,54 +67,11 @@ PRODUCTS: dict[str, dict] = {
                          base_static_products=True),
 }
 
-#: --v15check re-tests, on the synthetic generators, the four bank extras that
-#: V15 measured as worthless on the UEA suite.  V15 §4 pre-commits to deleting a
-#: failed extra, but three of the four were originally justified by a synthetic
-#: scenario -- the README credits Levy areas with +14 points on lead_lag -- and
-#: V15 never ran those.  Deleting on a suite that cannot see what an extra was
-#: built for would be exactly the incomplete-evidence mistake this project keeps
-#: writing documents about.
-V15_CHECK: dict[str, dict] = {
-    "hw_v15_all": dict(dense_base=True,
-                       dense_include_static=True, levy_areas=True,
-                       n_comparison_candidates=4),
-    "hw_v15_no_levy": dict(dense_base=True,
-                           dense_include_static=True, levy_areas=False,
-                           n_comparison_candidates=4),
-    "hw_v15_no_cmp": dict(dense_base=True,
-                          dense_include_static=True, levy_areas=True,
-                          n_comparison_candidates=0),
-    "hw_v15_no_stats": dict(dense_base=True,
-                            dense_include_static=True, levy_areas=True,
-                            n_comparison_candidates=4),
-    "hw_v15_with_stats": dict(dense_base=True,
-                              dense_include_static=True, levy_areas=True,
-                              n_comparison_candidates=4),
-    "hw_v15_min": dict(dense_base=True,
-                       dense_include_static=True, levy_areas=False,
-                       n_comparison_candidates=0),
-}
-
-#: --v23 is V23's positive control: the same four arms as the real suite, on the
-#: scenarios each extra was built for.  Not evidence for the extras -- those
-#: scenarios were written to require these operators -- but evidence about
-#: whether a null on the real suite is interpretable.
-V23: dict[str, dict] = {
-    "hw_v23_base": dict(dense_base=True, dense_include_static=True,
-                        n_comparison_candidates=0, levy_areas=False),
-    "hw_v23_cmp": dict(dense_base=True, dense_include_static=True,
-                       n_comparison_candidates=4, levy_areas=False),
-    "hw_v23_levy": dict(dense_base=True, dense_include_static=True,
-                        n_comparison_candidates=0, levy_areas=True),
-    "hw_v23_both": dict(dense_base=True, dense_include_static=True,
-                        n_comparison_candidates=4, levy_areas=True),
-}
-
 #: --phasec adds the opt-in Phase C extras.
 PHASE_C: dict[str, dict] = {
     "hw_levy": dict(levy_areas=True),
     "hw_dense": dict(dense_base=True),
-    "hw_both": dict(levy_areas=True, dense_base=True),
+    "hw_both": dict( dense_base=True),
 }
 
 
@@ -381,11 +338,6 @@ def main() -> int:
                         help="also run the opt-in Phase-C variants")
     parser.add_argument("--products", action="store_true",
                         help="also run the V22 magnitude-product variants")
-    parser.add_argument("--v23", action="store_true",
-                        help="V23's positive control on the synthetic scenarios")
-    parser.add_argument("--v15check", action="store_true",
-                        help="re-test V15's four bank extras on the synthetic "
-                             "scenarios before deleting them")
     args = parser.parse_args()
 
     if args.quick:
@@ -399,10 +351,6 @@ def main() -> int:
         variants.update(PHASE_C)
     if args.rocket:
         variants.update(ROCKET)
-    if args.v23:
-        variants.update(V23)
-    if args.v15check:
-        variants.update(V15_CHECK)
     if args.products:
         variants.update({"hw_rocket_static": ROCKET["hw_rocket_static"], **PRODUCTS})
     models = list(variants) + representations

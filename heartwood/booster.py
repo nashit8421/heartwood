@@ -6,7 +6,7 @@ import numpy as np
 
 from ._util import spawn_rng
 from .bank import FeatureBank
-from .dense import DenseBase, levy_area_columns
+from .dense import DenseBase
 from .rocket import RocketBank
 from .filters import Pyramid
 from .losses import Loss
@@ -22,7 +22,7 @@ class _BoosterCore:
 
     def __init__(self, tree_params: TreeParams, n_estimators=200, learning_rate=0.1,
                  subsample=1.0, early_stopping_rounds=None, random_state=None,
-                 bank_enabled=True, bank_max=32, dense_base=False, levy_areas=False,
+                 bank_enabled=True, bank_max=32, dense_base=False,
                  n_rocket_features=10000,
                  dense_include_static=False, dense_static_interactions=False,
                  screen_fraction=0.0, screen_top_k=8,
@@ -42,7 +42,6 @@ class _BoosterCore:
         self.dense_include_static = bool(dense_include_static)
         self.dense_static_interactions = bool(dense_static_interactions)
         self.rocket_: RocketBank | None = None
-        self.levy_areas = bool(levy_areas)
         self.dense_: DenseBase | None = None
         self.screen_fraction = float(screen_fraction)
         self.screen_top_k = int(screen_top_k)
@@ -81,12 +80,6 @@ class _BoosterCore:
         fitting = y is not None
         blocks, names = [X_static], [f"static[{j}]" for j in range(X_static.shape[1])]
         base_raw = None
-
-        if self.levy_areas and X_series is not None:
-            areas = levy_area_columns(X_series)
-            if areas.shape[1]:
-                blocks.append(areas)
-                names += [f"levy_area[{i}]" for i in range(areas.shape[1])]
 
         if self.dense_base and X_series is not None:
             bank = self._dense_bank(X_series, fitting)

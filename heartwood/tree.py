@@ -2,8 +2,7 @@
 
 A node draws a fresh pool of candidate splits: every (subsampled) static column,
 a batch of randomly placed interval statistics, templates matched against the
-series, anything the bank has already found useful, and comparisons between a
-learned event time and a static column.  All of them are scored on the *same*
+series, and anything the bank has already found useful.  All of them are scored on the *same*
 second-order gain, so the tree decides per node whether the next best question
 is about a customer attribute or about the shape of their trajectory.
 
@@ -41,7 +40,7 @@ _EPS = 1e-12
 MC_THRESHOLD_LOG = 0.4
 
 TEMPORAL_KINDS = (
-    "interval", "shapelet_dist", "shapelet_pos", "filter_resp", "filter_pos", "comparison",
+    "interval", "shapelet_dist", "shapelet_pos", "filter_resp", "filter_pos",
     "product",
 )
 
@@ -71,7 +70,6 @@ class TreeParams:
     dct_components: int = 5
     ridge_beta: float = 1.0
     n_filter_alt: int = 1
-    n_comparison_candidates: int = 4
     #: Magnitude products of a banked temporal feature with a static column
     #: (V22, roadmap item 5).  0 disables.
     n_product_candidates: int = 0
@@ -265,7 +263,6 @@ class TemporalTree:
         bank = self._context.bank
         if bank is not None:
             yield from bank.candidates(rows, rng, p.bank_colsample)
-            yield from self._comparison_candidates(X_static, rows, rng)
             yield from self._product_candidates(X_static, rows, rng)
 
         if X_series is None:
@@ -482,12 +479,10 @@ class TemporalTree:
         and they were static-by-static, so the cross the target actually needs,
         series by static, had no representation at all.
 
-        A comparison split answers "did this happen before that" and a rank is
-        the right currency for it.  A product split answers "how big was this,
-        scaled by that", and a rank is exactly the wrong currency.  The two are
-        deliberately separate candidate sources rather than one parameterised
-        one, because they are not variants of a question -- they are different
-        questions that happen to share a shape.
+        A rank is the wrong currency for this question.  A comparison split --
+        "did this happen before that" -- wanted ranks and used them; it was
+        deleted after V23.  "How big was this, scaled by that" needs magnitudes,
+        which is the whole point of the split kind below.
 
         The bound that keeps this from being V11 again is clipping, not ranking:
         each side is standardised on its training distribution and clipped to
@@ -544,41 +539,14 @@ class TemporalTree:
                                         self._context.pyramid)
             yield values, spec
 
-    def _comparison_candidates(self, X_static, rows, rng):
-        """"Did this happen before that" — a learned event time versus a static column.
+    #: ``_comparison_candidates`` lived here: "did this happen before that", a
+    #: banked event time ranked against a static column.  V15 failed it on eight
+    #: UEA datasets; it was kept once because removing it cost 9.9 points on
+    #: ``bump_order``, the scenario that is an XOR of which transient came first.
+    #: V23 then ran the same arms on eight further UEA datasets and on
+    #: ``bump_order`` itself: +9.9 on the scenario, 0 of 8 and a mean of -0.2 on
+    #: the real suite.  Deleted -- it only ever worked on the task written for it.
 
-        Axis-aligned splits need a staircase of thresholds to approximate this;
-        ranking both sides against their training distributions turns it into a
-        single split.
-        """
-        p = self.params
-        bank = self._context.bank
-        grids = self._context.static_grids
-        if p.n_comparison_candidates <= 0 or not grids:
-            return
-        positions = bank.position_entries()
-        if not positions:
-            return
-
-        for _ in range(self._draw_count(p.n_comparison_candidates)):
-            entry = positions[int(rng.integers(len(positions)))]
-            if entry.grid is None:
-                continue
-            col = int(rng.integers(len(grids)))
-            if grids[col].size == 0:
-                continue
-            values = ecdf(entry.column[rows], entry.grid) - ecdf(
-                X_static[rows, col], grids[col]
-            )
-            names = self._context.static_names
-            yield values, SplitSpec(
-                kind="comparison",
-                col=col,
-                name_hint=names[col] if names else "",
-                position_spec=replace(entry.spec),
-                position_grid=entry.grid,
-                static_grid=grids[col],
-            )
 
     # -------------------------------------------------------------- predict
 

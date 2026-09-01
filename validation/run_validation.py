@@ -41,49 +41,22 @@ REPRESENTATIONS = ["static_only", "agg", "wagg4", "wagg8", "raw_flat",
 
 # ------------------------------------------------- Heartwood arm definitions
 
-#: ``""`` is the shipped default.  Everything else puts a ridge over a feature
+#: ``""`` is the shipped default.  Everything else puts a ridge over the kernel
 #: bank underneath the trees (V6); the name is what a results table shows.
 #:
-#: The ``abl_*`` family is the V15 bank ablation.  ``abl_min`` is MiniROCKET's
-#: bank and nothing else -- singleton channel groups, no comparison splits, no
-#: window-statistic block, no Levy areas -- and each other ``abl_*`` arm adds
-#: exactly one of those four extras back.  Every arm shares
-#: ``dense_include_static``, so the *only* thing that differs between two arms
-#: is the extra named in the arm.  See ``VALIDATION_V15.md``.
-_ABL_MIN = {
-    "dense_base": True,
-    "dense_include_static": True,
-    "dense_static_interactions": False,
-    "n_comparison_candidates": 0,
-    "levy_areas": False,
-}
-
+#: V15 and V23 ablated the four extras this library added to MiniROCKET's bank --
+#: virtual channels, comparison splits, a window-statistic block and Levy areas.
+#: All four are now deleted, so their arms and their flags are gone with them;
+#: the results stand in ``RESULTS_V15.md`` and ``RESULTS_V23.md``.
 VARIANTS: dict[str, dict] = {
     "": {},
-    "rocket_static": {"dense_base": True,
-                      "dense_include_static": True, "dense_static_interactions": False},
-    "rocket_inter": {"dense_base": True,
-                     "dense_include_static": True, "dense_static_interactions": True},
+    "rocket_static": {"dense_base": True, "dense_include_static": True,
+                      "dense_static_interactions": False},
+    "rocket_inter": {"dense_base": True, "dense_include_static": True,
+                     "dense_static_interactions": True},
     # V8: the convolution base plus a chance floor on split acceptance.
     "rocket_null": {"dense_base": True, "selection_null": 1},
-    "abl_min": dict(_ABL_MIN),
-    "abl_cmp": {**_ABL_MIN, "n_comparison_candidates": 4},
-    "abl_levy": {**_ABL_MIN, "levy_areas": True},
-    "abl_all": {**_ABL_MIN, "n_comparison_candidates": 4, "levy_areas": True},
 }
-
-#: V23: comparison splits and Levy areas, on a suite that was not used to
-#: condemn them.  V15 failed both on eight UEA datasets; a follow-up measured
-#: them at -9.9 and -10.6 points when removed from the synthetic scenarios they
-#: were built for.  Both facts are real and the arms below are the same in each
-#: case, so the question is which suite generalises.
-VARIANTS["v23_base"] = dict(_ABL_MIN)
-VARIANTS["v23_cmp"] = {**_ABL_MIN, "n_comparison_candidates": 4}
-VARIANTS["v23_levy"] = {**_ABL_MIN, "levy_areas": True}
-VARIANTS["v23_both"] = {**_ABL_MIN, "n_comparison_candidates": 4, "levy_areas": True}
-
-V23_EXTRAS = {"comparison_splits": "v23_cmp", "levy_areas": "v23_levy"}
-V23_BASELINE = "v23_base"
 
 #: V16 (roadmap item 2a): per-node bagging over the temporal draws, on top of
 #: the shipped rocket base so the arm differs from ``rocket_static`` in exactly
@@ -193,15 +166,10 @@ PRODUCT_BASELINE = "rocket_static"
 #: The four extras under test, and the arm that switches each one on.  Written
 #: here rather than in the report so the reporting script cannot quietly change
 #: what "the +virtual-channels arm" means after a score has been seen.
-ABLATION_EXTRAS = {
-    "comparison_splits": "abl_cmp",
-    "levy_areas": "abl_levy",
-}
 
 #: Extras that are vacuous on one channel: ``levy_area_columns`` returns an empty
 #: block, so that arm is *identical* to ``abl_min`` there.  V15 counts an extra's
 #: majority only over the datasets where it is live.
-MULTICHANNEL_ONLY_EXTRAS = ("levy_areas",)
 
 
 def variant_kwargs(variant: str) -> dict:

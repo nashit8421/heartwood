@@ -1,0 +1,272 @@
+[2026-09-01 16:54:59] BEGIN control
+grid: 4 scenarios × 1 sizes × 5 seeds = 20 cells; 12 models each
+budget: 200 rounds, depth 4, lr 0.1; 8 worker processes
+
+  [1/20] bump_order n=500 seed=0
+  [2/20] bump_order n=500 seed=1
+  [3/20] bump_order n=500 seed=2
+  [4/20] bump_order n=500 seed=3
+  [5/20] bump_order n=500 seed=4
+  [6/20] lead_lag n=500 seed=0
+  [7/20] lead_lag n=500 seed=1
+  [8/20] lead_lag n=500 seed=2
+  [9/20] lead_lag n=500 seed=3
+  [10/20] lead_lag n=500 seed=4
+  [11/20] timing n=500 seed=0
+  [12/20] timing n=500 seed=1
+  [13/20] timing n=500 seed=2
+  [14/20] timing n=500 seed=3
+  [15/20] timing n=500 seed=4
+  [16/20] slope_window n=500 seed=0
+  [17/20] slope_window n=500 seed=1
+  [18/20] slope_window n=500 seed=2
+  [19/20] slope_window n=500 seed=3
+  [20/20] slope_window n=500 seed=4
+
+### bump_order — accuracy (higher is better)
+_which of two transients happened first, XOR a static flag_
+
+| model        | n=500         |
+|--------------|---------------|
+| heartwood    | 0.982±0.005*  |
+| hw_v23_base  | 0.824±0.071   |
+| hw_v23_cmp   | 0.983±0.004   |
+| hw_v23_levy  | 0.824±0.071   |
+| hw_v23_both  | 0.983±0.004   |
+| agg          | 0.497±0.014   |
+| wagg4        | 0.704±0.070   |
+| wagg8        | 0.626±0.033   |
+| wagg16       | 0.584±0.034   |
+| raw_flat     | 0.568±0.026   |
+| agg_naive    | 0.497±0.014   |
+| wagg8_naive  | 0.626±0.033   |
+
+vs agg (the standard workaround) — n=500: +48.4pt
+vs best-of-all baselines (oracle choice) — n=500: +27.8pt
+
+### timing — accuracy (higher is better)
+_did the event happen before this row's static deadline_
+
+| model        | n=500         |
+|--------------|---------------|
+| heartwood    | 0.986±0.006*  |
+| hw_v23_base  | 0.936±0.016   |
+| hw_v23_cmp   | 0.983±0.004   |
+| hw_v23_levy  | 0.936±0.016   |
+| hw_v23_both  | 0.983±0.004   |
+| agg          | 0.662±0.013   |
+| wagg4        | 0.938±0.003   |
+| wagg8        | 0.940±0.004   |
+| wagg16       | 0.923±0.007   |
+| raw_flat     | 0.875±0.009   |
+| agg_naive    | 0.662±0.013   |
+| wagg8_naive  | 0.940±0.004   |
+
+vs agg (the standard workaround) — n=500: +32.4pt
+vs best-of-all baselines (oracle choice) — n=500: +4.6pt
+
+### slope_window — accuracy (higher is better)
+_the direction of drift inside one off-grid window, XOR a static gate_
+
+| model        | n=500         |
+|--------------|---------------|
+| heartwood    | 0.997±0.001*  |
+| hw_v23_base  | 0.972±0.017   |
+| hw_v23_cmp   | 0.997±0.001   |
+| hw_v23_levy  | 0.972±0.017   |
+| hw_v23_both  | 0.997±0.001   |
+| agg          | 0.602±0.026   |
+| wagg4        | 0.784±0.083   |
+| wagg8        | 0.988±0.004   |
+| wagg16       | 0.788±0.044   |
+| raw_flat     | 0.646±0.032   |
+| agg_naive    | 0.602±0.026   |
+| wagg8_naive  | 0.988±0.004   |
+
+vs agg (the standard workaround) — n=500: +39.5pt
+vs best-of-all baselines (oracle choice) — n=500: +0.9pt
+
+### lead_lag — accuracy (higher is better)
+_which of two channels moved first, XOR a static flag_
+
+| model        | n=500         |
+|--------------|---------------|
+| heartwood    | 0.620±0.056*  |
+| hw_v23_base  | 0.500±0.006   |
+| hw_v23_cmp   | 0.540±0.041   |
+| hw_v23_levy  | 0.553±0.035   |
+| hw_v23_both  | 0.620±0.056   |
+| agg          | 0.509±0.011   |
+| wagg4        | 0.513±0.018   |
+| wagg8        | 0.506±0.011   |
+| wagg16       | 0.495±0.008   |
+| raw_flat     | 0.496±0.006   |
+| agg_naive    | 0.509±0.011   |
+| wagg8_naive  | 0.506±0.011   |
+
+vs agg (the standard workaround) — n=500: +11.1pt
+vs best-of-all baselines (oracle choice) — n=500: +10.7pt
+
+### fit time (seconds, mean over the whole grid)
+
+  hw_v23_both    17.69   (max 21.21)
+  hw_v23_levy    17.65   (max 19.99)
+  hw_v23_cmp     17.50   (max 20.56)
+  hw_v23_base    17.27   (max 19.95)
+  heartwood      16.14   (max 18.71)
+  wagg16          1.07   (max 1.86)
+  raw_flat        0.72   (max 1.18)
+  wagg8_naive     0.53   (max 0.99)
+  wagg8           0.53   (max 0.98)
+  wagg4           0.30   (max 0.52)
+  agg             0.12   (max 0.17)
+  agg_naive       0.11   (max 0.17)
+
+total wall clock: 6.4 min
+wrote validation/rerun/v23_synth/results.json and validation/rerun/v23_synth/results.md
+[2026-09-01 17:01:21] OK control
+[2026-09-01 17:01:21] BEGIN uea
+
+uea:BasicMotions: n=80, static=0, series=6x100, task=multiclass, missing=0.0%
+  seed 0 n=40: heartwood_v23_base=1.000  heartwood_v23_cmp=1.000  heartwood_v23_levy=1.000  heartwood_v23_both=1.000  agg=0.975  (1s)
+  seed 1 n=40: heartwood_v23_base=1.000  heartwood_v23_cmp=1.000  heartwood_v23_levy=1.000  heartwood_v23_both=1.000  agg=0.975  (1s)
+  seed 2 n=40: heartwood_v23_base=1.000  heartwood_v23_cmp=1.000  heartwood_v23_levy=1.000  heartwood_v23_both=1.000  agg=0.975  (1s)
+  seed 3 n=40: heartwood_v23_base=1.000  heartwood_v23_cmp=1.000  heartwood_v23_levy=1.000  heartwood_v23_both=1.000  agg=0.975  (1s)
+  seed 4 n=40: heartwood_v23_base=1.000  heartwood_v23_cmp=1.000  heartwood_v23_levy=1.000  heartwood_v23_both=1.000  agg=0.975  (1s)
+
+uea:ERing: n=300, static=0, series=4x65, task=multiclass, missing=0.0%
+  seed 0 n=30: heartwood_v23_base=0.948  heartwood_v23_cmp=0.948  heartwood_v23_levy=0.948  heartwood_v23_both=0.948  agg=0.811  (2s)
+  seed 1 n=30: heartwood_v23_base=0.967  heartwood_v23_cmp=0.967  heartwood_v23_levy=0.967  heartwood_v23_both=0.967  agg=0.811  (2s)
+  seed 2 n=30: heartwood_v23_base=0.963  heartwood_v23_cmp=0.963  heartwood_v23_levy=0.963  heartwood_v23_both=0.963  agg=0.811  (2s)
+  seed 3 n=30: heartwood_v23_base=0.959  heartwood_v23_cmp=0.959  heartwood_v23_levy=0.959  heartwood_v23_both=0.959  agg=0.811  (2s)
+  seed 4 n=30: heartwood_v23_base=0.967  heartwood_v23_cmp=0.967  heartwood_v23_levy=0.967  heartwood_v23_both=0.967  agg=0.811  (2s)
+
+uea:UWaveGestureLibrary: n=440, static=0, series=3x315, task=multiclass, missing=0.0%
+  seed 0 n=120: heartwood_v23_base=0.931  heartwood_v23_cmp=0.922  heartwood_v23_levy=0.928  heartwood_v23_both=0.931  agg=0.762  (101s)
+  seed 1 n=120: heartwood_v23_base=0.916  heartwood_v23_cmp=0.922  heartwood_v23_levy=0.919  heartwood_v23_both=0.919  agg=0.762  (84s)
+  seed 2 n=120: heartwood_v23_base=0.922  heartwood_v23_cmp=0.922  heartwood_v23_levy=0.925  heartwood_v23_both=0.922  agg=0.762  (80s)
+  seed 3 n=120: heartwood_v23_base=0.925  heartwood_v23_cmp=0.928  heartwood_v23_levy=0.925  heartwood_v23_both=0.928  agg=0.762  (107s)
+  seed 4 n=120: heartwood_v23_base=0.916  heartwood_v23_cmp=0.922  heartwood_v23_levy=0.916  heartwood_v23_both=0.916  agg=0.762  (83s)
+
+uea:ArticularyWordRecognition: n=575, static=0, series=9x144, task=multiclass, missing=0.0%
+  seed 0 n=275: heartwood_v23_base=0.987  heartwood_v23_cmp=0.987  heartwood_v23_levy=0.990  heartwood_v23_both=0.990  agg=0.870  (36s)
+  seed 1 n=275: heartwood_v23_base=0.990  heartwood_v23_cmp=0.990  heartwood_v23_levy=0.990  heartwood_v23_both=0.990  agg=0.870  (36s)
+  seed 2 n=275: heartwood_v23_base=0.990  heartwood_v23_cmp=0.990  heartwood_v23_levy=0.990  heartwood_v23_both=0.990  agg=0.870  (26s)
+  seed 3 n=275: heartwood_v23_base=0.987  heartwood_v23_cmp=0.987  heartwood_v23_levy=0.987  heartwood_v23_both=0.987  agg=0.870  (8s)
+  seed 4 n=275: heartwood_v23_base=0.990  heartwood_v23_cmp=0.990  heartwood_v23_levy=0.990  heartwood_v23_both=0.990  agg=0.870  (27s)
+
+uea:StandWalkJump: n=27, static=0, series=4x2500, task=multiclass, missing=0.0%
+  seed 0 n=12: heartwood_v23_base=0.533  heartwood_v23_cmp=0.533  heartwood_v23_levy=0.467  heartwood_v23_both=0.400  agg=0.333  (21s)
+  seed 1 n=12: heartwood_v23_base=0.533  heartwood_v23_cmp=0.533  heartwood_v23_levy=0.333  heartwood_v23_both=0.267  agg=0.333  (21s)
+  seed 2 n=12: heartwood_v23_base=0.600  heartwood_v23_cmp=0.600  heartwood_v23_levy=0.600  heartwood_v23_both=0.400  agg=0.333  (21s)
+  seed 3 n=12: heartwood_v23_base=0.533  heartwood_v23_cmp=0.533  heartwood_v23_levy=0.667  heartwood_v23_both=0.533  agg=0.333  (20s)
+  seed 4 n=12: heartwood_v23_base=0.333  heartwood_v23_cmp=0.333  heartwood_v23_levy=0.333  heartwood_v23_both=0.400  agg=0.333  (21s)
+
+uea:CharacterTrajectories: n=2858, static=0, series=3x119, task=multiclass, missing=0.0%
+  seed 0 n=1422: heartwood_v23_base=0.991  heartwood_v23_cmp=0.990  heartwood_v23_levy=0.991  heartwood_v23_both=0.991  agg=0.953  (511s)
+  seed 1 n=1422: heartwood_v23_base=0.992  heartwood_v23_cmp=0.991  heartwood_v23_levy=0.991  heartwood_v23_both=0.991  agg=0.953  (508s)
+  seed 2 n=1422: heartwood_v23_base=0.993  heartwood_v23_cmp=0.992  heartwood_v23_levy=0.993  heartwood_v23_both=0.993  agg=0.953  (454s)
+  seed 3 n=1422: heartwood_v23_base=0.993  heartwood_v23_cmp=0.994  heartwood_v23_levy=0.993  heartwood_v23_both=0.993  agg=0.953  (469s)
+  seed 4 n=1422: heartwood_v23_base=0.992  heartwood_v23_cmp=0.992  heartwood_v23_levy=0.992  heartwood_v23_both=0.992  agg=0.953  (526s)
+
+uea:Cricket: n=180, static=0, series=6x1197, task=multiclass, missing=0.0%
+  seed 0 n=108: heartwood_v23_base=1.000  heartwood_v23_cmp=1.000  heartwood_v23_levy=1.000  heartwood_v23_both=1.000  agg=0.861  (12s)
+  seed 1 n=108: heartwood_v23_base=1.000  heartwood_v23_cmp=1.000  heartwood_v23_levy=1.000  heartwood_v23_both=1.000  agg=0.861  (12s)
+  seed 2 n=108: heartwood_v23_base=1.000  heartwood_v23_cmp=1.000  heartwood_v23_levy=1.000  heartwood_v23_both=1.000  agg=0.861  (12s)
+  seed 3 n=108: heartwood_v23_base=1.000  heartwood_v23_cmp=1.000  heartwood_v23_levy=1.000  heartwood_v23_both=1.000  agg=0.861  (12s)
+  seed 4 n=108: heartwood_v23_base=1.000  heartwood_v23_cmp=1.000  heartwood_v23_levy=1.000  heartwood_v23_both=1.000  agg=0.861  (12s)
+
+uea:EthanolConcentration: n=524, static=0, series=3x1751, task=multiclass, missing=0.0%
+  seed 0 n=261: heartwood_v23_base=0.651  heartwood_v23_cmp=0.677  heartwood_v23_levy=0.654  heartwood_v23_both=0.632  agg=0.426  (1005s)
+  seed 1 n=261: heartwood_v23_base=0.742  heartwood_v23_cmp=0.674  heartwood_v23_levy=0.731  heartwood_v23_both=0.681  agg=0.426  (997s)
+  seed 2 n=261: heartwood_v23_base=0.700  heartwood_v23_cmp=0.700  heartwood_v23_levy=0.727  heartwood_v23_both=0.666  agg=0.426  (988s)
+  seed 3 n=261: heartwood_v23_base=0.708  heartwood_v23_cmp=0.677  heartwood_v23_levy=0.696  heartwood_v23_both=0.662  agg=0.426  (1000s)
+  seed 4 n=261: heartwood_v23_base=0.731  heartwood_v23_cmp=0.716  heartwood_v23_levy=0.678  heartwood_v23_both=0.693  agg=0.426  (998s)
+
+wrote validation/rerun/v23_uea/results.json (200 rows)
+[2026-09-01 19:18:23] OK uea
+[2026-09-01 19:18:23] BEGIN V23 report
+# V23 results — do comparison splits and Lévy areas work anywhere real?
+
+Generated by `validation/report_v23.py`. Suite rule, arms and bars were frozen in `VALIDATION_V23.md` before any cell ran.
+
+Metric: balanced accuracy. Margins are points against `heartwood_v23_base` (both extras off), paired within seed.
+
+## H-V23.3 — can this study detect the effects at all?
+
+The same arms on the scenarios each extra was built for. **Not evidence for the extras** — those scenarios were written to require these operators — but evidence about whether a null below is interpretable.
+
+| extra | scenario | baseline | with extra | gain | verdict |
+|---|---|---|---|---|---|
+| `comparison_splits` | bump_order | 90.0 | 99.9 | **+9.9** | **PASS** |
+| `levy_areas` | lead_lag | 50.4 | 57.6 | **+7.2** | **PASS** |
+
+**The study can detect these effects.** A null on the real suite below therefore means something.
+
+## Margins on the held-out UEA suite
+
+| dataset | `comparison_splits` | `levy_areas` | both |
+|---|---|---|---|
+| uea:ArticularyWordRecognition | +0.0 | +0.1 | +0.1 |
+| uea:BasicMotions | +0.0 | +0.0 | +0.0 |
+| uea:CharacterTrajectories | -0.0 | -0.0 | -0.0 |
+| uea:Cricket | +0.0 | +0.0 | +0.0 |
+| uea:ERing | +0.0 | +0.0 | +0.0 |
+| uea:EthanolConcentration | -1.7 | -0.9 | -4.0 |
+| uea:StandWalkJump | +0.0 | -2.7 | -10.7 |
+| uea:UWaveGestureLibrary | +0.1 | +0.1 | +0.1 |
+
+## Verdicts
+
+| hypothesis | extra | datasets clearing +0.5 | mean | verdict |
+|---|---|---|---|---|
+| H-V23.1 | `comparison_splits` | 0 / 8 | -0.2 | **FAIL** |
+| H-V23.2 | `levy_areas` | 0 / 8 | -0.4 | **FAIL** |
+
+## What this means
+
+**Both extras fail on a second independent real suite.**
+
+Sixteen real datasets across V15 and V23, no effect on either, against two synthetic scenarios written to require exactly these operators — and the control above confirms the study would have seen an effect if one were there.
+
+Per `VALIDATION_V23.md` §5 the honest reading is that **both features work only on tasks constructed to need them, and should be deleted** — completing what `VALIDATION_V15.md` §4 instructed and this project declined to do on one suite's evidence. The synthetic wins stay in the record as what they are: proof the operators function, not proof they are worth carrying.
+
+## Per-seed margins
+
+Means are never reported without these.
+
+**comparison_splits**
+
+* `uea:ArticularyWordRecognition`: +0.0, +0.0, +0.0, +0.0, +0.0
+* `uea:BasicMotions`: +0.0, +0.0, +0.0, +0.0, +0.0
+* `uea:CharacterTrajectories`: -0.1, -0.1, -0.1, +0.1, +0.0
+* `uea:Cricket`: +0.0, +0.0, +0.0, +0.0, +0.0
+* `uea:ERing`: +0.0, +0.0, +0.0, +0.0, +0.0
+* `uea:EthanolConcentration`: +2.7, -6.8, +0.0, -3.0, -1.5
+* `uea:StandWalkJump`: +0.0, +0.0, +0.0, +0.0, +0.0
+* `uea:UWaveGestureLibrary`: -0.9, +0.6, +0.0, +0.3, +0.6
+
+**levy_areas**
+
+* `uea:ArticularyWordRecognition`: +0.3, +0.0, +0.0, +0.0, +0.0
+* `uea:BasicMotions`: +0.0, +0.0, +0.0, +0.0, +0.0
+* `uea:CharacterTrajectories`: +0.0, -0.1, +0.1, -0.0, -0.0
+* `uea:Cricket`: +0.0, +0.0, +0.0, +0.0, +0.0
+* `uea:ERing`: +0.0, +0.0, +0.0, +0.0, +0.0
+* `uea:EthanolConcentration`: +0.4, -1.1, +2.6, -1.1, -5.3
+* `uea:StandWalkJump`: -6.7, -20.0, +0.0, +13.3, +0.0
+* `uea:UWaveGestureLibrary`: -0.3, +0.3, +0.3, +0.0, +0.0
+
+**both**
+
+* `uea:ArticularyWordRecognition`: +0.3, +0.0, +0.0, +0.0, +0.0
+* `uea:BasicMotions`: +0.0, +0.0, +0.0, +0.0, +0.0
+* `uea:CharacterTrajectories`: +0.0, -0.1, +0.1, -0.0, -0.0
+* `uea:Cricket`: +0.0, +0.0, +0.0, +0.0, +0.0
+* `uea:ERing`: +0.0, +0.0, +0.0, +0.0, +0.0
+* `uea:EthanolConcentration`: -1.9, -6.1, -3.4, -4.6, -3.8
+* `uea:StandWalkJump`: -13.3, -26.7, -20.0, +0.0, +6.7
+* `uea:UWaveGestureLibrary`: +0.0, +0.3, +0.0, +0.3, +0.0
+
+[2026-09-01 19:18:23] OK report
+[2026-09-01 19:18:23] V23_COMPLETE

@@ -17,12 +17,8 @@ import pytest
 from heartwood import HeartwoodClassifier, HeartwoodRegressor
 from heartwood.datasets import make_lead_lag, make_shape_amplitude_regression
 from heartwood.features import STAT_NAMES, interval_stat
-from heartwood.dense import (
-    _platt,
-    DenseBase,
-    dyadic_windows,
-    levy_area_columns,
-)
+from heartwood.dense import _platt, DenseBase
+from heartwood.rocket import ALPHA_INDICES, KERNEL_LEN, N_KERNELS, RocketBank
 
 
 # ------------------------------------------------------------- the bank
@@ -169,61 +165,10 @@ def test_transform_before_fit_is_an_error():
 # --------------------------------------------------------------- Lévy areas
 
 
-def test_levy_area_matches_the_closed_form():
-    """A quarter circle has signed area ½(π/2 − 1) relative to its start."""
-    theta = np.linspace(0.0, np.pi / 2, 2000)
-    path = np.stack([np.cos(theta), np.sin(theta)])[None, :, :]
-    area = levy_area_columns(path)[0, 0]
-    assert np.isclose(area, 0.5 * (np.pi / 2 - 1), atol=1e-4)
-
-
-def test_levy_area_flips_sign_when_the_path_reverses():
-    theta = np.linspace(0.0, np.pi / 2, 500)
-    forward = np.stack([np.cos(theta), np.sin(theta)])[None, :, :]
-    swapped = forward[:, ::-1, :]  # exchange the two channels
-    assert np.isclose(
-        levy_area_columns(forward)[0, 0], -levy_area_columns(swapped)[0, 0], atol=1e-9
-    )
-
-
-def test_levy_area_is_zero_for_a_straight_line(rng):
-    """Two channels moving in lockstep enclose no area."""
-    t = np.linspace(0, 1, 200)
-    path = np.stack([t, 2.0 * t + 1.0])[None, :, :]
-    assert abs(levy_area_columns(path)[0, 0]) < 1e-9
-
-
-def test_levy_area_ignores_nan_padding(rng):
-    """A padded series must give the same area as the unpadded one."""
-    theta = np.linspace(0.0, np.pi / 2, 128)
-    path = np.stack([np.cos(theta), np.sin(theta)])[None, :, :]
-    padded = np.full((1, 2, 192), np.nan)
-    padded[:, :, :128] = path
-    assert np.isclose(levy_area_columns(path)[0, 0], levy_area_columns(padded)[0, 0], atol=1e-9)
-
-
-def test_levy_areas_are_empty_for_one_channel(rng):
-    assert levy_area_columns(rng.normal(size=(5, 1, 50))).shape == (5, 0)
-
-
-def test_levy_areas_detect_which_channel_leads():
-    """The point of the whole feature, on the scenario built for it."""
-    X_static, X_series, y = make_lead_lag(n=800, seed=0)
-    a_leads = (y.astype(bool) ^ (X_static[:, 0] == 1)).astype(int)
-    areas = levy_area_columns(X_series)
-
-    full_window = areas[:, 0]
-    separation = abs(full_window[a_leads == 1].mean() - full_window[a_leads == 0].mean())
-    assert separation > 0.5 * full_window.std()
-
-
-# ------------------------------------------------------------- integration
-
-
 @pytest.mark.parametrize("flags", [
     dict(dense_base=True),
-    dict(levy_areas=True),
-    dict(dense_base=True, levy_areas=True),
+    dict(),
+    dict(dense_base=True, ),
 ])
 def test_the_flags_fit_and_predict(flags):
     X_static, X_series, y = make_lead_lag(n=200, seed=0)
@@ -237,13 +182,25 @@ def test_the_flags_fit_and_predict(flags):
 
 
 def test_extra_columns_are_named_in_the_dump():
-    X_static, X_series, y = make_lead_lag(n=250, seed=0)
-    model = HeartwoodClassifier(
-        n_estimators=25, random_state=0, dense_base=True, levy_areas=True
-    ).fit(X_static, X_series, y)
+    """The base's margin columns must be nameable, not anonymous.
 
-    names = " ".join(model.feature_importances())
-    assert "levy_area[" in names or "dense_margin[" in names, names
+    This used to accept ``levy_area[`` as well; Levy areas were deleted after
+    V23, so the margin is now the only extra block the trees are handed and the
+    test says so directly rather than by disjunction.
+
+    The scenario changed with it. On ``lead_lag`` the base now declines itself
+    against its own permutation null -- correctly, since the Levy areas that
+    carried that signal are gone -- and a declined base contributes no columns
+    to name. ``amp_regression`` is a scenario where the base is live.
+    """
+    X_static, X_series, y = make_shape_amplitude_regression(n=250, seed=0)
+    model = HeartwoodRegressor(
+        n_estimators=25, random_state=0, dense_base=True,
+        dense_include_static=True).fit(X_static, X_series, y)
+
+    assert not model._core.dense_.degenerate_, "the base declined; nothing to name"
+    names = " ".join(model._core.static_names_)
+    assert "dense_margin[" in names, names
     assert all("<=" in description for description, _ in model.dump_splits())
 
 
@@ -272,45 +229,28 @@ def test_predict_uses_full_fit_margins_not_leave_one_out():
     assert not np.allclose(loo, full, atol=1e-6)
 
 
-def test_dense_base_is_opt_in_and_levy_is_not():
-    """The defaults follow the measurements, not the original plan.
+def dyadic_windows(T, levels=4):
+    """Whole series, halves, quarters, eighths, at 50% overlap.
 
-    ``dense_base`` helps only when the temporal signal has genuine linear
-    structure and hurts when it is purely interaction-based, so it stays opt-in.
-    ``levy_areas`` is a no-op on single-channel data, costs nothing on
-    multichannel noise, and is worth ~10 accuracy points where lead-lag matters,
-    so it is on.
+    Was ``heartwood.dense.dyadic_windows``.  Its last caller in the library was
+    ``levy_area_columns``, deleted after V23, so it lives here beside the
+    ``dense_bank`` fixture that still needs it.
     """
-    model = HeartwoodClassifier()
-    assert model.dense_base is False
-    assert model.levy_areas is True
+    windows = []
+    for level in range(levels):
+        length = T // (2 ** level)
+        if length < 2:
+            break
+        stride = max(1, length // 2)
+        start = 0
+        while start + length <= T:
+            windows.append((start, start + length))
+            start += stride
+    seen = {}
+    for window in windows:
+        seen.setdefault(window, None)
+    return list(seen)
 
-
-def test_levy_areas_are_a_no_op_on_single_channel_data():
-    """Which is what makes turning them on by default safe."""
-    X_static, X_series, y = make_shape_amplitude_regression(n=200, seed=0)
-    assert X_series.shape[1] == 1
-
-    off = HeartwoodRegressor(n_estimators=15, random_state=0, levy_areas=False)
-    on = HeartwoodRegressor(n_estimators=15, random_state=0, levy_areas=True)
-    predictions = [
-        m.fit(X_static, X_series, y).predict(X_static, X_series) for m in (off, on)
-    ]
-    assert np.array_equal(*predictions)
-
-
-# ------------------------------------------------------- the rocket bank
-#
-# Added in V6. The bank exists because greedy per-node selection is the measured
-# ceiling on shape-regime data (validation/HEADROOM.md) and a ridge over a large
-# fixed bank does not select at all. These pin the properties the ridge on top
-# depends on: the bank is label-free, deterministic, and frozen after fitting.
-
-import numpy as np
-import pytest
-
-from heartwood import HeartwoodClassifier
-from heartwood.rocket import ALPHA_INDICES, KERNEL_LEN, N_KERNELS, RocketBank
 
 def dense_bank(X_series, stats=STAT_NAMES):
     """A wide feature block, purely as a fixture for the ridge tests.

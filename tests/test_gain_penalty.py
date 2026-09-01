@@ -111,7 +111,13 @@ def test_the_charge_prunes_monotonically():
         return sum(1 for r in model._core.trees_ for t in r
                    for node in t.nodes if not node["leaf"])
 
-    counts = [splits(mc) for mc in (0.0, 1.0, 2.0, 8.0)]
+    # 16.0 rather than 8.0 for the refuse-everything end. Deleting comparison
+    # splits after V23 made each node's pool smaller, and the charge is
+    # proportional to log(pool size), so the same multiplier now buys a smaller
+    # charge: at 8.0 a single split survives where none used to. The property
+    # under test is that a large enough charge refuses everything, not that any
+    # particular number does.
+    counts = [splits(mc) for mc in (0.0, 1.0, 2.0, 16.0)]
     assert counts == sorted(counts, reverse=True), counts
     assert counts[-1] == 0, "a large enough charge must refuse every split"
 
