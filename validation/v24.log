@@ -122,3 +122,9 @@ OMP: Info #276: omp_set_nested routine deprecated, please use omp_set_max_active
   seed 0 n=1000: heartwood_rocket_static=0.585  agg=0.263  minirocket=0.524  minirocket10k=0.546  (1349s)
   seed 1 n=1000: heartwood_rocket_static=0.602  agg=0.284  minirocket=0.549  minirocket10k=0.577  (1377s)
   seed 2 n=1000: heartwood_rocket_static=0.581  agg=0.244  minirocket=0.497  minirocket10k=0.546  (1355s)
+  seed 3 n=1000: heartwood_rocket_static=0.581  agg=0.279  minirocket=0.528  minirocket10k=0.548  (1369s)
+  seed 4 n=1000: heartwood_rocket_static=0.593  agg=0.269  minirocket=0.515  minirocket10k=0.558  (1338s)
+
+wrote validation/rerun/v24_cpsc/results.json (20 rows)
+[2026-09-01 23:33:14] OK cpsc
+[2026-09-01 23:33:14] V24_COMPLETE

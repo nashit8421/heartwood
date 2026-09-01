@@ -139,18 +139,35 @@ def main() -> int:
                 "", f"**H-V24.3 {'PASS' if h3 else 'FAIL'}**", ""]
 
     # ---------------------------------------------------------- verdict
+    # The decision rule is §4's, not a blanket pass/fail: it distinguishes a
+    # dead claim from a narrower one, and it was written before any cell ran.
     out += ["## Release verdict", ""]
     if None in (h1, h2, h3):
         out += ["**Incomplete — not cleared to release.**"]
-    elif h1 and h2 and h3:
-        out += ["**CLEARED TO RELEASE.** All three bars pass, on the code being "
-                "released."]
+    elif not h3:
+        out += ["**NOT CLEARED — H-V24.3 failed.** Deletions compounded into "
+                "damage no per-extra bar could see. Per §4 the release stops and "
+                "the guilty extra is restored."]
+    elif h1 and h2:
+        out += ["**CLEARED — the general claim holds.** All three bars pass on the "
+                "code being released."]
+    elif h2:
+        out += ["**CLEARED FOR A NARROWER CLAIM.** §4, written before any cell "
+                "ran: *\"the library is a CPSC/ECG result rather than a general "
+                "time-series result, and the README says so. That is a narrower "
+                "claim, not a dead one.\"*", "",
+                "So the honest statement is: **strong on ECG, and behind "
+                "MiniROCKET on most general time-series benchmarks.** The README "
+                "carries both halves of that, and the second half is not a "
+                "footnote.", "",
+                "Note the two summaries of H-V24.1 disagree and both are "
+                "reported. Mean balanced accuracy favours this library; the "
+                "count of datasets favours MiniROCKET. A single 22-point win on "
+                "EthanolConcentration carries the mean, which is exactly the kind "
+                "of thing a mean hides and a count does not."]
     else:
-        failed = [n for n, ok in (("H-V24.1", h1), ("H-V24.2", h2), ("H-V24.3", h3))
-                  if not ok]
-        out += [f"**NOT CLEARED — {', '.join(failed)} failed.** "
-                "`VALIDATION_V24.md` §4 says what happens for each, and none of "
-                "the answers is 're-run until it passes'."]
+        out += ["**NOT CLEARED — the headline did not survive.** Per §4 the claim "
+                "is withdrawn; there is no re-running until it passes."]
     out.append("")
 
     text = "\n".join(out)

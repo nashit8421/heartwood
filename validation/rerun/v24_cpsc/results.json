@@ -154,6 +154,98 @@
     "balanced_accuracy": 0.5462882416766122,
     "accuracy": 0.6416275430359938
    }
+  },
+  {
+   "dataset": "cpsc2018",
+   "model": "heartwood_rocket_static",
+   "n_train": 1000,
+   "seed": 3,
+   "fit_seconds": 1069.7765868749702,
+   "metrics": {
+    "balanced_accuracy": 0.5805461995737075,
+    "accuracy": 0.6770996348461137,
+    "roc_auc": 0.9120522306903744
+   }
+  },
+  {
+   "dataset": "cpsc2018",
+   "model": "agg",
+   "n_train": 1000,
+   "seed": 3,
+   "fit_seconds": 0.8864312500227243,
+   "metrics": {
+    "balanced_accuracy": 0.27941643587970677,
+    "accuracy": 0.3635889410537298,
+    "roc_auc": 0.7066758480094985
+   }
+  },
+  {
+   "dataset": "cpsc2018",
+   "model": "minirocket",
+   "n_train": 1000,
+   "seed": 3,
+   "fit_seconds": 2.701736915973015,
+   "metrics": {
+    "balanced_accuracy": 0.5275038080093603,
+    "accuracy": 0.6411058946270214
+   }
+  },
+  {
+   "dataset": "cpsc2018",
+   "model": "minirocket10k",
+   "n_train": 1000,
+   "seed": 3,
+   "fit_seconds": 9.489926540991291,
+   "metrics": {
+    "balanced_accuracy": 0.5482772605954745,
+    "accuracy": 0.6551904016692749
+   }
+  },
+  {
+   "dataset": "cpsc2018",
+   "model": "heartwood_rocket_static",
+   "n_train": 1000,
+   "seed": 4,
+   "fit_seconds": 1054.3511866659392,
+   "metrics": {
+    "balanced_accuracy": 0.5927145080875669,
+    "accuracy": 0.6797078768909754,
+    "roc_auc": 0.9099894415643003
+   }
+  },
+  {
+   "dataset": "cpsc2018",
+   "model": "agg",
+   "n_train": 1000,
+   "seed": 4,
+   "fit_seconds": 0.8810580840799958,
+   "metrics": {
+    "balanced_accuracy": 0.26857475032314815,
+    "accuracy": 0.3479394887845592,
+    "roc_auc": 0.6950428790972526
+   }
+  },
+  {
+   "dataset": "cpsc2018",
+   "model": "minirocket",
+   "n_train": 1000,
+   "seed": 4,
+   "fit_seconds": 2.681023124954663,
+   "metrics": {
+    "balanced_accuracy": 0.5150404910696623,
+    "accuracy": 0.631716223265519
+   }
+  },
+  {
+   "dataset": "cpsc2018",
+   "model": "minirocket10k",
+   "n_train": 1000,
+   "seed": 4,
+   "fit_seconds": 9.273010333999991,
+   "metrics": {
+    "balanced_accuracy": 0.5583114130546821,
+    "accuracy": 0.6572769953051644
+   }
   }
  ]
 }
