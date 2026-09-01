@@ -20,7 +20,7 @@ import pytest
 
 from heartwood import HeartwoodClassifier
 from heartwood.dense import levy_area_columns
-from heartwood.rocket import CHANNEL_GROUP_MODES, RocketBank, _channel_groups
+from heartwood.rocket import RocketBank, _channel_groups
 
 _spec = importlib.util.spec_from_file_location(
     "run_validation",
@@ -64,7 +64,6 @@ def test_all_arm_switches_on_every_extra():
 def test_baseline_is_minirocket_only():
     base = variant_kwargs("abl_min")
     assert base["dense_features"] == "rocket"
-    assert base["rocket_channel_groups"] == "singletons"
     assert base["n_comparison_candidates"] == 0
     assert base["levy_areas"] is False
 
@@ -74,67 +73,37 @@ def test_unknown_variant_still_addresses_a_dense_bank():
     assert variant_kwargs("both") == {"dense_base": True, "dense_features": "both"}
 
 
-# -------------------------------------------------------- virtual channels
-
-
-def test_singletons_mode_yields_one_group_per_channel():
-    rng = np.random.default_rng(0)
-    groups = _channel_groups(5, rng, "singletons")
-    assert [g.tolist() for g in groups] == [[0], [1], [2], [3], [4]]
-
-
-def test_subsets_mode_adds_unions_on_top_of_the_singletons():
-    rng = np.random.default_rng(0)
-    groups = _channel_groups(5, rng, "subsets")
-    assert [g.tolist() for g in groups[:5]] == [[0], [1], [2], [3], [4]]
-    assert len(groups) > 5
-
-
-def test_channel_groups_rejects_an_unknown_mode():
-    with pytest.raises(ValueError, match="channel_groups"):
-        _channel_groups(3, np.random.default_rng(0), "all_pairs")
-    with pytest.raises(ValueError, match="channel_groups"):
-        RocketBank(channel_groups="all_pairs")
-
-
-def test_the_ablation_does_not_change_the_feature_budget():
-    """Groups add diversity, not columns -- otherwise the arms differ in size too.
-
-    If dropping the unions also shrank the bank, ``abl_min`` would be a smaller
-    *and* less diverse model and the arm would not isolate virtual channels.
-    """
-    X = series()
-    counts = {
-        mode: RocketBank(n_features=200, channel_groups=mode).fit(X).n_output_features
-        for mode in CHANNEL_GROUP_MODES
-    }
-    assert counts["singletons"] == counts["subsets"]
-
-
-def test_the_two_modes_disagree_on_multichannel_data():
-    X = series()
-    out = {
-        mode: RocketBank(n_features=200, channel_groups=mode).fit_transform(X)
-        for mode in CHANNEL_GROUP_MODES
-    }
-    assert not np.allclose(out["singletons"], out["subsets"])
-
+# ------------------------------------------------------- the deleted extra
 
 @pytest.mark.parametrize("extra", MULTICHANNEL_ONLY_EXTRAS)
 def test_multichannel_only_extras_are_vacuous_on_one_channel(extra):
-    """Why V15 counts these two extras only where they are live.
+    """Why V15 counts this extra only where it is live.
 
-    On one channel there is nothing to combine and nothing to cross, so the arm
-    and the baseline are the same model.  Scoring them as a dataset each extra
-    "failed to beat the baseline on" would be counting a tautology as evidence.
+    On one channel there is nothing to cross, so the arm and the baseline are
+    the same model.  Scoring that as a dataset the extra "failed to beat the
+    baseline on" would be counting a tautology as evidence.
     """
-    X = series(channels=1)
-    if extra == "virtual_channels":
-        out = [RocketBank(n_features=200, channel_groups=mode).fit_transform(X)
-               for mode in CHANNEL_GROUP_MODES]
-        assert np.array_equal(out[0], out[1])
-    else:
-        assert levy_area_columns(X).shape[1] == 0
+    assert extra == "levy_areas"
+    assert levy_area_columns(series(channels=1)).shape[1] == 0
+
+
+def test_channel_groups_are_singletons_only():
+    """Virtual channels were deleted after V15; nothing may reintroduce unions.
+
+    A union of channels consumes the same per-kernel, per-dilation budget a
+    singleton would, so if these came back they would silently take diversity
+    away from per-channel structure again -- which V15 measured at -0.2 points
+    over eight UEA datasets, and a follow-up measured at no effect on any of the
+    five synthetic scenarios.
+    """
+    assert [g.tolist() for g in _channel_groups(5)] == [[0], [1], [2], [3], [4]]
+    assert [g.tolist() for g in _channel_groups(1)] == [[0]]
+
+
+def test_the_bank_still_uses_every_channel():
+    """Deleting the unions must not quietly drop channels from the bank."""
+    bank = RocketBank(n_features=200, random_state=0).fit(series(channels=4))
+    assert sorted(int(g[0]) for g in bank.groups_) == [0, 1, 2, 3]
 
 
 # ------------------------------------------------------------- end to end

@@ -67,6 +67,34 @@ PRODUCTS: dict[str, dict] = {
                          base_static_products=True),
 }
 
+#: --v15check re-tests, on the synthetic generators, the four bank extras that
+#: V15 measured as worthless on the UEA suite.  V15 §4 pre-commits to deleting a
+#: failed extra, but three of the four were originally justified by a synthetic
+#: scenario -- the README credits Levy areas with +14 points on lead_lag -- and
+#: V15 never ran those.  Deleting on a suite that cannot see what an extra was
+#: built for would be exactly the incomplete-evidence mistake this project keeps
+#: writing documents about.
+V15_CHECK: dict[str, dict] = {
+    "hw_v15_all": dict(dense_base=True, dense_features="rocket",
+                       dense_include_static=True, levy_areas=True,
+                       n_comparison_candidates=4),
+    "hw_v15_no_levy": dict(dense_base=True, dense_features="rocket",
+                           dense_include_static=True, levy_areas=False,
+                           n_comparison_candidates=4),
+    "hw_v15_no_cmp": dict(dense_base=True, dense_features="rocket",
+                          dense_include_static=True, levy_areas=True,
+                          n_comparison_candidates=0),
+    "hw_v15_no_stats": dict(dense_base=True, dense_features="rocket",
+                            dense_include_static=True, levy_areas=True,
+                            n_comparison_candidates=4),
+    "hw_v15_with_stats": dict(dense_base=True, dense_features="both",
+                              dense_include_static=True, levy_areas=True,
+                              n_comparison_candidates=4),
+    "hw_v15_min": dict(dense_base=True, dense_features="rocket",
+                       dense_include_static=True, levy_areas=False,
+                       n_comparison_candidates=0),
+}
+
 #: --phasec adds the opt-in Phase C extras.
 PHASE_C: dict[str, dict] = {
     "hw_levy": dict(levy_areas=True),
@@ -338,6 +366,9 @@ def main() -> int:
                         help="also run the opt-in Phase-C variants")
     parser.add_argument("--products", action="store_true",
                         help="also run the V22 magnitude-product variants")
+    parser.add_argument("--v15check", action="store_true",
+                        help="re-test V15's four bank extras on the synthetic "
+                             "scenarios before deleting them")
     args = parser.parse_args()
 
     if args.quick:
@@ -351,6 +382,8 @@ def main() -> int:
         variants.update(PHASE_C)
     if args.rocket:
         variants.update(ROCKET)
+    if args.v15check:
+        variants.update(V15_CHECK)
     if args.products:
         variants.update({"hw_rocket_static": ROCKET["hw_rocket_static"], **PRODUCTS})
     models = list(variants) + representations

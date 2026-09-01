@@ -55,7 +55,6 @@ _ABL_MIN = {
     "dense_features": "rocket",
     "dense_include_static": True,
     "dense_static_interactions": False,
-    "rocket_channel_groups": "singletons",
     "n_comparison_candidates": 0,
     "levy_areas": False,
 }
@@ -69,13 +68,11 @@ VARIANTS: dict[str, dict] = {
     # V8: the convolution base plus a chance floor on split acceptance.
     "rocket_null": {"dense_base": True, "dense_features": "rocket", "selection_null": 1},
     "abl_min": dict(_ABL_MIN),
-    "abl_vchan": {**_ABL_MIN, "rocket_channel_groups": "subsets"},
     "abl_cmp": {**_ABL_MIN, "n_comparison_candidates": 4},
     "abl_stats": {**_ABL_MIN, "dense_features": "both"},
     "abl_levy": {**_ABL_MIN, "levy_areas": True},
-    "abl_all": {**_ABL_MIN, "rocket_channel_groups": "subsets",
-                "n_comparison_candidates": 4, "dense_features": "both",
-                "levy_areas": True},
+    "abl_all": {**_ABL_MIN, "n_comparison_candidates": 4,
+                "dense_features": "both", "levy_areas": True},
 }
 
 #: V16 (roadmap item 2a): per-node bagging over the temporal draws, on top of
@@ -187,18 +184,15 @@ PRODUCT_BASELINE = "rocket_static"
 #: here rather than in the report so the reporting script cannot quietly change
 #: what "the +virtual-channels arm" means after a score has been seen.
 ABLATION_EXTRAS = {
-    "virtual_channels": "abl_vchan",
     "comparison_splits": "abl_cmp",
     "interval_stats": "abl_stats",
     "levy_areas": "abl_levy",
 }
 
-#: Extras that are vacuous on one channel: ``_channel_groups`` returns the
-#: singleton and ``levy_area_columns`` returns an empty block, so those arms are
-#: *identical* to ``abl_min`` there.  V15 counts an extra's majority only over
-#: the datasets where it is live -- pre-committed, because discovering this
-#: after the fact would be an invitation to pick the favourable denominator.
-MULTICHANNEL_ONLY_EXTRAS = ("virtual_channels", "levy_areas")
+#: Extras that are vacuous on one channel: ``levy_area_columns`` returns an empty
+#: block, so that arm is *identical* to ``abl_min`` there.  V15 counts an extra's
+#: majority only over the datasets where it is live.
+MULTICHANNEL_ONLY_EXTRAS = ("levy_areas",)
 
 
 def variant_kwargs(variant: str) -> dict:

@@ -22,15 +22,11 @@ The construction follows Dempster, Schmidt and Webb (2021):
 Two deliberate departures, both because this has to hold Heartwood's contracts
 rather than reproduce a paper:
 
-* **Multivariate handling goes through channel groups.**  A group is a subset of
-  channels summed into one virtual channel.  Every singleton is included, so
-  per-channel structure is never lost, plus random subsets of size 2, 4, ... so
-  joint structure is available too — Handwriting's signal is the joint x-y pen
-  trajectory rather than anything in either axis alone, and per-channel-only cost
-  11 points there.  Crucially the channel choice is folded *into* the feature
-  budget rather than multiplying it: each kernel is assigned one group per
-  dilation.  Multiplying the budget by the group count starves every (kernel,
-  dilation) down to a single bias, which cost another 5 points.
+* **Multivariate handling is per channel.**  Each kernel is assigned one channel
+  per dilation.  Random unions of channels — "virtual channels" — used to be
+  offered alongside the singletons, justified by Handwriting's joint x-y pen
+  trajectory; V15 measured them at −0.2 points across eight UEA datasets and
+  no measurable effect on five synthetic scenarios, and they were deleted.
 * **NaN is imputed per row and channel** before convolving, because a
   convolution has no NaN-aware form.  Rows that are entirely missing in a channel
   contribute a constant, and their features fall out in the ridge's centring.
@@ -84,36 +80,22 @@ def _dilations(length: int, n_features_per_kernel: int, max_dilations: int = 32)
     return dilations, per_dilation
 
 
-CHANNEL_GROUP_MODES = ("subsets", "singletons")
+def _channel_groups(n_channels: int) -> list[np.ndarray]:
+    """One group per channel.  Nothing is combined.
 
+    This used to add random unions of channels on top of the singletons -- the
+    "virtual channels" extra -- on the theory that some signals live only in a
+    joint trajectory.  V15 measured it against a bank with singletons only and
+    it cleared its +0.5 bar on 1 of 8 UEA datasets at a mean of **-0.2 points**,
+    and made no measurable difference on any of the five synthetic scenarios.
+    Deleted per VALIDATION_V15.md §4, which pre-committed that a failed extra is
+    removed rather than left as a dead flag.
 
-def _channel_groups(n_channels: int, rng: np.random.Generator,
-                    mode: str = "subsets") -> list[np.ndarray]:
-    """Singletons, plus — under ``mode="subsets"`` — random unions of them.
-
-    Singletons are always present so no per-channel structure is lost; the
-    subsets exist because some signals live only in the joint trajectory.  Sizes
-    are powers of two, following MiniROCKET's channel-combination scheme.
-
-    ``mode="singletons"`` drops the unions and is the V15 ablation arm: it is
-    what MiniROCKET's own multivariate handling would give us, so the difference
-    between the two modes *is* the virtual-channel extra, measured rather than
-    assumed.  On single-channel data the two modes are identical by
-    construction, which is why V15 counts this extra only where it is live.
+    What it cost is worth recording: a group was assigned per kernel per
+    dilation, so the unions consumed diversity that now all goes to per-channel
+    structure, at identical feature count.
     """
-    if mode not in CHANNEL_GROUP_MODES:
-        raise ValueError(
-            f"channel_groups must be one of {CHANNEL_GROUP_MODES}, got {mode!r}"
-        )
-    singletons = [np.array([c], dtype=np.intp) for c in range(n_channels)]
-    if n_channels == 1 or mode == "singletons":
-        return singletons
-    groups = list(singletons)
-    max_exponent = int(np.log2(min(n_channels, 9)))
-    for _ in range(n_channels):
-        size = int(2 ** rng.integers(1, max_exponent + 1)) if max_exponent >= 1 else 1
-        groups.append(rng.choice(n_channels, size=min(size, n_channels), replace=False))
-    return groups
+    return [np.array([c], dtype=np.intp) for c in range(n_channels)]
 
 
 def _virtual_channels(X_series: np.ndarray, groups: list[np.ndarray]) -> np.ndarray:
@@ -170,16 +152,10 @@ class RocketBank:
     """
 
     def __init__(self, n_features: int = DEFAULT_FEATURES, random_state: int = 0,
-                 max_dilations: int = 32, channel_groups: str = "subsets"):
+                 max_dilations: int = 32):
         self.n_features = int(n_features)
         self.random_state = int(random_state)
         self.max_dilations = int(max_dilations)
-        if channel_groups not in CHANNEL_GROUP_MODES:
-            raise ValueError(
-                f"channel_groups must be one of {CHANNEL_GROUP_MODES}, "
-                f"got {channel_groups!r}"
-            )
-        self.channel_groups = channel_groups
         self.plan_: list[tuple[int, int, np.ndarray]] | None = None  # group, dilation, biases
         self.groups_: list[np.ndarray] | None = None
         self.n_channels_: int | None = None
@@ -199,7 +175,7 @@ class RocketBank:
         rng = np.random.default_rng(self.random_state)
         n, n_channels, length = X_series.shape
         self.n_channels_, self.length_ = n_channels, length
-        self.groups_ = _channel_groups(n_channels, rng, self.channel_groups)
+        self.groups_ = _channel_groups(n_channels)
         virtual = _virtual_channels(X_series, self.groups_)
         per_kernel = self._budget()
         dilations, per_dilation = _dilations(length, per_kernel, self.max_dilations)

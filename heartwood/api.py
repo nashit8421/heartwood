@@ -14,7 +14,6 @@ from ._util import check_inputs
 from .booster import _BoosterCore
 from .features import STAT_NAMES
 from .losses import Logistic, SquaredError, Softmax, sigmoid, softmax
-from .rocket import CHANNEL_GROUP_MODES
 from .tree import TreeParams
 
 
@@ -60,7 +59,6 @@ class _BaseHeartwood:
         mc_penalty: float = 0.0,
         dense_features: str = "stats",
         n_rocket_features: int = 10000,
-        rocket_channel_groups: str = "subsets",
         dense_include_static: bool = False,
         dense_static_interactions: bool = False,
         levy_areas: bool = True,
@@ -110,7 +108,6 @@ class _BaseHeartwood:
         self.mc_penalty = mc_penalty
         self.dense_features = dense_features
         self.n_rocket_features = n_rocket_features
-        self.rocket_channel_groups = rocket_channel_groups
         self.dense_include_static = dense_include_static
         self.dense_static_interactions = dense_static_interactions
         self.levy_areas = levy_areas
@@ -168,11 +165,6 @@ class _BaseHeartwood:
             raise ValueError("max_depth must be >= 0")
         if self.min_samples_leaf < 1:
             raise ValueError("min_samples_leaf must be >= 1")
-        if self.rocket_channel_groups not in CHANNEL_GROUP_MODES:
-            raise ValueError(
-                f"rocket_channel_groups must be one of {CHANNEL_GROUP_MODES}, "
-                f"got {self.rocket_channel_groups!r}"
-            )
         if self.n_comparison_candidates < 0:
             raise ValueError("n_comparison_candidates must be >= 0")
         if self.n_product_candidates < 0:
@@ -280,7 +272,6 @@ class _BaseHeartwood:
             dense_base=self.dense_base,
             dense_features=self.dense_features,
             n_rocket_features=self.n_rocket_features,
-            rocket_channel_groups=self.rocket_channel_groups,
             dense_include_static=self.dense_include_static,
             dense_static_interactions=self.dense_static_interactions,
             levy_areas=self.levy_areas,
