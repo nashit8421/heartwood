@@ -1,3 +1,12 @@
+> **This is the research log, not the README.** It is the running record of how this
+> library was validated, milestone by milestone, including the claims that were withdrawn.
+> It is kept because the withdrawals are the most useful thing in it.
+>
+> **Several headline numbers below were measured on code that no longer exists.** V15 and
+> V23 deleted four features this bank added to MiniROCKET's, and V20's fallback went with
+> them. `RESULTS_V24.md` re-measured the library that remains, and `README.md` carries
+> those numbers. Where the two disagree, V24 is right and this file is history.
+
 # Heartwood
 
 **Gradient-boosted trees that read the rings.**

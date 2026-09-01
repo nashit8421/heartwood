@@ -32,3 +32,93 @@ uea:RacketSports: n=303, static=0, series=6x30, task=multiclass, missing=0.0%
 uea:Libras: n=360, static=0, series=2x45, task=multiclass, missing=0.0%
   seed 0 n=180: heartwood_rocket_static=0.883  agg=0.761  minirocket=0.917  minirocket10k=0.917  (24s)
   seed 1 n=180: heartwood_rocket_static=0.894  agg=0.761  minirocket=0.917  minirocket10k=0.917  (25s)
+  seed 2 n=180: heartwood_rocket_static=0.906  agg=0.761  minirocket=0.917  minirocket10k=0.917  (25s)
+  seed 3 n=180: heartwood_rocket_static=0.883  agg=0.761  minirocket=0.917  minirocket10k=0.917  (25s)
+  seed 4 n=180: heartwood_rocket_static=0.861  agg=0.761  minirocket=0.917  minirocket10k=0.917  (23s)
+
+uea:NATOPS: n=360, static=0, series=24x51, task=multiclass, missing=0.0%
+  seed 0 n=180: heartwood_rocket_static=0.911  agg=0.889  minirocket=0.939  minirocket10k=0.944  (15s)
+  seed 1 n=180: heartwood_rocket_static=0.894  agg=0.889  minirocket=0.939  minirocket10k=0.944  (14s)
+  seed 2 n=180: heartwood_rocket_static=0.889  agg=0.889  minirocket=0.939  minirocket10k=0.944  (14s)
+  seed 3 n=180: heartwood_rocket_static=0.939  agg=0.889  minirocket=0.939  minirocket10k=0.944  (14s)
+  seed 4 n=180: heartwood_rocket_static=0.906  agg=0.889  minirocket=0.939  minirocket10k=0.944  (14s)
+
+uea:UWaveGestureLibrary: n=440, static=0, series=3x315, task=multiclass, missing=0.0%
+  seed 0 n=120: heartwood_rocket_static=0.931  agg=0.762  minirocket=0.931  minirocket10k=0.931  (28s)
+  seed 1 n=120: heartwood_rocket_static=0.916  agg=0.762  minirocket=0.931  minirocket10k=0.931  (23s)
+  seed 2 n=120: heartwood_rocket_static=0.922  agg=0.762  minirocket=0.931  minirocket10k=0.931  (22s)
+  seed 3 n=120: heartwood_rocket_static=0.925  agg=0.762  minirocket=0.931  minirocket10k=0.931  (30s)
+  seed 4 n=120: heartwood_rocket_static=0.916  agg=0.762  minirocket=0.931  minirocket10k=0.931  (23s)
+
+uea:ArticularyWordRecognition: n=575, static=0, series=9x144, task=multiclass, missing=0.0%
+  seed 0 n=275: heartwood_rocket_static=0.987  agg=0.870  minirocket=0.990  minirocket10k=0.990  (11s)
+  seed 1 n=275: heartwood_rocket_static=0.990  agg=0.870  minirocket=0.990  minirocket10k=0.990  (11s)
+  seed 2 n=275: heartwood_rocket_static=0.990  agg=0.870  minirocket=0.990  minirocket10k=0.990  (9s)
+  seed 3 n=275: heartwood_rocket_static=0.987  agg=0.870  minirocket=0.990  minirocket10k=0.990  (5s)
+  seed 4 n=275: heartwood_rocket_static=0.990  agg=0.870  minirocket=0.990  minirocket10k=0.990  (9s)
+
+uea:StandWalkJump: n=27, static=0, series=4x2500, task=multiclass, missing=0.0%
+  seed 0 n=12: heartwood_rocket_static=0.533  agg=0.333  minirocket=0.333  minirocket10k=0.400  (6s)
+  seed 1 n=12: heartwood_rocket_static=0.533  agg=0.333  minirocket=0.333  minirocket10k=0.400  (6s)
+  seed 2 n=12: heartwood_rocket_static=0.600  agg=0.333  minirocket=0.333  minirocket10k=0.400  (6s)
+  seed 3 n=12: heartwood_rocket_static=0.533  agg=0.333  minirocket=0.333  minirocket10k=0.400  (6s)
+  seed 4 n=12: heartwood_rocket_static=0.333  agg=0.333  minirocket=0.333  minirocket10k=0.400  (6s)
+
+uea:Heartbeat: n=409, static=0, series=61x405, task=binary, missing=0.0%
+  seed 0 n=204: heartwood_rocket_static=0.665  agg=0.677  minirocket=0.653  minirocket10k=0.665  (27s)
+  seed 1 n=204: heartwood_rocket_static=0.689  agg=0.677  minirocket=0.653  minirocket10k=0.665  (27s)
+  seed 2 n=204: heartwood_rocket_static=0.617  agg=0.677  minirocket=0.653  minirocket10k=0.665  (27s)
+  seed 3 n=204: heartwood_rocket_static=0.675  agg=0.677  minirocket=0.653  minirocket10k=0.665  (28s)
+  seed 4 n=204: heartwood_rocket_static=0.642  agg=0.677  minirocket=0.653  minirocket10k=0.665  (27s)
+
+uea:CharacterTrajectories: n=2858, static=0, series=3x119, task=multiclass, missing=0.0%
+  seed 0 n=1422: heartwood_rocket_static=0.991  agg=0.953  minirocket=0.990  minirocket10k=0.993  (132s)
+  seed 1 n=1422: heartwood_rocket_static=0.992  agg=0.953  minirocket=0.990  minirocket10k=0.993  (129s)
+  seed 2 n=1422: heartwood_rocket_static=0.993  agg=0.953  minirocket=0.990  minirocket10k=0.993  (116s)
+  seed 3 n=1422: heartwood_rocket_static=0.993  agg=0.953  minirocket=0.990  minirocket10k=0.993  (120s)
+  seed 4 n=1422: heartwood_rocket_static=0.992  agg=0.953  minirocket=0.990  minirocket10k=0.993  (133s)
+
+uea:HandMovementDirection: n=234, static=0, series=10x400, task=multiclass, missing=0.0%
+  seed 0 n=160: heartwood_rocket_static=0.395  agg=0.289  minirocket=0.352  minirocket10k=0.387  (49s)
+  seed 1 n=160: heartwood_rocket_static=0.437  agg=0.289  minirocket=0.352  minirocket10k=0.387  (49s)
+  seed 2 n=160: heartwood_rocket_static=0.463  agg=0.289  minirocket=0.352  minirocket10k=0.387  (49s)
+  seed 3 n=160: heartwood_rocket_static=0.456  agg=0.289  minirocket=0.352  minirocket10k=0.387  (50s)
+  seed 4 n=160: heartwood_rocket_static=0.374  agg=0.289  minirocket=0.352  minirocket10k=0.387  (49s)
+
+uea:SelfRegulationSCP2: n=380, static=0, series=7x1152, task=binary, missing=0.0%
+  seed 0 n=200: heartwood_rocket_static=0.472  agg=0.522  minirocket=0.556  minirocket10k=0.544  (51s)
+  seed 1 n=200: heartwood_rocket_static=0.489  agg=0.522  minirocket=0.556  minirocket10k=0.544  (51s)
+  seed 2 n=200: heartwood_rocket_static=0.506  agg=0.522  minirocket=0.556  minirocket10k=0.544  (50s)
+  seed 3 n=200: heartwood_rocket_static=0.461  agg=0.522  minirocket=0.556  minirocket10k=0.544  (50s)
+  seed 4 n=200: heartwood_rocket_static=0.439  agg=0.522  minirocket=0.556  minirocket10k=0.544  (50s)
+
+uea:Handwriting: n=1000, static=0, series=3x152, task=multiclass, missing=0.0%
+  seed 0 n=150: heartwood_rocket_static=0.453  agg=0.171  minirocket=0.441  minirocket10k=0.514  (121s)
+  seed 1 n=150: heartwood_rocket_static=0.433  agg=0.171  minirocket=0.441  minirocket10k=0.514  (125s)
+  seed 2 n=150: heartwood_rocket_static=0.446  agg=0.171  minirocket=0.441  minirocket10k=0.514  (125s)
+  seed 3 n=150: heartwood_rocket_static=0.461  agg=0.171  minirocket=0.441  minirocket10k=0.514  (124s)
+  seed 4 n=150: heartwood_rocket_static=0.471  agg=0.171  minirocket=0.441  minirocket10k=0.514  (126s)
+
+uea:Cricket: n=180, static=0, series=6x1197, task=multiclass, missing=0.0%
+  seed 0 n=108: heartwood_rocket_static=1.000  agg=0.861  minirocket=0.986  minirocket10k=0.986  (8s)
+  seed 1 n=108: heartwood_rocket_static=1.000  agg=0.861  minirocket=0.986  minirocket10k=0.986  (8s)
+  seed 2 n=108: heartwood_rocket_static=1.000  agg=0.861  minirocket=0.986  minirocket10k=0.986  (8s)
+  seed 3 n=108: heartwood_rocket_static=1.000  agg=0.861  minirocket=0.986  minirocket10k=0.986  (8s)
+  seed 4 n=108: heartwood_rocket_static=1.000  agg=0.861  minirocket=0.986  minirocket10k=0.986  (8s)
+
+uea:EthanolConcentration: n=524, static=0, series=3x1751, task=multiclass, missing=0.0%
+  seed 0 n=261: heartwood_rocket_static=0.651  agg=0.426  minirocket=0.468  minirocket10k=0.484  (272s)
+  seed 1 n=261: heartwood_rocket_static=0.742  agg=0.426  minirocket=0.468  minirocket10k=0.484  (270s)
+  seed 2 n=261: heartwood_rocket_static=0.700  agg=0.426  minirocket=0.468  minirocket10k=0.484  (265s)
+  seed 3 n=261: heartwood_rocket_static=0.708  agg=0.426  minirocket=0.468  minirocket10k=0.484  (267s)
+  seed 4 n=261: heartwood_rocket_static=0.731  agg=0.426  minirocket=0.468  minirocket10k=0.484  (268s)
+
+wrote validation/rerun/v24_uea/results.json (320 rows)
+[2026-09-01 21:40:01] OK uea
+[2026-09-01 21:40:01] BEGIN cpsc
+
+cpsc2018: n=6391, static=0, series=1x1000, task=multiclass, missing=0.0%
+OMP: Info #276: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+  seed 0 n=1000: heartwood_rocket_static=0.585  agg=0.263  minirocket=0.524  minirocket10k=0.546  (1349s)
+  seed 1 n=1000: heartwood_rocket_static=0.602  agg=0.284  minirocket=0.549  minirocket10k=0.577  (1377s)
+  seed 2 n=1000: heartwood_rocket_static=0.581  agg=0.244  minirocket=0.497  minirocket10k=0.546  (1355s)

@@ -68,7 +68,7 @@ from .api import HeartwoodClassifier, HeartwoodRegressor
 from .features import STAT_NAMES, interval_stat, shapelet_features
 from .splits import SplitSpec
 
-__version__ = "0.1.0"
+__version__ = "1.0.0"
 
 __all__ = [
     "HeartwoodClassifier",
