@@ -20,7 +20,8 @@
 #
 # A failing study is reported and the queue continues. One grid that dies at
 # hour three must not cost the other seven.
-cd /Users/dogmatixs/Desktop/TS_XGBoost
+# Repository root, wherever this clone happens to live.
+cd "$(dirname "$0")/.."
 export PYTHONUNBUFFERED=1
 say(){ echo "[$(date '+%F %T')] $*"; }
 

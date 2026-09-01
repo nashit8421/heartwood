@@ -7,7 +7,8 @@
 # 16 permutations is ~3.0x the fit time (measured), so budget ~3x a V16 grid.
 #
 # Do NOT start this while another study is running.
-cd /Users/dogmatixs/Desktop/TS_XGBoost
+# Repository root, wherever this clone happens to live.
+cd "$(dirname "$0")/.."
 export PYTHONUNBUFFERED=1
 say(){ echo "[$(date '+%F %T')] $*"; }
 

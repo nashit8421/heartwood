@@ -7,7 +7,8 @@
 #
 # The refit check (H-V21.2) is a veto and lives in the test suite, so it runs
 # first and the grid does not start if it fails.
-cd /Users/dogmatixs/Desktop/TS_XGBoost
+# Repository root, wherever this clone happens to live.
+cd "$(dirname "$0")/.."
 export PYTHONUNBUFFERED=1
 say(){ echo "[$(date '+%F %T')] $*"; }
 

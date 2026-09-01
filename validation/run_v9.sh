@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # V9: does a static block a sensor cannot infer finally earn its place?
-cd /Users/dogmatixs/Desktop/TS_XGBoost
+# Repository root, wherever this clone happens to live.
+cd "$(dirname "$0")/.."
 export PYTHONUNBUFFERED=1
 say()   { echo "[$(date '+%F %T')] $*"; }
 stage() { local n="$1"; shift; say "BEGIN $n"

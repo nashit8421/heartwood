@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # V8: does pricing selection bias remove the five-point tax, and convert it?
-cd /Users/dogmatixs/Desktop/TS_XGBoost
+# Repository root, wherever this clone happens to live.
+cd "$(dirname "$0")/.."
 export PYTHONUNBUFFERED=1
 say()   { echo "[$(date '+%F %T')] $*"; }
 stage() { local n="$1"; shift; say "BEGIN $n"

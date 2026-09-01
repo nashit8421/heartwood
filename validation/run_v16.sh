@@ -6,7 +6,8 @@
 #
 # Do NOT start this while another study is running: the arms are compared to one
 # another and CPU contention would land unevenly across them.
-cd /Users/dogmatixs/Desktop/TS_XGBoost
+# Repository root, wherever this clone happens to live.
+cd "$(dirname "$0")/.."
 export PYTHONUNBUFFERED=1
 say(){ echo "[$(date '+%F %T')] $*"; }
 

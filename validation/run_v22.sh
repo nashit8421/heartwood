@@ -4,7 +4,8 @@
 # The Apnea arm is H-V22.2's veto and is NOT optional: V11 collapsed there to
 # 0.478 AUC, below chance, and it did so silently. It runs whatever the
 # diagnostic says, and a failure withdraws the change.
-cd /Users/dogmatixs/Desktop/TS_XGBoost
+# Repository root, wherever this clone happens to live.
+cd "$(dirname "$0")/.."
 export PYTHONUNBUFFERED=1
 say(){ echo "[$(date '+%F %T')] $*"; }
 stage(){ local n="$1"; shift; say "BEGIN $n"; if "$@"; then say "OK $n"; else say "FAILED $n"; fi; }

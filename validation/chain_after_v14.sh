@@ -5,7 +5,8 @@
 # arms in V15, so CPU contention with a concurrent grid would land unevenly
 # across them and the margins would be partly a scheduling artefact. Every run
 # script in this project carries the same rule; this enforces it.
-cd /Users/dogmatixs/Desktop/TS_XGBoost
+# Repository root, wherever this clone happens to live.
+cd "$(dirname "$0")/.."
 export PYTHONUNBUFFERED=1
 say(){ echo "[$(date '+%F %T')] $*"; }
 

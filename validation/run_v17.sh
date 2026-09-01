@@ -5,7 +5,8 @@
 # its place over the permutation null if it is cheaper as well as no worse.
 #
 # Do NOT start this while another study is running.
-cd /Users/dogmatixs/Desktop/TS_XGBoost
+# Repository root, wherever this clone happens to live.
+cd "$(dirname "$0")/.."
 export PYTHONUNBUFFERED=1
 say(){ echo "[$(date '+%F %T')] $*"; }
 
