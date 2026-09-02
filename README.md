@@ -64,7 +64,12 @@ A convolution bank cannot tell you that.
 ## Install
 
 ```bash
-pip install -e .            # numpy only
+pip install heartwood
+```
+
+Or from a clone, for development:
+
+```bash
 pip install -e ".[test]"    # + pytest
 ```
 
