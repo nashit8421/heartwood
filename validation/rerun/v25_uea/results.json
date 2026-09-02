@@ -1,0 +1,7045 @@
+{
+ "unavailable": {},
+ "results": [
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_ridge",
+   "n_train": 137,
+   "seed": 0,
+   "fit_seconds": 0.013398375012911856,
+   "bank_seconds": 1.2575436250772327,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_logreg",
+   "n_train": 137,
+   "seed": 0,
+   "fit_seconds": 0.8120662500150502,
+   "bank_seconds": 1.2575436250772327,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_linsvc",
+   "n_train": 137,
+   "seed": 0,
+   "fit_seconds": 3.936032292083837,
+   "bank_seconds": 1.2575436250772327,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_hgb",
+   "n_train": 137,
+   "seed": 0,
+   "fit_seconds": 4.197341124992818,
+   "bank_seconds": 1.2575436250772327,
+   "metrics": {
+    "balanced_accuracy": 0.9797297297297297
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_rf",
+   "n_train": 137,
+   "seed": 0,
+   "fit_seconds": 0.12226174992974848,
+   "bank_seconds": 1.2575436250772327,
+   "metrics": {
+    "balanced_accuracy": 0.9717806041335454
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_extratrees",
+   "n_train": 137,
+   "seed": 0,
+   "fit_seconds": 0.08599945902824402,
+   "bank_seconds": 1.2575436250772327,
+   "metrics": {
+    "balanced_accuracy": 0.9785373608903021
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_knn",
+   "n_train": 137,
+   "seed": 0,
+   "fit_seconds": 0.06937479204498231,
+   "bank_seconds": 1.2575436250772327,
+   "metrics": {
+    "balanced_accuracy": 0.9485294117647058
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_mlp",
+   "n_train": 137,
+   "seed": 0,
+   "fit_seconds": 0.18370366701856256,
+   "bank_seconds": 1.2575436250772327,
+   "metrics": {
+    "balanced_accuracy": 0.39825119236883944
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_ridge",
+   "n_train": 137,
+   "seed": 1,
+   "fit_seconds": 0.007683791103772819,
+   "bank_seconds": 0.3908789170673117,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_logreg",
+   "n_train": 137,
+   "seed": 1,
+   "fit_seconds": 0.8083380419993773,
+   "bank_seconds": 0.3908789170673117,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_linsvc",
+   "n_train": 137,
+   "seed": 1,
+   "fit_seconds": 3.964230584097095,
+   "bank_seconds": 0.3908789170673117,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_hgb",
+   "n_train": 137,
+   "seed": 1,
+   "fit_seconds": 3.76400950003881,
+   "bank_seconds": 0.3908789170673117,
+   "metrics": {
+    "balanced_accuracy": 0.9797297297297297
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_rf",
+   "n_train": 137,
+   "seed": 1,
+   "fit_seconds": 0.12171308300457895,
+   "bank_seconds": 0.3908789170673117,
+   "metrics": {
+    "balanced_accuracy": 0.979133545310016
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_extratrees",
+   "n_train": 137,
+   "seed": 1,
+   "fit_seconds": 0.0830336669459939,
+   "bank_seconds": 0.3908789170673117,
+   "metrics": {
+    "balanced_accuracy": 0.9785373608903021
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_knn",
+   "n_train": 137,
+   "seed": 1,
+   "fit_seconds": 0.02131854195613414,
+   "bank_seconds": 0.3908789170673117,
+   "metrics": {
+    "balanced_accuracy": 0.9485294117647058
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_mlp",
+   "n_train": 137,
+   "seed": 1,
+   "fit_seconds": 0.865701041999273,
+   "bank_seconds": 0.3908789170673117,
+   "metrics": {
+    "balanced_accuracy": 0.8969263381028088
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_ridge",
+   "n_train": 137,
+   "seed": 2,
+   "fit_seconds": 0.006644207984209061,
+   "bank_seconds": 0.3879562499932945,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_logreg",
+   "n_train": 137,
+   "seed": 2,
+   "fit_seconds": 0.7995727920206264,
+   "bank_seconds": 0.3879562499932945,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_linsvc",
+   "n_train": 137,
+   "seed": 2,
+   "fit_seconds": 4.171364999958314,
+   "bank_seconds": 0.3879562499932945,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_hgb",
+   "n_train": 137,
+   "seed": 2,
+   "fit_seconds": 4.009804166969843,
+   "bank_seconds": 0.3879562499932945,
+   "metrics": {
+    "balanced_accuracy": 0.9797297297297297
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_rf",
+   "n_train": 137,
+   "seed": 2,
+   "fit_seconds": 0.12042062496766448,
+   "bank_seconds": 0.3879562499932945,
+   "metrics": {
+    "balanced_accuracy": 0.9785373608903021
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_extratrees",
+   "n_train": 137,
+   "seed": 2,
+   "fit_seconds": 0.0850405830424279,
+   "bank_seconds": 0.3879562499932945,
+   "metrics": {
+    "balanced_accuracy": 0.9858903020667726
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_knn",
+   "n_train": 137,
+   "seed": 2,
+   "fit_seconds": 0.007070125080645084,
+   "bank_seconds": 0.3879562499932945,
+   "metrics": {
+    "balanced_accuracy": 0.9485294117647058
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_mlp",
+   "n_train": 137,
+   "seed": 2,
+   "fit_seconds": 0.3094929170329124,
+   "bank_seconds": 0.3879562499932945,
+   "metrics": {
+    "balanced_accuracy": 0.9229067302596714
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_ridge",
+   "n_train": 137,
+   "seed": 3,
+   "fit_seconds": 0.006955542019568384,
+   "bank_seconds": 0.3936982079176232,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_logreg",
+   "n_train": 137,
+   "seed": 3,
+   "fit_seconds": 0.8258187500759959,
+   "bank_seconds": 0.3936982079176232,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_linsvc",
+   "n_train": 137,
+   "seed": 3,
+   "fit_seconds": 4.11036112497095,
+   "bank_seconds": 0.3936982079176232,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_hgb",
+   "n_train": 137,
+   "seed": 3,
+   "fit_seconds": 4.0211258749477565,
+   "bank_seconds": 0.3936982079176232,
+   "metrics": {
+    "balanced_accuracy": 0.9797297297297297
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_rf",
+   "n_train": 137,
+   "seed": 3,
+   "fit_seconds": 0.1208684170851484,
+   "bank_seconds": 0.3936982079176232,
+   "metrics": {
+    "balanced_accuracy": 0.9785373608903021
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_extratrees",
+   "n_train": 137,
+   "seed": 3,
+   "fit_seconds": 0.08117166603915393,
+   "bank_seconds": 0.3936982079176232,
+   "metrics": {
+    "balanced_accuracy": 0.9858903020667726
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_knn",
+   "n_train": 137,
+   "seed": 3,
+   "fit_seconds": 0.007795165991410613,
+   "bank_seconds": 0.3936982079176232,
+   "metrics": {
+    "balanced_accuracy": 0.9485294117647058
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_mlp",
+   "n_train": 137,
+   "seed": 3,
+   "fit_seconds": 0.14546133298426867,
+   "bank_seconds": 0.3936982079176232,
+   "metrics": {
+    "balanced_accuracy": 0.5322072072072073
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_ridge",
+   "n_train": 137,
+   "seed": 4,
+   "fit_seconds": 0.006867209100164473,
+   "bank_seconds": 0.39363858406431973,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_logreg",
+   "n_train": 137,
+   "seed": 4,
+   "fit_seconds": 0.8178597909864038,
+   "bank_seconds": 0.39363858406431973,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_linsvc",
+   "n_train": 137,
+   "seed": 4,
+   "fit_seconds": 4.077771957963705,
+   "bank_seconds": 0.39363858406431973,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_hgb",
+   "n_train": 137,
+   "seed": 4,
+   "fit_seconds": 3.750584500026889,
+   "bank_seconds": 0.39363858406431973,
+   "metrics": {
+    "balanced_accuracy": 0.9797297297297297
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_rf",
+   "n_train": 137,
+   "seed": 4,
+   "fit_seconds": 0.12100916705094278,
+   "bank_seconds": 0.39363858406431973,
+   "metrics": {
+    "balanced_accuracy": 0.9717806041335454
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_extratrees",
+   "n_train": 137,
+   "seed": 4,
+   "fit_seconds": 0.08668399997986853,
+   "bank_seconds": 0.39363858406431973,
+   "metrics": {
+    "balanced_accuracy": 0.9858903020667726
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_knn",
+   "n_train": 137,
+   "seed": 4,
+   "fit_seconds": 0.0078640419524163,
+   "bank_seconds": 0.39363858406431973,
+   "metrics": {
+    "balanced_accuracy": 0.9485294117647058
+   }
+  },
+  {
+   "dataset": "uea:Epilepsy",
+   "model": "bank_mlp",
+   "n_train": 137,
+   "seed": 4,
+   "fit_seconds": 0.1740129579557106,
+   "bank_seconds": 0.39363858406431973,
+   "metrics": {
+    "balanced_accuracy": 0.7064785373608903
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_ridge",
+   "n_train": 40,
+   "seed": 0,
+   "fit_seconds": 0.0020602920558303595,
+   "bank_seconds": 0.07874937495216727,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_logreg",
+   "n_train": 40,
+   "seed": 0,
+   "fit_seconds": 0.21553058305289596,
+   "bank_seconds": 0.07874937495216727,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_linsvc",
+   "n_train": 40,
+   "seed": 0,
+   "fit_seconds": 1.2103216670220718,
+   "bank_seconds": 0.07874937495216727,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_hgb",
+   "n_train": 40,
+   "seed": 0,
+   "fit_seconds": 1.2465650000376627,
+   "bank_seconds": 0.07874937495216727,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_rf",
+   "n_train": 40,
+   "seed": 0,
+   "fit_seconds": 0.09566845907829702,
+   "bank_seconds": 0.07874937495216727,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_extratrees",
+   "n_train": 40,
+   "seed": 0,
+   "fit_seconds": 0.0714857920538634,
+   "bank_seconds": 0.07874937495216727,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_knn",
+   "n_train": 40,
+   "seed": 0,
+   "fit_seconds": 0.004947582958266139,
+   "bank_seconds": 0.07874937495216727,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_mlp",
+   "n_train": 40,
+   "seed": 0,
+   "fit_seconds": 0.2797094590496272,
+   "bank_seconds": 0.07874937495216727,
+   "metrics": {
+    "balanced_accuracy": 0.625
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_ridge",
+   "n_train": 40,
+   "seed": 1,
+   "fit_seconds": 0.0020511250477284193,
+   "bank_seconds": 0.07807895902078599,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_logreg",
+   "n_train": 40,
+   "seed": 1,
+   "fit_seconds": 0.2148606670089066,
+   "bank_seconds": 0.07807895902078599,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_linsvc",
+   "n_train": 40,
+   "seed": 1,
+   "fit_seconds": 1.210688916966319,
+   "bank_seconds": 0.07807895902078599,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_hgb",
+   "n_train": 40,
+   "seed": 1,
+   "fit_seconds": 1.2022423750022426,
+   "bank_seconds": 0.07807895902078599,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_rf",
+   "n_train": 40,
+   "seed": 1,
+   "fit_seconds": 0.10694129089824855,
+   "bank_seconds": 0.07807895902078599,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_extratrees",
+   "n_train": 40,
+   "seed": 1,
+   "fit_seconds": 0.08354141702875495,
+   "bank_seconds": 0.07807895902078599,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_knn",
+   "n_train": 40,
+   "seed": 1,
+   "fit_seconds": 0.004051708034239709,
+   "bank_seconds": 0.07807895902078599,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_mlp",
+   "n_train": 40,
+   "seed": 1,
+   "fit_seconds": 0.24008408398367465,
+   "bank_seconds": 0.07807895902078599,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_ridge",
+   "n_train": 40,
+   "seed": 2,
+   "fit_seconds": 0.002066583023406565,
+   "bank_seconds": 0.07822295895311981,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_logreg",
+   "n_train": 40,
+   "seed": 2,
+   "fit_seconds": 0.21546708303503692,
+   "bank_seconds": 0.07822295895311981,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_linsvc",
+   "n_train": 40,
+   "seed": 2,
+   "fit_seconds": 1.2123911660164595,
+   "bank_seconds": 0.07822295895311981,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_hgb",
+   "n_train": 40,
+   "seed": 2,
+   "fit_seconds": 1.221286000101827,
+   "bank_seconds": 0.07822295895311981,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_rf",
+   "n_train": 40,
+   "seed": 2,
+   "fit_seconds": 0.09839349996764213,
+   "bank_seconds": 0.07822295895311981,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_extratrees",
+   "n_train": 40,
+   "seed": 2,
+   "fit_seconds": 0.08398324996232986,
+   "bank_seconds": 0.07822295895311981,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_knn",
+   "n_train": 40,
+   "seed": 2,
+   "fit_seconds": 0.004069416900165379,
+   "bank_seconds": 0.07822295895311981,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_mlp",
+   "n_train": 40,
+   "seed": 2,
+   "fit_seconds": 0.25567879201844335,
+   "bank_seconds": 0.07822295895311981,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_ridge",
+   "n_train": 40,
+   "seed": 3,
+   "fit_seconds": 0.002086459076963365,
+   "bank_seconds": 0.07838920899666846,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_logreg",
+   "n_train": 40,
+   "seed": 3,
+   "fit_seconds": 0.2151858750730753,
+   "bank_seconds": 0.07838920899666846,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_linsvc",
+   "n_train": 40,
+   "seed": 3,
+   "fit_seconds": 1.2037553749978542,
+   "bank_seconds": 0.07838920899666846,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_hgb",
+   "n_train": 40,
+   "seed": 3,
+   "fit_seconds": 1.2113845410058275,
+   "bank_seconds": 0.07838920899666846,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_rf",
+   "n_train": 40,
+   "seed": 3,
+   "fit_seconds": 0.09574325010180473,
+   "bank_seconds": 0.07838920899666846,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_extratrees",
+   "n_train": 40,
+   "seed": 3,
+   "fit_seconds": 0.0715883340453729,
+   "bank_seconds": 0.07838920899666846,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_knn",
+   "n_train": 40,
+   "seed": 3,
+   "fit_seconds": 0.005904459045268595,
+   "bank_seconds": 0.07838920899666846,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_mlp",
+   "n_train": 40,
+   "seed": 3,
+   "fit_seconds": 0.24491608305834234,
+   "bank_seconds": 0.07838920899666846,
+   "metrics": {
+    "balanced_accuracy": 0.825
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_ridge",
+   "n_train": 40,
+   "seed": 4,
+   "fit_seconds": 0.002085166983306408,
+   "bank_seconds": 0.07796337502077222,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_logreg",
+   "n_train": 40,
+   "seed": 4,
+   "fit_seconds": 0.21706991700921208,
+   "bank_seconds": 0.07796337502077222,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_linsvc",
+   "n_train": 40,
+   "seed": 4,
+   "fit_seconds": 1.2260543750599027,
+   "bank_seconds": 0.07796337502077222,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_hgb",
+   "n_train": 40,
+   "seed": 4,
+   "fit_seconds": 1.3943809579359367,
+   "bank_seconds": 0.07796337502077222,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_rf",
+   "n_train": 40,
+   "seed": 4,
+   "fit_seconds": 0.1017724999692291,
+   "bank_seconds": 0.07796337502077222,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_extratrees",
+   "n_train": 40,
+   "seed": 4,
+   "fit_seconds": 0.0841841249493882,
+   "bank_seconds": 0.07796337502077222,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_knn",
+   "n_train": 40,
+   "seed": 4,
+   "fit_seconds": 0.005915582994930446,
+   "bank_seconds": 0.07796337502077222,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:BasicMotions",
+   "model": "bank_mlp",
+   "n_train": 40,
+   "seed": 4,
+   "fit_seconds": 0.3946648749988526,
+   "bank_seconds": 0.07796337502077222,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_ridge",
+   "n_train": 30,
+   "seed": 0,
+   "fit_seconds": 0.005442707915790379,
+   "bank_seconds": 0.1346780420280993,
+   "metrics": {
+    "balanced_accuracy": 0.9777777777777779
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_logreg",
+   "n_train": 30,
+   "seed": 0,
+   "fit_seconds": 0.489405500004068,
+   "bank_seconds": 0.1346780420280993,
+   "metrics": {
+    "balanced_accuracy": 0.9629629629629631
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_linsvc",
+   "n_train": 30,
+   "seed": 0,
+   "fit_seconds": 1.782019375008531,
+   "bank_seconds": 0.1346780420280993,
+   "metrics": {
+    "balanced_accuracy": 0.9666666666666668
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_hgb",
+   "n_train": 30,
+   "seed": 0,
+   "fit_seconds": 1.5697532919002697,
+   "bank_seconds": 0.1346780420280993,
+   "metrics": {
+    "balanced_accuracy": 0.16666666666666666
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_rf",
+   "n_train": 30,
+   "seed": 0,
+   "fit_seconds": 0.09938087500631809,
+   "bank_seconds": 0.1346780420280993,
+   "metrics": {
+    "balanced_accuracy": 0.9666666666666668
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_extratrees",
+   "n_train": 30,
+   "seed": 0,
+   "fit_seconds": 0.08301412500441074,
+   "bank_seconds": 0.1346780420280993,
+   "metrics": {
+    "balanced_accuracy": 0.9814814814814815
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_knn",
+   "n_train": 30,
+   "seed": 0,
+   "fit_seconds": 0.006376833072863519,
+   "bank_seconds": 0.1346780420280993,
+   "metrics": {
+    "balanced_accuracy": 0.9407407407407408
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_mlp",
+   "n_train": 30,
+   "seed": 0,
+   "fit_seconds": 0.06005716696381569,
+   "bank_seconds": 0.1346780420280993,
+   "metrics": {
+    "balanced_accuracy": 0.18148148148148147
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_ridge",
+   "n_train": 30,
+   "seed": 1,
+   "fit_seconds": 0.004256832995451987,
+   "bank_seconds": 0.14355187502223998,
+   "metrics": {
+    "balanced_accuracy": 0.9777777777777779
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_logreg",
+   "n_train": 30,
+   "seed": 1,
+   "fit_seconds": 0.48724233300890774,
+   "bank_seconds": 0.14355187502223998,
+   "metrics": {
+    "balanced_accuracy": 0.9629629629629631
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_linsvc",
+   "n_train": 30,
+   "seed": 1,
+   "fit_seconds": 1.759923416073434,
+   "bank_seconds": 0.14355187502223998,
+   "metrics": {
+    "balanced_accuracy": 0.9666666666666667
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_hgb",
+   "n_train": 30,
+   "seed": 1,
+   "fit_seconds": 1.5619917089352384,
+   "bank_seconds": 0.14355187502223998,
+   "metrics": {
+    "balanced_accuracy": 0.16666666666666666
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_rf",
+   "n_train": 30,
+   "seed": 1,
+   "fit_seconds": 0.0971712920581922,
+   "bank_seconds": 0.14355187502223998,
+   "metrics": {
+    "balanced_accuracy": 0.9666666666666668
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_extratrees",
+   "n_train": 30,
+   "seed": 1,
+   "fit_seconds": 0.08173758396878839,
+   "bank_seconds": 0.14355187502223998,
+   "metrics": {
+    "balanced_accuracy": 0.9777777777777779
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_knn",
+   "n_train": 30,
+   "seed": 1,
+   "fit_seconds": 0.011540459003299475,
+   "bank_seconds": 0.14355187502223998,
+   "metrics": {
+    "balanced_accuracy": 0.9407407407407408
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_mlp",
+   "n_train": 30,
+   "seed": 1,
+   "fit_seconds": 0.056490832939743996,
+   "bank_seconds": 0.14355187502223998,
+   "metrics": {
+    "balanced_accuracy": 0.16666666666666666
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_ridge",
+   "n_train": 30,
+   "seed": 2,
+   "fit_seconds": 0.0044720410369336605,
+   "bank_seconds": 0.14191574999131262,
+   "metrics": {
+    "balanced_accuracy": 0.9777777777777779
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_logreg",
+   "n_train": 30,
+   "seed": 2,
+   "fit_seconds": 0.4887689999304712,
+   "bank_seconds": 0.14191574999131262,
+   "metrics": {
+    "balanced_accuracy": 0.9629629629629631
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_linsvc",
+   "n_train": 30,
+   "seed": 2,
+   "fit_seconds": 1.7666494160657749,
+   "bank_seconds": 0.14191574999131262,
+   "metrics": {
+    "balanced_accuracy": 0.9629629629629629
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_hgb",
+   "n_train": 30,
+   "seed": 2,
+   "fit_seconds": 1.4524685409851372,
+   "bank_seconds": 0.14191574999131262,
+   "metrics": {
+    "balanced_accuracy": 0.16666666666666666
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_rf",
+   "n_train": 30,
+   "seed": 2,
+   "fit_seconds": 0.1398071669973433,
+   "bank_seconds": 0.14191574999131262,
+   "metrics": {
+    "balanced_accuracy": 0.9703703703703704
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_extratrees",
+   "n_train": 30,
+   "seed": 2,
+   "fit_seconds": 0.09088262496516109,
+   "bank_seconds": 0.14191574999131262,
+   "metrics": {
+    "balanced_accuracy": 0.9851851851851853
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_knn",
+   "n_train": 30,
+   "seed": 2,
+   "fit_seconds": 0.010598958004266024,
+   "bank_seconds": 0.14191574999131262,
+   "metrics": {
+    "balanced_accuracy": 0.9407407407407408
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_mlp",
+   "n_train": 30,
+   "seed": 2,
+   "fit_seconds": 0.3166593750938773,
+   "bank_seconds": 0.14191574999131262,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_ridge",
+   "n_train": 30,
+   "seed": 3,
+   "fit_seconds": 0.0043258749647066,
+   "bank_seconds": 0.135368708986789,
+   "metrics": {
+    "balanced_accuracy": 0.9777777777777779
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_logreg",
+   "n_train": 30,
+   "seed": 3,
+   "fit_seconds": 0.48193299991544336,
+   "bank_seconds": 0.135368708986789,
+   "metrics": {
+    "balanced_accuracy": 0.9629629629629631
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_linsvc",
+   "n_train": 30,
+   "seed": 3,
+   "fit_seconds": 1.7479120830539614,
+   "bank_seconds": 0.135368708986789,
+   "metrics": {
+    "balanced_accuracy": 0.9629629629629631
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_hgb",
+   "n_train": 30,
+   "seed": 3,
+   "fit_seconds": 1.4542700829915702,
+   "bank_seconds": 0.135368708986789,
+   "metrics": {
+    "balanced_accuracy": 0.16666666666666666
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_rf",
+   "n_train": 30,
+   "seed": 3,
+   "fit_seconds": 0.10984208295121789,
+   "bank_seconds": 0.135368708986789,
+   "metrics": {
+    "balanced_accuracy": 0.9666666666666668
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_extratrees",
+   "n_train": 30,
+   "seed": 3,
+   "fit_seconds": 0.08281083405017853,
+   "bank_seconds": 0.135368708986789,
+   "metrics": {
+    "balanced_accuracy": 0.9740740740740742
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_knn",
+   "n_train": 30,
+   "seed": 3,
+   "fit_seconds": 0.014082457986660302,
+   "bank_seconds": 0.135368708986789,
+   "metrics": {
+    "balanced_accuracy": 0.9407407407407408
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_mlp",
+   "n_train": 30,
+   "seed": 3,
+   "fit_seconds": 0.17299962497781962,
+   "bank_seconds": 0.135368708986789,
+   "metrics": {
+    "balanced_accuracy": 0.17037037037037037
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_ridge",
+   "n_train": 30,
+   "seed": 4,
+   "fit_seconds": 0.004303792025893927,
+   "bank_seconds": 0.1358360000886023,
+   "metrics": {
+    "balanced_accuracy": 0.9777777777777779
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_logreg",
+   "n_train": 30,
+   "seed": 4,
+   "fit_seconds": 0.4805783749325201,
+   "bank_seconds": 0.1358360000886023,
+   "metrics": {
+    "balanced_accuracy": 0.9629629629629631
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_linsvc",
+   "n_train": 30,
+   "seed": 4,
+   "fit_seconds": 1.7408957090228796,
+   "bank_seconds": 0.1358360000886023,
+   "metrics": {
+    "balanced_accuracy": 0.9703703703703704
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_hgb",
+   "n_train": 30,
+   "seed": 4,
+   "fit_seconds": 1.5395237089833245,
+   "bank_seconds": 0.1358360000886023,
+   "metrics": {
+    "balanced_accuracy": 0.16666666666666666
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_rf",
+   "n_train": 30,
+   "seed": 4,
+   "fit_seconds": 0.10256558400578797,
+   "bank_seconds": 0.1358360000886023,
+   "metrics": {
+    "balanced_accuracy": 0.9703703703703704
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_extratrees",
+   "n_train": 30,
+   "seed": 4,
+   "fit_seconds": 0.0820554579840973,
+   "bank_seconds": 0.1358360000886023,
+   "metrics": {
+    "balanced_accuracy": 0.9740740740740742
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_knn",
+   "n_train": 30,
+   "seed": 4,
+   "fit_seconds": 0.009700249996967614,
+   "bank_seconds": 0.1358360000886023,
+   "metrics": {
+    "balanced_accuracy": 0.9407407407407408
+   }
+  },
+  {
+   "dataset": "uea:ERing",
+   "model": "bank_mlp",
+   "n_train": 30,
+   "seed": 4,
+   "fit_seconds": 0.16227166703902185,
+   "bank_seconds": 0.1358360000886023,
+   "metrics": {
+    "balanced_accuracy": 0.3444444444444444
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_ridge",
+   "n_train": 151,
+   "seed": 0,
+   "fit_seconds": 0.007892417022958398,
+   "bank_seconds": 0.06251308298669755,
+   "metrics": {
+    "balanced_accuracy": 0.8664036544850499
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_logreg",
+   "n_train": 151,
+   "seed": 0,
+   "fit_seconds": 0.41462058399338275,
+   "bank_seconds": 0.06251308298669755,
+   "metrics": {
+    "balanced_accuracy": 0.872217607973422
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_linsvc",
+   "n_train": 151,
+   "seed": 0,
+   "fit_seconds": 5.1621119999326766,
+   "bank_seconds": 0.06251308298669755,
+   "metrics": {
+    "balanced_accuracy": 0.8605897009966778
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_hgb",
+   "n_train": 151,
+   "seed": 0,
+   "fit_seconds": 4.760568749974482,
+   "bank_seconds": 0.06251308298669755,
+   "metrics": {
+    "balanced_accuracy": 0.8657575239398085
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_rf",
+   "n_train": 151,
+   "seed": 0,
+   "fit_seconds": 0.12182799994479865,
+   "bank_seconds": 0.06251308298669755,
+   "metrics": {
+    "balanced_accuracy": 0.8680574555403556
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_extratrees",
+   "n_train": 151,
+   "seed": 0,
+   "fit_seconds": 0.08115933404769748,
+   "bank_seconds": 0.06251308298669755,
+   "metrics": {
+    "balanced_accuracy": 0.8831993844049247
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_knn",
+   "n_train": 151,
+   "seed": 0,
+   "fit_seconds": 0.014145332970656455,
+   "bank_seconds": 0.06251308298669755,
+   "metrics": {
+    "balanced_accuracy": 0.8474228063318351
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_mlp",
+   "n_train": 151,
+   "seed": 0,
+   "fit_seconds": 0.0634028750937432,
+   "bank_seconds": 0.06251308298669755,
+   "metrics": {
+    "balanced_accuracy": 0.25
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_ridge",
+   "n_train": 151,
+   "seed": 1,
+   "fit_seconds": 0.008179209078662097,
+   "bank_seconds": 0.06439104198943824,
+   "metrics": {
+    "balanced_accuracy": 0.8664036544850499
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_logreg",
+   "n_train": 151,
+   "seed": 1,
+   "fit_seconds": 0.41410829208325595,
+   "bank_seconds": 0.06439104198943824,
+   "metrics": {
+    "balanced_accuracy": 0.872217607973422
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_linsvc",
+   "n_train": 151,
+   "seed": 1,
+   "fit_seconds": 5.175791000016034,
+   "bank_seconds": 0.06439104198943824,
+   "metrics": {
+    "balanced_accuracy": 0.8664036544850499
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_hgb",
+   "n_train": 151,
+   "seed": 1,
+   "fit_seconds": 5.150542958988808,
+   "bank_seconds": 0.06439104198943824,
+   "metrics": {
+    "balanced_accuracy": 0.8657575239398085
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_rf",
+   "n_train": 151,
+   "seed": 1,
+   "fit_seconds": 0.12494062504265457,
+   "bank_seconds": 0.06439104198943824,
+   "metrics": {
+    "balanced_accuracy": 0.8590507133085793
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_extratrees",
+   "n_train": 151,
+   "seed": 1,
+   "fit_seconds": 0.09293150005396456,
+   "bank_seconds": 0.06439104198943824,
+   "metrics": {
+    "balanced_accuracy": 0.8717815614617941
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_knn",
+   "n_train": 151,
+   "seed": 1,
+   "fit_seconds": 0.014045207994058728,
+   "bank_seconds": 0.06439104198943824,
+   "metrics": {
+    "balanced_accuracy": 0.8474228063318351
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_mlp",
+   "n_train": 151,
+   "seed": 1,
+   "fit_seconds": 0.329667333047837,
+   "bank_seconds": 0.06439104198943824,
+   "metrics": {
+    "balanced_accuracy": 0.7746592241547783
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_ridge",
+   "n_train": 151,
+   "seed": 2,
+   "fit_seconds": 0.00786466698627919,
+   "bank_seconds": 0.06055962503887713,
+   "metrics": {
+    "balanced_accuracy": 0.8664036544850499
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_logreg",
+   "n_train": 151,
+   "seed": 2,
+   "fit_seconds": 0.4228754580253735,
+   "bank_seconds": 0.06055962503887713,
+   "metrics": {
+    "balanced_accuracy": 0.872217607973422
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_linsvc",
+   "n_train": 151,
+   "seed": 2,
+   "fit_seconds": 5.150695374934003,
+   "bank_seconds": 0.06055962503887713,
+   "metrics": {
+    "balanced_accuracy": 0.8605897009966778
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_hgb",
+   "n_train": 151,
+   "seed": 2,
+   "fit_seconds": 4.858080834033899,
+   "bank_seconds": 0.06055962503887713,
+   "metrics": {
+    "balanced_accuracy": 0.8657575239398085
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_rf",
+   "n_train": 151,
+   "seed": 2,
+   "fit_seconds": 0.11948362493421882,
+   "bank_seconds": 0.06055962503887713,
+   "metrics": {
+    "balanced_accuracy": 0.857532489740082
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_extratrees",
+   "n_train": 151,
+   "seed": 2,
+   "fit_seconds": 0.08203941700048745,
+   "bank_seconds": 0.06055962503887713,
+   "metrics": {
+    "balanced_accuracy": 0.8905523255813954
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_knn",
+   "n_train": 151,
+   "seed": 2,
+   "fit_seconds": 0.015217458945699036,
+   "bank_seconds": 0.06055962503887713,
+   "metrics": {
+    "balanced_accuracy": 0.8474228063318351
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_mlp",
+   "n_train": 151,
+   "seed": 2,
+   "fit_seconds": 0.07357250002678484,
+   "bank_seconds": 0.06055962503887713,
+   "metrics": {
+    "balanced_accuracy": 0.25
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_ridge",
+   "n_train": 151,
+   "seed": 3,
+   "fit_seconds": 0.008309750002808869,
+   "bank_seconds": 0.06487050000578165,
+   "metrics": {
+    "balanced_accuracy": 0.8664036544850499
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_logreg",
+   "n_train": 151,
+   "seed": 3,
+   "fit_seconds": 0.42080195900052786,
+   "bank_seconds": 0.06487050000578165,
+   "metrics": {
+    "balanced_accuracy": 0.872217607973422
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_linsvc",
+   "n_train": 151,
+   "seed": 3,
+   "fit_seconds": 5.132665749988519,
+   "bank_seconds": 0.06487050000578165,
+   "metrics": {
+    "balanced_accuracy": 0.8605897009966778
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_hgb",
+   "n_train": 151,
+   "seed": 3,
+   "fit_seconds": 4.90388916595839,
+   "bank_seconds": 0.06487050000578165,
+   "metrics": {
+    "balanced_accuracy": 0.8657575239398085
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_rf",
+   "n_train": 151,
+   "seed": 3,
+   "fit_seconds": 0.1201547080418095,
+   "bank_seconds": 0.06487050000578165,
+   "metrics": {
+    "balanced_accuracy": 0.8784883720930232
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_extratrees",
+   "n_train": 151,
+   "seed": 3,
+   "fit_seconds": 0.0853531250031665,
+   "bank_seconds": 0.06487050000578165,
+   "metrics": {
+    "balanced_accuracy": 0.8901162790697674
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_knn",
+   "n_train": 151,
+   "seed": 3,
+   "fit_seconds": 0.01767462503630668,
+   "bank_seconds": 0.06487050000578165,
+   "metrics": {
+    "balanced_accuracy": 0.8474228063318351
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_mlp",
+   "n_train": 151,
+   "seed": 3,
+   "fit_seconds": 0.18137741705868393,
+   "bank_seconds": 0.06487050000578165,
+   "metrics": {
+    "balanced_accuracy": 0.26875
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_ridge",
+   "n_train": 151,
+   "seed": 4,
+   "fit_seconds": 0.007756916922517121,
+   "bank_seconds": 0.06143033399712294,
+   "metrics": {
+    "balanced_accuracy": 0.8664036544850499
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_logreg",
+   "n_train": 151,
+   "seed": 4,
+   "fit_seconds": 0.41376012505497783,
+   "bank_seconds": 0.06143033399712294,
+   "metrics": {
+    "balanced_accuracy": 0.872217607973422
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_linsvc",
+   "n_train": 151,
+   "seed": 4,
+   "fit_seconds": 5.155806040973403,
+   "bank_seconds": 0.06143033399712294,
+   "metrics": {
+    "balanced_accuracy": 0.8605897009966778
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_hgb",
+   "n_train": 151,
+   "seed": 4,
+   "fit_seconds": 4.946433665929362,
+   "bank_seconds": 0.06143033399712294,
+   "metrics": {
+    "balanced_accuracy": 0.8657575239398085
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_rf",
+   "n_train": 151,
+   "seed": 4,
+   "fit_seconds": 0.12420545797795057,
+   "bank_seconds": 0.06143033399712294,
+   "metrics": {
+    "balanced_accuracy": 0.8894493844049248
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_extratrees",
+   "n_train": 151,
+   "seed": 4,
+   "fit_seconds": 0.09746066597290337,
+   "bank_seconds": 0.06143033399712294,
+   "metrics": {
+    "balanced_accuracy": 0.853467607973422
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_knn",
+   "n_train": 151,
+   "seed": 4,
+   "fit_seconds": 0.016437208047136664,
+   "bank_seconds": 0.06143033399712294,
+   "metrics": {
+    "balanced_accuracy": 0.8474228063318351
+   }
+  },
+  {
+   "dataset": "uea:RacketSports",
+   "model": "bank_mlp",
+   "n_train": 151,
+   "seed": 4,
+   "fit_seconds": 0.16243854200001806,
+   "bank_seconds": 0.06143033399712294,
+   "metrics": {
+    "balanced_accuracy": 0.25
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_ridge",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 0.010129458038136363,
+   "bank_seconds": 0.10156495904084295,
+   "metrics": {
+    "balanced_accuracy": 0.9166666666666666
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_logreg",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 5.8253229999681935,
+   "bank_seconds": 0.10156495904084295,
+   "metrics": {
+    "balanced_accuracy": 0.9277777777777776
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_linsvc",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 14.248627207940444,
+   "bank_seconds": 0.10156495904084295,
+   "metrics": {
+    "balanced_accuracy": 0.6611111111111112
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_hgb",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 17.66828629106749,
+   "bank_seconds": 0.10156495904084295,
+   "metrics": {
+    "balanced_accuracy": 0.911111111111111
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_rf",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 0.12837329099420458,
+   "bank_seconds": 0.10156495904084295,
+   "metrics": {
+    "balanced_accuracy": 0.9333333333333332
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_extratrees",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 0.09620154101867229,
+   "bank_seconds": 0.10156495904084295,
+   "metrics": {
+    "balanced_accuracy": 0.9388888888888887
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_knn",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 0.025205250014550984,
+   "bank_seconds": 0.10156495904084295,
+   "metrics": {
+    "balanced_accuracy": 0.8222222222222223
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_mlp",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 0.28710395807866007,
+   "bank_seconds": 0.10156495904084295,
+   "metrics": {
+    "balanced_accuracy": 0.2777777777777778
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_ridge",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 0.00985854200553149,
+   "bank_seconds": 0.0998992919921875,
+   "metrics": {
+    "balanced_accuracy": 0.9166666666666666
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_logreg",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 5.776657167007215,
+   "bank_seconds": 0.0998992919921875,
+   "metrics": {
+    "balanced_accuracy": 0.9277777777777776
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_linsvc",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 14.311265125055797,
+   "bank_seconds": 0.0998992919921875,
+   "metrics": {
+    "balanced_accuracy": 0.9055555555555554
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_hgb",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 17.916921208030544,
+   "bank_seconds": 0.0998992919921875,
+   "metrics": {
+    "balanced_accuracy": 0.911111111111111
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_rf",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 0.13365858304314315,
+   "bank_seconds": 0.0998992919921875,
+   "metrics": {
+    "balanced_accuracy": 0.9277777777777777
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_extratrees",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 0.09384929202497005,
+   "bank_seconds": 0.0998992919921875,
+   "metrics": {
+    "balanced_accuracy": 0.9277777777777777
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_knn",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 0.026243416010402143,
+   "bank_seconds": 0.0998992919921875,
+   "metrics": {
+    "balanced_accuracy": 0.8222222222222223
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_mlp",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 0.2586582920048386,
+   "bank_seconds": 0.0998992919921875,
+   "metrics": {
+    "balanced_accuracy": 0.3
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_ridge",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 0.010214542038738728,
+   "bank_seconds": 0.10001058399211615,
+   "metrics": {
+    "balanced_accuracy": 0.9166666666666666
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_logreg",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 5.763536417041905,
+   "bank_seconds": 0.10001058399211615,
+   "metrics": {
+    "balanced_accuracy": 0.9277777777777776
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_linsvc",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 14.338181582977995,
+   "bank_seconds": 0.10001058399211615,
+   "metrics": {
+    "balanced_accuracy": 0.8833333333333332
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_hgb",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 18.00008087500464,
+   "bank_seconds": 0.10001058399211615,
+   "metrics": {
+    "balanced_accuracy": 0.911111111111111
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_rf",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 0.138482499984093,
+   "bank_seconds": 0.10001058399211615,
+   "metrics": {
+    "balanced_accuracy": 0.9388888888888888
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_extratrees",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 0.09343745897058398,
+   "bank_seconds": 0.10001058399211615,
+   "metrics": {
+    "balanced_accuracy": 0.9333333333333332
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_knn",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 0.02569441602099687,
+   "bank_seconds": 0.10001058399211615,
+   "metrics": {
+    "balanced_accuracy": 0.8222222222222223
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_mlp",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 0.2991117909550667,
+   "bank_seconds": 0.10001058399211615,
+   "metrics": {
+    "balanced_accuracy": 0.16666666666666666
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_ridge",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 0.011191415949724615,
+   "bank_seconds": 0.11311474989634007,
+   "metrics": {
+    "balanced_accuracy": 0.9166666666666666
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_logreg",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 5.808883875026368,
+   "bank_seconds": 0.11311474989634007,
+   "metrics": {
+    "balanced_accuracy": 0.9277777777777776
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_linsvc",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 14.13128129101824,
+   "bank_seconds": 0.11311474989634007,
+   "metrics": {
+    "balanced_accuracy": 0.9166666666666665
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_hgb",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 17.567721333005466,
+   "bank_seconds": 0.11311474989634007,
+   "metrics": {
+    "balanced_accuracy": 0.911111111111111
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_rf",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 0.1342353340005502,
+   "bank_seconds": 0.11311474989634007,
+   "metrics": {
+    "balanced_accuracy": 0.9333333333333332
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_extratrees",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 0.08245370804797858,
+   "bank_seconds": 0.11311474989634007,
+   "metrics": {
+    "balanced_accuracy": 0.9333333333333332
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_knn",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 0.020483874948695302,
+   "bank_seconds": 0.11311474989634007,
+   "metrics": {
+    "balanced_accuracy": 0.8222222222222223
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_mlp",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 1.014874125015922,
+   "bank_seconds": 0.11311474989634007,
+   "metrics": {
+    "balanced_accuracy": 0.538888888888889
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_ridge",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 0.010006624972447753,
+   "bank_seconds": 0.09966762491967529,
+   "metrics": {
+    "balanced_accuracy": 0.9166666666666666
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_logreg",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 5.981960874982178,
+   "bank_seconds": 0.09966762491967529,
+   "metrics": {
+    "balanced_accuracy": 0.9277777777777776
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_linsvc",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 14.293556582997553,
+   "bank_seconds": 0.09966762491967529,
+   "metrics": {
+    "balanced_accuracy": 0.8944444444444443
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_hgb",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 18.424121875083074,
+   "bank_seconds": 0.09966762491967529,
+   "metrics": {
+    "balanced_accuracy": 0.911111111111111
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_rf",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 0.13083154207561165,
+   "bank_seconds": 0.09966762491967529,
+   "metrics": {
+    "balanced_accuracy": 0.9333333333333333
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_extratrees",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 0.09641450003255159,
+   "bank_seconds": 0.09966762491967529,
+   "metrics": {
+    "balanced_accuracy": 0.9333333333333332
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_knn",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 0.025030917022377253,
+   "bank_seconds": 0.09966762491967529,
+   "metrics": {
+    "balanced_accuracy": 0.8222222222222223
+   }
+  },
+  {
+   "dataset": "uea:Libras",
+   "model": "bank_mlp",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 0.23017616604920477,
+   "bank_seconds": 0.09966762491967529,
+   "metrics": {
+    "balanced_accuracy": 0.02777777777777778
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_ridge",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 0.0096583750564605,
+   "bank_seconds": 0.1520235410425812,
+   "metrics": {
+    "balanced_accuracy": 0.9444444444444443
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_logreg",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 2.830323874950409,
+   "bank_seconds": 0.1520235410425812,
+   "metrics": {
+    "balanced_accuracy": 0.9444444444444443
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_linsvc",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 7.031106375041418,
+   "bank_seconds": 0.1520235410425812,
+   "metrics": {
+    "balanced_accuracy": 0.9388888888888888
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_hgb",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 7.833519208012149,
+   "bank_seconds": 0.1520235410425812,
+   "metrics": {
+    "balanced_accuracy": 0.8833333333333334
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_rf",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 0.12317091599106789,
+   "bank_seconds": 0.1520235410425812,
+   "metrics": {
+    "balanced_accuracy": 0.8666666666666667
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_extratrees",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 0.08279129106085747,
+   "bank_seconds": 0.1520235410425812,
+   "metrics": {
+    "balanced_accuracy": 0.8777777777777778
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_knn",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 0.022231125039979815,
+   "bank_seconds": 0.1520235410425812,
+   "metrics": {
+    "balanced_accuracy": 0.8444444444444444
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_mlp",
+   "n_train": 180,
+   "seed": 0,
+   "fit_seconds": 0.06805425009224564,
+   "bank_seconds": 0.1520235410425812,
+   "metrics": {
+    "balanced_accuracy": 0.16666666666666666
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_ridge",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 0.009428999968804419,
+   "bank_seconds": 0.15816383296623826,
+   "metrics": {
+    "balanced_accuracy": 0.9444444444444443
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_logreg",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 2.822557625011541,
+   "bank_seconds": 0.15816383296623826,
+   "metrics": {
+    "balanced_accuracy": 0.9444444444444443
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_linsvc",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 7.0655343340476975,
+   "bank_seconds": 0.15816383296623826,
+   "metrics": {
+    "balanced_accuracy": 0.9
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_hgb",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 7.563169208937325,
+   "bank_seconds": 0.15816383296623826,
+   "metrics": {
+    "balanced_accuracy": 0.8833333333333334
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_rf",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 0.12199358409270644,
+   "bank_seconds": 0.15816383296623826,
+   "metrics": {
+    "balanced_accuracy": 0.8833333333333333
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_extratrees",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 0.09450541599653661,
+   "bank_seconds": 0.15816383296623826,
+   "metrics": {
+    "balanced_accuracy": 0.9222222222222222
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_knn",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 0.023401457932777703,
+   "bank_seconds": 0.15816383296623826,
+   "metrics": {
+    "balanced_accuracy": 0.8444444444444444
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_mlp",
+   "n_train": 180,
+   "seed": 1,
+   "fit_seconds": 0.1893755419878289,
+   "bank_seconds": 0.15816383296623826,
+   "metrics": {
+    "balanced_accuracy": 0.35000000000000003
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_ridge",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 0.009738625027239323,
+   "bank_seconds": 0.1523398329736665,
+   "metrics": {
+    "balanced_accuracy": 0.9444444444444443
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_logreg",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 2.807235458982177,
+   "bank_seconds": 0.1523398329736665,
+   "metrics": {
+    "balanced_accuracy": 0.9444444444444443
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_linsvc",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 7.055792958009988,
+   "bank_seconds": 0.1523398329736665,
+   "metrics": {
+    "balanced_accuracy": 0.9500000000000001
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_hgb",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 7.810678792069666,
+   "bank_seconds": 0.1523398329736665,
+   "metrics": {
+    "balanced_accuracy": 0.8833333333333334
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_rf",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 0.12160025001503527,
+   "bank_seconds": 0.1523398329736665,
+   "metrics": {
+    "balanced_accuracy": 0.8777777777777778
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_extratrees",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 0.09489370801020414,
+   "bank_seconds": 0.1523398329736665,
+   "metrics": {
+    "balanced_accuracy": 0.8611111111111112
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_knn",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 0.017233374994248152,
+   "bank_seconds": 0.1523398329736665,
+   "metrics": {
+    "balanced_accuracy": 0.8444444444444444
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_mlp",
+   "n_train": 180,
+   "seed": 2,
+   "fit_seconds": 0.653994332998991,
+   "bank_seconds": 0.1523398329736665,
+   "metrics": {
+    "balanced_accuracy": 0.4944444444444444
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_ridge",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 0.009457584004849195,
+   "bank_seconds": 0.15166045806836337,
+   "metrics": {
+    "balanced_accuracy": 0.9444444444444443
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_logreg",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 3.0243583749979734,
+   "bank_seconds": 0.15166045806836337,
+   "metrics": {
+    "balanced_accuracy": 0.9444444444444443
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_linsvc",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 7.109350958955474,
+   "bank_seconds": 0.15166045806836337,
+   "metrics": {
+    "balanced_accuracy": 0.9333333333333332
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_hgb",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 8.111460624961182,
+   "bank_seconds": 0.15166045806836337,
+   "metrics": {
+    "balanced_accuracy": 0.8833333333333334
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_rf",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 0.12149004195816815,
+   "bank_seconds": 0.15166045806836337,
+   "metrics": {
+    "balanced_accuracy": 0.8833333333333333
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_extratrees",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 0.0928250829456374,
+   "bank_seconds": 0.15166045806836337,
+   "metrics": {
+    "balanced_accuracy": 0.8944444444444445
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_knn",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 0.024705750052817166,
+   "bank_seconds": 0.15166045806836337,
+   "metrics": {
+    "balanced_accuracy": 0.8444444444444444
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_mlp",
+   "n_train": 180,
+   "seed": 3,
+   "fit_seconds": 0.5612891250057146,
+   "bank_seconds": 0.15166045806836337,
+   "metrics": {
+    "balanced_accuracy": 0.7555555555555555
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_ridge",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 0.009868041961453855,
+   "bank_seconds": 0.1510143750347197,
+   "metrics": {
+    "balanced_accuracy": 0.9444444444444443
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_logreg",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 2.8675593330990523,
+   "bank_seconds": 0.1510143750347197,
+   "metrics": {
+    "balanced_accuracy": 0.9444444444444443
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_linsvc",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 7.006675833021291,
+   "bank_seconds": 0.1510143750347197,
+   "metrics": {
+    "balanced_accuracy": 0.9166666666666666
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_hgb",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 7.670202833018266,
+   "bank_seconds": 0.1510143750347197,
+   "metrics": {
+    "balanced_accuracy": 0.8833333333333334
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_rf",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 0.12222820904571563,
+   "bank_seconds": 0.1510143750347197,
+   "metrics": {
+    "balanced_accuracy": 0.8722222222222222
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_extratrees",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 0.09448466706089675,
+   "bank_seconds": 0.1510143750347197,
+   "metrics": {
+    "balanced_accuracy": 0.9166666666666666
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_knn",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 0.018601209041662514,
+   "bank_seconds": 0.1510143750347197,
+   "metrics": {
+    "balanced_accuracy": 0.8444444444444444
+   }
+  },
+  {
+   "dataset": "uea:NATOPS",
+   "model": "bank_mlp",
+   "n_train": 180,
+   "seed": 4,
+   "fit_seconds": 0.5943756249034777,
+   "bank_seconds": 0.1510143750347197,
+   "metrics": {
+    "balanced_accuracy": 0.6444444444444445
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_ridge",
+   "n_train": 120,
+   "seed": 0,
+   "fit_seconds": 0.008762000012211502,
+   "bank_seconds": 0.8965051670093089,
+   "metrics": {
+    "balanced_accuracy": 0.93125
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_logreg",
+   "n_train": 120,
+   "seed": 0,
+   "fit_seconds": 2.638662250014022,
+   "bank_seconds": 0.8965051670093089,
+   "metrics": {
+    "balanced_accuracy": 0.9312499999999999
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_linsvc",
+   "n_train": 120,
+   "seed": 0,
+   "fit_seconds": 8.035704417037778,
+   "bank_seconds": 0.8965051670093089,
+   "metrics": {
+    "balanced_accuracy": 0.89375
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_hgb",
+   "n_train": 120,
+   "seed": 0,
+   "fit_seconds": 7.79893345804885,
+   "bank_seconds": 0.8965051670093089,
+   "metrics": {
+    "balanced_accuracy": 0.88125
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_rf",
+   "n_train": 120,
+   "seed": 0,
+   "fit_seconds": 0.12443283305037767,
+   "bank_seconds": 0.8965051670093089,
+   "metrics": {
+    "balanced_accuracy": 0.909375
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_extratrees",
+   "n_train": 120,
+   "seed": 0,
+   "fit_seconds": 0.08066749991849065,
+   "bank_seconds": 0.8965051670093089,
+   "metrics": {
+    "balanced_accuracy": 0.90625
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_knn",
+   "n_train": 120,
+   "seed": 0,
+   "fit_seconds": 0.02237887494266033,
+   "bank_seconds": 0.8965051670093089,
+   "metrics": {
+    "balanced_accuracy": 0.890625
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_mlp",
+   "n_train": 120,
+   "seed": 0,
+   "fit_seconds": 0.07709150004666299,
+   "bank_seconds": 0.8965051670093089,
+   "metrics": {
+    "balanced_accuracy": 0.125
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_ridge",
+   "n_train": 120,
+   "seed": 1,
+   "fit_seconds": 0.007170708035118878,
+   "bank_seconds": 0.8931336250388995,
+   "metrics": {
+    "balanced_accuracy": 0.93125
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_logreg",
+   "n_train": 120,
+   "seed": 1,
+   "fit_seconds": 2.696410999982618,
+   "bank_seconds": 0.8931336250388995,
+   "metrics": {
+    "balanced_accuracy": 0.9312499999999999
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_linsvc",
+   "n_train": 120,
+   "seed": 1,
+   "fit_seconds": 8.096091957995668,
+   "bank_seconds": 0.8931336250388995,
+   "metrics": {
+    "balanced_accuracy": 0.903125
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_hgb",
+   "n_train": 120,
+   "seed": 1,
+   "fit_seconds": 8.072112500085495,
+   "bank_seconds": 0.8931336250388995,
+   "metrics": {
+    "balanced_accuracy": 0.88125
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_rf",
+   "n_train": 120,
+   "seed": 1,
+   "fit_seconds": 0.13270399998873472,
+   "bank_seconds": 0.8931336250388995,
+   "metrics": {
+    "balanced_accuracy": 0.903125
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_extratrees",
+   "n_train": 120,
+   "seed": 1,
+   "fit_seconds": 0.08675929100718349,
+   "bank_seconds": 0.8931336250388995,
+   "metrics": {
+    "balanced_accuracy": 0.89375
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_knn",
+   "n_train": 120,
+   "seed": 1,
+   "fit_seconds": 0.023059708066284657,
+   "bank_seconds": 0.8931336250388995,
+   "metrics": {
+    "balanced_accuracy": 0.890625
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_mlp",
+   "n_train": 120,
+   "seed": 1,
+   "fit_seconds": 0.07413795799948275,
+   "bank_seconds": 0.8931336250388995,
+   "metrics": {
+    "balanced_accuracy": 0.215625
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_ridge",
+   "n_train": 120,
+   "seed": 2,
+   "fit_seconds": 0.008601333014667034,
+   "bank_seconds": 0.9014671669574454,
+   "metrics": {
+    "balanced_accuracy": 0.93125
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_logreg",
+   "n_train": 120,
+   "seed": 2,
+   "fit_seconds": 2.666685458039865,
+   "bank_seconds": 0.9014671669574454,
+   "metrics": {
+    "balanced_accuracy": 0.9312499999999999
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_linsvc",
+   "n_train": 120,
+   "seed": 2,
+   "fit_seconds": 8.047203916008584,
+   "bank_seconds": 0.9014671669574454,
+   "metrics": {
+    "balanced_accuracy": 0.90625
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_hgb",
+   "n_train": 120,
+   "seed": 2,
+   "fit_seconds": 7.7282642079517245,
+   "bank_seconds": 0.9014671669574454,
+   "metrics": {
+    "balanced_accuracy": 0.88125
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_rf",
+   "n_train": 120,
+   "seed": 2,
+   "fit_seconds": 0.13862237497232854,
+   "bank_seconds": 0.9014671669574454,
+   "metrics": {
+    "balanced_accuracy": 0.903125
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_extratrees",
+   "n_train": 120,
+   "seed": 2,
+   "fit_seconds": 0.08374995901249349,
+   "bank_seconds": 0.9014671669574454,
+   "metrics": {
+    "balanced_accuracy": 0.903125
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_knn",
+   "n_train": 120,
+   "seed": 2,
+   "fit_seconds": 0.02105908398516476,
+   "bank_seconds": 0.9014671669574454,
+   "metrics": {
+    "balanced_accuracy": 0.890625
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_mlp",
+   "n_train": 120,
+   "seed": 2,
+   "fit_seconds": 0.5568672500085086,
+   "bank_seconds": 0.9014671669574454,
+   "metrics": {
+    "balanced_accuracy": 0.66875
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_ridge",
+   "n_train": 120,
+   "seed": 3,
+   "fit_seconds": 0.007799708051607013,
+   "bank_seconds": 0.89568929199595,
+   "metrics": {
+    "balanced_accuracy": 0.93125
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_logreg",
+   "n_train": 120,
+   "seed": 3,
+   "fit_seconds": 2.6999879580689594,
+   "bank_seconds": 0.89568929199595,
+   "metrics": {
+    "balanced_accuracy": 0.9312499999999999
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_linsvc",
+   "n_train": 120,
+   "seed": 3,
+   "fit_seconds": 8.05496016703546,
+   "bank_seconds": 0.89568929199595,
+   "metrics": {
+    "balanced_accuracy": 0.9187500000000001
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_hgb",
+   "n_train": 120,
+   "seed": 3,
+   "fit_seconds": 8.034242749912664,
+   "bank_seconds": 0.89568929199595,
+   "metrics": {
+    "balanced_accuracy": 0.88125
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_rf",
+   "n_train": 120,
+   "seed": 3,
+   "fit_seconds": 0.12283500004559755,
+   "bank_seconds": 0.89568929199595,
+   "metrics": {
+    "balanced_accuracy": 0.9
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_extratrees",
+   "n_train": 120,
+   "seed": 3,
+   "fit_seconds": 0.08276016707532108,
+   "bank_seconds": 0.89568929199595,
+   "metrics": {
+    "balanced_accuracy": 0.925
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_knn",
+   "n_train": 120,
+   "seed": 3,
+   "fit_seconds": 0.018582083052024245,
+   "bank_seconds": 0.89568929199595,
+   "metrics": {
+    "balanced_accuracy": 0.890625
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_mlp",
+   "n_train": 120,
+   "seed": 3,
+   "fit_seconds": 0.25826545804739,
+   "bank_seconds": 0.89568929199595,
+   "metrics": {
+    "balanced_accuracy": 0.384375
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_ridge",
+   "n_train": 120,
+   "seed": 4,
+   "fit_seconds": 0.007489333976991475,
+   "bank_seconds": 0.8878303330857307,
+   "metrics": {
+    "balanced_accuracy": 0.93125
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_logreg",
+   "n_train": 120,
+   "seed": 4,
+   "fit_seconds": 2.63715291605331,
+   "bank_seconds": 0.8878303330857307,
+   "metrics": {
+    "balanced_accuracy": 0.9312499999999999
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_linsvc",
+   "n_train": 120,
+   "seed": 4,
+   "fit_seconds": 8.029077416984364,
+   "bank_seconds": 0.8878303330857307,
+   "metrics": {
+    "balanced_accuracy": 0.8968750000000001
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_hgb",
+   "n_train": 120,
+   "seed": 4,
+   "fit_seconds": 7.858310166979209,
+   "bank_seconds": 0.8878303330857307,
+   "metrics": {
+    "balanced_accuracy": 0.88125
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_rf",
+   "n_train": 120,
+   "seed": 4,
+   "fit_seconds": 0.12890904198866338,
+   "bank_seconds": 0.8878303330857307,
+   "metrics": {
+    "balanced_accuracy": 0.9093749999999999
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_extratrees",
+   "n_train": 120,
+   "seed": 4,
+   "fit_seconds": 0.08698429097421467,
+   "bank_seconds": 0.8878303330857307,
+   "metrics": {
+    "balanced_accuracy": 0.896875
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_knn",
+   "n_train": 120,
+   "seed": 4,
+   "fit_seconds": 0.02439287502784282,
+   "bank_seconds": 0.8878303330857307,
+   "metrics": {
+    "balanced_accuracy": 0.890625
+   }
+  },
+  {
+   "dataset": "uea:UWaveGestureLibrary",
+   "model": "bank_mlp",
+   "n_train": 120,
+   "seed": 4,
+   "fit_seconds": 0.22335650003515184,
+   "bank_seconds": 0.8878303330857307,
+   "metrics": {
+    "balanced_accuracy": 0.125
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_ridge",
+   "n_train": 275,
+   "seed": 0,
+   "fit_seconds": 0.02100287494249642,
+   "bank_seconds": 0.8053274170961231,
+   "metrics": {
+    "balanced_accuracy": 0.99
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_logreg",
+   "n_train": 275,
+   "seed": 0,
+   "fit_seconds": 4.289488499984145,
+   "bank_seconds": 0.8053274170961231,
+   "metrics": {
+    "balanced_accuracy": 0.9833333333333333
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_linsvc",
+   "n_train": 275,
+   "seed": 0,
+   "fit_seconds": 30.751091499929316,
+   "bank_seconds": 0.8053274170961231,
+   "metrics": {
+    "balanced_accuracy": 0.98
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_hgb",
+   "n_train": 275,
+   "seed": 0,
+   "fit_seconds": 40.18911545793526,
+   "bank_seconds": 0.8053274170961231,
+   "metrics": {
+    "balanced_accuracy": 0.9466666666666668
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_rf",
+   "n_train": 275,
+   "seed": 0,
+   "fit_seconds": 0.22584529197774827,
+   "bank_seconds": 0.8053274170961231,
+   "metrics": {
+    "balanced_accuracy": 0.9666666666666667
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_extratrees",
+   "n_train": 275,
+   "seed": 0,
+   "fit_seconds": 0.11260566697455943,
+   "bank_seconds": 0.8053274170961231,
+   "metrics": {
+    "balanced_accuracy": 0.98
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_knn",
+   "n_train": 275,
+   "seed": 0,
+   "fit_seconds": 0.030410249950364232,
+   "bank_seconds": 0.8053274170961231,
+   "metrics": {
+    "balanced_accuracy": 0.9666666666666667
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_mlp",
+   "n_train": 275,
+   "seed": 0,
+   "fit_seconds": 0.864634457975626,
+   "bank_seconds": 0.8053274170961231,
+   "metrics": {
+    "balanced_accuracy": 0.12333333333333332
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_ridge",
+   "n_train": 275,
+   "seed": 1,
+   "fit_seconds": 0.01997325010597706,
+   "bank_seconds": 0.8052981660002843,
+   "metrics": {
+    "balanced_accuracy": 0.99
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_logreg",
+   "n_train": 275,
+   "seed": 1,
+   "fit_seconds": 4.294314583996311,
+   "bank_seconds": 0.8052981660002843,
+   "metrics": {
+    "balanced_accuracy": 0.9833333333333333
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_linsvc",
+   "n_train": 275,
+   "seed": 1,
+   "fit_seconds": 31.015743041061796,
+   "bank_seconds": 0.8052981660002843,
+   "metrics": {
+    "balanced_accuracy": 0.9833333333333333
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_hgb",
+   "n_train": 275,
+   "seed": 1,
+   "fit_seconds": 40.19120258302428,
+   "bank_seconds": 0.8052981660002843,
+   "metrics": {
+    "balanced_accuracy": 0.9466666666666668
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_rf",
+   "n_train": 275,
+   "seed": 1,
+   "fit_seconds": 0.22430241596885026,
+   "bank_seconds": 0.8052981660002843,
+   "metrics": {
+    "balanced_accuracy": 0.9733333333333334
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_extratrees",
+   "n_train": 275,
+   "seed": 1,
+   "fit_seconds": 0.10992133303079754,
+   "bank_seconds": 0.8052981660002843,
+   "metrics": {
+    "balanced_accuracy": 0.9766666666666667
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_knn",
+   "n_train": 275,
+   "seed": 1,
+   "fit_seconds": 0.029514290974475443,
+   "bank_seconds": 0.8052981660002843,
+   "metrics": {
+    "balanced_accuracy": 0.9666666666666667
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_mlp",
+   "n_train": 275,
+   "seed": 1,
+   "fit_seconds": 0.5873815420782194,
+   "bank_seconds": 0.8052981660002843,
+   "metrics": {
+    "balanced_accuracy": 0.04
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_ridge",
+   "n_train": 275,
+   "seed": 2,
+   "fit_seconds": 0.020600166986696422,
+   "bank_seconds": 0.80858995905146,
+   "metrics": {
+    "balanced_accuracy": 0.99
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_logreg",
+   "n_train": 275,
+   "seed": 2,
+   "fit_seconds": 4.304959375062026,
+   "bank_seconds": 0.80858995905146,
+   "metrics": {
+    "balanced_accuracy": 0.9833333333333333
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_linsvc",
+   "n_train": 275,
+   "seed": 2,
+   "fit_seconds": 31.07676020800136,
+   "bank_seconds": 0.80858995905146,
+   "metrics": {
+    "balanced_accuracy": 0.98
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_hgb",
+   "n_train": 275,
+   "seed": 2,
+   "fit_seconds": 40.404919625027105,
+   "bank_seconds": 0.80858995905146,
+   "metrics": {
+    "balanced_accuracy": 0.9466666666666668
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_rf",
+   "n_train": 275,
+   "seed": 2,
+   "fit_seconds": 0.2348253329982981,
+   "bank_seconds": 0.80858995905146,
+   "metrics": {
+    "balanced_accuracy": 0.9766666666666667
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_extratrees",
+   "n_train": 275,
+   "seed": 2,
+   "fit_seconds": 0.10746812506113201,
+   "bank_seconds": 0.80858995905146,
+   "metrics": {
+    "balanced_accuracy": 0.98
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_knn",
+   "n_train": 275,
+   "seed": 2,
+   "fit_seconds": 0.02956475003156811,
+   "bank_seconds": 0.80858995905146,
+   "metrics": {
+    "balanced_accuracy": 0.9666666666666667
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_mlp",
+   "n_train": 275,
+   "seed": 2,
+   "fit_seconds": 0.9594022079836577,
+   "bank_seconds": 0.80858995905146,
+   "metrics": {
+    "balanced_accuracy": 0.06666666666666667
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_ridge",
+   "n_train": 275,
+   "seed": 3,
+   "fit_seconds": 0.019995625014416873,
+   "bank_seconds": 0.8046227919403464,
+   "metrics": {
+    "balanced_accuracy": 0.99
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_logreg",
+   "n_train": 275,
+   "seed": 3,
+   "fit_seconds": 4.288110874942504,
+   "bank_seconds": 0.8046227919403464,
+   "metrics": {
+    "balanced_accuracy": 0.9833333333333333
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_linsvc",
+   "n_train": 275,
+   "seed": 3,
+   "fit_seconds": 30.73618054203689,
+   "bank_seconds": 0.8046227919403464,
+   "metrics": {
+    "balanced_accuracy": 0.9866666666666667
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_hgb",
+   "n_train": 275,
+   "seed": 3,
+   "fit_seconds": 40.554515333031304,
+   "bank_seconds": 0.8046227919403464,
+   "metrics": {
+    "balanced_accuracy": 0.9466666666666668
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_rf",
+   "n_train": 275,
+   "seed": 3,
+   "fit_seconds": 0.24139245902188122,
+   "bank_seconds": 0.8046227919403464,
+   "metrics": {
+    "balanced_accuracy": 0.9700000000000002
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_extratrees",
+   "n_train": 275,
+   "seed": 3,
+   "fit_seconds": 0.11210795806255192,
+   "bank_seconds": 0.8046227919403464,
+   "metrics": {
+    "balanced_accuracy": 0.9733333333333333
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_knn",
+   "n_train": 275,
+   "seed": 3,
+   "fit_seconds": 0.02862916700541973,
+   "bank_seconds": 0.8046227919403464,
+   "metrics": {
+    "balanced_accuracy": 0.9666666666666667
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_mlp",
+   "n_train": 275,
+   "seed": 3,
+   "fit_seconds": 0.3207337079802528,
+   "bank_seconds": 0.8046227919403464,
+   "metrics": {
+    "balanced_accuracy": 0.04
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_ridge",
+   "n_train": 275,
+   "seed": 4,
+   "fit_seconds": 0.019675541087053716,
+   "bank_seconds": 0.8076465409249067,
+   "metrics": {
+    "balanced_accuracy": 0.99
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_logreg",
+   "n_train": 275,
+   "seed": 4,
+   "fit_seconds": 4.290419208002277,
+   "bank_seconds": 0.8076465409249067,
+   "metrics": {
+    "balanced_accuracy": 0.9833333333333333
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_linsvc",
+   "n_train": 275,
+   "seed": 4,
+   "fit_seconds": 30.756982208928093,
+   "bank_seconds": 0.8076465409249067,
+   "metrics": {
+    "balanced_accuracy": 0.9866666666666667
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_hgb",
+   "n_train": 275,
+   "seed": 4,
+   "fit_seconds": 40.18868033308536,
+   "bank_seconds": 0.8076465409249067,
+   "metrics": {
+    "balanced_accuracy": 0.9466666666666668
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_rf",
+   "n_train": 275,
+   "seed": 4,
+   "fit_seconds": 0.24072000000160187,
+   "bank_seconds": 0.8076465409249067,
+   "metrics": {
+    "balanced_accuracy": 0.98
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_extratrees",
+   "n_train": 275,
+   "seed": 4,
+   "fit_seconds": 0.10640866693574935,
+   "bank_seconds": 0.8076465409249067,
+   "metrics": {
+    "balanced_accuracy": 0.9733333333333333
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_knn",
+   "n_train": 275,
+   "seed": 4,
+   "fit_seconds": 0.02962974994443357,
+   "bank_seconds": 0.8076465409249067,
+   "metrics": {
+    "balanced_accuracy": 0.9666666666666667
+   }
+  },
+  {
+   "dataset": "uea:ArticularyWordRecognition",
+   "model": "bank_mlp",
+   "n_train": 275,
+   "seed": 4,
+   "fit_seconds": 0.5753267499385402,
+   "bank_seconds": 0.8076465409249067,
+   "metrics": {
+    "balanced_accuracy": 0.04
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_ridge",
+   "n_train": 12,
+   "seed": 0,
+   "fit_seconds": 0.0014401249354705215,
+   "bank_seconds": 0.6914846249856055,
+   "metrics": {
+    "balanced_accuracy": 0.4000000000000001
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_logreg",
+   "n_train": 12,
+   "seed": 0,
+   "fit_seconds": 0.7249914580024779,
+   "bank_seconds": 0.6914846249856055,
+   "metrics": {
+    "balanced_accuracy": 0.4666666666666666
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_linsvc",
+   "n_train": 12,
+   "seed": 0,
+   "fit_seconds": 0.4810426658950746,
+   "bank_seconds": 0.6914846249856055,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_hgb",
+   "n_train": 12,
+   "seed": 0,
+   "fit_seconds": 0.8794728750362992,
+   "bank_seconds": 0.6914846249856055,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_rf",
+   "n_train": 12,
+   "seed": 0,
+   "fit_seconds": 0.11131579102948308,
+   "bank_seconds": 0.6914846249856055,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_extratrees",
+   "n_train": 12,
+   "seed": 0,
+   "fit_seconds": 0.07850304199382663,
+   "bank_seconds": 0.6914846249856055,
+   "metrics": {
+    "balanced_accuracy": 0.4666666666666666
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_knn",
+   "n_train": 12,
+   "seed": 0,
+   "fit_seconds": 0.010664792032912374,
+   "bank_seconds": 0.6914846249856055,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_mlp",
+   "n_train": 12,
+   "seed": 0,
+   "fit_seconds": 0.05856329097878188,
+   "bank_seconds": 0.6914846249856055,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_ridge",
+   "n_train": 12,
+   "seed": 1,
+   "fit_seconds": 0.001405874965712428,
+   "bank_seconds": 0.6991484169848263,
+   "metrics": {
+    "balanced_accuracy": 0.4000000000000001
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_logreg",
+   "n_train": 12,
+   "seed": 1,
+   "fit_seconds": 0.7238637079717591,
+   "bank_seconds": 0.6991484169848263,
+   "metrics": {
+    "balanced_accuracy": 0.4666666666666666
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_linsvc",
+   "n_train": 12,
+   "seed": 1,
+   "fit_seconds": 0.4538696249946952,
+   "bank_seconds": 0.6991484169848263,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_hgb",
+   "n_train": 12,
+   "seed": 1,
+   "fit_seconds": 0.8871623330051079,
+   "bank_seconds": 0.6991484169848263,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_rf",
+   "n_train": 12,
+   "seed": 1,
+   "fit_seconds": 0.09907374996691942,
+   "bank_seconds": 0.6991484169848263,
+   "metrics": {
+    "balanced_accuracy": 0.39999999999999997
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_extratrees",
+   "n_train": 12,
+   "seed": 1,
+   "fit_seconds": 0.08307408296968788,
+   "bank_seconds": 0.6991484169848263,
+   "metrics": {
+    "balanced_accuracy": 0.5333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_knn",
+   "n_train": 12,
+   "seed": 1,
+   "fit_seconds": 0.0036823329282924533,
+   "bank_seconds": 0.6991484169848263,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_mlp",
+   "n_train": 12,
+   "seed": 1,
+   "fit_seconds": 0.1981798339402303,
+   "bank_seconds": 0.6991484169848263,
+   "metrics": {
+    "balanced_accuracy": 0.26666666666666666
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_ridge",
+   "n_train": 12,
+   "seed": 2,
+   "fit_seconds": 0.001425791997462511,
+   "bank_seconds": 0.6905246250098571,
+   "metrics": {
+    "balanced_accuracy": 0.4000000000000001
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_logreg",
+   "n_train": 12,
+   "seed": 2,
+   "fit_seconds": 0.7231439580209553,
+   "bank_seconds": 0.6905246250098571,
+   "metrics": {
+    "balanced_accuracy": 0.4666666666666666
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_linsvc",
+   "n_train": 12,
+   "seed": 2,
+   "fit_seconds": 0.4674632919486612,
+   "bank_seconds": 0.6905246250098571,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_hgb",
+   "n_train": 12,
+   "seed": 2,
+   "fit_seconds": 0.9043172090314329,
+   "bank_seconds": 0.6905246250098571,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_rf",
+   "n_train": 12,
+   "seed": 2,
+   "fit_seconds": 0.11161679204087704,
+   "bank_seconds": 0.6905246250098571,
+   "metrics": {
+    "balanced_accuracy": 0.4666666666666666
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_extratrees",
+   "n_train": 12,
+   "seed": 2,
+   "fit_seconds": 0.08393399999476969,
+   "bank_seconds": 0.6905246250098571,
+   "metrics": {
+    "balanced_accuracy": 0.6
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_knn",
+   "n_train": 12,
+   "seed": 2,
+   "fit_seconds": 0.003937624976970255,
+   "bank_seconds": 0.6905246250098571,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_mlp",
+   "n_train": 12,
+   "seed": 2,
+   "fit_seconds": 0.053244250011630356,
+   "bank_seconds": 0.6905246250098571,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_ridge",
+   "n_train": 12,
+   "seed": 3,
+   "fit_seconds": 0.0013950419379398227,
+   "bank_seconds": 0.6981986670289189,
+   "metrics": {
+    "balanced_accuracy": 0.4000000000000001
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_logreg",
+   "n_train": 12,
+   "seed": 3,
+   "fit_seconds": 0.7234675000654534,
+   "bank_seconds": 0.6981986670289189,
+   "metrics": {
+    "balanced_accuracy": 0.4666666666666666
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_linsvc",
+   "n_train": 12,
+   "seed": 3,
+   "fit_seconds": 0.4946659579873085,
+   "bank_seconds": 0.6981986670289189,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_hgb",
+   "n_train": 12,
+   "seed": 3,
+   "fit_seconds": 0.8931410420918837,
+   "bank_seconds": 0.6981986670289189,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_rf",
+   "n_train": 12,
+   "seed": 3,
+   "fit_seconds": 0.10008545790333301,
+   "bank_seconds": 0.6981986670289189,
+   "metrics": {
+    "balanced_accuracy": 0.5333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_extratrees",
+   "n_train": 12,
+   "seed": 3,
+   "fit_seconds": 0.08027291705366224,
+   "bank_seconds": 0.6981986670289189,
+   "metrics": {
+    "balanced_accuracy": 0.46666666666666673
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_knn",
+   "n_train": 12,
+   "seed": 3,
+   "fit_seconds": 0.003990833065472543,
+   "bank_seconds": 0.6981986670289189,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_mlp",
+   "n_train": 12,
+   "seed": 3,
+   "fit_seconds": 0.19000075000803918,
+   "bank_seconds": 0.6981986670289189,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_ridge",
+   "n_train": 12,
+   "seed": 4,
+   "fit_seconds": 0.0014465840067714453,
+   "bank_seconds": 0.693076541996561,
+   "metrics": {
+    "balanced_accuracy": 0.4000000000000001
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_logreg",
+   "n_train": 12,
+   "seed": 4,
+   "fit_seconds": 0.7233150419779122,
+   "bank_seconds": 0.693076541996561,
+   "metrics": {
+    "balanced_accuracy": 0.4666666666666666
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_linsvc",
+   "n_train": 12,
+   "seed": 4,
+   "fit_seconds": 0.48178875003941357,
+   "bank_seconds": 0.693076541996561,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_hgb",
+   "n_train": 12,
+   "seed": 4,
+   "fit_seconds": 0.8841959579149261,
+   "bank_seconds": 0.693076541996561,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_rf",
+   "n_train": 12,
+   "seed": 4,
+   "fit_seconds": 0.1103061669273302,
+   "bank_seconds": 0.693076541996561,
+   "metrics": {
+    "balanced_accuracy": 0.26666666666666666
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_extratrees",
+   "n_train": 12,
+   "seed": 4,
+   "fit_seconds": 0.08670720807276666,
+   "bank_seconds": 0.693076541996561,
+   "metrics": {
+    "balanced_accuracy": 0.4000000000000001
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_knn",
+   "n_train": 12,
+   "seed": 4,
+   "fit_seconds": 0.006476624985225499,
+   "bank_seconds": 0.693076541996561,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333
+   }
+  },
+  {
+   "dataset": "uea:StandWalkJump",
+   "model": "bank_mlp",
+   "n_train": 12,
+   "seed": 4,
+   "fit_seconds": 0.11026779108215123,
+   "bank_seconds": 0.693076541996561,
+   "metrics": {
+    "balanced_accuracy": 0.3333333333333333
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_ridge",
+   "n_train": 204,
+   "seed": 0,
+   "fit_seconds": 0.010534125030972064,
+   "bank_seconds": 2.7280669580213726,
+   "metrics": {
+    "balanced_accuracy": 0.6645329540066383
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_logreg",
+   "n_train": 204,
+   "seed": 0,
+   "fit_seconds": 0.3189100839663297,
+   "bank_seconds": 2.7280669580213726,
+   "metrics": {
+    "balanced_accuracy": 0.6733048838311997
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_linsvc",
+   "n_train": 204,
+   "seed": 0,
+   "fit_seconds": 2.384087499929592,
+   "bank_seconds": 2.7280669580213726,
+   "metrics": {
+    "balanced_accuracy": 0.7129563774300616
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_hgb",
+   "n_train": 204,
+   "seed": 0,
+   "fit_seconds": 2.5043664999539033,
+   "bank_seconds": 2.7280669580213726,
+   "metrics": {
+    "balanced_accuracy": 0.6429587482219061
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_rf",
+   "n_train": 204,
+   "seed": 0,
+   "fit_seconds": 0.1816662079654634,
+   "bank_seconds": 2.7280669580213726,
+   "metrics": {
+    "balanced_accuracy": 0.6672593646277857
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_extratrees",
+   "n_train": 204,
+   "seed": 0,
+   "fit_seconds": 0.09688312490470707,
+   "bank_seconds": 2.7280669580213726,
+   "metrics": {
+    "balanced_accuracy": 0.6429587482219061
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_knn",
+   "n_train": 204,
+   "seed": 0,
+   "fit_seconds": 0.014354083104990423,
+   "bank_seconds": 2.7280669580213726,
+   "metrics": {
+    "balanced_accuracy": 0.6428994784257942
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_mlp",
+   "n_train": 204,
+   "seed": 0,
+   "fit_seconds": 0.1763162079732865,
+   "bank_seconds": 2.7280669580213726,
+   "metrics": {
+    "balanced_accuracy": 0.5
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_ridge",
+   "n_train": 204,
+   "seed": 1,
+   "fit_seconds": 0.01082662504632026,
+   "bank_seconds": 2.7252735829679295,
+   "metrics": {
+    "balanced_accuracy": 0.6645329540066383
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_logreg",
+   "n_train": 204,
+   "seed": 1,
+   "fit_seconds": 0.31799904198851436,
+   "bank_seconds": 2.7252735829679295,
+   "metrics": {
+    "balanced_accuracy": 0.6733048838311997
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_linsvc",
+   "n_train": 204,
+   "seed": 1,
+   "fit_seconds": 2.3947782090399414,
+   "bank_seconds": 2.7252735829679295,
+   "metrics": {
+    "balanced_accuracy": 0.6348980559506876
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_hgb",
+   "n_train": 204,
+   "seed": 1,
+   "fit_seconds": 2.4934522919356823,
+   "bank_seconds": 2.7252735829679295,
+   "metrics": {
+    "balanced_accuracy": 0.6429587482219061
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_rf",
+   "n_train": 204,
+   "seed": 1,
+   "fit_seconds": 0.16456962493248284,
+   "bank_seconds": 2.7252735829679295,
+   "metrics": {
+    "balanced_accuracy": 0.6780464675201517
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_extratrees",
+   "n_train": 204,
+   "seed": 1,
+   "fit_seconds": 0.09882875008042902,
+   "bank_seconds": 2.7252735829679295,
+   "metrics": {
+    "balanced_accuracy": 0.6935751541014699
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_knn",
+   "n_train": 204,
+   "seed": 1,
+   "fit_seconds": 0.01962024997919798,
+   "bank_seconds": 2.7252735829679295,
+   "metrics": {
+    "balanced_accuracy": 0.6428994784257942
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_mlp",
+   "n_train": 204,
+   "seed": 1,
+   "fit_seconds": 0.2422727079829201,
+   "bank_seconds": 2.7252735829679295,
+   "metrics": {
+    "balanced_accuracy": 0.5
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_ridge",
+   "n_train": 204,
+   "seed": 2,
+   "fit_seconds": 0.01038983406033367,
+   "bank_seconds": 2.724325167015195,
+   "metrics": {
+    "balanced_accuracy": 0.6645329540066383
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_logreg",
+   "n_train": 204,
+   "seed": 2,
+   "fit_seconds": 0.32009354094043374,
+   "bank_seconds": 2.724325167015195,
+   "metrics": {
+    "balanced_accuracy": 0.6733048838311997
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_linsvc",
+   "n_train": 204,
+   "seed": 2,
+   "fit_seconds": 2.3810665840283036,
+   "bank_seconds": 2.724325167015195,
+   "metrics": {
+    "balanced_accuracy": 0.6705784732100522
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_hgb",
+   "n_train": 204,
+   "seed": 2,
+   "fit_seconds": 2.4903616659576073,
+   "bank_seconds": 2.724325167015195,
+   "metrics": {
+    "balanced_accuracy": 0.6429587482219061
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_rf",
+   "n_train": 204,
+   "seed": 2,
+   "fit_seconds": 0.16107079200446606,
+   "bank_seconds": 2.724325167015195,
+   "metrics": {
+    "balanced_accuracy": 0.660502607871029
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_extratrees",
+   "n_train": 204,
+   "seed": 2,
+   "fit_seconds": 0.09623833291698247,
+   "bank_seconds": 2.724325167015195,
+   "metrics": {
+    "balanced_accuracy": 0.6658961593172119
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_knn",
+   "n_train": 204,
+   "seed": 2,
+   "fit_seconds": 0.01754804200027138,
+   "bank_seconds": 2.724325167015195,
+   "metrics": {
+    "balanced_accuracy": 0.6428994784257942
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_mlp",
+   "n_train": 204,
+   "seed": 2,
+   "fit_seconds": 0.2514394579920918,
+   "bank_seconds": 2.724325167015195,
+   "metrics": {
+    "balanced_accuracy": 0.5
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_ridge",
+   "n_train": 204,
+   "seed": 3,
+   "fit_seconds": 0.010639541083946824,
+   "bank_seconds": 2.722297958098352,
+   "metrics": {
+    "balanced_accuracy": 0.6645329540066383
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_logreg",
+   "n_train": 204,
+   "seed": 3,
+   "fit_seconds": 0.3193967919796705,
+   "bank_seconds": 2.722297958098352,
+   "metrics": {
+    "balanced_accuracy": 0.6733048838311997
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_linsvc",
+   "n_train": 204,
+   "seed": 3,
+   "fit_seconds": 2.362917708000168,
+   "bank_seconds": 2.722297958098352,
+   "metrics": {
+    "balanced_accuracy": 0.6557610241820768
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_hgb",
+   "n_train": 204,
+   "seed": 3,
+   "fit_seconds": 2.501970166922547,
+   "bank_seconds": 2.722297958098352,
+   "metrics": {
+    "balanced_accuracy": 0.6429587482219061
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_rf",
+   "n_train": 204,
+   "seed": 3,
+   "fit_seconds": 0.1571107079507783,
+   "bank_seconds": 2.722297958098352,
+   "metrics": {
+    "balanced_accuracy": 0.6692745376955903
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_extratrees",
+   "n_train": 204,
+   "seed": 3,
+   "fit_seconds": 0.09329770901240408,
+   "bank_seconds": 2.722297958098352,
+   "metrics": {
+    "balanced_accuracy": 0.6955903271692745
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_knn",
+   "n_train": 204,
+   "seed": 3,
+   "fit_seconds": 0.010347374947741628,
+   "bank_seconds": 2.722297958098352,
+   "metrics": {
+    "balanced_accuracy": 0.6428994784257942
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_mlp",
+   "n_train": 204,
+   "seed": 3,
+   "fit_seconds": 0.15605150000192225,
+   "bank_seconds": 2.722297958098352,
+   "metrics": {
+    "balanced_accuracy": 0.5
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_ridge",
+   "n_train": 204,
+   "seed": 4,
+   "fit_seconds": 0.01099350000731647,
+   "bank_seconds": 2.733838041080162,
+   "metrics": {
+    "balanced_accuracy": 0.6645329540066383
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_logreg",
+   "n_train": 204,
+   "seed": 4,
+   "fit_seconds": 0.325127457967028,
+   "bank_seconds": 2.733838041080162,
+   "metrics": {
+    "balanced_accuracy": 0.6733048838311997
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_linsvc",
+   "n_train": 204,
+   "seed": 4,
+   "fit_seconds": 2.3769644170533866,
+   "bank_seconds": 2.733838041080162,
+   "metrics": {
+    "balanced_accuracy": 0.6348980559506876
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_hgb",
+   "n_train": 204,
+   "seed": 4,
+   "fit_seconds": 2.5068483339855447,
+   "bank_seconds": 2.733838041080162,
+   "metrics": {
+    "balanced_accuracy": 0.6429587482219061
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_rf",
+   "n_train": 204,
+   "seed": 4,
+   "fit_seconds": 0.15824091702234,
+   "bank_seconds": 2.733838041080162,
+   "metrics": {
+    "balanced_accuracy": 0.6625177809388335
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_extratrees",
+   "n_train": 204,
+   "seed": 4,
+   "fit_seconds": 0.09377091599162668,
+   "bank_seconds": 2.733838041080162,
+   "metrics": {
+    "balanced_accuracy": 0.6692745376955903
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_knn",
+   "n_train": 204,
+   "seed": 4,
+   "fit_seconds": 0.015007541980594397,
+   "bank_seconds": 2.733838041080162,
+   "metrics": {
+    "balanced_accuracy": 0.6428994784257942
+   }
+  },
+  {
+   "dataset": "uea:Heartbeat",
+   "model": "bank_mlp",
+   "n_train": 204,
+   "seed": 4,
+   "fit_seconds": 0.340518334065564,
+   "bank_seconds": 2.733838041080162,
+   "metrics": {
+    "balanced_accuracy": 0.6299193930772878
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_ridge",
+   "n_train": 1422,
+   "seed": 0,
+   "fit_seconds": 0.3842333749635145,
+   "bank_seconds": 2.340356707922183,
+   "metrics": {
+    "balanced_accuracy": 0.9934424172377803
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_logreg",
+   "n_train": 1422,
+   "seed": 0,
+   "fit_seconds": 19.7998961659614,
+   "bank_seconds": 2.340356707922183,
+   "metrics": {
+    "balanced_accuracy": 0.9860758161190495
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_linsvc",
+   "n_train": 1422,
+   "seed": 0,
+   "fit_seconds": 114.13505358307157,
+   "bank_seconds": 2.340356707922183,
+   "metrics": {
+    "balanced_accuracy": 0.9714516698200961
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_hgb",
+   "n_train": 1422,
+   "seed": 0,
+   "fit_seconds": 96.95259612496011,
+   "bank_seconds": 2.340356707922183,
+   "metrics": {
+    "balanced_accuracy": 0.9809554611944142
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_rf",
+   "n_train": 1422,
+   "seed": 0,
+   "fit_seconds": 0.6113749590003863,
+   "bank_seconds": 2.340356707922183,
+   "metrics": {
+    "balanced_accuracy": 0.9811926610478527
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_extratrees",
+   "n_train": 1422,
+   "seed": 0,
+   "fit_seconds": 0.3607839170144871,
+   "bank_seconds": 2.340356707922183,
+   "metrics": {
+    "balanced_accuracy": 0.9838011827943054
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_knn",
+   "n_train": 1422,
+   "seed": 0,
+   "fit_seconds": 0.13060283300001174,
+   "bank_seconds": 2.340356707922183,
+   "metrics": {
+    "balanced_accuracy": 0.9606601636209812
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_mlp",
+   "n_train": 1422,
+   "seed": 0,
+   "fit_seconds": 0.9216827920172364,
+   "bank_seconds": 2.340356707922183,
+   "metrics": {
+    "balanced_accuracy": 0.05
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_ridge",
+   "n_train": 1422,
+   "seed": 1,
+   "fit_seconds": 0.3563640830107033,
+   "bank_seconds": 2.326628541923128,
+   "metrics": {
+    "balanced_accuracy": 0.9934424172377803
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_logreg",
+   "n_train": 1422,
+   "seed": 1,
+   "fit_seconds": 19.825512791983783,
+   "bank_seconds": 2.326628541923128,
+   "metrics": {
+    "balanced_accuracy": 0.9860758161190495
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_linsvc",
+   "n_train": 1422,
+   "seed": 1,
+   "fit_seconds": 114.82711620803457,
+   "bank_seconds": 2.326628541923128,
+   "metrics": {
+    "balanced_accuracy": 0.9851479206498233
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_hgb",
+   "n_train": 1422,
+   "seed": 1,
+   "fit_seconds": 117.82418712496292,
+   "bank_seconds": 2.326628541923128,
+   "metrics": {
+    "balanced_accuracy": 0.9809554611944142
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_rf",
+   "n_train": 1422,
+   "seed": 1,
+   "fit_seconds": 0.6317476249532774,
+   "bank_seconds": 2.326628541923128,
+   "metrics": {
+    "balanced_accuracy": 0.9808863655828741
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_extratrees",
+   "n_train": 1422,
+   "seed": 1,
+   "fit_seconds": 0.36588987498544157,
+   "bank_seconds": 2.326628541923128,
+   "metrics": {
+    "balanced_accuracy": 0.9824819168228217
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_knn",
+   "n_train": 1422,
+   "seed": 1,
+   "fit_seconds": 0.13733437494374812,
+   "bank_seconds": 2.326628541923128,
+   "metrics": {
+    "balanced_accuracy": 0.9606601636209812
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_mlp",
+   "n_train": 1422,
+   "seed": 1,
+   "fit_seconds": 0.8201459170086309,
+   "bank_seconds": 2.326628541923128,
+   "metrics": {
+    "balanced_accuracy": 0.05
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_ridge",
+   "n_train": 1422,
+   "seed": 2,
+   "fit_seconds": 0.3613082920201123,
+   "bank_seconds": 2.368247332982719,
+   "metrics": {
+    "balanced_accuracy": 0.9934424172377803
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_logreg",
+   "n_train": 1422,
+   "seed": 2,
+   "fit_seconds": 19.866074624937028,
+   "bank_seconds": 2.368247332982719,
+   "metrics": {
+    "balanced_accuracy": 0.9860758161190495
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_linsvc",
+   "n_train": 1422,
+   "seed": 2,
+   "fit_seconds": 114.29737683397252,
+   "bank_seconds": 2.368247332982719,
+   "metrics": {
+    "balanced_accuracy": 0.972332530419242
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_hgb",
+   "n_train": 1422,
+   "seed": 2,
+   "fit_seconds": 107.25255304190796,
+   "bank_seconds": 2.368247332982719,
+   "metrics": {
+    "balanced_accuracy": 0.9809554611944142
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_rf",
+   "n_train": 1422,
+   "seed": 2,
+   "fit_seconds": 0.6397835840471089,
+   "bank_seconds": 2.368247332982719,
+   "metrics": {
+    "balanced_accuracy": 0.9833302552544125
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_extratrees",
+   "n_train": 1422,
+   "seed": 2,
+   "fit_seconds": 0.36273004196118563,
+   "bank_seconds": 2.368247332982719,
+   "metrics": {
+    "balanced_accuracy": 0.984582814357187
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_knn",
+   "n_train": 1422,
+   "seed": 2,
+   "fit_seconds": 0.1356757499743253,
+   "bank_seconds": 2.368247332982719,
+   "metrics": {
+    "balanced_accuracy": 0.9606601636209812
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_mlp",
+   "n_train": 1422,
+   "seed": 2,
+   "fit_seconds": 0.9313308750279248,
+   "bank_seconds": 2.368247332982719,
+   "metrics": {
+    "balanced_accuracy": 0.05
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_ridge",
+   "n_train": 1422,
+   "seed": 3,
+   "fit_seconds": 0.36022399994544685,
+   "bank_seconds": 2.32114537502639,
+   "metrics": {
+    "balanced_accuracy": 0.9934424172377803
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_logreg",
+   "n_train": 1422,
+   "seed": 3,
+   "fit_seconds": 19.876412124955095,
+   "bank_seconds": 2.32114537502639,
+   "metrics": {
+    "balanced_accuracy": 0.9860758161190495
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_linsvc",
+   "n_train": 1422,
+   "seed": 3,
+   "fit_seconds": 114.66462154197507,
+   "bank_seconds": 2.32114537502639,
+   "metrics": {
+    "balanced_accuracy": 0.9772493196974835
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_hgb",
+   "n_train": 1422,
+   "seed": 3,
+   "fit_seconds": 127.08989349997137,
+   "bank_seconds": 2.32114537502639,
+   "metrics": {
+    "balanced_accuracy": 0.9809554611944142
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_rf",
+   "n_train": 1422,
+   "seed": 3,
+   "fit_seconds": 0.6252612909302115,
+   "bank_seconds": 2.32114537502639,
+   "metrics": {
+    "balanced_accuracy": 0.9802595316772234
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_extratrees",
+   "n_train": 1422,
+   "seed": 3,
+   "fit_seconds": 0.36846170807257295,
+   "bank_seconds": 2.32114537502639,
+   "metrics": {
+    "balanced_accuracy": 0.9831237178980906
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_knn",
+   "n_train": 1422,
+   "seed": 3,
+   "fit_seconds": 0.14149824995547533,
+   "bank_seconds": 2.32114537502639,
+   "metrics": {
+    "balanced_accuracy": 0.9606601636209812
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_mlp",
+   "n_train": 1422,
+   "seed": 3,
+   "fit_seconds": 1.1210712500615045,
+   "bank_seconds": 2.32114537502639,
+   "metrics": {
+    "balanced_accuracy": 0.05
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_ridge",
+   "n_train": 1422,
+   "seed": 4,
+   "fit_seconds": 0.3913132919697091,
+   "bank_seconds": 2.445520459092222,
+   "metrics": {
+    "balanced_accuracy": 0.9934424172377803
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_logreg",
+   "n_train": 1422,
+   "seed": 4,
+   "fit_seconds": 20.05200716597028,
+   "bank_seconds": 2.445520459092222,
+   "metrics": {
+    "balanced_accuracy": 0.9860758161190495
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_linsvc",
+   "n_train": 1422,
+   "seed": 4,
+   "fit_seconds": 115.07449670799542,
+   "bank_seconds": 2.445520459092222,
+   "metrics": {
+    "balanced_accuracy": 0.9703959049733566
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_hgb",
+   "n_train": 1422,
+   "seed": 4,
+   "fit_seconds": 127.7425913750194,
+   "bank_seconds": 2.445520459092222,
+   "metrics": {
+    "balanced_accuracy": 0.9809554611944142
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_rf",
+   "n_train": 1422,
+   "seed": 4,
+   "fit_seconds": 0.6129727080697194,
+   "bank_seconds": 2.445520459092222,
+   "metrics": {
+    "balanced_accuracy": 0.9789024416886679
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_extratrees",
+   "n_train": 1422,
+   "seed": 4,
+   "fit_seconds": 0.359694708022289,
+   "bank_seconds": 2.445520459092222,
+   "metrics": {
+    "balanced_accuracy": 0.9840571991793541
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_knn",
+   "n_train": 1422,
+   "seed": 4,
+   "fit_seconds": 0.135994583950378,
+   "bank_seconds": 2.445520459092222,
+   "metrics": {
+    "balanced_accuracy": 0.9606601636209812
+   }
+  },
+  {
+   "dataset": "uea:CharacterTrajectories",
+   "model": "bank_mlp",
+   "n_train": 1422,
+   "seed": 4,
+   "fit_seconds": 1.0578468330204487,
+   "bank_seconds": 2.445520459092222,
+   "metrics": {
+    "balanced_accuracy": 0.10116279069767442
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_ridge",
+   "n_train": 160,
+   "seed": 0,
+   "fit_seconds": 0.007476708036847413,
+   "bank_seconds": 0.9917900409782305,
+   "metrics": {
+    "balanced_accuracy": 0.3869047619047619
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_logreg",
+   "n_train": 160,
+   "seed": 0,
+   "fit_seconds": 2.583111541927792,
+   "bank_seconds": 0.9917900409782305,
+   "metrics": {
+    "balanced_accuracy": 0.3619047619047619
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_linsvc",
+   "n_train": 160,
+   "seed": 0,
+   "fit_seconds": 8.856743415934034,
+   "bank_seconds": 0.9917900409782305,
+   "metrics": {
+    "balanced_accuracy": 0.32738095238095233
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_hgb",
+   "n_train": 160,
+   "seed": 0,
+   "fit_seconds": 6.755086624994874,
+   "bank_seconds": 0.9917900409782305,
+   "metrics": {
+    "balanced_accuracy": 0.3619047619047619
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_rf",
+   "n_train": 160,
+   "seed": 0,
+   "fit_seconds": 0.1518113750498742,
+   "bank_seconds": 0.9917900409782305,
+   "metrics": {
+    "balanced_accuracy": 0.3547619047619047
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_extratrees",
+   "n_train": 160,
+   "seed": 0,
+   "fit_seconds": 0.09383987495675683,
+   "bank_seconds": 0.9917900409782305,
+   "metrics": {
+    "balanced_accuracy": 0.3297619047619047
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_knn",
+   "n_train": 160,
+   "seed": 0,
+   "fit_seconds": 0.020497541991062462,
+   "bank_seconds": 0.9917900409782305,
+   "metrics": {
+    "balanced_accuracy": 0.2511904761904762
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_mlp",
+   "n_train": 160,
+   "seed": 0,
+   "fit_seconds": 0.12794345791917294,
+   "bank_seconds": 0.9917900409782305,
+   "metrics": {
+    "balanced_accuracy": 0.25
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_ridge",
+   "n_train": 160,
+   "seed": 1,
+   "fit_seconds": 0.007510790950618684,
+   "bank_seconds": 0.9959182089660317,
+   "metrics": {
+    "balanced_accuracy": 0.3869047619047619
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_logreg",
+   "n_train": 160,
+   "seed": 1,
+   "fit_seconds": 2.5855168330017477,
+   "bank_seconds": 0.9959182089660317,
+   "metrics": {
+    "balanced_accuracy": 0.3619047619047619
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_linsvc",
+   "n_train": 160,
+   "seed": 1,
+   "fit_seconds": 8.747893582913093,
+   "bank_seconds": 0.9959182089660317,
+   "metrics": {
+    "balanced_accuracy": 0.2928571428571428
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_hgb",
+   "n_train": 160,
+   "seed": 1,
+   "fit_seconds": 6.747078250045888,
+   "bank_seconds": 0.9959182089660317,
+   "metrics": {
+    "balanced_accuracy": 0.3619047619047619
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_rf",
+   "n_train": 160,
+   "seed": 1,
+   "fit_seconds": 0.14879070792812854,
+   "bank_seconds": 0.9959182089660317,
+   "metrics": {
+    "balanced_accuracy": 0.23690476190476192
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_extratrees",
+   "n_train": 160,
+   "seed": 1,
+   "fit_seconds": 0.09324670908972621,
+   "bank_seconds": 0.9959182089660317,
+   "metrics": {
+    "balanced_accuracy": 0.25952380952380955
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_knn",
+   "n_train": 160,
+   "seed": 1,
+   "fit_seconds": 0.009324959013611078,
+   "bank_seconds": 0.9959182089660317,
+   "metrics": {
+    "balanced_accuracy": 0.2511904761904762
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_mlp",
+   "n_train": 160,
+   "seed": 1,
+   "fit_seconds": 0.06541358295362443,
+   "bank_seconds": 0.9959182089660317,
+   "metrics": {
+    "balanced_accuracy": 0.25
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_ridge",
+   "n_train": 160,
+   "seed": 2,
+   "fit_seconds": 0.0076345419511199,
+   "bank_seconds": 1.0001780829625204,
+   "metrics": {
+    "balanced_accuracy": 0.3869047619047619
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_logreg",
+   "n_train": 160,
+   "seed": 2,
+   "fit_seconds": 2.5970191250089556,
+   "bank_seconds": 1.0001780829625204,
+   "metrics": {
+    "balanced_accuracy": 0.3619047619047619
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_linsvc",
+   "n_train": 160,
+   "seed": 2,
+   "fit_seconds": 8.801943291909993,
+   "bank_seconds": 1.0001780829625204,
+   "metrics": {
+    "balanced_accuracy": 0.3
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_hgb",
+   "n_train": 160,
+   "seed": 2,
+   "fit_seconds": 6.731412083026953,
+   "bank_seconds": 1.0001780829625204,
+   "metrics": {
+    "balanced_accuracy": 0.3619047619047619
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_rf",
+   "n_train": 160,
+   "seed": 2,
+   "fit_seconds": 0.1530190829653293,
+   "bank_seconds": 1.0001780829625204,
+   "metrics": {
+    "balanced_accuracy": 0.3642857142857143
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_extratrees",
+   "n_train": 160,
+   "seed": 2,
+   "fit_seconds": 0.09402987500652671,
+   "bank_seconds": 1.0001780829625204,
+   "metrics": {
+    "balanced_accuracy": 0.3535714285714286
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_knn",
+   "n_train": 160,
+   "seed": 2,
+   "fit_seconds": 0.024248417001217604,
+   "bank_seconds": 1.0001780829625204,
+   "metrics": {
+    "balanced_accuracy": 0.2511904761904762
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_mlp",
+   "n_train": 160,
+   "seed": 2,
+   "fit_seconds": 0.125755250104703,
+   "bank_seconds": 1.0001780829625204,
+   "metrics": {
+    "balanced_accuracy": 0.25
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_ridge",
+   "n_train": 160,
+   "seed": 3,
+   "fit_seconds": 0.007540541933849454,
+   "bank_seconds": 0.9965227080974728,
+   "metrics": {
+    "balanced_accuracy": 0.3869047619047619
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_logreg",
+   "n_train": 160,
+   "seed": 3,
+   "fit_seconds": 2.5845705419778824,
+   "bank_seconds": 0.9965227080974728,
+   "metrics": {
+    "balanced_accuracy": 0.3619047619047619
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_linsvc",
+   "n_train": 160,
+   "seed": 3,
+   "fit_seconds": 8.718792584026232,
+   "bank_seconds": 0.9965227080974728,
+   "metrics": {
+    "balanced_accuracy": 0.25
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_hgb",
+   "n_train": 160,
+   "seed": 3,
+   "fit_seconds": 6.757159291999415,
+   "bank_seconds": 0.9965227080974728,
+   "metrics": {
+    "balanced_accuracy": 0.3619047619047619
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_rf",
+   "n_train": 160,
+   "seed": 3,
+   "fit_seconds": 0.15205212496221066,
+   "bank_seconds": 0.9965227080974728,
+   "metrics": {
+    "balanced_accuracy": 0.3202380952380952
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_extratrees",
+   "n_train": 160,
+   "seed": 3,
+   "fit_seconds": 0.10100295802112669,
+   "bank_seconds": 0.9965227080974728,
+   "metrics": {
+    "balanced_accuracy": 0.2857142857142857
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_knn",
+   "n_train": 160,
+   "seed": 3,
+   "fit_seconds": 0.02391587500460446,
+   "bank_seconds": 0.9965227080974728,
+   "metrics": {
+    "balanced_accuracy": 0.2511904761904762
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_mlp",
+   "n_train": 160,
+   "seed": 3,
+   "fit_seconds": 0.09995558299124241,
+   "bank_seconds": 0.9965227080974728,
+   "metrics": {
+    "balanced_accuracy": 0.25
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_ridge",
+   "n_train": 160,
+   "seed": 4,
+   "fit_seconds": 0.0077182919485494494,
+   "bank_seconds": 0.9955845000222325,
+   "metrics": {
+    "balanced_accuracy": 0.3869047619047619
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_logreg",
+   "n_train": 160,
+   "seed": 4,
+   "fit_seconds": 2.5872474579373375,
+   "bank_seconds": 0.9955845000222325,
+   "metrics": {
+    "balanced_accuracy": 0.3619047619047619
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_linsvc",
+   "n_train": 160,
+   "seed": 4,
+   "fit_seconds": 8.868862082948908,
+   "bank_seconds": 0.9955845000222325,
+   "metrics": {
+    "balanced_accuracy": 0.25
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_hgb",
+   "n_train": 160,
+   "seed": 4,
+   "fit_seconds": 6.744955583009869,
+   "bank_seconds": 0.9955845000222325,
+   "metrics": {
+    "balanced_accuracy": 0.3619047619047619
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_rf",
+   "n_train": 160,
+   "seed": 4,
+   "fit_seconds": 0.15111191710457206,
+   "bank_seconds": 0.9955845000222325,
+   "metrics": {
+    "balanced_accuracy": 0.3297619047619047
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_extratrees",
+   "n_train": 160,
+   "seed": 4,
+   "fit_seconds": 0.09474504098761827,
+   "bank_seconds": 0.9955845000222325,
+   "metrics": {
+    "balanced_accuracy": 0.22619047619047616
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_knn",
+   "n_train": 160,
+   "seed": 4,
+   "fit_seconds": 0.028290417045354843,
+   "bank_seconds": 0.9955845000222325,
+   "metrics": {
+    "balanced_accuracy": 0.2511904761904762
+   }
+  },
+  {
+   "dataset": "uea:HandMovementDirection",
+   "model": "bank_mlp",
+   "n_train": 160,
+   "seed": 4,
+   "fit_seconds": 0.094893959001638,
+   "bank_seconds": 0.9955845000222325,
+   "metrics": {
+    "balanced_accuracy": 0.25
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_ridge",
+   "n_train": 200,
+   "seed": 0,
+   "fit_seconds": 0.010247415979392827,
+   "bank_seconds": 3.936963750049472,
+   "metrics": {
+    "balanced_accuracy": 0.5444444444444444
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_logreg",
+   "n_train": 200,
+   "seed": 0,
+   "fit_seconds": 1.0656331670470536,
+   "bank_seconds": 3.936963750049472,
+   "metrics": {
+    "balanced_accuracy": 0.5444444444444444
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_linsvc",
+   "n_train": 200,
+   "seed": 0,
+   "fit_seconds": 2.7673364999936894,
+   "bank_seconds": 3.936963750049472,
+   "metrics": {
+    "balanced_accuracy": 0.5
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_hgb",
+   "n_train": 200,
+   "seed": 0,
+   "fit_seconds": 2.9455788750201464,
+   "bank_seconds": 3.936963750049472,
+   "metrics": {
+    "balanced_accuracy": 0.5555555555555556
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_rf",
+   "n_train": 200,
+   "seed": 0,
+   "fit_seconds": 0.16708941606339067,
+   "bank_seconds": 3.936963750049472,
+   "metrics": {
+    "balanced_accuracy": 0.5166666666666666
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_extratrees",
+   "n_train": 200,
+   "seed": 0,
+   "fit_seconds": 0.09452370903454721,
+   "bank_seconds": 3.936963750049472,
+   "metrics": {
+    "balanced_accuracy": 0.5333333333333333
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_knn",
+   "n_train": 200,
+   "seed": 0,
+   "fit_seconds": 0.01449612493161112,
+   "bank_seconds": 3.936963750049472,
+   "metrics": {
+    "balanced_accuracy": 0.5055555555555555
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_mlp",
+   "n_train": 200,
+   "seed": 0,
+   "fit_seconds": 0.06860462506301701,
+   "bank_seconds": 3.936963750049472,
+   "metrics": {
+    "balanced_accuracy": 0.5
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_ridge",
+   "n_train": 200,
+   "seed": 1,
+   "fit_seconds": 0.010204749996773899,
+   "bank_seconds": 3.9414358750218526,
+   "metrics": {
+    "balanced_accuracy": 0.5444444444444444
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_logreg",
+   "n_train": 200,
+   "seed": 1,
+   "fit_seconds": 1.0608609999762848,
+   "bank_seconds": 3.9414358750218526,
+   "metrics": {
+    "balanced_accuracy": 0.5444444444444444
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_linsvc",
+   "n_train": 200,
+   "seed": 1,
+   "fit_seconds": 2.767411542008631,
+   "bank_seconds": 3.9414358750218526,
+   "metrics": {
+    "balanced_accuracy": 0.5
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_hgb",
+   "n_train": 200,
+   "seed": 1,
+   "fit_seconds": 2.945757625042461,
+   "bank_seconds": 3.9414358750218526,
+   "metrics": {
+    "balanced_accuracy": 0.5555555555555556
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_rf",
+   "n_train": 200,
+   "seed": 1,
+   "fit_seconds": 0.18392237497027963,
+   "bank_seconds": 3.9414358750218526,
+   "metrics": {
+    "balanced_accuracy": 0.538888888888889
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_extratrees",
+   "n_train": 200,
+   "seed": 1,
+   "fit_seconds": 0.09298666601534933,
+   "bank_seconds": 3.9414358750218526,
+   "metrics": {
+    "balanced_accuracy": 0.5333333333333333
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_knn",
+   "n_train": 200,
+   "seed": 1,
+   "fit_seconds": 0.023605459020473063,
+   "bank_seconds": 3.9414358750218526,
+   "metrics": {
+    "balanced_accuracy": 0.5055555555555555
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_mlp",
+   "n_train": 200,
+   "seed": 1,
+   "fit_seconds": 0.06929891696199775,
+   "bank_seconds": 3.9414358750218526,
+   "metrics": {
+    "balanced_accuracy": 0.5
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_ridge",
+   "n_train": 200,
+   "seed": 2,
+   "fit_seconds": 0.01029191690031439,
+   "bank_seconds": 3.9357352500082925,
+   "metrics": {
+    "balanced_accuracy": 0.5444444444444444
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_logreg",
+   "n_train": 200,
+   "seed": 2,
+   "fit_seconds": 1.0613303750287741,
+   "bank_seconds": 3.9357352500082925,
+   "metrics": {
+    "balanced_accuracy": 0.5444444444444444
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_linsvc",
+   "n_train": 200,
+   "seed": 2,
+   "fit_seconds": 2.7681405829498544,
+   "bank_seconds": 3.9357352500082925,
+   "metrics": {
+    "balanced_accuracy": 0.5
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_hgb",
+   "n_train": 200,
+   "seed": 2,
+   "fit_seconds": 2.947918124962598,
+   "bank_seconds": 3.9357352500082925,
+   "metrics": {
+    "balanced_accuracy": 0.5555555555555556
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_rf",
+   "n_train": 200,
+   "seed": 2,
+   "fit_seconds": 0.16949429200030863,
+   "bank_seconds": 3.9357352500082925,
+   "metrics": {
+    "balanced_accuracy": 0.5611111111111111
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_extratrees",
+   "n_train": 200,
+   "seed": 2,
+   "fit_seconds": 0.093375459080562,
+   "bank_seconds": 3.9357352500082925,
+   "metrics": {
+    "balanced_accuracy": 0.5333333333333333
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_knn",
+   "n_train": 200,
+   "seed": 2,
+   "fit_seconds": 0.021925625042058527,
+   "bank_seconds": 3.9357352500082925,
+   "metrics": {
+    "balanced_accuracy": 0.5055555555555555
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_mlp",
+   "n_train": 200,
+   "seed": 2,
+   "fit_seconds": 0.06884570803958923,
+   "bank_seconds": 3.9357352500082925,
+   "metrics": {
+    "balanced_accuracy": 0.5
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_ridge",
+   "n_train": 200,
+   "seed": 3,
+   "fit_seconds": 0.0103632080135867,
+   "bank_seconds": 3.9363562499638647,
+   "metrics": {
+    "balanced_accuracy": 0.5444444444444444
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_logreg",
+   "n_train": 200,
+   "seed": 3,
+   "fit_seconds": 1.0595087080728263,
+   "bank_seconds": 3.9363562499638647,
+   "metrics": {
+    "balanced_accuracy": 0.5444444444444444
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_linsvc",
+   "n_train": 200,
+   "seed": 3,
+   "fit_seconds": 2.7666904169600457,
+   "bank_seconds": 3.9363562499638647,
+   "metrics": {
+    "balanced_accuracy": 0.5
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_hgb",
+   "n_train": 200,
+   "seed": 3,
+   "fit_seconds": 2.9365847079316154,
+   "bank_seconds": 3.9363562499638647,
+   "metrics": {
+    "balanced_accuracy": 0.5555555555555556
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_rf",
+   "n_train": 200,
+   "seed": 3,
+   "fit_seconds": 0.17658754205331206,
+   "bank_seconds": 3.9363562499638647,
+   "metrics": {
+    "balanced_accuracy": 0.5444444444444444
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_extratrees",
+   "n_train": 200,
+   "seed": 3,
+   "fit_seconds": 0.09406020899768919,
+   "bank_seconds": 3.9363562499638647,
+   "metrics": {
+    "balanced_accuracy": 0.5666666666666667
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_knn",
+   "n_train": 200,
+   "seed": 3,
+   "fit_seconds": 0.015072541078552604,
+   "bank_seconds": 3.9363562499638647,
+   "metrics": {
+    "balanced_accuracy": 0.5055555555555555
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_mlp",
+   "n_train": 200,
+   "seed": 3,
+   "fit_seconds": 0.06858687498606741,
+   "bank_seconds": 3.9363562499638647,
+   "metrics": {
+    "balanced_accuracy": 0.5
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_ridge",
+   "n_train": 200,
+   "seed": 4,
+   "fit_seconds": 0.01014208304695785,
+   "bank_seconds": 3.9395462920656428,
+   "metrics": {
+    "balanced_accuracy": 0.5444444444444444
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_logreg",
+   "n_train": 200,
+   "seed": 4,
+   "fit_seconds": 1.0707878750981763,
+   "bank_seconds": 3.9395462920656428,
+   "metrics": {
+    "balanced_accuracy": 0.5444444444444444
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_linsvc",
+   "n_train": 200,
+   "seed": 4,
+   "fit_seconds": 2.753852916066535,
+   "bank_seconds": 3.9395462920656428,
+   "metrics": {
+    "balanced_accuracy": 0.5
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_hgb",
+   "n_train": 200,
+   "seed": 4,
+   "fit_seconds": 2.9387319169472903,
+   "bank_seconds": 3.9395462920656428,
+   "metrics": {
+    "balanced_accuracy": 0.5555555555555556
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_rf",
+   "n_train": 200,
+   "seed": 4,
+   "fit_seconds": 0.18124200007878244,
+   "bank_seconds": 3.9395462920656428,
+   "metrics": {
+    "balanced_accuracy": 0.5388888888888889
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_extratrees",
+   "n_train": 200,
+   "seed": 4,
+   "fit_seconds": 0.09766045899596065,
+   "bank_seconds": 3.9395462920656428,
+   "metrics": {
+    "balanced_accuracy": 0.55
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_knn",
+   "n_train": 200,
+   "seed": 4,
+   "fit_seconds": 0.02132291707675904,
+   "bank_seconds": 3.9395462920656428,
+   "metrics": {
+    "balanced_accuracy": 0.5055555555555555
+   }
+  },
+  {
+   "dataset": "uea:SelfRegulationSCP2",
+   "model": "bank_mlp",
+   "n_train": 200,
+   "seed": 4,
+   "fit_seconds": 0.06864924996625632,
+   "bank_seconds": 3.9395462920656428,
+   "metrics": {
+    "balanced_accuracy": 0.5
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_ridge",
+   "n_train": 150,
+   "seed": 0,
+   "fit_seconds": 0.018484957981854677,
+   "bank_seconds": 1.015347458072938,
+   "metrics": {
+    "balanced_accuracy": 0.5137396517405894
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_logreg",
+   "n_train": 150,
+   "seed": 0,
+   "fit_seconds": 8.088023916003294,
+   "bank_seconds": 1.015347458072938,
+   "metrics": {
+    "balanced_accuracy": 0.48962050640839
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_linsvc",
+   "n_train": 150,
+   "seed": 0,
+   "fit_seconds": 30.323884750017896,
+   "bank_seconds": 1.015347458072938,
+   "metrics": {
+    "balanced_accuracy": 0.37913105441135736
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_hgb",
+   "n_train": 150,
+   "seed": 0,
+   "fit_seconds": 28.766789500019513,
+   "bank_seconds": 1.015347458072938,
+   "metrics": {
+    "balanced_accuracy": 0.35834850156933457
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_rf",
+   "n_train": 150,
+   "seed": 0,
+   "fit_seconds": 0.19900887494441122,
+   "bank_seconds": 1.015347458072938,
+   "metrics": {
+    "balanced_accuracy": 0.34783555869532223
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_extratrees",
+   "n_train": 150,
+   "seed": 0,
+   "fit_seconds": 0.106360208010301,
+   "bank_seconds": 1.015347458072938,
+   "metrics": {
+    "balanced_accuracy": 0.39052119739058266
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_knn",
+   "n_train": 150,
+   "seed": 0,
+   "fit_seconds": 0.03428087499924004,
+   "bank_seconds": 1.015347458072938,
+   "metrics": {
+    "balanced_accuracy": 0.2688576976844652
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_mlp",
+   "n_train": 150,
+   "seed": 0,
+   "fit_seconds": 0.07094974990468472,
+   "bank_seconds": 1.015347458072938,
+   "metrics": {
+    "balanced_accuracy": 0.038461538461538464
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_ridge",
+   "n_train": 150,
+   "seed": 1,
+   "fit_seconds": 0.01450516702607274,
+   "bank_seconds": 1.0122782919788733,
+   "metrics": {
+    "balanced_accuracy": 0.5137396517405894
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_logreg",
+   "n_train": 150,
+   "seed": 1,
+   "fit_seconds": 8.085058708093129,
+   "bank_seconds": 1.0122782919788733,
+   "metrics": {
+    "balanced_accuracy": 0.48962050640839
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_linsvc",
+   "n_train": 150,
+   "seed": 1,
+   "fit_seconds": 30.163786666002125,
+   "bank_seconds": 1.0122782919788733,
+   "metrics": {
+    "balanced_accuracy": 0.40390497082590043
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_hgb",
+   "n_train": 150,
+   "seed": 1,
+   "fit_seconds": 28.70569254201837,
+   "bank_seconds": 1.0122782919788733,
+   "metrics": {
+    "balanced_accuracy": 0.35834850156933457
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_rf",
+   "n_train": 150,
+   "seed": 1,
+   "fit_seconds": 0.2002257090061903,
+   "bank_seconds": 1.0122782919788733,
+   "metrics": {
+    "balanced_accuracy": 0.3341951843199396
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_extratrees",
+   "n_train": 150,
+   "seed": 1,
+   "fit_seconds": 0.10051858390215784,
+   "bank_seconds": 1.0122782919788733,
+   "metrics": {
+    "balanced_accuracy": 0.39382569665726896
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_knn",
+   "n_train": 150,
+   "seed": 1,
+   "fit_seconds": 0.03346862504258752,
+   "bank_seconds": 1.0122782919788733,
+   "metrics": {
+    "balanced_accuracy": 0.2688576976844652
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_mlp",
+   "n_train": 150,
+   "seed": 1,
+   "fit_seconds": 0.115916374954395,
+   "bank_seconds": 1.0122782919788733,
+   "metrics": {
+    "balanced_accuracy": 0.038461538461538464
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_ridge",
+   "n_train": 150,
+   "seed": 2,
+   "fit_seconds": 0.014723833999596536,
+   "bank_seconds": 1.0134389590239152,
+   "metrics": {
+    "balanced_accuracy": 0.5137396517405894
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_logreg",
+   "n_train": 150,
+   "seed": 2,
+   "fit_seconds": 8.08033170888666,
+   "bank_seconds": 1.0134389590239152,
+   "metrics": {
+    "balanced_accuracy": 0.48962050640839
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_linsvc",
+   "n_train": 150,
+   "seed": 2,
+   "fit_seconds": 30.556963125010952,
+   "bank_seconds": 1.0134389590239152,
+   "metrics": {
+    "balanced_accuracy": 0.3301472879085367
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_hgb",
+   "n_train": 150,
+   "seed": 2,
+   "fit_seconds": 28.71461854199879,
+   "bank_seconds": 1.0134389590239152,
+   "metrics": {
+    "balanced_accuracy": 0.35834850156933457
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_rf",
+   "n_train": 150,
+   "seed": 2,
+   "fit_seconds": 0.20517529197968543,
+   "bank_seconds": 1.0134389590239152,
+   "metrics": {
+    "balanced_accuracy": 0.3412204842370399
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_extratrees",
+   "n_train": 150,
+   "seed": 2,
+   "fit_seconds": 0.11043495906051248,
+   "bank_seconds": 1.0134389590239152,
+   "metrics": {
+    "balanced_accuracy": 0.3970281576176364
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_knn",
+   "n_train": 150,
+   "seed": 2,
+   "fit_seconds": 0.03435329196508974,
+   "bank_seconds": 1.0134389590239152,
+   "metrics": {
+    "balanced_accuracy": 0.2688576976844652
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_mlp",
+   "n_train": 150,
+   "seed": 2,
+   "fit_seconds": 0.22230025008320808,
+   "bank_seconds": 1.0134389590239152,
+   "metrics": {
+    "balanced_accuracy": 0.038461538461538464
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_ridge",
+   "n_train": 150,
+   "seed": 3,
+   "fit_seconds": 0.014190832967869937,
+   "bank_seconds": 1.0121647079940885,
+   "metrics": {
+    "balanced_accuracy": 0.5137396517405894
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_logreg",
+   "n_train": 150,
+   "seed": 3,
+   "fit_seconds": 8.07465108402539,
+   "bank_seconds": 1.0121647079940885,
+   "metrics": {
+    "balanced_accuracy": 0.48962050640839
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_linsvc",
+   "n_train": 150,
+   "seed": 3,
+   "fit_seconds": 29.659471832914278,
+   "bank_seconds": 1.0121647079940885,
+   "metrics": {
+    "balanced_accuracy": 0.3492639805426254
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_hgb",
+   "n_train": 150,
+   "seed": 3,
+   "fit_seconds": 28.746325750020333,
+   "bank_seconds": 1.0121647079940885,
+   "metrics": {
+    "balanced_accuracy": 0.35834850156933457
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_rf",
+   "n_train": 150,
+   "seed": 3,
+   "fit_seconds": 0.1934666249435395,
+   "bank_seconds": 1.0121647079940885,
+   "metrics": {
+    "balanced_accuracy": 0.35925685484113346
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_extratrees",
+   "n_train": 150,
+   "seed": 3,
+   "fit_seconds": 0.10467133298516273,
+   "bank_seconds": 1.0121647079940885,
+   "metrics": {
+    "balanced_accuracy": 0.38993707398939986
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_knn",
+   "n_train": 150,
+   "seed": 3,
+   "fit_seconds": 0.03399791696574539,
+   "bank_seconds": 1.0121647079940885,
+   "metrics": {
+    "balanced_accuracy": 0.2688576976844652
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_mlp",
+   "n_train": 150,
+   "seed": 3,
+   "fit_seconds": 0.6948329580482095,
+   "bank_seconds": 1.0121647079940885,
+   "metrics": {
+    "balanced_accuracy": 0.038461538461538464
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_ridge",
+   "n_train": 150,
+   "seed": 4,
+   "fit_seconds": 0.014775707968510687,
+   "bank_seconds": 1.0077892090193927,
+   "metrics": {
+    "balanced_accuracy": 0.5137396517405894
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_logreg",
+   "n_train": 150,
+   "seed": 4,
+   "fit_seconds": 8.079697958077304,
+   "bank_seconds": 1.0077892090193927,
+   "metrics": {
+    "balanced_accuracy": 0.48962050640839
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_linsvc",
+   "n_train": 150,
+   "seed": 4,
+   "fit_seconds": 30.30850099993404,
+   "bank_seconds": 1.0077892090193927,
+   "metrics": {
+    "balanced_accuracy": 0.3720781220839423
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_hgb",
+   "n_train": 150,
+   "seed": 4,
+   "fit_seconds": 28.67224345903378,
+   "bank_seconds": 1.0077892090193927,
+   "metrics": {
+    "balanced_accuracy": 0.35834850156933457
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_rf",
+   "n_train": 150,
+   "seed": 4,
+   "fit_seconds": 0.19248195795807987,
+   "bank_seconds": 1.0077892090193927,
+   "metrics": {
+    "balanced_accuracy": 0.35282438496680135
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_extratrees",
+   "n_train": 150,
+   "seed": 4,
+   "fit_seconds": 0.11310716695152223,
+   "bank_seconds": 1.0077892090193927,
+   "metrics": {
+    "balanced_accuracy": 0.3960209409416652
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_knn",
+   "n_train": 150,
+   "seed": 4,
+   "fit_seconds": 0.034581667045131326,
+   "bank_seconds": 1.0077892090193927,
+   "metrics": {
+    "balanced_accuracy": 0.2688576976844652
+   }
+  },
+  {
+   "dataset": "uea:Handwriting",
+   "model": "bank_mlp",
+   "n_train": 150,
+   "seed": 4,
+   "fit_seconds": 0.09211254096589983,
+   "bank_seconds": 1.0077892090193927,
+   "metrics": {
+    "balanced_accuracy": 0.047470547470547464
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_ridge",
+   "n_train": 108,
+   "seed": 0,
+   "fit_seconds": 0.005088042002171278,
+   "bank_seconds": 1.9636191669851542,
+   "metrics": {
+    "balanced_accuracy": 0.9861111111111112
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_logreg",
+   "n_train": 108,
+   "seed": 0,
+   "fit_seconds": 1.6229528340045363,
+   "bank_seconds": 1.9636191669851542,
+   "metrics": {
+    "balanced_accuracy": 0.9861111111111112
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_linsvc",
+   "n_train": 108,
+   "seed": 0,
+   "fit_seconds": 11.708448708988726,
+   "bank_seconds": 1.9636191669851542,
+   "metrics": {
+    "balanced_accuracy": 0.9722222222222223
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_hgb",
+   "n_train": 108,
+   "seed": 0,
+   "fit_seconds": 12.208819041028619,
+   "bank_seconds": 1.9636191669851542,
+   "metrics": {
+    "balanced_accuracy": 0.9722222222222223
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_rf",
+   "n_train": 108,
+   "seed": 0,
+   "fit_seconds": 0.1382709169993177,
+   "bank_seconds": 1.9636191669851542,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_extratrees",
+   "n_train": 108,
+   "seed": 0,
+   "fit_seconds": 0.07762583298608661,
+   "bank_seconds": 1.9636191669851542,
+   "metrics": {
+    "balanced_accuracy": 0.9861111111111112
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_knn",
+   "n_train": 108,
+   "seed": 0,
+   "fit_seconds": 0.024408041965216398,
+   "bank_seconds": 1.9636191669851542,
+   "metrics": {
+    "balanced_accuracy": 0.9722222222222223
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_mlp",
+   "n_train": 108,
+   "seed": 0,
+   "fit_seconds": 0.21917345898691565,
+   "bank_seconds": 1.9636191669851542,
+   "metrics": {
+    "balanced_accuracy": 0.13888888888888887
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_ridge",
+   "n_train": 108,
+   "seed": 1,
+   "fit_seconds": 0.004895040998235345,
+   "bank_seconds": 1.969199666986242,
+   "metrics": {
+    "balanced_accuracy": 0.9861111111111112
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_logreg",
+   "n_train": 108,
+   "seed": 1,
+   "fit_seconds": 1.623374207993038,
+   "bank_seconds": 1.969199666986242,
+   "metrics": {
+    "balanced_accuracy": 0.9861111111111112
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_linsvc",
+   "n_train": 108,
+   "seed": 1,
+   "fit_seconds": 11.948686667019501,
+   "bank_seconds": 1.969199666986242,
+   "metrics": {
+    "balanced_accuracy": 0.9861111111111112
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_hgb",
+   "n_train": 108,
+   "seed": 1,
+   "fit_seconds": 10.489129042020068,
+   "bank_seconds": 1.969199666986242,
+   "metrics": {
+    "balanced_accuracy": 0.9722222222222223
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_rf",
+   "n_train": 108,
+   "seed": 1,
+   "fit_seconds": 0.1496147500583902,
+   "bank_seconds": 1.969199666986242,
+   "metrics": {
+    "balanced_accuracy": 0.9861111111111112
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_extratrees",
+   "n_train": 108,
+   "seed": 1,
+   "fit_seconds": 0.08292333397548646,
+   "bank_seconds": 1.969199666986242,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_knn",
+   "n_train": 108,
+   "seed": 1,
+   "fit_seconds": 0.02260599995497614,
+   "bank_seconds": 1.969199666986242,
+   "metrics": {
+    "balanced_accuracy": 0.9722222222222223
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_mlp",
+   "n_train": 108,
+   "seed": 1,
+   "fit_seconds": 0.2564864580053836,
+   "bank_seconds": 1.969199666986242,
+   "metrics": {
+    "balanced_accuracy": 0.08333333333333333
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_ridge",
+   "n_train": 108,
+   "seed": 2,
+   "fit_seconds": 0.005328709026798606,
+   "bank_seconds": 1.9610159590374678,
+   "metrics": {
+    "balanced_accuracy": 0.9861111111111112
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_logreg",
+   "n_train": 108,
+   "seed": 2,
+   "fit_seconds": 1.62316966697108,
+   "bank_seconds": 1.9610159590374678,
+   "metrics": {
+    "balanced_accuracy": 0.9861111111111112
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_linsvc",
+   "n_train": 108,
+   "seed": 2,
+   "fit_seconds": 11.894876167061739,
+   "bank_seconds": 1.9610159590374678,
+   "metrics": {
+    "balanced_accuracy": 0.9444444444444445
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_hgb",
+   "n_train": 108,
+   "seed": 2,
+   "fit_seconds": 12.035144458059222,
+   "bank_seconds": 1.9610159590374678,
+   "metrics": {
+    "balanced_accuracy": 0.9722222222222223
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_rf",
+   "n_train": 108,
+   "seed": 2,
+   "fit_seconds": 0.1418980829184875,
+   "bank_seconds": 1.9610159590374678,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_extratrees",
+   "n_train": 108,
+   "seed": 2,
+   "fit_seconds": 0.08108749997336417,
+   "bank_seconds": 1.9610159590374678,
+   "metrics": {
+    "balanced_accuracy": 0.9861111111111112
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_knn",
+   "n_train": 108,
+   "seed": 2,
+   "fit_seconds": 0.02108416601549834,
+   "bank_seconds": 1.9610159590374678,
+   "metrics": {
+    "balanced_accuracy": 0.9722222222222223
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_mlp",
+   "n_train": 108,
+   "seed": 2,
+   "fit_seconds": 0.19918229198083282,
+   "bank_seconds": 1.9610159590374678,
+   "metrics": {
+    "balanced_accuracy": 0.08333333333333333
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_ridge",
+   "n_train": 108,
+   "seed": 3,
+   "fit_seconds": 0.005931667052209377,
+   "bank_seconds": 1.9674559170380235,
+   "metrics": {
+    "balanced_accuracy": 0.9861111111111112
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_logreg",
+   "n_train": 108,
+   "seed": 3,
+   "fit_seconds": 1.6204708330333233,
+   "bank_seconds": 1.9674559170380235,
+   "metrics": {
+    "balanced_accuracy": 0.9861111111111112
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_linsvc",
+   "n_train": 108,
+   "seed": 3,
+   "fit_seconds": 12.054421584005468,
+   "bank_seconds": 1.9674559170380235,
+   "metrics": {
+    "balanced_accuracy": 0.9722222222222222
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_hgb",
+   "n_train": 108,
+   "seed": 3,
+   "fit_seconds": 10.520190375042148,
+   "bank_seconds": 1.9674559170380235,
+   "metrics": {
+    "balanced_accuracy": 0.9722222222222223
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_rf",
+   "n_train": 108,
+   "seed": 3,
+   "fit_seconds": 0.1386917500058189,
+   "bank_seconds": 1.9674559170380235,
+   "metrics": {
+    "balanced_accuracy": 0.9861111111111112
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_extratrees",
+   "n_train": 108,
+   "seed": 3,
+   "fit_seconds": 0.08236687502358109,
+   "bank_seconds": 1.9674559170380235,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_knn",
+   "n_train": 108,
+   "seed": 3,
+   "fit_seconds": 0.026912458008155227,
+   "bank_seconds": 1.9674559170380235,
+   "metrics": {
+    "balanced_accuracy": 0.9722222222222223
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_mlp",
+   "n_train": 108,
+   "seed": 3,
+   "fit_seconds": 0.09375133400317281,
+   "bank_seconds": 1.9674559170380235,
+   "metrics": {
+    "balanced_accuracy": 0.08333333333333333
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_ridge",
+   "n_train": 108,
+   "seed": 4,
+   "fit_seconds": 0.005560584017075598,
+   "bank_seconds": 1.9671492909546942,
+   "metrics": {
+    "balanced_accuracy": 0.9861111111111112
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_logreg",
+   "n_train": 108,
+   "seed": 4,
+   "fit_seconds": 1.628520041005686,
+   "bank_seconds": 1.9671492909546942,
+   "metrics": {
+    "balanced_accuracy": 0.9861111111111112
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_linsvc",
+   "n_train": 108,
+   "seed": 4,
+   "fit_seconds": 11.734210958937183,
+   "bank_seconds": 1.9671492909546942,
+   "metrics": {
+    "balanced_accuracy": 0.7500000000000001
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_hgb",
+   "n_train": 108,
+   "seed": 4,
+   "fit_seconds": 10.882917666924186,
+   "bank_seconds": 1.9671492909546942,
+   "metrics": {
+    "balanced_accuracy": 0.9722222222222223
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_rf",
+   "n_train": 108,
+   "seed": 4,
+   "fit_seconds": 0.15082908305339515,
+   "bank_seconds": 1.9671492909546942,
+   "metrics": {
+    "balanced_accuracy": 0.9861111111111112
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_extratrees",
+   "n_train": 108,
+   "seed": 4,
+   "fit_seconds": 0.07808500004466623,
+   "bank_seconds": 1.9671492909546942,
+   "metrics": {
+    "balanced_accuracy": 1.0
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_knn",
+   "n_train": 108,
+   "seed": 4,
+   "fit_seconds": 0.026998208020813763,
+   "bank_seconds": 1.9671492909546942,
+   "metrics": {
+    "balanced_accuracy": 0.9722222222222223
+   }
+  },
+  {
+   "dataset": "uea:Cricket",
+   "model": "bank_mlp",
+   "n_train": 108,
+   "seed": 4,
+   "fit_seconds": 0.28940095810685307,
+   "bank_seconds": 1.9671492909546942,
+   "metrics": {
+    "balanced_accuracy": 0.18055555555555555
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_ridge",
+   "n_train": 261,
+   "seed": 0,
+   "fit_seconds": 0.018610459053888917,
+   "bank_seconds": 5.610681374906562,
+   "metrics": {
+    "balanced_accuracy": 0.48362470862470863
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_logreg",
+   "n_train": 261,
+   "seed": 0,
+   "fit_seconds": 7.037067917059176,
+   "bank_seconds": 5.610681374906562,
+   "metrics": {
+    "balanced_accuracy": 0.5024475524475525
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_linsvc",
+   "n_train": 261,
+   "seed": 0,
+   "fit_seconds": 13.828863792004995,
+   "bank_seconds": 5.610681374906562,
+   "metrics": {
+    "balanced_accuracy": 0.24621212121212122
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_hgb",
+   "n_train": 261,
+   "seed": 0,
+   "fit_seconds": 14.593786209006794,
+   "bank_seconds": 5.610681374906562,
+   "metrics": {
+    "balanced_accuracy": 0.43747086247086253
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_rf",
+   "n_train": 261,
+   "seed": 0,
+   "fit_seconds": 0.20605924993287772,
+   "bank_seconds": 5.610681374906562,
+   "metrics": {
+    "balanced_accuracy": 0.36153846153846153
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_extratrees",
+   "n_train": 261,
+   "seed": 0,
+   "fit_seconds": 0.11732858303003013,
+   "bank_seconds": 5.610681374906562,
+   "metrics": {
+    "balanced_accuracy": 0.3270396270396271
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_knn",
+   "n_train": 261,
+   "seed": 0,
+   "fit_seconds": 0.028417083900421858,
+   "bank_seconds": 5.610681374906562,
+   "metrics": {
+    "balanced_accuracy": 0.30442890442890447
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_mlp",
+   "n_train": 261,
+   "seed": 0,
+   "fit_seconds": 0.2922480000415817,
+   "bank_seconds": 5.610681374906562,
+   "metrics": {
+    "balanced_accuracy": 0.25
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_ridge",
+   "n_train": 261,
+   "seed": 1,
+   "fit_seconds": 0.020531916059553623,
+   "bank_seconds": 5.635748749948107,
+   "metrics": {
+    "balanced_accuracy": 0.48362470862470863
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_logreg",
+   "n_train": 261,
+   "seed": 1,
+   "fit_seconds": 7.03407175000757,
+   "bank_seconds": 5.635748749948107,
+   "metrics": {
+    "balanced_accuracy": 0.5024475524475525
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_linsvc",
+   "n_train": 261,
+   "seed": 1,
+   "fit_seconds": 13.713659332948737,
+   "bank_seconds": 5.635748749948107,
+   "metrics": {
+    "balanced_accuracy": 0.26136363636363635
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_hgb",
+   "n_train": 261,
+   "seed": 1,
+   "fit_seconds": 12.405700417002663,
+   "bank_seconds": 5.635748749948107,
+   "metrics": {
+    "balanced_accuracy": 0.43747086247086253
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_rf",
+   "n_train": 261,
+   "seed": 1,
+   "fit_seconds": 0.2182036250596866,
+   "bank_seconds": 5.635748749948107,
+   "metrics": {
+    "balanced_accuracy": 0.3767482517482518
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_extratrees",
+   "n_train": 261,
+   "seed": 1,
+   "fit_seconds": 0.12292095797602087,
+   "bank_seconds": 5.635748749948107,
+   "metrics": {
+    "balanced_accuracy": 0.316025641025641
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_knn",
+   "n_train": 261,
+   "seed": 1,
+   "fit_seconds": 0.026511540985666215,
+   "bank_seconds": 5.635748749948107,
+   "metrics": {
+    "balanced_accuracy": 0.30442890442890447
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_mlp",
+   "n_train": 261,
+   "seed": 1,
+   "fit_seconds": 0.5581270840484649,
+   "bank_seconds": 5.635748749948107,
+   "metrics": {
+    "balanced_accuracy": 0.2765151515151515
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_ridge",
+   "n_train": 261,
+   "seed": 2,
+   "fit_seconds": 0.016336250002495944,
+   "bank_seconds": 5.6235490419203416,
+   "metrics": {
+    "balanced_accuracy": 0.48362470862470863
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_logreg",
+   "n_train": 261,
+   "seed": 2,
+   "fit_seconds": 7.030543333035894,
+   "bank_seconds": 5.6235490419203416,
+   "metrics": {
+    "balanced_accuracy": 0.5024475524475525
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_linsvc",
+   "n_train": 261,
+   "seed": 2,
+   "fit_seconds": 13.658547332976013,
+   "bank_seconds": 5.6235490419203416,
+   "metrics": {
+    "balanced_accuracy": 0.31072261072261076
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_hgb",
+   "n_train": 261,
+   "seed": 2,
+   "fit_seconds": 12.401576832984574,
+   "bank_seconds": 5.6235490419203416,
+   "metrics": {
+    "balanced_accuracy": 0.43747086247086253
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_rf",
+   "n_train": 261,
+   "seed": 2,
+   "fit_seconds": 0.20906362496316433,
+   "bank_seconds": 5.6235490419203416,
+   "metrics": {
+    "balanced_accuracy": 0.3502331002331002
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_extratrees",
+   "n_train": 261,
+   "seed": 2,
+   "fit_seconds": 0.1130503750173375,
+   "bank_seconds": 5.6235490419203416,
+   "metrics": {
+    "balanced_accuracy": 0.3311771561771562
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_knn",
+   "n_train": 261,
+   "seed": 2,
+   "fit_seconds": 0.02872708300128579,
+   "bank_seconds": 5.6235490419203416,
+   "metrics": {
+    "balanced_accuracy": 0.30442890442890447
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_mlp",
+   "n_train": 261,
+   "seed": 2,
+   "fit_seconds": 0.33558925008401275,
+   "bank_seconds": 5.6235490419203416,
+   "metrics": {
+    "balanced_accuracy": 0.25
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_ridge",
+   "n_train": 261,
+   "seed": 3,
+   "fit_seconds": 0.017437250004149973,
+   "bank_seconds": 5.6059629580704495,
+   "metrics": {
+    "balanced_accuracy": 0.48362470862470863
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_logreg",
+   "n_train": 261,
+   "seed": 3,
+   "fit_seconds": 7.0362953749718145,
+   "bank_seconds": 5.6059629580704495,
+   "metrics": {
+    "balanced_accuracy": 0.5024475524475525
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_linsvc",
+   "n_train": 261,
+   "seed": 3,
+   "fit_seconds": 13.708163624978624,
+   "bank_seconds": 5.6059629580704495,
+   "metrics": {
+    "balanced_accuracy": 0.25
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_hgb",
+   "n_train": 261,
+   "seed": 3,
+   "fit_seconds": 15.311049750074744,
+   "bank_seconds": 5.6059629580704495,
+   "metrics": {
+    "balanced_accuracy": 0.43747086247086253
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_rf",
+   "n_train": 261,
+   "seed": 3,
+   "fit_seconds": 0.21197329205460846,
+   "bank_seconds": 5.6059629580704495,
+   "metrics": {
+    "balanced_accuracy": 0.34994172494172493
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_extratrees",
+   "n_train": 261,
+   "seed": 3,
+   "fit_seconds": 0.11502625001594424,
+   "bank_seconds": 5.6059629580704495,
+   "metrics": {
+    "balanced_accuracy": 0.32721445221445217
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_knn",
+   "n_train": 261,
+   "seed": 3,
+   "fit_seconds": 0.028359208023175597,
+   "bank_seconds": 5.6059629580704495,
+   "metrics": {
+    "balanced_accuracy": 0.30442890442890447
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_mlp",
+   "n_train": 261,
+   "seed": 3,
+   "fit_seconds": 0.24909229204058647,
+   "bank_seconds": 5.6059629580704495,
+   "metrics": {
+    "balanced_accuracy": 0.25
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_ridge",
+   "n_train": 261,
+   "seed": 4,
+   "fit_seconds": 0.017566625028848648,
+   "bank_seconds": 5.625827084062621,
+   "metrics": {
+    "balanced_accuracy": 0.48362470862470863
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_logreg",
+   "n_train": 261,
+   "seed": 4,
+   "fit_seconds": 7.033362749963999,
+   "bank_seconds": 5.625827084062621,
+   "metrics": {
+    "balanced_accuracy": 0.5024475524475525
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_linsvc",
+   "n_train": 261,
+   "seed": 4,
+   "fit_seconds": 13.633337624953128,
+   "bank_seconds": 5.625827084062621,
+   "metrics": {
+    "balanced_accuracy": 0.31847319347319347
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_hgb",
+   "n_train": 261,
+   "seed": 4,
+   "fit_seconds": 12.44717129203491,
+   "bank_seconds": 5.625827084062621,
+   "metrics": {
+    "balanced_accuracy": 0.43747086247086253
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_rf",
+   "n_train": 261,
+   "seed": 4,
+   "fit_seconds": 0.20720804203301668,
+   "bank_seconds": 5.625827084062621,
+   "metrics": {
+    "balanced_accuracy": 0.34627039627039624
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_extratrees",
+   "n_train": 261,
+   "seed": 4,
+   "fit_seconds": 0.11755095794796944,
+   "bank_seconds": 5.625827084062621,
+   "metrics": {
+    "balanced_accuracy": 0.3384615384615385
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_knn",
+   "n_train": 261,
+   "seed": 4,
+   "fit_seconds": 0.027795957983471453,
+   "bank_seconds": 5.625827084062621,
+   "metrics": {
+    "balanced_accuracy": 0.30442890442890447
+   }
+  },
+  {
+   "dataset": "uea:EthanolConcentration",
+   "model": "bank_mlp",
+   "n_train": 261,
+   "seed": 4,
+   "fit_seconds": 0.2927390419645235,
+   "bank_seconds": 5.625827084062621,
+   "metrics": {
+    "balanced_accuracy": 0.25
+   }
+  }
+ ]
+}

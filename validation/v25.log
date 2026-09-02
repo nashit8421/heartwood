@@ -1,0 +1,319 @@
+
+uea:Epilepsy: uea:Epilepsy: n=275, static=0, series=3x206, task=multiclass, missing=0.0%
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 0 n=137: ridge=1.000  logreg=1.000  linsvc=1.000  hgb=0.980  rf=0.972  extratrees=0.979  knn=0.949  mlp=0.398  (bank 1s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 1 n=137: ridge=1.000  logreg=1.000  linsvc=1.000  hgb=0.980  rf=0.979  extratrees=0.979  knn=0.949  mlp=0.897  (bank 0s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 2 n=137: ridge=1.000  logreg=1.000  linsvc=1.000  hgb=0.980  rf=0.979  extratrees=0.986  knn=0.949  mlp=0.923  (bank 0s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 3 n=137: ridge=1.000  logreg=1.000  linsvc=1.000  hgb=0.980  rf=0.979  extratrees=0.986  knn=0.949  mlp=0.532  (bank 0s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 4 n=137: ridge=1.000  logreg=1.000  linsvc=1.000  hgb=0.980  rf=0.972  extratrees=0.986  knn=0.949  mlp=0.706  (bank 0s)
+
+uea:BasicMotions: uea:BasicMotions: n=80, static=0, series=6x100, task=multiclass, missing=0.0%
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 0 n=40: ridge=1.000  logreg=1.000  linsvc=1.000  hgb=1.000  rf=1.000  extratrees=1.000  knn=1.000  mlp=0.625  (bank 0s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 1 n=40: ridge=1.000  logreg=1.000  linsvc=1.000  hgb=1.000  rf=1.000  extratrees=1.000  knn=1.000  mlp=1.000  (bank 0s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 2 n=40: ridge=1.000  logreg=1.000  linsvc=1.000  hgb=1.000  rf=1.000  extratrees=1.000  knn=1.000  mlp=1.000  (bank 0s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 3 n=40: ridge=1.000  logreg=1.000  linsvc=1.000  hgb=1.000  rf=1.000  extratrees=1.000  knn=1.000  mlp=0.825  (bank 0s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 4 n=40: ridge=1.000  logreg=1.000  linsvc=1.000  hgb=1.000  rf=1.000  extratrees=1.000  knn=1.000  mlp=1.000  (bank 0s)
+
+uea:ERing: uea:ERing: n=300, static=0, series=4x65, task=multiclass, missing=0.0%
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 0 n=30: ridge=0.978  logreg=0.963  linsvc=0.967  hgb=0.167  rf=0.967  extratrees=0.981  knn=0.941  mlp=0.181  (bank 0s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 1 n=30: ridge=0.978  logreg=0.963  linsvc=0.967  hgb=0.167  rf=0.967  extratrees=0.978  knn=0.941  mlp=0.167  (bank 0s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 2 n=30: ridge=0.978  logreg=0.963  linsvc=0.963  hgb=0.167  rf=0.970  extratrees=0.985  knn=0.941  mlp=0.333  (bank 0s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 3 n=30: ridge=0.978  logreg=0.963  linsvc=0.963  hgb=0.167  rf=0.967  extratrees=0.974  knn=0.941  mlp=0.170  (bank 0s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 4 n=30: ridge=0.978  logreg=0.963  linsvc=0.970  hgb=0.167  rf=0.970  extratrees=0.974  knn=0.941  mlp=0.344  (bank 0s)
+
+uea:RacketSports: uea:RacketSports: n=303, static=0, series=6x30, task=multiclass, missing=0.0%
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 0 n=151: ridge=0.866  logreg=0.872  linsvc=0.861  hgb=0.866  rf=0.868  extratrees=0.883  knn=0.847  mlp=0.250  (bank 0s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 1 n=151: ridge=0.866  logreg=0.872  linsvc=0.866  hgb=0.866  rf=0.859  extratrees=0.872  knn=0.847  mlp=0.775  (bank 0s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 2 n=151: ridge=0.866  logreg=0.872  linsvc=0.861  hgb=0.866  rf=0.858  extratrees=0.891  knn=0.847  mlp=0.250  (bank 0s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 3 n=151: ridge=0.866  logreg=0.872  linsvc=0.861  hgb=0.866  rf=0.878  extratrees=0.890  knn=0.847  mlp=0.269  (bank 0s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 4 n=151: ridge=0.866  logreg=0.872  linsvc=0.861  hgb=0.866  rf=0.889  extratrees=0.853  knn=0.847  mlp=0.250  (bank 0s)
+
+uea:Libras: uea:Libras: n=360, static=0, series=2x45, task=multiclass, missing=0.0%
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 0 n=180: ridge=0.917  logreg=0.928  linsvc=0.661  hgb=0.911  rf=0.933  extratrees=0.939  knn=0.822  mlp=0.278  (bank 0s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 1 n=180: ridge=0.917  logreg=0.928  linsvc=0.906  hgb=0.911  rf=0.928  extratrees=0.928  knn=0.822  mlp=0.300  (bank 0s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 2 n=180: ridge=0.917  logreg=0.928  linsvc=0.883  hgb=0.911  rf=0.939  extratrees=0.933  knn=0.822  mlp=0.167  (bank 0s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 3 n=180: ridge=0.917  logreg=0.928  linsvc=0.917  hgb=0.911  rf=0.933  extratrees=0.933  knn=0.822  mlp=0.539  (bank 0s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 4 n=180: ridge=0.917  logreg=0.928  linsvc=0.894  hgb=0.911  rf=0.933  extratrees=0.933  knn=0.822  mlp=0.028  (bank 0s)
+
+uea:NATOPS: uea:NATOPS: n=360, static=0, series=24x51, task=multiclass, missing=0.0%
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 0 n=180: ridge=0.944  logreg=0.944  linsvc=0.939  hgb=0.883  rf=0.867  extratrees=0.878  knn=0.844  mlp=0.167  (bank 0s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 1 n=180: ridge=0.944  logreg=0.944  linsvc=0.900  hgb=0.883  rf=0.883  extratrees=0.922  knn=0.844  mlp=0.350  (bank 0s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 2 n=180: ridge=0.944  logreg=0.944  linsvc=0.950  hgb=0.883  rf=0.878  extratrees=0.861  knn=0.844  mlp=0.494  (bank 0s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 3 n=180: ridge=0.944  logreg=0.944  linsvc=0.933  hgb=0.883  rf=0.883  extratrees=0.894  knn=0.844  mlp=0.756  (bank 0s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 4 n=180: ridge=0.944  logreg=0.944  linsvc=0.917  hgb=0.883  rf=0.872  extratrees=0.917  knn=0.844  mlp=0.644  (bank 0s)
+
+uea:UWaveGestureLibrary: uea:UWaveGestureLibrary: n=440, static=0, series=3x315, task=multiclass, missing=0.0%
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 0 n=120: ridge=0.931  logreg=0.931  linsvc=0.894  hgb=0.881  rf=0.909  extratrees=0.906  knn=0.891  mlp=0.125  (bank 1s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 1 n=120: ridge=0.931  logreg=0.931  linsvc=0.903  hgb=0.881  rf=0.903  extratrees=0.894  knn=0.891  mlp=0.216  (bank 1s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 2 n=120: ridge=0.931  logreg=0.931  linsvc=0.906  hgb=0.881  rf=0.903  extratrees=0.903  knn=0.891  mlp=0.669  (bank 1s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 3 n=120: ridge=0.931  logreg=0.931  linsvc=0.919  hgb=0.881  rf=0.900  extratrees=0.925  knn=0.891  mlp=0.384  (bank 1s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 4 n=120: ridge=0.931  logreg=0.931  linsvc=0.897  hgb=0.881  rf=0.909  extratrees=0.897  knn=0.891  mlp=0.125  (bank 1s)
+
+uea:ArticularyWordRecognition: uea:ArticularyWordRecognition: n=575, static=0, series=9x144, task=multiclass, missing=0.0%
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 0 n=275: ridge=0.990  logreg=0.983  linsvc=0.980  hgb=0.947  rf=0.967  extratrees=0.980  knn=0.967  mlp=0.123  (bank 1s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 1 n=275: ridge=0.990  logreg=0.983  linsvc=0.983  hgb=0.947  rf=0.973  extratrees=0.977  knn=0.967  mlp=0.040  (bank 1s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 2 n=275: ridge=0.990  logreg=0.983  linsvc=0.980  hgb=0.947  rf=0.977  extratrees=0.980  knn=0.967  mlp=0.067  (bank 1s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 3 n=275: ridge=0.990  logreg=0.983  linsvc=0.987  hgb=0.947  rf=0.970  extratrees=0.973  knn=0.967  mlp=0.040  (bank 1s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 4 n=275: ridge=0.990  logreg=0.983  linsvc=0.987  hgb=0.947  rf=0.980  extratrees=0.973  knn=0.967  mlp=0.040  (bank 1s)
+
+uea:StandWalkJump: uea:StandWalkJump: n=27, static=0, series=4x2500, task=multiclass, missing=0.0%
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 0 n=12: ridge=0.400  logreg=0.467  linsvc=0.333  hgb=0.333  rf=0.333  extratrees=0.467  knn=0.333  mlp=0.333  (bank 1s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 1 n=12: ridge=0.400  logreg=0.467  linsvc=0.333  hgb=0.333  rf=0.400  extratrees=0.533  knn=0.333  mlp=0.267  (bank 1s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 2 n=12: ridge=0.400  logreg=0.467  linsvc=0.333  hgb=0.333  rf=0.467  extratrees=0.600  knn=0.333  mlp=0.333  (bank 1s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 3 n=12: ridge=0.400  logreg=0.467  linsvc=0.333  hgb=0.333  rf=0.533  extratrees=0.467  knn=0.333  mlp=0.333  (bank 1s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 4 n=12: ridge=0.400  logreg=0.467  linsvc=0.333  hgb=0.333  rf=0.267  extratrees=0.400  knn=0.333  mlp=0.333  (bank 1s)
+
+uea:Heartbeat: uea:Heartbeat: n=409, static=0, series=61x405, task=binary, missing=0.0%
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 0 n=204: ridge=0.665  logreg=0.673  linsvc=0.713  hgb=0.643  rf=0.667  extratrees=0.643  knn=0.643  mlp=0.500  (bank 3s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 1 n=204: ridge=0.665  logreg=0.673  linsvc=0.635  hgb=0.643  rf=0.678  extratrees=0.694  knn=0.643  mlp=0.500  (bank 3s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 2 n=204: ridge=0.665  logreg=0.673  linsvc=0.671  hgb=0.643  rf=0.661  extratrees=0.666  knn=0.643  mlp=0.500  (bank 3s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 3 n=204: ridge=0.665  logreg=0.673  linsvc=0.656  hgb=0.643  rf=0.669  extratrees=0.696  knn=0.643  mlp=0.500  (bank 3s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 4 n=204: ridge=0.665  logreg=0.673  linsvc=0.635  hgb=0.643  rf=0.663  extratrees=0.669  knn=0.643  mlp=0.630  (bank 3s)
+
+uea:CharacterTrajectories: uea:CharacterTrajectories: n=2858, static=0, series=3x119, task=multiclass, missing=0.0%
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 0 n=1422: ridge=0.993  logreg=0.986  linsvc=0.971  hgb=0.981  rf=0.981  extratrees=0.984  knn=0.961  mlp=0.050  (bank 2s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 1 n=1422: ridge=0.993  logreg=0.986  linsvc=0.985  hgb=0.981  rf=0.981  extratrees=0.982  knn=0.961  mlp=0.050  (bank 2s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 2 n=1422: ridge=0.993  logreg=0.986  linsvc=0.972  hgb=0.981  rf=0.983  extratrees=0.985  knn=0.961  mlp=0.050  (bank 2s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 3 n=1422: ridge=0.993  logreg=0.986  linsvc=0.977  hgb=0.981  rf=0.980  extratrees=0.983  knn=0.961  mlp=0.050  (bank 2s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 4 n=1422: ridge=0.993  logreg=0.986  linsvc=0.970  hgb=0.981  rf=0.979  extratrees=0.984  knn=0.961  mlp=0.101  (bank 2s)
+
+uea:HandMovementDirection: uea:HandMovementDirection: n=234, static=0, series=10x400, task=multiclass, missing=0.0%
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 0 n=160: ridge=0.387  logreg=0.362  linsvc=0.327  hgb=0.362  rf=0.355  extratrees=0.330  knn=0.251  mlp=0.250  (bank 1s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 1 n=160: ridge=0.387  logreg=0.362  linsvc=0.293  hgb=0.362  rf=0.237  extratrees=0.260  knn=0.251  mlp=0.250  (bank 1s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 2 n=160: ridge=0.387  logreg=0.362  linsvc=0.300  hgb=0.362  rf=0.364  extratrees=0.354  knn=0.251  mlp=0.250  (bank 1s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 3 n=160: ridge=0.387  logreg=0.362  linsvc=0.250  hgb=0.362  rf=0.320  extratrees=0.286  knn=0.251  mlp=0.250  (bank 1s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 4 n=160: ridge=0.387  logreg=0.362  linsvc=0.250  hgb=0.362  rf=0.330  extratrees=0.226  knn=0.251  mlp=0.250  (bank 1s)
+
+uea:SelfRegulationSCP2: uea:SelfRegulationSCP2: n=380, static=0, series=7x1152, task=binary, missing=0.0%
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 0 n=200: ridge=0.544  logreg=0.544  linsvc=0.500  hgb=0.556  rf=0.517  extratrees=0.533  knn=0.506  mlp=0.500  (bank 4s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 1 n=200: ridge=0.544  logreg=0.544  linsvc=0.500  hgb=0.556  rf=0.539  extratrees=0.533  knn=0.506  mlp=0.500  (bank 4s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 2 n=200: ridge=0.544  logreg=0.544  linsvc=0.500  hgb=0.556  rf=0.561  extratrees=0.533  knn=0.506  mlp=0.500  (bank 4s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 3 n=200: ridge=0.544  logreg=0.544  linsvc=0.500  hgb=0.556  rf=0.544  extratrees=0.567  knn=0.506  mlp=0.500  (bank 4s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 4 n=200: ridge=0.544  logreg=0.544  linsvc=0.500  hgb=0.556  rf=0.539  extratrees=0.550  knn=0.506  mlp=0.500  (bank 4s)
+
+uea:Handwriting: uea:Handwriting: n=1000, static=0, series=3x152, task=multiclass, missing=0.0%
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 0 n=150: ridge=0.514  logreg=0.490  linsvc=0.379  hgb=0.358  rf=0.348  extratrees=0.391  knn=0.269  mlp=0.038  (bank 1s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 1 n=150: ridge=0.514  logreg=0.490  linsvc=0.404  hgb=0.358  rf=0.334  extratrees=0.394  knn=0.269  mlp=0.038  (bank 1s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 2 n=150: ridge=0.514  logreg=0.490  linsvc=0.330  hgb=0.358  rf=0.341  extratrees=0.397  knn=0.269  mlp=0.038  (bank 1s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 3 n=150: ridge=0.514  logreg=0.490  linsvc=0.349  hgb=0.358  rf=0.359  extratrees=0.390  knn=0.269  mlp=0.038  (bank 1s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 4 n=150: ridge=0.514  logreg=0.490  linsvc=0.372  hgb=0.358  rf=0.353  extratrees=0.396  knn=0.269  mlp=0.047  (bank 1s)
+
+uea:Cricket: uea:Cricket: n=180, static=0, series=6x1197, task=multiclass, missing=0.0%
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 0 n=108: ridge=0.986  logreg=0.986  linsvc=0.972  hgb=0.972  rf=1.000  extratrees=0.986  knn=0.972  mlp=0.139  (bank 2s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 1 n=108: ridge=0.986  logreg=0.986  linsvc=0.986  hgb=0.972  rf=0.986  extratrees=1.000  knn=0.972  mlp=0.083  (bank 2s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 2 n=108: ridge=0.986  logreg=0.986  linsvc=0.944  hgb=0.972  rf=1.000  extratrees=0.986  knn=0.972  mlp=0.083  (bank 2s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 3 n=108: ridge=0.986  logreg=0.986  linsvc=0.972  hgb=0.972  rf=0.986  extratrees=1.000  knn=0.972  mlp=0.083  (bank 2s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 4 n=108: ridge=0.986  logreg=0.986  linsvc=0.750  hgb=0.972  rf=0.986  extratrees=1.000  knn=0.972  mlp=0.181  (bank 2s)
+
+uea:EthanolConcentration: uea:EthanolConcentration: n=524, static=0, series=3x1751, task=multiclass, missing=0.0%
+/opt/homebrew/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:473: ConvergenceWarning: lbfgs failed to converge after 2000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=2000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 0 n=261: ridge=0.484  logreg=0.502  linsvc=0.246  hgb=0.437  rf=0.362  extratrees=0.327  knn=0.304  mlp=0.250  (bank 6s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:473: ConvergenceWarning: lbfgs failed to converge after 2000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=2000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 1 n=261: ridge=0.484  logreg=0.502  linsvc=0.261  hgb=0.437  rf=0.377  extratrees=0.316  knn=0.304  mlp=0.277  (bank 6s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:473: ConvergenceWarning: lbfgs failed to converge after 2000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=2000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 2 n=261: ridge=0.484  logreg=0.502  linsvc=0.311  hgb=0.437  rf=0.350  extratrees=0.331  knn=0.304  mlp=0.250  (bank 6s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:473: ConvergenceWarning: lbfgs failed to converge after 2000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=2000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 3 n=261: ridge=0.484  logreg=0.502  linsvc=0.250  hgb=0.437  rf=0.350  extratrees=0.327  knn=0.304  mlp=0.250  (bank 6s)
+/opt/homebrew/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:473: ConvergenceWarning: lbfgs failed to converge after 2000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=2000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/opt/homebrew/lib/python3.13/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+  seed 4 n=261: ridge=0.484  logreg=0.502  linsvc=0.318  hgb=0.437  rf=0.346  extratrees=0.338  knn=0.304  mlp=0.250  (bank 6s)
+
+wrote /Users/dogmatixs/Desktop/TS_XGBoost/validation/rerun/v25_uea/results.json (640 rows)

@@ -74,6 +74,12 @@ model over that bank, and `RESULTS_V24.md` has it behind MiniROCKET on 11 of 16 
 "What is the best model to put on top of this bank" is a live question that this project has
 never actually run a tournament on, and the answer might not be trees.
 
+> **Answered, 2026-09-02.** V25 ran that tournament — eight heads on one shared bank, at the
+> validation suite's own protocol. The answer is indeed not trees, but not for the reason
+> guessed above: **nothing beat the ridge**, and every *nonlinear* head ranked below the two
+> linear ones. The paragraph above expected something more elaborate to win; something
+> simpler does. See `RESULTS_V25.md`.
+
 ## Verdict
 
 **Not worth pre-registering as an improvement to Heartwood.** The partition mechanism is
