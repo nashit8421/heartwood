@@ -25,6 +25,12 @@ Both halves are measured, on this code, in [`RESULTS_V24.md`](RESULTS_V24.md).
 one channel, n=1000, 5 seeds — balanced accuracy **0.588 against MiniROCKET-10k's 0.555**, a
 margin of **+3.3 points**, positive on every seed (+4.0, +2.5, +3.5, +3.2, +3.4).
 
+That baseline is not a straw man. [`RESULTS_V25.md`](RESULTS_V25.md) put **eight different
+models on the identical kernel bank** — ridge, logistic regression, linear SVM, histogram
+boosting, random forest, extra trees, k-NN, an MLP — and **nothing beat the ridge**. It is
+the best head anyone has found for these features, which is what makes beating it worth
+reporting.
+
 **On general time-series benchmarks it does not.** Across sixteen UEA datasets it is ahead
 on **5 of 16**. Mean balanced accuracy is 0.798 against MiniROCKET-10k's 0.787 — but that
 mean is carried by one 22-point win on EthanolConcentration, and the count is the more
@@ -39,6 +45,14 @@ than not.
 | 16 UEA datasets (won) | 5 | **11** |
 
 That is the whole claim. There is no larger one.
+
+**And one caveat that belongs here rather than in a footnote:** both rows above were measured
+with the **static block empty** — the sixteen UEA datasets have no static covariates at all,
+and the CPSC arm drops age and sex deliberately, because an ECG encodes them
+([`VALIDATION_V9.md`](VALIDATION_V9.md)'s exogeneity rule). So the +3.3 is a *series* result.
+The thing this library is pitched on — a node that can ask about an attribute and a
+trajectory in the same breath — is **not what earned that number**, and has never been
+tested on a dataset that could settle it. See "the founding claim" under Known limitations.
 
 ## Why it exists
 
