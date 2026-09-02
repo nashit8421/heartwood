@@ -48,3 +48,26 @@ python -m pytest tests -q
 
 They take about 80 seconds. The suite is deliberately full of tests that assert *why* a
 thing is the way it is, not just that it runs — if one fails, read its docstring first.
+
+
+## Cutting a release
+
+```bash
+python -m pytest tests -q                 # must be green
+python -m build --no-isolation            # -> dist/*.whl, dist/*.tar.gz
+python -m twine check dist/*
+python -m twine upload dist/*             # needs a PyPI API token
+git tag -a vX.Y.Z -m "..." && git push origin vX.Y.Z
+```
+
+`--no-isolation` is a workaround for a broken `dist-info` in some Homebrew Python
+installs, not a property of this project; drop it if `python -m build` works for you.
+
+**A published version is permanent.** PyPI does not allow re-uploading a version or
+reclaiming a name — a bad release can only be yanked, and the yanked version still exists.
+Install the built wheel into a clean virtualenv and import it before uploading:
+
+```bash
+python -m venv /tmp/check && /tmp/check/bin/pip install dist/*.whl
+/tmp/check/bin/python -c "import heartwood; print(heartwood.__version__)"
+```
